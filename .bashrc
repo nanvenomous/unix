@@ -58,7 +58,7 @@ alias fixBash='source ~/.bashrc'
 alias disk='lsblk'
 alias writeSystem='sudo dd if=/dev/nvme0n1' # of=/path/to/usb
 alias poweroff='/sbin/shutdown -r now'
-alias saveRoot='sudo rsync -aAXv --delete / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}'
+alias saveRoot='sudo rsync -aAXv --delete / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","~/Downloads"}'
 alias linuxDrive='sudo mkfs.ext4'
 
 #________________________________________________________________________________
@@ -69,3 +69,4 @@ alias p='/usr/bin/python3.6'
 alias pip='/usr/local/bin/pip'
 alias g='bash ~/Scripts/g.sh'
 alias cgit='/usr/bin/git --git-dir=/home/naruto/.cfg/ --work-tree=/home/naruto'
+alias todo='bash ~/Scripts/todo.sh'
