@@ -33,6 +33,9 @@ case "$1" in
 	"s")
 		g status "${@:2}"
 		;;
+	"t")
+		g ls-tree -r --name-only "${@:2}"
+		;;
 	"aa")
 		g add . "${@:2}"
 		;;
