@@ -51,9 +51,10 @@ alias t='tree -L 1 --dirsfirst'
 alias T='bash ~/Scripts/T.sh'
 alias size='sudo du -hs'
 alias here='echo $PWD'
-alias cur='cd ~/Projects/serveMe/src/'
+alias cur='cd ~/Projects/'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
+alias hs='history | vim -'
 
 #________________________________________________________________________________
 #__________System
@@ -77,3 +78,4 @@ alias p='python'
 alias g='bash ~/Scripts/g.sh'
 alias cg='bash ~/Scripts/cg.sh'
 alias ve='/usr/local/bin/virtualenv'
+alias cr='bash ~/Scripts/cr.sh'
