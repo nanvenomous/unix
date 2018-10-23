@@ -4,7 +4,7 @@ g='/usr/bin/git'
 config="--git-dir=${HOME}/.cfg --work-tree=${HOME}"
 cg="${g} ${config}"
 g () {
-	args="$*"
+	args="${*}"
 	cmd="${cg} ${args}"
 	command ${cmd}
 }
@@ -40,13 +40,6 @@ case "$1" in
 	"t")
 		g ls-tree -r --name-only "${@:2}"
 		;;
-	"aa")
-		g add ${HOME}/.README.md
-		g add ${HOME}/.bashrc
-		g add ${HOME}/.vimrc
-		g add ${HOME}/.xinitrc
-		g add ${HOME}/Scripts/*
-		;;
 	"chb")
 		g checkout -b "${@:2}"
 		;;
@@ -55,6 +48,13 @@ case "$1" in
 		;;
 	"rs")
 		g remote show "${@:2}"
+		;;
+	"aa")
+		g add ${HOME}/.README.md
+		g add ${HOME}/.bashrc
+		g add ${HOME}/.vimrc
+		g add ${HOME}/.xinitrc
+		g add ${HOME}/Scripts/*
 		;;
 	*)
 		g "${@}"
