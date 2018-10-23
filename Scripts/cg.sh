@@ -2,61 +2,71 @@
 
 g='/usr/bin/git'
 config="--git-dir=${HOME}/.cfg --work-tree=${HOME}"
-cg="${g} ${config}"
-g () {
-	args="${*}"
-	cmd="${cg} ${args}"
-	command ${cmd}
+cmd="${g} ${config}"
+
+generalGitWrapper () {
+	local -n cmdRef=$1
+	local allInputs="${@:2}"
+	local shortcut=$2
+	local restOfInputs="${@:3}"
+
+	case "$shortcut" in
+		"b")
+			cmdRef="$cmdRef branch ${restOfInputs}"
+			;;
+		"c")
+			cmdRef="$cmdRef commit ${restOfInputs}"
+			;;
+		"ch")
+			cmdRef="$cmdRef checkout ${restOfInputs}"
+			;;
+		"i")
+			cmdRef="$cmdRef init ${restOfInputs}"
+			;;
+		"l")
+			cmdRef="$cmdRef log ${restOfInputs}"
+			;;
+		"m")
+			cmdRef="$cmdRef merge ${restOfInputs}"
+			;;
+		"p")
+			cmdRef="$cmdRef push ${restOfInputs}"
+			;;
+		"r")
+			cmdRef="$cmdRef remote ${restOfInputs}"
+			;;
+		"s")
+			cmdRef="$cmdRef status ${restOfInputs}"
+			;;
+		"t")
+			cmdRef="$cmdRef ls-tree -r --name-only ${restOfInputs}"
+			;;
+		"chb")
+			cmdRef="$cmdRef checkout -b ${restOfInputs}"
+			;;
+		"pr")
+			cmdRef="$cmdRef pull --rebase ${restOfInputs}"
+			;;
+		"rs")
+			cmdRef="$cmdRef remote show ${restOfInputs}"
+			;;
+		*)
+			cmdRef="$cmdRef ${allInputs}"
+			;;
+	esac
+
 }
 
 case "$1" in
-	"b")
-		g branch "${@:2}"
-		;;
-	"c")
-		g commit "${@:2}"
-		;;
-	"ch")
-		g checkout "${@:2}"
-		;;
-	"i")
-		g init "${@:2}"
-		;;
-	"l")
-		g log "${@:2}"
-		;;
-	"m")
-		g merge "${@:2}"
-		;;
-	"p")
-		g push "${@:2}"
-		;;
-	"r")
-		g remote "${@:2}"
-		;;
-	"s")
-		g status "${@:2}"
-		;;
-	"t")
-		g ls-tree -r --name-only "${@:2}"
-		;;
-	"chb")
-		g checkout -b "${@:2}"
-		;;
-	"pr")
-		g pull --rebase "${@:2}"
-		;;
-	"rs")
-		g remote show "${@:2}"
-		;;
 	"aa")
-		g add ${HOME}/.README.md
-		g add ${HOME}/.bashrc
-		g add ${HOME}/.vimrc
-		g add ${HOME}/.xinitrc
-		g add ${HOME}/Scripts/*
+		command $cmd add ${HOME}/.README.md
+		command $cmd add ${HOME}/.bashrc
+		command $cmd add ${HOME}/.vimrc
+		command $cmd add ${HOME}/.xinitrc
+		command $cmd add ${HOME}/Scripts/*
 		;;
 	*)
-		g "${@}"
+		generalGitWrapper cmd "${@}"
+		command $cmd
 		;;
 esac
