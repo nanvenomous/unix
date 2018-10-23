@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./general.sh
+source ${HOME}/Scripts/cliGit/general.sh
 
 g='/usr/bin/git'
 config="--git-dir=${HOME}/.cfg --work-tree=${HOME}"
