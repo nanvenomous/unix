@@ -16,6 +16,7 @@ case "$1" in
 		command $cmd add ${HOME}/.vimrc
 		command $cmd add ${HOME}/.xinitrc
 		command $cmd add ${HOME}/Scripts/*
+		command $cmd add ${HOME}/Code/bash/*
 		;;
 	*)
 		generalGitWrapper cmd "${@}"
