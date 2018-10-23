@@ -1,7 +1,7 @@
 g='/usr/bin/git'
-
+config="--git-dir=$HOME/.cfg --work-tree=$HOME"
 g () {
-	$g --git-dir=$HOME/.cfg/ --work-tree=$HOME "${@}"
+	command $g $config "${@}"
 }
 
 case "$1" in
@@ -36,7 +36,11 @@ case "$1" in
 		g ls-tree -r --name-only "${@:2}"
 		;;
 	"aa")
-		g add . "${@:2}"
+		g add $HOME/.README.md
+		g add $HOME/.bashrc
+		g add $HOME/.vimrc
+		g add $HOME/.xinitrc
+		g add $HOME/Scripts/*
 		;;
 	"chb")
 		g checkout -b "${@:2}"

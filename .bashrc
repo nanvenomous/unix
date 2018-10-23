@@ -72,7 +72,7 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 
 #________________________________________________________________________________
 #__________Programs
 alias weather='sudo curl wttr.in'
-alias chrome='/usr/bin/google-chrome-stable &>/dev/null'
+alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias render='bash ~/Scripts/render.sh &>/dev/null'
 alias p='python'
 alias g='bash ~/Scripts/g.sh'
