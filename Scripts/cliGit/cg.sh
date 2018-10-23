@@ -9,7 +9,7 @@ cmd="${g} ${config}"
 case "$1" in
 	"aa")
 		# stage manually deleted or moved files
-		command $cmd rm -q $($cmd ls-files --deleted) &>/dev/null
+		stageManualChanges cmd
 		# add/stage changes in all configuration files
 		command $cmd add ${HOME}/.README.md
 		command $cmd add ${HOME}/.bashrc
