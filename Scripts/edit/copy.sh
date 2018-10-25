@@ -4,8 +4,6 @@ ls='/bin/ls'
 outputFile=$HOME'/Scripts/edit/output.txt'
 vimCommand=$HOME'/Scripts/edit/command.txt'
 
-
-
 case "$1" in
 	"here")
 		command echo $PWD > $outputFile
