@@ -1,1 +1,1 @@
-/usr/bin/git
+/home/deku/Pictures/apps
