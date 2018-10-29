@@ -1,1 +1,1 @@
-/home/deku/Scripts/symlinks
+/bin/chmod
