@@ -1,1 +1,1 @@
-/home/deku/Pictures/apps
+/home/deku/Scripts/symlinks
