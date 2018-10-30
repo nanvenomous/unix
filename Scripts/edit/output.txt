@@ -1,3 +1,1 @@
-├── git
-├── git-receive-pack -> git
-├── git-upload-archive -> git
+/usr/bin/tree

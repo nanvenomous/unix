@@ -38,13 +38,6 @@ function unlink() {
 	fi
 }
 
-function check() {
-	(cd /usr/bin && tree -la | grep "── ${1} ->")
-	(cd /usr/bin && tree -la | grep "├── ${1}$")
-	(cd /usr/local/bin && tree -la | grep "── ${1} ->")
-	(cd /usr/local/bin && tree -la | grep "├── ${1}$")
-}
-
 #__________________________________________________ Looping Through Each File
 
 # must be global
@@ -60,9 +53,24 @@ function forEachSymLink() {
 	for file in "${array[@]}"; do   # The quotes are necessary here
 		link="${file/${filePath}/${exeDir}}"
 		link="${link/%.*/}"
-		echo "${file} --> ${link}"
+		echo "${file} <--> ${link}"
 		${operation} ${file} ${link}
 	done
+}
+
+#__________________________________________________ Single Execution
+t='/usr/bin/tree'
+
+function check() {
+	(cd /usr/bin && ${t} -la | grep "── ${1} ->")
+	(cd /usr/bin && ${t} -la | grep "── ${1}$")
+	(cd /usr/local/bin && ${t} -la | grep "── ${1} ->")
+	(cd /usr/local/bin && ${t} -la | grep "── ${1}$")
+}
+
+function list() {
+	echo ${filePath}
+	(cd ${filePath} && ${t})
 }
 
 #__________________________________________________ Actions
@@ -80,11 +88,15 @@ case "$1" in
 	"check")
 		check ${2}
 		;;
+	"list")
+		list
+		;;
 	*)
 		echo commands:
 		echo -e "\t" link
 		echo -e "\t" relink
 		echo -e "\t" unlink
-		echo -e "\t" check
+		echo -e "\t" check "\t" '<argument>'
+		echo -e "\t" list
 		;;
 esac
