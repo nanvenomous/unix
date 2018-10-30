@@ -2,11 +2,7 @@ source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
 #__________File
-alias s='sudo'
 alias c='clear'
-# alias ls='ls --color=auto'
-alias t='tree -L 1 --dirsfirst'
-alias T='bash ~/Scripts/T.sh'
 alias cur='cd ~/Code/'
 alias apps='cd /usr/share/applications'
 alias copy='bash ~/Scripts/edit/copy.sh'
@@ -15,7 +11,7 @@ alias hs='history | vim -'
 
 #________________________________________________________________________________
 #__________System
-alias b='bash ~/Scripts/b.sh'
+# alias b='bash ~/Scripts/b.sh'
 alias fixBash='source ~/.bashrc'
 alias disk='lsblk'
 alias writeSystem='sudo dd if=/dev/nvme0n1' # of=/path/to/usb
