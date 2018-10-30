@@ -1,1 +1,3 @@
-/bin/chmod
+├── git
+├── git-receive-pack -> git
+├── git-upload-archive -> git

@@ -4,7 +4,7 @@ source ${HOME}/Scripts/colorSettings.sh
 #__________File
 alias s='sudo'
 alias c='clear'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias t='tree -L 1 --dirsfirst'
 alias T='bash ~/Scripts/T.sh'
 alias cur='cd ~/Code/'

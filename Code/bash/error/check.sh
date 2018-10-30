@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# errormessage=$( "${@}" 2>&1)
-command=$("${@}")
+command "${@}" &>/dev/null
 
-inputs="${@}"
-
-# if [[ $(${inputs}) ]]; then
-if [[ ${command} ]]; then
-	:
+if [[ $? != 0 ]]; then
+	echo "failure"
 else
-	:
-#	echo ${errormessage}
+	echo "success"
 fi
