@@ -53,8 +53,8 @@ generalGitWrapper () {
 			;;
 	esac
 }
-
 stageManualChanges () {
 	local -n cmdRef=$1
-	command $cmdRef rm -q $($cmdRef ls-files --deleted) &>/dev/null
+	command ${cmdRef} rm $(${cmdRef} ls-files --deleted) &>/dev/null
+	command ${cmdRef} add -u
 }
