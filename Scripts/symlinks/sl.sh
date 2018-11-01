@@ -41,7 +41,7 @@ function unlink() {
 #__________________________________________________ Looping Through Each File
 
 # must be global
-filePath="${PWD}/files/"
+filePath="`dirname $(readlink -f $0)`/files/"
 
 # user executable directory
 exeDir='/usr/local/bin/'
