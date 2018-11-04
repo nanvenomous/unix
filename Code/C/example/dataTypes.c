@@ -7,7 +7,7 @@ int main() {
 
 	//printing the variables defined above along with their sizes 
 	printf("Character:\n");
-	printf("\tValue: %c, Size: %lu byte.\n", b,sizeof(char)); 
+	printf("\tValue: %c, Size: %lu byte.\n", b,sizeof(b)); 
 	//can use sizeof(b) above as well 
 
 	printf("Hello! I am an integer. My value is %d and "
