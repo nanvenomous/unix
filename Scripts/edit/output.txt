@@ -1,1 +1,1 @@
-/usr/bin/sudo
+/home/deku/Scripts/gcc
