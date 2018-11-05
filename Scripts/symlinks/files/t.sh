@@ -2,4 +2,4 @@
 
 tree='/usr/bin/tree'
 
-command ${tree} -L 1 --dirsfirst
+command ${tree} -L 1 --dirsfirst "${@}"
