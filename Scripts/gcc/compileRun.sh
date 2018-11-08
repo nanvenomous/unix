@@ -1,11 +1,18 @@
 #!/bin/bash
 
-
 compRun () {
-	# gather inputs
-	local -n compRef="${1}"
-	local -n srcRef="${2}"
+	# _________________________________ Handel inputs and run checks
+	local -n compRef="${1}"; shift # remove compRun from list
 
+	# if anything passed in
+	if [ $# -eq 0 ]; then
+		echo "Must pass in a source C or C++ file"
+		exit 1
+	fi
+
+	local -n srcRef="${1}"
+
+	# _________________________________ Compile and run c/c++ code
 	subDir='./.execute/'
 
 	# make the directory for executables if there is none
