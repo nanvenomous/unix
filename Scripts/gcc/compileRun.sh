@@ -10,9 +10,16 @@ compRun () {
 		echo 'Not a file or directory: ' "${srcRef}"
 		exit 1
 	elif [[ -z "${srcRef// }" ]]; then
+		echo "Package C requires an argument"
+		echo 'For help:'
+		echo -e '\tC -h'
+		exit 1
+	elif [[ ! ${srcRef} == "*.c" ]]; then
 		echo "Must pass in a source C or C++ file"
 		exit 1
 	fi
+	# Other catch cases to add:
+		# build fail
 
 	# _________________________________ Compile and run c/c++ code
 	subDir='./.execute/'
