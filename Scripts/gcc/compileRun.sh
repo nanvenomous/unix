@@ -1,16 +1,18 @@
 #!/bin/bash
 
 compRun () {
-	# _________________________________ Handel inputs and run checks
+	# _________________________________ Gather Inputs
 	local -n compRef="${1}"; shift # remove compRun from list
+	local -n srcRef="${1}"
 
-	# if nothing passed in
-	if [ $# -eq 0 ]; then
+	# _________________________________ Run Checks
+	if [ ! -f ${srcRef} ]; then # what you passed in wasn't a file
+		echo 'Not a file or directory: ' "${srcRef}"
+		exit 1
+	elif [[ -z "${srcRef// }" ]]; then
 		echo "Must pass in a source C or C++ file"
 		exit 1
 	fi
-
-	local -n srcRef="${1}"
 
 	# _________________________________ Compile and run c/c++ code
 	subDir='./.execute/'
