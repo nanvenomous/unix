@@ -4,8 +4,13 @@
 hr="${HOME}/Scripts/gcc/compileRun.sh"
 source ${hr}
 
+# 2 compiler options
 cComp='/usr/bin/cc'
 cppComp='/usr/bin/g++'
+
+# variables default to C++ compilation
+comp=${cppComp}
+sourceCode="${@}"
 
 # Parse options to the `pip` command
 while getopts ":hc:" opt; do
@@ -18,8 +23,9 @@ while getopts ":hc:" opt; do
 			exit 0
 			;;
 		c )
-			compRun cComp OPTARG
-			exit 0
+			comp="${cComp}"
+			echo "${OPTARG}"
+			sourceCode="${OPTARG}"
 			;;
 	 \? )
 		 echo "Invalid Option: -$OPTARG" 1>&2
@@ -28,4 +34,4 @@ while getopts ":hc:" opt; do
 	esac
 done
 
-compRun comp "${@}"
+compRun comp sourceCode
