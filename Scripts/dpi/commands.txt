@@ -1,0 +1,4 @@
+/Xft.dpi: 
+f:
+ll
+vec

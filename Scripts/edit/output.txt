@@ -1,1 +1,1 @@
-/home/deku/Scripts/gcc
+/usr/bin/g++
