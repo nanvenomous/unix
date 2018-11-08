@@ -10,10 +10,9 @@ cppComp='/usr/bin/g++'
 
 # variables default to C++ compilation
 comp=${cppComp}
-sourceCode="${@}"
 
 # Parse options to the `pip` command
-while getopts ":hc:" opt; do
+while getopts ":hc" opt; do
 	case ${opt} in
 		h )
 			echo "Usage:"
@@ -24,8 +23,6 @@ while getopts ":hc:" opt; do
 			;;
 		c )
 			comp="${cComp}"
-			echo "${OPTARG}"
-			sourceCode="${OPTARG}"
 			;;
 	 \? )
 		 echo "Invalid Option: -$OPTARG" 1>&2
@@ -33,5 +30,7 @@ while getopts ":hc:" opt; do
 		 ;;
 	esac
 done
+shift $((OPTIND -1)) # should remove a single option
+sourceCode="${@}"
 
 compRun comp sourceCode
