@@ -4,7 +4,7 @@ compRun () {
 	# _________________________________ Handel inputs and run checks
 	local -n compRef="${1}"; shift # remove compRun from list
 
-	# if anything passed in
+	# if nothing passed in
 	if [ $# -eq 0 ]; then
 		echo "Must pass in a source C or C++ file"
 		exit 1
