@@ -1,1 +1,1 @@
-/usr/bin/awk
+/usr/bin/sudo
