@@ -2,7 +2,7 @@
 awk='/usr/bin/awk'
 
 hr="${HOME}/Code/bash/file/internalEdit"
-confFile="${hr}/toEdit.txt"
+confFile="${hr}/conf/toEdit.txt"
 script="${hr}/script"
 
 begin_marker='# BEGIN AUTOMATICALLY EDITED PART, DO NOT EDIT'
@@ -16,4 +16,4 @@ ${awk}\
  -v begin_marker="${begin_marker}"\
  -v end_marker="${end_marker}"\
  -v new_section="${new_section}"\
- ${confFile}
+ <${confFile} >${confFile}
