@@ -17,4 +17,4 @@ ${awk}\
  -v begin_marker="${begin_marker}"\
  -v end_marker="${end_marker}"\
  -v new_section="${new_section}"\
- ${confFile}
+ <${confFile} >${confFile}
