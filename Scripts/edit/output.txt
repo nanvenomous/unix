@@ -1,1 +1,1 @@
-/home/naruto/Code/bash/file/internalEdit
+/usr/bin/awk
