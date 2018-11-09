@@ -11,7 +11,6 @@ alias hs='history | vim -'
 
 #________________________________________________________________________________
 #__________System
-# alias b='bash ~/Scripts/b.sh'
 alias fixBluetooth='pactl load-module module-bluetooth-discover'
 alias fixBash='source ~/.bashrc'
 alias disk='lsblk'
