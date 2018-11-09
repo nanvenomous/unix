@@ -1,0 +1,8 @@
+1 {print}
+$0 == begin_marker && !changed {
+    do {getline} while ($0 != end_marker); # discard old section content
+    print new_section;
+    print;
+    changed = 1;
+}
+END {if (!changed) {print begin_marker; print new_section; print end_marker;}}

@@ -1,1 +1,1 @@
-/usr/bin/g++
+/home/naruto/Code/bash/file/internalEdit
