@@ -7,7 +7,6 @@ alias cur='cd ~/Code/'
 alias apps='cd /usr/share/applications'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
-alias hs='history | vim -'
 
 #________________________________________________________________________________
 #__________System
@@ -20,7 +19,7 @@ alias saveRoot='sudo rsync -aAXv --delete / --exclude={"/dev/*","/proc/*","/sys/
 alias linuxDrive='sudo mkfs.ext4'
 alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
-alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|percentage|time to empty"'
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
 
 #________________________________________________________________________________
 #__________Programs
