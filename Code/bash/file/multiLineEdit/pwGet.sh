@@ -1,6 +1,8 @@
 #!/bin/bash
 
 hr="${HOME}/Code/bash/file/multiLineEdit"
+
+# ____________________________________________________________ cntlm wrapper
 pwFix="${hr}/awkScripts/pwFix"
 getUserName="${hr}/awkScripts/getUserName"
 
@@ -14,13 +16,23 @@ if [ $# -eq 0 ]; then
 fi
 
 echo 'Enter Password:'
-pw="$(${cntlm} -H -a 'NTLMv2' -d 'nam.corp.gm.com' -u "${@}")"
+cntlmOut="$(${cntlm} -H -a 'NTLMv2' -d 'nam.corp.gm.com' -u "${@}")"
 
-echo "${pw}"
-
-fixed="$(${awk} -f ${pwFix} <(echo ${pw}))"
-userName="$(${awk} -f ${getUserName} <(echo ${pw}))"
+pw="$(${awk} -f ${pwFix} <(echo ${cntlmOut}))"
+userName="$(${awk} -f ${getUserName} <(echo ${cntlmOut}))"
+userName="${userName/\'/}"
 echo "${userName}"
 
-# NOTE: output must have quotations around it!! ex. "${pwFixed}"
-echo "${fixed}"
+# NOTE: output must have quotations around it!! ex. "${pw}"
+echo "${pw}"
+
+# ____________________________________________________________ config file
+confFile="${hr}/conf/toEdit.txt"
+newConfFile="${hr}/conf/test.txt"
+script="${hr}/script"
+
+begin_marker='# Password BEGIN AUTOMATICALLY EDITED PART, DO NOT EDIT'
+end_marker='# Password END AUTOMATICALLY EDITED PART'
+
+new_section="someVariable=${1}"
+
