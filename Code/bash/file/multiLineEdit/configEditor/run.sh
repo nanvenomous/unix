@@ -7,16 +7,12 @@ newConfFile="${here}/files/newConfig"
 editConfig="${here}/awkScripts/editConfig"
 awk='/usr/bin/awk'
 
-new_section="${1}"
-echo "${new_section}"
-begin_marker="${2}"
-echo "${begin_marker}"
-end_marker="${3}"
-echo "${end_marker}"
-confFile="${4}"
-echo "${confFile}"
+touch "${newConfFile}"
 
-exit
+new_section="${1}"
+begin_marker="${2}"
+end_marker="${3}"
+confFile="${4}"
 
 export begin_marker end_marker
 ${awk}\
