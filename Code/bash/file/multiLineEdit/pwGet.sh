@@ -23,12 +23,9 @@ cntlmOut=$(tail -n 3 <(echo "${cntlmOut}"))
 
 # echo "${cntlmOut}"
 
-echo "${cntlmOut}" | cut -d'#' -f 1
-
-exit # REMOVE TO RUN WHOLE PROGRAM
+pw="$(echo "${cntlmOut}" | cut -d'#' -f 1)"
 
 # fix password and username formatting
-pw="$(${awk} -f ${pwFix} <(echo ${cntlmOut}))"
 userName="$(${awk} -f ${getUserName} <(echo ${cntlmOut}))"
 userName="${userName/\'/}"
 userName="${userName/\',/}"
