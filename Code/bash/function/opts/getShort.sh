@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # allows for the options -h, -t, -a
 opts='hta'
 
