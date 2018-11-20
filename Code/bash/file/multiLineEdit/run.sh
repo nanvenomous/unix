@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# ToDo: add flag if the config file is read write protected
+
 hr="${HOME}/Code/bash/file/multiLineEdit"
 
 # __________________________________________________ cntlm wrapper
@@ -21,8 +23,6 @@ cntlmOut="$(${cntlm} -H -a 'NTLMv2' -d 'nam.corp.gm.com' -u "${@}")"
 
 cntlmOut=$(tail -n 3 <(echo "${cntlmOut}"))
 
-# echo "${cntlmOut}"
-
 pw="$(echo "${cntlmOut}" | cut -d'#' -f 1)"
 
 # fix password and username formatting
@@ -32,8 +32,11 @@ userName="${userName/\',/}"
 userName="Username	${userName}"
 
 # NOTE: output must have quotations around it!! ex. "${pw}"
-# echo "${pw}"
-# echo "${userName}"
+echo
+echo "${userName}"
+echo 
+echo "${pw}"
+echo
 
 # __________________________________________________ config file password
 configEditor="${hr}/configEditor/run.sh"
@@ -47,18 +50,23 @@ function replaceInConfig () {
 
 }
 
+confFile="${hr}/testConfig"
+
 new_section="${pw}"
 begin_marker='# Password BEGIN AUTOMATICALLY EDITED PART, DO NOT EDIT'
 end_marker='# Password END AUTOMATICALLY EDITED PART'
-confFile="${hr}/testConfig"
 
 replaceInConfig
 
 # __________________________________________________ config file username
-configEditor="${hr}/configEditor/run.sh"
-
 new_section="${userName}"
 begin_marker='# UserName BEGIN AUTOMATICALLY EDITED PART, DO NOT EDIT'
 end_marker='# UserName END AUTOMATICALLY EDITED PART'
 
 replaceInConfig
+
+
+# Do and necessary system resets here
+
+echo
+echo 'Configuration file successfully updated. Try using the internet.'

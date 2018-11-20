@@ -4,22 +4,30 @@
 here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 newConfFile="${here}/files/newConfig"
+oldConfFile="${here}/files/oldConfig"
 editConfig="${here}/awkScripts/editConfig"
 awk='/usr/bin/awk'
-
-touch "${newConfFile}"
 
 new_section="${1}"
 begin_marker="${2}"
 end_marker="${3}"
 confFile="${4}"
 
+touch ${newConfFile}
+sudo cp ${confFile} ${oldConfFile}
+sudo chmod a=rw ${oldConfFile}
+
 export begin_marker end_marker
-${awk}\
+command sudo ${awk}\
  -f ${editConfig}\
  -v begin_marker="${begin_marker}"\
  -v end_marker="${end_marker}"\
  -v new_section="${new_section}"\
- <${confFile} >${newConfFile}
+ <${oldConfFile} >${newConfFile}
 
-mv -f ${newConfFile} ${confFile}
+sudo mv -f ${newConfFile} ${confFile}
+
+sudo chmod gu-w-r ${confFile}
+
+rm ${oldConfFile}
+
