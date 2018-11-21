@@ -3,7 +3,7 @@ source ${HOME}/Scripts/colorSettings.sh
 #________________________________________________________________________________
 #__________File
 alias c='clear'
-alias cur='cd ~/Code/bash/file/multiLineEdit'
+alias cur='cd ~/Code/bash/file/autoEdit'
 alias apps='cd /usr/share/applications'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'

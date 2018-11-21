@@ -31,7 +31,6 @@ userName="${userName/\'/}"
 userName="${userName/\',/}"
 userName="Username	${userName}"
 
-# NOTE: output must have quotations around it!! ex. "${pw}"
 echo
 echo "${userName}"
 echo 
@@ -65,8 +64,7 @@ end_marker='# UserName END AUTOMATICALLY EDITED PART'
 
 replaceInConfig
 
-
-# Do and necessary system resets here
+# Do any necessary system resets here
 
 echo
 echo 'Configuration file successfully updated. Try using the internet.'
