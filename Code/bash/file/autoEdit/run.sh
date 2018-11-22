@@ -2,7 +2,7 @@
 
 # ToDo: add flag if the config file is read write protected
 
-hr="${HOME}/Code/bash/file/multiLineEdit"
+hr="${HOME}/Code/bash/file/autoEdit"
 
 # __________________________________________________ cntlm wrapper
 pwFix="${hr}/awkScripts/pwFix"
@@ -41,7 +41,7 @@ echo
 configEditor="${hr}/configEditor/run.sh"
 
 function replaceInConfig () {
-	${bash} ${configEditor}\
+	${bash} ${configEditor} -p\
 	 "${new_section}"\
 	 "${begin_marker}"\
 	 "${end_marker}"\
