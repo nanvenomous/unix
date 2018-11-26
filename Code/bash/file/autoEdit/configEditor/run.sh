@@ -32,6 +32,7 @@ confFile="${4}"
 #__________________________________________________ awk editing / file manipulation
 export begin_marker end_marker
 
+mkdir -p "${here}/files"
 touch ${newConfFile}
 
 # writeprotected files

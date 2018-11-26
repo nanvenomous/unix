@@ -3,7 +3,7 @@
 sudo='/usr/bin/sudo'
 bash='/bin/bash'
 
-hr="${HOME}/Scripts/dpi"
+hr="${HOME}/Scripts/dsp/dpi"
 
 # function to auto edit config based on
 # 	delimiters
