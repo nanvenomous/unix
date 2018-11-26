@@ -41,7 +41,7 @@ echo
 configEditor="${hr}/configEditor/run.sh"
 
 function replaceInConfig () {
-	${bash} ${configEditor} -p\
+	${bash} ${configEditor}\
 	 "${new_section}"\
 	 "${begin_marker}"\
 	 "${end_marker}"\

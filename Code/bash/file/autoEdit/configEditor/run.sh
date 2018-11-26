@@ -12,6 +12,7 @@ while getopts ${opts} opt; do
 			echo "Usage: cmd [-p] newSection beginMarker endMarker configFile"
 			;;
 	esac
+	shift
 done
 
 #__________________________________________________ initialize variables
@@ -50,7 +51,6 @@ if [ ${protected} -eq 1 ]; then
 # Non-writeprotected files
 else
 	cp ${confFile} ${oldConfFile}
-	chmod a=rw ${oldConfFile}
 
 	${awk}\
 	 -f ${editConfig}\
@@ -60,7 +60,6 @@ else
 	 <${oldConfFile} >${newConfFile}
 
 	mv -f ${newConfFile} ${confFile}
-	chmod gu-w-r ${confFile}
 fi
 
 rm ${oldConfFile}
