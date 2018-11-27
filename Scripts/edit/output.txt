@@ -1,1 +1,5 @@
-/home/naruto/Scripts/todo
+.
+├── MPC5777C_Reference_Manual_Rev_8.pdf
+└── S56.TPIM.CTR.R2.0 Beta 2C.pdf
+
+0 directories, 2 files
