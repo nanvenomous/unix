@@ -1,9 +1,13 @@
 source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
+#__________Temporary
+alias cur='cd /mnt/hgfs/epc/sw/S56_HWIO/Supplier/HWIO_Projects/HWIO_LIN_S56'
+alias epc='cd /mnt/hgfs/epc'
+
+#________________________________________________________________________________
 #__________File
 alias c='clear'
-alias cur='cd ~/Scripts/dsp/dpi'
 alias apps='cd /usr/share/applications'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
@@ -33,3 +37,4 @@ alias ve='/usr/local/bin/virtualenv'
 alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
+alias todo='/usr/bin/chromium-browser ~/Text/agenda.md &>/dev/null'
