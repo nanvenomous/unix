@@ -12,15 +12,33 @@
 * [ ] San Holo Show
 
 ### Friday
+* [ ] Read all LIN docs
+* [ ] Answer Linkedin questions
 * [ ] Send Thankyou to Deppe
 * [ ] Hang out with friends
 
 ### Saturday
 * [ ] Laundry / Workout
+* [ ] import sound to python
 * [ ] Hang out with friends
 
 ### Sunday
 * [ ] Sell Corsair K70 RGB Rapidfire
+* [ ] Read up on real estate law
+
+### Monday
+* [ ] Follow up with email from Keith, functional contact for post-TRACK
+
+### Tuesday
+* [ ] gain understanding of the test cases
+
+### Wednesday
+* [ ] Finish dsp linux package
+
+### Thursday
+* [ ] Develop sw that works for one test case
+
+### Friday
 
 # Backlog
 * [ ] Develop sw that works for one test case

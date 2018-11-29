@@ -39,4 +39,4 @@ alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
 alias search='bash ~/Scripts/search.sh'
-alias pdf='/usr/bin/evince "${@}" &&'
+alias pdf="bash ~/Scripts/pdf.sh"
