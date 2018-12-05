@@ -9,5 +9,6 @@ set clipboard=unnamedplus
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " sets tab (display only) to 3 spaces
-set tabstop=4
-autocmd Filetype sh setlocal tabstop=3
+set shiftwidth=3
+set tabstop=3
+set softtabstop=3
