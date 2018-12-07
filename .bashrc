@@ -1,8 +1,8 @@
 source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
-#__________Temporary
-alias cur='cd ~/Projects/music/Scipy'
+#__________Local (not trackable)
+source ${HOME}/Local/locations.sh
 alias epc='cd /mnt/hgfs/epc'
 
 #________________________________________________________________________________
@@ -15,11 +15,8 @@ alias view='bash ~/Scripts/edit/view.sh'
 #________________________________________________________________________________
 #__________System
 alias fixBluetooth='pactl load-module module-bluetooth-discover'
-alias fixBash='source ~/.bashrc'
 alias disk='lsblk'
 alias writeSystem='sudo dd if=/dev/nvme0n1' # of=/path/to/usb
-alias poweroff='/sbin/shutdown -r now'
-alias saveRoot='sudo rsync -aAXv --delete / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","~/Downloads"}'
 alias linuxDrive='sudo mkfs.ext4'
 alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
