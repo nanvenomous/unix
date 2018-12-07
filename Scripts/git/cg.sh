@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${HOME}/Scripts/cliGit/general.sh
+source ${HOME}/Scripts/git/general.sh
 
 g='/usr/bin/git'
 config="--git-dir=${HOME}/.cfg --work-tree=${HOME}"
@@ -16,7 +16,6 @@ case "$1" in
 		command $cmd add ${HOME}/.vimrc
 		command $cmd add ${HOME}/.xinitrc
 		command $cmd add ${HOME}/Scripts/*
-		command $cmd add ${HOME}/Code/bash/*
 		;;
 	*)
 		generalGitWrapper cmd "${@}"

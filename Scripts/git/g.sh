@@ -1,5 +1,5 @@
 #!/bin/bash
-source ${HOME}/Scripts/cliGit/general.sh
+source ${HOME}/Scripts/git/general.sh
 
 g='/usr/bin/git'
 cmd="${g}"

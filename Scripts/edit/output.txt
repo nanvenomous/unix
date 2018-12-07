@@ -1,1 +1,1 @@
-/home/naruto/Projects/music/Scipy
+/bin/date

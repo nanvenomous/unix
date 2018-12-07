@@ -27,14 +27,15 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 
 alias weather='sudo curl wttr.in'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias render='bash ~/Scripts/render.sh &>/dev/null'
-alias g='bash ~/Scripts/cliGit/g.sh'
-alias cg='bash ~/Scripts/cliGit/cg.sh'
+alias g='bash ~/Scripts/git/g.sh'
+alias cg='bash ~/Scripts/git/cg.sh'
 alias ve='/usr/local/bin/virtualenv'
 alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
 alias search='bash ~/Scripts/search.sh'
+alias clk='bash ~/Scripts/clk/run.sh'
 
 #________________________________________________________________________________
 #__________Open
