@@ -18,6 +18,9 @@ generalGitWrapper () {
 		"ch")
 			cmdRef="$cmdRef checkout ${restOfInputs}"
 			;;
+		"chb")
+			cmdRef="$cmdRef checkout -b ${restOfInputs}"
+			;;
 		"i")
 			cmdRef="$cmdRef init ${restOfInputs}"
 			;;
@@ -27,26 +30,23 @@ generalGitWrapper () {
 		"m")
 			cmdRef="$cmdRef merge ${restOfInputs}"
 			;;
-		"p")
+		"ph")
 			cmdRef="$cmdRef push ${restOfInputs}"
+			;;
+		"plr")
+			cmdRef="$cmdRef pull --rebase ${restOfInputs}"
 			;;
 		"r")
 			cmdRef="$cmdRef remote ${restOfInputs}"
+			;;
+		"rs")
+			cmdRef="$cmdRef remote show ${restOfInputs}"
 			;;
 		"s")
 			cmdRef="$cmdRef status ${restOfInputs}"
 			;;
 		"t")
 			cmdRef="$cmdRef ls-tree -r --name-only ${restOfInputs}"
-			;;
-		"chb")
-			cmdRef="$cmdRef checkout -b ${restOfInputs}"
-			;;
-		"pr")
-			cmdRef="$cmdRef pull --rebase ${restOfInputs}"
-			;;
-		"rs")
-			cmdRef="$cmdRef remote show ${restOfInputs}"
 			;;
 		*)
 			cmdRef="$cmdRef ${allInputs}"
