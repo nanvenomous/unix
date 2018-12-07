@@ -2,7 +2,7 @@ source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
 #__________Temporary
-alias cur='cd /mnt/hgfs/epc/sw/S56_HWIO/Supplier/HWIO_Projects/HWIO_LIN_S56'
+alias cur='cd ~/Projects/music/Scipy'
 alias epc='cd /mnt/hgfs/epc'
 
 #________________________________________________________________________________
@@ -30,7 +30,6 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 
 alias weather='sudo curl wttr.in'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias render='bash ~/Scripts/render.sh &>/dev/null'
-alias p='python'
 alias g='bash ~/Scripts/cliGit/g.sh'
 alias cg='bash ~/Scripts/cliGit/cg.sh'
 alias ve='/usr/local/bin/virtualenv'
@@ -38,5 +37,16 @@ alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
+<<<<<<< 7c07dce19a6f5c408df76514169b2bef9f50373f
 alias search='bash ~/Scripts/search.sh'
+=======
+
+#________________________________________________________________________________
+#__________Open
+>>>>>>> updated part of code to auto edit
 alias pdf="bash ~/Scripts/pdf.sh"
+alias image='/usr/bin/xdg-open'
+
+# p is short for whichiver python is active
+alias p='python'
+alias activate='source env/bin/activate'

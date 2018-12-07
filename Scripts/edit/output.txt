@@ -1,1 +1,1 @@
-/usr/bin/evince
+/home/naruto/Projects/music/Scipy
