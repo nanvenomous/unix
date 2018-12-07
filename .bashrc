@@ -37,16 +37,13 @@ alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
-<<<<<<< 7c07dce19a6f5c408df76514169b2bef9f50373f
 alias search='bash ~/Scripts/search.sh'
-=======
 
 #________________________________________________________________________________
 #__________Open
->>>>>>> updated part of code to auto edit
 alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
-# p is short for whichiver python is active
+# p equates to whichever python is active
 alias p='python'
 alias activate='source env/bin/activate'
