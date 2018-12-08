@@ -2,8 +2,7 @@ source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
 #__________Local (not trackable)
-source ${HOME}/Local/locations.sh
-alias epc='cd /mnt/hgfs/epc'
+source ${HOME}/.locrc
 
 #________________________________________________________________________________
 #__________File
