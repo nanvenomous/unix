@@ -9,7 +9,7 @@ cComp='/usr/bin/cc'
 cppComp='/usr/bin/g++'
 
 # variables default to C++ compilation
-comp=${cppComp}
+comp=${cComp}
 
 # Parse options to the `pip` command
 while getopts ":hc" opt; do
@@ -21,8 +21,8 @@ while getopts ":hc" opt; do
 			echo -e " \t C <file> \t compile c++ code."
 			exit 0
 			;;
-		c )
-			comp="${cComp}"
+		p )
+			comp="${cppComp}"
 			;;
 	 \? )
 		 echo "Invalid Option: -$OPTARG" 1>&2

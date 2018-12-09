@@ -5,6 +5,8 @@ compRun () {
 	local -n compRef="${1}"; shift # remove compRun from list
 	local -n srcRef="${1}"
 
+	ext="${srcRef: -2}"
+
 	# _________________________________ Run Checks
 	if [ ! -f ${srcRef} ]; then # what you passed in wasn't a file
 		echo 'Not a file or directory: ' "${srcRef}"
@@ -14,10 +16,11 @@ compRun () {
 		echo 'For help:'
 		echo -e '\tC -h'
 		exit 1
-	elif [[ ! ${srcRef} == "*.c" ]]; then
+	elif [ ! "${ext}" == ".c" ] && [ ! "${ext}" == ".h" ]; then
 		echo "Must pass in a source C or C++ file"
 		exit 1
 	fi
+
 	# Other catch cases to add:
 		# build fail
 
