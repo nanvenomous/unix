@@ -16,7 +16,6 @@ case "$1" in
 		command $cmd add ${HOME}'/.vimrc'
 		command $cmd add ${HOME}'/.config/Code/User/keybindings.json'
 		command $cmd add ${HOME}'/.config/Code/User/settings.json'
-		command $cmd add ${HOME}'/.vscode'
 		command $cmd add ${HOME}'/.xinitrc'
 		command $cmd add ${HOME}'/Scripts/*'
 		;;

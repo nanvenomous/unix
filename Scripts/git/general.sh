@@ -42,6 +42,9 @@ generalGitWrapper () {
 		"r")
 			cmdRef="$cmdRef remote ${restOfInputs}"
 			;;
+		"ra")
+			cmdRef="$cmdRef remote add ${restOfInputs}"
+			;;
 		"rs")
 			cmdRef="$cmdRef remote show ${restOfInputs}"
 			;;

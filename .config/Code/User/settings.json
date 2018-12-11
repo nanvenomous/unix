@@ -1,7 +1,7 @@
 {
     "workbench.startupEditor": "newUntitledFile",
     "workbench.activityBar.visible": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "hidden",
     "editor.lineNumbers": "relative",
     "editor.tabSize": 3,
     "editor.insertSpaces": false,
