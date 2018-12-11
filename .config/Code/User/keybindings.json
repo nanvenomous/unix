@@ -56,7 +56,7 @@
 		"command": "-workbench.action.closeActiveEditor"
 	},
 	{
-		"key": "alt+,",
+		"key": "alt+f",
 		"command": "editor.action.goToDeclaration",
 		"when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
 	},
@@ -80,7 +80,7 @@
 		"command": "editor.action.goToImplementation"
 	},
 	{
-		"key": "alt+/",
+		"key": "alt+s",
 		"command": "workbench.action.findInFiles"
 	},
 	{
