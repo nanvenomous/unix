@@ -9,6 +9,9 @@ generalGitWrapper () {
 
 	# wrapper for shortcuts
 	case "$shortcut" in
+		"a")
+			cmdRef="$cmdRef add ${restOfInputs}"
+			;;
 		"b")
 			cmdRef="$cmdRef branch ${restOfInputs}"
 			;;

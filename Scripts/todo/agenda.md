@@ -1,14 +1,8 @@
 # Agenda
 
-### Saturday
-* [ ] finish initialization script
-* [ ] Learn all basics of C programming
-* [ ] Call Walker
-* [ ] Read up on real estate law
-* [ ] Send pdf of solidpart file to Jared
-
 ### Sunday
 * [ ] finish initialization script
+* [ ] Learn all basics of C programming
 
 ### Monday
 * [ ] finish initialization script
@@ -23,6 +17,8 @@
 * [ ] Develop sw that works for one test case
 
 # Backlog
+* [ ] Send pdf of solidpart file to Jared
+* [ ] Read up on real estate law
 * [ ] Sell Corsair K70 RGB Rapidfire
 * [ ] Summon Dominic to court after 45 days
 * [ ] Look into Christmas presents
@@ -37,3 +33,4 @@
 * [x] Buy tickets for San Holo
 * [x] Choose a virtual Synthesizer (Helm chosen)
 * [x] Make your first sound
+* [x] Call Walker
