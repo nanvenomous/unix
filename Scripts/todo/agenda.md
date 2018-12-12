@@ -7,7 +7,8 @@
 * [ ] finish initialization script
 * [ ] Follow up with email from Keith, functional contact for post-TRACK
 
-### Thursday
+### Saturday
+* [ ] Barre 9AM
 
 ### Sunday
 * [ ] re-read lease

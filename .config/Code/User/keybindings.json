@@ -76,10 +76,6 @@
 		"when": "editorTextFocus && editorLangId == 'c'"
 	},
 	{
-		"key": "alt+.",
-		"command": "editor.action.goToImplementation"
-	},
-	{
 		"key": "alt+s",
 		"command": "workbench.action.findInFiles"
 	},
@@ -131,5 +127,21 @@
 		"key": "alt+p",
 		"command": "-keybindings.editor.toggleSortByPrecedence",
 		"when": "inKeybindings"
+	},
+	{
+		"key": "alt+,",
+		"command": "workbench.action.moveEditorLeftInGroup"
+	},
+	{
+		"key": "ctrl+shift+pageup",
+		"command": "-workbench.action.moveEditorLeftInGroup"
+	},
+	{
+		"key": "alt+.",
+		"command": "workbench.action.moveEditorRightInGroup"
+	},
+	{
+		"key": "ctrl+shift+pagedown",
+		"command": "-workbench.action.moveEditorRightInGroup"
 	}
 ]

@@ -45,6 +45,9 @@ generalGitWrapper () {
 		"ra")
 			cmdRef="$cmdRef remote add ${restOfInputs}"
 			;;
+		"rma")
+			cmdRef="$cmdRef rm -r --cached . ${restOfInputs}"
+			;;
 		"rs")
 			cmdRef="$cmdRef remote show ${restOfInputs}"
 			;;
@@ -53,6 +56,26 @@ generalGitWrapper () {
 			;;
 		"t")
 			cmdRef="$cmdRef ls-tree -r --name-only ${restOfInputs}"
+			;;
+		"hh")
+			echo -e "a:\tadd"
+			echo -e "aa:\tadd ."
+			echo -e "b:\tbranch"
+			echo -e "c:\tcommit"
+			echo -e "ch:\tcheckout"
+			echo -e "chb:\tcheckout -b"
+			echo -e "i:\tinit"
+			echo -e "l:\tlog"
+			echo -e "m:\tmerge"
+			echo -e "ph:\tpush"
+			echo -e "plr:\tpull --rebase"
+			echo -e "r:\tremote"
+			echo -e "ra:\tremote add"
+			echo -e "rma:\trm -r --cached ."
+			echo -e "rs:\tremote show"
+			echo -e "s:\tstatus"
+			echo -e "t:\tls-tree -r --name-only"
+			exit
 			;;
 		*)
 			cmdRef="$cmdRef ${allInputs}"
