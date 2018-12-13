@@ -143,5 +143,47 @@
 	{
 		"key": "ctrl+shift+pagedown",
 		"command": "-workbench.action.moveEditorRightInGroup"
+	},
+	{
+		"key": "alt+w",
+		"command": "-workbench.action.terminal.toggleFindWholeWord",
+		"when": "terminalFindWidgetFocused"
+	},
+	{
+		"key": "alt+w",
+		"command": "-workbench.action.terminal.toggleFindWholeWordTerminalFocus",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "alt+w",
+		"command": "-toggleFindWholeWord",
+		"when": "editorFocus"
+	},
+	{
+		"key": "alt+w",
+		"command": "-toggleSearchWholeWord",
+		"when": "searchViewletFocus && searchViewletVisible"
+	},
+	{
+		"key": "alt+w",
+		"command": "editor.debug.action.selectionToWatch"
+	},
+	{
+		"key": "alt+t",
+		"command": "workbench.action.terminal.focus"
+	},
+	{
+		"key": "alt+e",
+		"command": "workbench.action.focusActiveEditorGroup"
+	},
+	{
+		"key": "alt+d",
+		"command": "workbench.action.debug.start",
+		"when": "!inDebugMode"
+	},
+	{
+		"key": "f5",
+		"command": "-workbench.action.debug.start",
+		"when": "!inDebugMode"
 	}
 ]

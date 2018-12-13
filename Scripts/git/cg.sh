@@ -14,6 +14,7 @@ case "$1" in
 		command $cmd add ${HOME}'/.README.md'
 		command $cmd add ${HOME}'/.bashrc'
 		command $cmd add ${HOME}'/.vimrc'
+		command $cmd add ${HOME}'/.local/share/konsole/*'
 		command $cmd add ${HOME}'/.config/Code/User/keybindings.json'
 		command $cmd add ${HOME}'/.config/Code/User/settings.json'
 		command $cmd add ${HOME}'/.xinitrc'

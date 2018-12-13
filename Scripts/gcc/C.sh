@@ -12,7 +12,7 @@ cppComp='/usr/bin/g++'
 comp=${cComp}
 
 # Parse options to the `pip` command
-while getopts ":hc" opt; do
+while getopts ":hgp" opt; do
 	case ${opt} in
 		h )
 			echo "Usage:"
@@ -20,6 +20,9 @@ while getopts ":hc" opt; do
 			echo -e " \t C -c <file> \t compile c code"
 			echo -e " \t C <file> \t compile c++ code."
 			exit 0
+			;;
+		g )
+			comp="${cComp} -g"
 			;;
 		p )
 			comp="${cppComp}"

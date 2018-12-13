@@ -1,1 +1,1 @@
-/home/deku/.config/Code/User
+/home/deku/.local/share

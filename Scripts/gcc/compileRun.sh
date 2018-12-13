@@ -2,7 +2,9 @@
 
 compRun () {
 	# _________________________________ Gather Inputs
+	# the compiler to be used
 	local -n compRef="${1}"; shift # remove compRun from list
+	# the source code to be used
 	local -n srcRef="${1}"
 
 	ext="${srcRef: -2}"
