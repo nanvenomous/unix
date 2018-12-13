@@ -1,11 +1,9 @@
 # Agenda
 
-### Tuesday
-* [ ] finish initialization script
-
-### Wednesday
+### Thursday
 * [ ] finish initialization script
 * [ ] Follow up with email from Keith, functional contact for post-TRACK
+* [ ] Complete active shooter training
 
 ### Saturday
 * [ ] Barre 9AM
@@ -19,18 +17,8 @@
 * [ ] Develop sw that works for one test case
 * [ ] Finish dsp linux package
 * [ ] Send pdf of solidpart file to Jared
-* [ ] Read up on real estate law
 * [ ] Sell Corsair K70 RGB Rapidfire
 * [ ] Look into Christmas presents
-* [ ] 3D print Let's split Keyboard Case
+* [ ] 3D print Let's split Keyboard Case (after you buy a pcb)
 * [ ] write driver for keyboard
 * [ ] write server application for Ben
-
-# Accomplished
-* [x] Email Keith J. VanHouten (see teams convo with Tom)
-* [x] Ask ben for documentation
-* [x] Call Magalay and Confirm I'm on mailing list
-* [x] Buy tickets for San Holo
-* [x] Choose a virtual Synthesizer (Helm chosen)
-* [x] Make your first sound
-* [x] Call Walker
