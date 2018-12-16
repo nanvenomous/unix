@@ -34,6 +34,11 @@ while getopts ":hgp" opt; do
 	esac
 done
 shift $((OPTIND -1)) # should remove a single option
-sourceCode="${@}"
+
+# get all c files in directory
+sourceCode="$(find . -name '*.c')"
+echo "${sourceCode}"
+
+# sourceCode="${@}" # could just pass in all src code
 
 compRun comp sourceCode
