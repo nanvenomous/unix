@@ -1,1 +1,1 @@
-/home/deku/.local/share
+/mnt/hgfs/linTest

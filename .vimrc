@@ -12,3 +12,6 @@ autocmd VimLeave * call system("xsel -ib", getreg('+'))
 set shiftwidth=3
 set tabstop=3
 set softtabstop=3
+
+" font size
+set guifont=Monospace:h20

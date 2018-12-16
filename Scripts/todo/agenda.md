@@ -3,7 +3,7 @@
 ### Thursday
 * [ ] finish initialization script
 * [ ] Follow up with email from Keith, functional contact for post-TRACK
-* [ ] [Employee Profile](https://gmweb.gm.com/sites/gpstrack/SiteAssets/TRACK_Profile.html?name=Matthew+Garelli+)
+* [ ] fill out [Employee Profile](https://gmweb.gm.com/sites/gpstrack/SiteAssets/TRACK_Profile.html?name=Matthew+Garelli+)
 * [ ] Complete active shooter training
 
 ### Saturday
