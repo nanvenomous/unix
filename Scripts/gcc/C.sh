@@ -17,8 +17,9 @@ while getopts ":hgp" opt; do
 		h )
 			echo "Usage:"
 			echo -e " \t C -h \t\t Display this help message."
-			echo -e " \t C -c <file> \t compile c code"
-			echo -e " \t C <file> \t compile c++ code."
+			echo -e " \t C -g <file> \t compile for debugging"
+			echo -e " \t C -p <file> \t compile c++ code"
+			echo -e " \t C <file> \t compile c code."
 			exit 0
 			;;
 		g )
@@ -35,10 +36,15 @@ while getopts ":hgp" opt; do
 done
 shift $((OPTIND -1)) # should remove a single option
 
-# get all c files in directory
-sourceCode="$(find . -name '*.c')"
-echo "${sourceCode}"
+# if no arguments were passed in
+if [[ $# -eq 0 ]] ; then
+	# get all c files in directory
+	sourceCode="$(find . -name '*.c')"
+else # arguments were passed in
+	# assume source files to compile passed in
+	sourceCode="${@}"
+fi
 
-# sourceCode="${@}" # could just pass in all src code
+echo "${sourceCode}"
 
 compRun comp sourceCode
