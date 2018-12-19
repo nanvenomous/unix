@@ -1,12 +1,15 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.activityBar.visible": false,
-    "window.menuBarVisibility": "toggle",
-    "editor.lineNumbers": "relative",
-    "editor.tabSize": 3,
-    "editor.insertSpaces": false,
+	"workbench.activityBar.visible": false,
+	"workbench.statusBar.visible": true,
+	"window.enableMenuBarMnemonics": false,
+	"workbench.startupEditor": "newUntitledFile",
+	"window.menuBarVisibility": "toggle",
+	"editor.lineNumbers": "relative",
+	"editor.tabSize": 3,
+	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"vim.useSystemClipboard": true,
-	"window.enableMenuBarMnemonics": false,
-	"workbench.settings.editor": "json"
+	"workbench.settings.editor": "json",
+	"editor.fontSize": 15,
+	"python.linting.pylintEnabled": true,
 }

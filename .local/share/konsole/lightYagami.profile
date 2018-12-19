@@ -1,9 +1,8 @@
 [Appearance]
-ColorScheme=DarkPastels
-Font=monospace,12.5,-1,2,50,0,0,0,0,0
+ColorScheme=shinigami
+Font=monospace,13,-1,2,50,0,0,0,0,0
 
 [General]
-Icon=utilities-terminal-symbolic.symbolic
-LocalTabTitleFormat=%w
+LocalTabTitleFormat=%d
 Name=lightYagami
 Parent=FALLBACK/
