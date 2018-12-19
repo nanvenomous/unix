@@ -2,4 +2,4 @@
 
 date='/bin/date'
 
-${date} "+%I:%M"
+"${date}" '+%I:%M'
