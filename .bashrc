@@ -7,7 +7,6 @@ source ${HOME}/.locrc
 #________________________________________________________________________________
 #__________File
 alias c='clear'
-alias apps='cd /usr/share/applications'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
 
