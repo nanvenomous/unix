@@ -34,6 +34,7 @@ alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
 alias search='bash ~/Scripts/search.sh'
 alias clk='bash ~/Scripts/clk/run.sh'
+alias dsp='bash ~/Scripts/dsp/run.sh'
 
 #________________________________________________________________________________
 #__________Open
