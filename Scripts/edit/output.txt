@@ -1,1 +1,1 @@
-/bin/bash
+/home/naruto/Scripts/edit
