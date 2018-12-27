@@ -1,41 +1,41 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    {
-        "key": "ctrl+1",
-        "command": "-workbench.action.focusFirstEditorGroup"
-    },
-    {
-        "key": "ctrl+2",
-        "command": "workbench.action.toggleActivityBarVisibility"
-    },
-    {
-        "key": "ctrl+2",
-        "command": "-workbench.action.focusSecondEditorGroup"
-    },
-    {
-        "key": "ctrl+1",
-        "command": "workbench.action.toggleMenuBar"
-    },
-    {
-        "key": "alt+j",
-        "command": "workbench.action.nextEditor"
-    },
-    {
-        "key": "ctrl+pagedown",
-        "command": "-workbench.action.nextEditor"
-    },
-    {
-        "key": "alt+k",
-        "command": "workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+pageup",
-        "command": "-workbench.action.previousEditor"
-    },
-    {
-        "key": "alt+k",
-        "command": "-keybindings.editor.recordSearchKeys",
-        "when": "inKeybindings && inKeybindingsSearch"
+	{
+		"key": "ctrl+1",
+		"command": "-workbench.action.focusFirstEditorGroup"
+	},
+	{
+		"key": "ctrl+2",
+		"command": "workbench.action.toggleActivityBarVisibility"
+	},
+	{
+		"key": "ctrl+2",
+		"command": "-workbench.action.focusSecondEditorGroup"
+	},
+	{
+		"key": "ctrl+1",
+		"command": "workbench.action.toggleMenuBar"
+	},
+	{
+		"key": "alt+j",
+		"command": "workbench.action.nextEditor"
+	},
+	{
+		"key": "ctrl+pagedown",
+		"command": "-workbench.action.nextEditor"
+	},
+	{
+		"key": "alt+k",
+		"command": "workbench.action.previousEditor"
+	},
+	{
+		"key": "ctrl+pageup",
+		"command": "-workbench.action.previousEditor"
+	},
+	{
+		"key": "alt+k",
+		"command": "-keybindings.editor.recordSearchKeys",
+		"when": "inKeybindings && inKeybindingsSearch"
 	},
 	{
 		"key": "alt+n",
@@ -185,5 +185,35 @@
 		"key": "f5",
 		"command": "-workbench.action.debug.start",
 		"when": "!inDebugMode"
+	},
+	{
+		"key": "alt+c",
+		"command": "-workbench.action.terminal.toggleFindCaseSensitive",
+		"when": "terminalFindWidgetFocused"
+	},
+	{
+		"key": "alt+c",
+		"command": "-workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "alt+c",
+		"command": "-toggleFindCaseSensitive",
+		"when": "editorFocus"
+	},
+	{
+		"key": "alt+c",
+		"command": "-toggleSearchCaseSensitive",
+		"when": "searchViewletFocus && searchViewletVisible && !fileMatchOrFolderMatchFocus"
+	},
+	{
+		"key": "alt+c",
+		"command": "editor.action.commentLine",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+/",
+		"command": "-editor.action.commentLine",
+		"when": "editorTextFocus && !editorReadonly"
 	}
 ]
