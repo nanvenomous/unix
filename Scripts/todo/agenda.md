@@ -1,17 +1,12 @@
 # Agenda
 
-### Wednesday
-* [ ] last chance to update synth
-* [x] workout
-* [x] complete active shooter training
-* [x] make dr appointment
-
 ### Thursday
-* [ ] 9:30 return jacket, get pants sewn
-* [ ] 12:30 with dr Abraham
 * [ ] finish initialization script
+* [x] 12:30 with dr Abraham
 
 ### Friday
+* [ ] 9:30 return jacket, get pants sewn
+* [ ] finish initialization script
 * [ ] access solidworks account
 * [ ] workout
 
@@ -28,6 +23,7 @@
 
 ### Tuesday
 * [ ] workout
+* [ ] new years party
 
 ### Wednesday
 * [ ] Follow up with email from Keith, functional contact for post-TRACK
@@ -46,4 +42,3 @@
 * Vaccinate
 * Good Hygiene, hand washing
 * More regular sleep schedule
-* Manage stress

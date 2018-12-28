@@ -1,0 +1,8 @@
+here is some stuff
+
+here is some more stuff
+# BEGIN AUTOMATICALLY EDITED PART, DO NOT EDIT
+someVariable=400
+# END AUTOMATICALLY EDITED PART
+
+here is the rest of the stuff

@@ -19,6 +19,7 @@ case "$1" in
 		command $cmd add ${HOME}'/.config/Code/User/settings.json'
 		command $cmd add ${HOME}'/.xinitrc'
 		command $cmd add ${HOME}'/Scripts/*'
+		command $cmd add ${HOME}'/Projects/example/*'
 		;;
 	*)
 		generalGitWrapper cmd "${@}"
