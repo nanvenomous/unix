@@ -42,3 +42,6 @@
 * Vaccinate
 * Good Hygiene, hand washing
 * More regular sleep schedule
+
+### To fix DefendPoint service build bug
+> please stop the Avecto service using elevated credentials

@@ -108,16 +108,12 @@
 		"command": "-workbench.action.toggleSidebarVisibility"
 	},
 	{
-		"key": "alt+p",
+		"key": "alt+h",
 		"command": "workbench.action.focusLeftGroup"
 	},
 	{
 		"key": "ctrl+k ctrl+left",
 		"command": "-workbench.action.focusLeftGroup"
-	},
-	{
-		"key": "alt+;",
-		"command": "workbench.action.focusRightGroup"
 	},
 	{
 		"key": "ctrl+k ctrl+right",
@@ -177,7 +173,7 @@
 		"command": "workbench.action.focusActiveEditorGroup"
 	},
 	{
-		"key": "alt+d",
+		"key": "alt+enter",
 		"command": "workbench.action.debug.start",
 		"when": "!inDebugMode"
 	},
@@ -185,6 +181,50 @@
 		"key": "f5",
 		"command": "-workbench.action.debug.start",
 		"when": "!inDebugMode"
+	},
+	{
+		"key": "ctrl+shift+l",
+		"command": "-editor.action.selectHighlights",
+		"when": "editorFocus"
+	},
+	{
+		"key": "alt+enter",
+		"command": "-editor.action.selectAllMatches",
+		"when": "editorFocus && findWidgetVisible"
+	},
+	{
+		"key": "alt+enter",
+		"command": "-debug.openBreakpointToSide",
+		"when": "breakpointsFocused"
+	},
+	{
+		"key": "alt+a",
+		"command": "editor.action.goToTypeDefinition"
+	},
+	{
+		"key": "ctrl+f12",
+		"command": "-C_Cpp.GoToDeclaration",
+		"when": "editorTextFocus && editorLangId == 'cpp'"
+	},
+	{
+		"key": "alt+d",
+		"command": "editor.action.revealDefinition",
+		"when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+	{
+		"key": "f12",
+		"command": "-editor.action.revealDefinition",
+		"when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+	{
+		"key": "alt+/",
+		"command": "editor.action.jumpToBracket",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+\\",
+		"command": "-editor.action.jumpToBracket",
+		"when": "editorTextFocus"
 	},
 	{
 		"key": "alt+c",
@@ -215,5 +255,23 @@
 		"key": "ctrl+/",
 		"command": "-editor.action.commentLine",
 		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+o",
+		"command": "-C_Cpp.SwitchHeaderSource",
+		"when": "editorTextFocus && editorLangId == 'cpp'"
+	},
+	{
+		"key": "alt+o",
+		"command": "-C_Cpp.SwitchHeaderSource",
+		"when": "editorTextFocus && editorLangId == 'c'"
+	},
+	{
+		"key": "alt+o",
+		"command": "workbench.action.keepEditor"
+	},
+	{
+		"key": "ctrl+k enter",
+		"command": "-workbench.action.keepEditor"
 	}
 ]

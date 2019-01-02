@@ -1,4 +1,5 @@
 source ${HOME}/Scripts/colorSettings.sh
+lin='/mnt/hgfs/epc/sw/S56_HWIO/Supplier/HWIO_Projects/HWIO_LIN_S56'
 
 #________________________________________________________________________________
 #__________Local (not trackable)
@@ -10,6 +11,8 @@ alias c='clear'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
 alias apps='cd /usr/share/applications'
+alias fnd='bash ~/Scripts/fnd/run.sh'
+alias search='bash ~/Scripts/search.sh'
 
 #________________________________________________________________________________
 #__________System
@@ -33,7 +36,6 @@ alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
-alias search='bash ~/Scripts/search.sh'
 alias clk='bash ~/Scripts/clk/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
 
