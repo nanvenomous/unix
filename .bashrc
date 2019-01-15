@@ -23,6 +23,7 @@ alias linuxDrive='sudo mkfs.ext4'
 alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
+alias get='sudo apt-get'
 
 #________________________________________________________________________________
 #__________Programs

@@ -2,8 +2,8 @@
 	"workbench.activityBar.visible": false,
 	"workbench.statusBar.visible": true,
 	"window.enableMenuBarMnemonics": false,
-	"workbench.startupEditor": "newUntitledFile",
-	"window.menuBarVisibility": "default",
+	"workbench.startupEditor": "none",
+	"window.menuBarVisibility": "toggle",
 	"editor.lineNumbers": "relative",
 	"editor.tabSize": 3,
 	"editor.insertSpaces": false,
@@ -13,4 +13,5 @@
 	"editor.fontSize": 15,
 	"python.linting.pylintEnabled": true,
 	"keyboard.dispatch": "keyCode",
+	"window.restoreWindows": "none",
 }
