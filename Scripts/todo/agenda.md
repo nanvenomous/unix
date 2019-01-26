@@ -1,20 +1,27 @@
 # Agenda
 
 ### Monday
+* [ ] belt
 
 ### Tuesday
 
 ### Wednesday
-* [ ] @ 8AM ML webinar
-* [ ] @ 9AM dr appointment
 
 ### Thursday
-* call about dance lessons
+* [ ] do a few registers
+* [ ] g donkey install
+* [ ] call mental health hotline
 
 ### Friday
-* [ ] vacation
+* [ ] initialization done
+
+### Sunday
+* [ ] finish first grad school assignment
 
 # Backlog
+* [ ] call about dance lessons
+* [ ] fix cli bldr
+* [ ] build ioniq mobile
 * [ ] 3D print Let's split Keyboard Case (after you buy a pcb)
 * [ ] write server application for Ben
 

@@ -1,5 +1,4 @@
 source ${HOME}/Scripts/colorSettings.sh
-lin='/mnt/hgfs/epc/sw/S56_HWIO/Supplier/HWIO_Projects/HWIO_LIN_S56'
 
 #________________________________________________________________________________
 #__________Local (not trackable)
@@ -24,6 +23,7 @@ alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
 alias get='sudo apt-get'
+alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
 
 #________________________________________________________________________________
 #__________Programs
