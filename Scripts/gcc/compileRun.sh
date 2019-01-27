@@ -5,9 +5,10 @@ compRun () {
 	# the compiler to be used
 	local -n compRef="${1}"; shift # remove compRun from list
 	# the source code to be used
-	local -n srcRef="${1}"
+	local -n srcRef="${1}"; shift
+	local -n headerRef="${1}"
 
-	ext="${srcRef: -2}"
+	# ext="${srcRef: -2}"
 
 	# _________________________________ Run Checks
 	# if [ ! -f ${srcRef} ]; then # what you passed in wasn't a file
@@ -26,6 +27,14 @@ compRun () {
 	# _________________________________ Compile c/c++ code
 	output='./execute'
 
+	echo 'Header folder paths:'
+	sed -e 's/^/\t/' <(echo "${headerRef}")
+	echo 'Source files to be compiled:'
+	sed -e 's/^/\t/' <(echo "${srcRef}")
+	echo
+
+	withInclude="$(sed -e 's/^/-I/' <(echo "${headerRef}"))"
+
 	# create the executable for the given source file
-	command ${compRef} ${srcRef} -o ${output}
+	${compRef} ${srcRef} -o ${output} ${withInclude}
 }

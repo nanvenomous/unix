@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# grab general script
-hr="${HOME}/Scripts/gcc/compileRun.sh"
-source ${hr}
+# specify script directory
+hr="${HOME}/Scripts/gcc"
+
+# gather helper scripts from this directory
+getHeaderFolders="${hr}/getHeaderFolders.sh"
+compiler="${hr}/compileRun.sh"
+source ${compiler}
 
 # 2 compiler options
 cComp='/usr/bin/cc'
@@ -40,11 +44,13 @@ shift $((OPTIND -1)) # should remove a single option
 if [[ $# -eq 0 ]] ; then
 	# get all c files in directory
 	sourceCode="$(find . -name '*.c')"
+	headerFolders="$(bash ${getHeaderFolders})"
 else # arguments were passed in
 	# assume source files to compile passed in
 	sourceCode="${@}"
+	headerFolders=""
 fi
 
-echo "${sourceCode}"
+# echo "${sourceCode}"
 
-compRun comp sourceCode
+compRun comp sourceCode headerFolders
