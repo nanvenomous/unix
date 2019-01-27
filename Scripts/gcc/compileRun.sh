@@ -32,9 +32,14 @@ compRun () {
 	echo 'Source files to be compiled:'
 	sed -e 's/^/\t/' <(echo "${srcRef}")
 	echo
-
-	withInclude="$(sed -e 's/^/-I/' <(echo "${headerRef}"))"
-
+	
 	# create the executable for the given source file
-	${compRef} ${srcRef} -o ${output} ${withInclude}
+	if [ -z ${headerRef} ]; then
+		${compRef} ${srcRef} -o ${output}
+	else
+		withInclude="$(sed -e 's/^/-I/' <(echo "${headerRef}"))"
+		${compRef} ${srcRef} -o ${output} ${withInclude}
+	fi
+
+
 }
