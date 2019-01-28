@@ -6,6 +6,7 @@
 ### Tuesday
 
 ### Wednesday
+* [ ] webinar 9AM
 
 ### Thursday
 * [ ] do a few registers
