@@ -4,17 +4,22 @@
 * [ ] belt
 
 ### Tuesday
+* [ ] call mental health hotline
 
 ### Wednesday
 * [ ] webinar 9AM
+* [ ] 9:15PM salsa dancing
 
 ### Thursday
-* [ ] do a few registers
+* [ ] 10AM ML webinar
 * [ ] g donkey install
-* [ ] call mental health hotline
 
 ### Friday
 * [ ] initialization done
+
+### Saturday
+* [ ] 12PM-4PM Masonic Temple Box Office
+* [ ] 11AM-2AM Majestic
 
 ### Sunday
 * [ ] finish first grad school assignment
