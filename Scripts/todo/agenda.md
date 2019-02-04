@@ -1,9 +1,11 @@
 # Agenda
 
 ### Monday
+* [ ] 11AM-2AM Majestic daily
 * [ ] belt
 
 ### Tuesday
+* [ ] 10AM-6PM Masonic Temple Box Office
 * [ ] call mental health hotline
 
 ### Wednesday
@@ -18,11 +20,8 @@
 * [ ] initialization done
 
 ### Saturday
-* [ ] 12PM-4PM Masonic Temple Box Office
-* [ ] 11AM-2AM Majestic
 
 ### Sunday
-* [ ] finish first grad school assignment
 
 # Backlog
 * [ ] call about dance lessons
