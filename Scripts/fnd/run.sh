@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts ":hwp" opt; do
+while getopts ":hw" opt; do
 	case ${opt} in
 		h )
 			echo "Usage:"

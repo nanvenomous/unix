@@ -75,6 +75,8 @@ generalGitWrapper () {
 			echo -e "rs:\tremote show"
 			echo -e "s:\tstatus"
 			echo -e "t:\tls-tree -r --name-only"
+			echo 
+			echo 'to add: difftool branch1..branch2 -- fileName'
 			exit
 			;;
 		*)
