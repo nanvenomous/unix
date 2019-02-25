@@ -34,11 +34,15 @@ compRun () {
 	echo
 	
 	# create the executable for the given source file
-	if [ -z ${headerRef} ]; then
-		${compRef} ${srcRef} -o ${output}
-	else
+	if [ -z ${headerRef} ]; then # if headerRef is null or empty
+		${compRef} ${srcRef} -o ${output} # compile without header paths included
+		echo ${compRef} ${srcRef} -o ${output}
+	else # otherwise we have headers
+		# add -I to the array of headers
 		withInclude="$(sed -e 's/^/-I/' <(echo "${headerRef}"))"
+		# compile with the headers
 		${compRef} ${srcRef} -o ${output} ${withInclude}
+		echo ${compRef} ${srcRef} -o ${output} ${withInclude}
 	fi
 
 
