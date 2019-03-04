@@ -14,4 +14,5 @@
 	"python.linting.pylintEnabled": true,
 	"keyboard.dispatch": "keyCode",
 	"window.restoreWindows": "none",
+	"workbench.colorTheme": "Material Theme Palenight High Contrast",
 }
