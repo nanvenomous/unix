@@ -11,6 +11,7 @@
 | Super + , | Window to Desktop Left |
 | Super + . | Window to Desktop Right |
 | Super + ; | Launch Konsole |
+| Super + m | Maximize Window |
 | Alt + Space | Synapse Launcher |
 
 ### Konsole

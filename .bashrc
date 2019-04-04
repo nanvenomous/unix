@@ -25,6 +25,7 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E 
 alias get='sudo apt-get'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade; sudo update-grub'
 alias mem='python3.7 ~/Scripts/mem/run.py'
+alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
 alias fixSound='killall pulseaudio; rm -r ~/.config/pulse/*; rm -r ~/.pulse*; sudo reboot'
 alias reinstallSound='sudo apt-get remove --purge alsa-base pulseaudio; sudo apt-get install alsa-base pulseaudio'
@@ -45,6 +46,7 @@ alias todo='bash ~/Scripts/todo/run.sh'
 alias settings='bash ~/Scripts/settings/run.sh'
 alias clk='bash ~/Scripts/clk/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
+alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
 
 #________________________________________________________________________________
@@ -53,7 +55,7 @@ alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
 # p equates to whichever python is active
-alias p='python'
+alias p='python3.7'
 alias pin='sudo python3.7 -m pip install'
 alias create='python3.6 -m virtualenv env'
 alias activate='source env/bin/activate'

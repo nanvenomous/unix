@@ -4,14 +4,13 @@ from syspy import Message, BashAPI, parseOptions, fail, succeed, getInputs
 version = Message('Version: 1.0')
 
 help = Message(
-''''Wrapper for partclone'
+'''For general disk operations:
 
 options
 	-h, --help: help menu
 	--version: version
 commands
-	c: clone <partition> <fileName>
-	r: restore <file> <partition>'''
+	l: lists all disks excluding swap'''
 )
 
 verbose = False
@@ -50,12 +49,11 @@ except:
 
 api = BashAPI('api.sh')
 
-if cmd == 'c':
-	api.cmd('clone', args=inputs, realTime=True)
-elif cmd == 'r':
-	api.cmd('restore', args=inputs, realTime=True)
+if cmd == 'l':
+	api.cmd('list', args=inputs, realTime=True)
 else:
 	print('Not a recognized command')
 	print()
 	print(help.content)
 	fail()
+
