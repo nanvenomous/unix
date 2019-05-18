@@ -55,10 +55,7 @@ alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
 # p equates to whichever python is active
-alias p='python3.7'
+alias p='python'
 alias pin='sudo python3.7 -m pip install'
-alias create='python3.6 -m virtualenv env'
+alias create='python3.7 -m virtualenv env'
 alias activate='source env/bin/activate'
-
-# export NVM_DIR="/home/naruto/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

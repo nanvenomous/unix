@@ -3,4 +3,5 @@
 tree='/usr/bin/tree'
 ignore='__pycache__|*.pyc'
 
-command ${tree} -I ${ignore} -L 1 --dirsfirst "${@}"
+clear
+${tree} -I ${ignore} -L 1 --dirsfirst "${@}"
