@@ -11,14 +11,15 @@ case "$1" in
 		# stage manually deleted or moved files
 		stageManualChanges cmd
 		# add/stage changes in all configuration files
-		command $cmd add ${HOME}'/.README.md'
-		command $cmd add ${HOME}'/.bashrc'
-		command $cmd add ${HOME}'/.vimrc'
-		command $cmd add ${HOME}'/.local/share/konsole/*'
-		command $cmd add ${HOME}'/.config/Code/User/keybindings.json'
-		command $cmd add ${HOME}'/.config/Code/User/settings.json'
-		command $cmd add ${HOME}'/.xinitrc'
-		command $cmd add ${HOME}'/Scripts/*'
+		${cmd} add ${HOME}'/.README.md'
+		${cmd} add ${HOME}'/.bashrc'
+		${cmd} add ${HOME}'/.vimrc'
+		${cmd} add ${HOME}'/.local/share/konsole/*'
+		${cmd} add ${HOME}'/.config/Code/User/keybindings.json'
+		${cmd} add ${HOME}'/.config/Code/User/settings.json'
+		${cmd} add ${HOME}'/.profile'
+		${cmd} add ${HOME}'/.xinitrc'
+		${cmd} add ${HOME}'/Scripts/*'
 		;;
 	*)
 		generalGitWrapper cmd "${@}"
