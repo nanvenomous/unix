@@ -1,4 +1,5 @@
 source ${HOME}/Scripts/colorSettings.sh
+export EDITOR='vim'
 
 #________________________________________________________________________________
 #__________Local (not trackable)

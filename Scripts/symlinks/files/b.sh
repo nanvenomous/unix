@@ -5,16 +5,16 @@ v='/usr/bin/vim'
 conf="${HOME}/.bashrc"
 locConf="${HOME}/.locrc"
 
-case "$1" in
+case "${1}" in
 	"-e")
-		command ${v} ${conf}
-		command exec ${bsh}
+		${v} ${conf}
+		exec ${bsh}
 		;;
 	"-el")
-		command ${v} ${locConf}
-		command exec ${bsh}
+		${v} ${locConf}
+		exec ${bsh}
 		;;
 	*)
-		command $bsh "${@}"
+		${bsh} "${@}"
 		;;
 esac
