@@ -8,6 +8,15 @@ source ${HOME}/.locrc
 #________________________________________________________________________________
 #__________File
 alias c='clear'
+function cd() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then 
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && t
+}
+alias up="cd ..; t"
+
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
 alias apps='cd /usr/share/applications'
