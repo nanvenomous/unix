@@ -15,9 +15,18 @@ sudo apt-get install
 
 # Add all repositories!!
 sudo add-apt-repository ppa:synapse-core/ppa
+sudo add-apt-repository ppa:deadsnakes/ppa
 
 # Run the installer update
 sudo apt-get update
+sudo apt update
 
 # Now run the installs
 sudo apt-get install synapse
+sudo apt install python3.7
+
+# Removals :(
+sudo apt-get purge galculator
+sudo apt-get purge seamonkey-mozilla-build
+
+
