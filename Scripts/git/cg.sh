@@ -19,6 +19,7 @@ case "$1" in
 		${cmd} add ${HOME}'/Scripts/*'
 
 		${cmd} add ${HOME}'/.local/share/konsole/*'
+		${cmd} add ${HOME}'/.config/konsolerc'
 		${cmd} add ${HOME}'/.config/Code/User/keybindings.json'
 		${cmd} add ${HOME}'/.config/Code/User/settings.json'
 		${cmd} add ${HOME}'/.config/openbox/lxde-rc.xml'
