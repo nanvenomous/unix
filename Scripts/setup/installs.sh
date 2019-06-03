@@ -29,4 +29,6 @@ sudo apt install python3.7
 sudo apt-get purge galculator
 sudo apt-get purge seamonkey-mozilla-build
 
-
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3.7 get-pip.py
+sudo python3.7 -m pip install -i https://test.pypi.org/simple/ syspy
