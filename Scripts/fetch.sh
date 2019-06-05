@@ -1,2 +1,1 @@
-command neofetch
-command screenfetch
+neofetch
