@@ -1,7 +1,10 @@
 #!/bin/bash
-HISTFILE=~/.bash_history
-set -o history
 
+# lists relevant history to get commands
+history="${HOME}/.bash_history"
+toIgnore='^c$|^r$|^t$|^up$|^cd |^cd$|^exit$'
 endOfFile='G'
 
-vim -s <(echo "${endOfFile}") <(history | tail -40 | awk '{$1=""; print}')
+vim -s <(echo "${endOfFile}") <(cat "${history}" | tail -70 | grep -Ev "${toIgnore}")
+
+# | awk '{$1=""; print}')

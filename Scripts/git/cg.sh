@@ -16,13 +16,13 @@ case "$1" in
 		${cmd} add ${HOME}'/.vimrc'
 		${cmd} add ${HOME}'/.profile'
 		${cmd} add ${HOME}'/.xinitrc'
+		${cmd} add ${HOME}'/.gitignore'
 		${cmd} add ${HOME}'/Scripts/*'
 
 		${cmd} add ${HOME}'/.local/share/konsole/*'
 		${cmd} add ${HOME}'/.config/konsolerc'
 		${cmd} add ${HOME}'/.config/Code/User/keybindings.json'
 		${cmd} add ${HOME}'/.config/Code/User/settings.json'
-		# ${cmd} add ${HOME}'/.config/pcmanfm/LXDE/'
 		${cmd} add ${HOME}'/.config/openbox/lxde-rc.xml'
 		;;
 	*)

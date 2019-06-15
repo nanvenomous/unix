@@ -1,5 +1,7 @@
-source ${HOME}/Scripts/colorSettings.sh
+PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
+
+source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
 #__________Local (not trackable)
@@ -39,6 +41,7 @@ alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
 alias fixSound='killall pulseaudio; rm -r ~/.config/pulse/*; rm -r ~/.pulse*; sudo reboot'
 alias reinstallSound='sudo apt-get remove --purge alsa-base pulseaudio; sudo apt-get install alsa-base pulseaudio'
+alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 
 
 #________________________________________________________________________________
@@ -65,7 +68,7 @@ alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
 # p equates to whichever python is active
-alias p='python'
+alias p='python3.7'
 alias pin='sudo python3.7 -m pip install'
 alias create='python3.7 -m virtualenv env'
 alias activate='source env/bin/activate'

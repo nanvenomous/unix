@@ -19,6 +19,8 @@ sudo apt install python3.7
 # Removals :(
 sudo apt purge gnome-shell-extension-desktop-icons
 
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python3.7 get-pip.py
+# Python and SysPy
+curl https://bootstrap.pypa.io/get-pip.py -o "${HOME}/Downloads/get-pip.py"
+sudo apt-get install python3-distutils
+sudo python3.7 "${HOME}/Downloads/get-pip.py"
 sudo python3.7 -m pip install -i https://test.pypi.org/simple/ syspy

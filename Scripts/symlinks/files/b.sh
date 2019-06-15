@@ -8,10 +8,11 @@ locConf="${HOME}/.locrc"
 case "${1}" in
 	"-e")
 		${v} ${conf}
-		exec ${bsh}
 		;;
 	"-el")
 		${v} ${locConf}
+		;;
+	"-s")
 		exec ${bsh}
 		;;
 	*)
