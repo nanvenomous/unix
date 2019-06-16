@@ -1,40 +1,26 @@
+# author: Matthew Garelli, mgarelli@alumni.stanford.edu
+# Attempting to streamline the android project setup on an Ubuntu system
+
 #!/bin/bash
-hr="${HOME}/Scripts/mem"
 
-buildscript='''
-buildscript {
-
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}'''
+projectdir="${HOME}/Projects/android"
+hr="${HOME}/Scripts/android"
+rsrc="${hr}/rsrc"
+buildscript="${rsrc}/buildscript.txt"
+appBuildFile='./app/build.gradle'
 
 function init() {
 	gradle init
 	echo "include ':app'" >> settings.gradle
+	cat "${buildscript}" >> './build.gradle'
+
+	mkdir -p ./app
+	touch "${appBuildFile}"
+	cat "${HOME}/Scripts/android/rsrc/app_buildscript.txt" >> "${appBuildFile}"
 }
 
 function setup() {
-	# author: Matthew Garelli, mgarelli@alumni.stanford.edu
-	# Attempting to streamline the android project setup on an Ubuntu system
-
-	# create android projects directory
-	mkdir -p "${HOME}/Projects/android"
+	mkdir -p "${projectdir}" # create android projects directory
 
 	echo 'export ANDROID_SDK_HOME="${HOME}/Projects/android"' >> "${HOME}/.profile"
 

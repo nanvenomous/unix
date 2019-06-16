@@ -12,5 +12,7 @@
 * [ ] use css to [configure colors](https://www.reddit.com/r/qutebrowser/comments/665wdb/is_there_a_dark_mode/)
 
 ### other
+* [ ] investigate bind command
+* [ ] git branch completion
 * [ ] Fix sz package it cannot take any arguments
 * [ ] take the [MIT OS Course](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/assignments/)

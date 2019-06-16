@@ -16,6 +16,7 @@ case "$1" in
 		${cmd} add ${HOME}'/.vimrc'
 		${cmd} add ${HOME}'/.profile'
 		${cmd} add ${HOME}'/.xinitrc'
+		${cmd} add ${HOME}'/.inputrc'
 		${cmd} add ${HOME}'/.gitignore'
 		${cmd} add ${HOME}'/Scripts/*'
 
