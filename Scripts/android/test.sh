@@ -1,5 +1,4 @@
-styleFolder='./app/src/main/res/values'
-stylesheet="${HOME}/Scripts/android/rsrc/styles.xml"
+mainFolder='./app/src/main/'
+androidManifest="${HOME}/Scripts/android/rsrc/AndroidManifest.xml"
 
-mkdir -p "${styleFolder}"
-cp "${stylesheet}" "${styleFolder}"
+cp "${androidManifest}" "${mainFolder}"

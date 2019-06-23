@@ -1,6 +1,9 @@
 PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
 
+export ANDROID_SDK_ROOT="${HOME}/Projects/android/tools"
+export ANDROID_HOME="${HOME}/.android"
+
 source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
@@ -27,21 +30,18 @@ alias search='bash ~/Scripts/search.sh'
 
 #________________________________________________________________________________
 #__________System
-alias fixBluetooth='pactl load-module module-bluetooth-discover'
-alias disk='lsblk'
-alias writeSystem='sudo dd if=/dev/nvme0n1' # of=/path/to/usb
 alias linuxDrive='sudo mkfs.ext4'
 alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
-alias get='sudo apt-get'
-alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade; sudo update-grub'
+alias get='sudo apt-get install'
+alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
+alias u-grub='sudo update-grub'
 alias mem='python3.7 ~/Scripts/mem/run.py'
 alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
-alias fixSound='killall pulseaudio; rm -r ~/.config/pulse/*; rm -r ~/.pulse*; sudo reboot'
-alias reinstallSound='sudo apt-get remove --purge alsa-base pulseaudio; sudo apt-get install alsa-base pulseaudio'
 alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
+alias src="source ${HOME}/.bashrc; source ${HOME}/.profile"
 
 
 #________________________________________________________________________________

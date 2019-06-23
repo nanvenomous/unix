@@ -3,6 +3,7 @@
 bsh='/bin/bash'
 v='/usr/bin/vim'
 conf="${HOME}/.bashrc"
+profile="${HOME}/.profile"
 locConf="${HOME}/.locrc"
 
 case "${1}" in
@@ -11,6 +12,9 @@ case "${1}" in
 		;;
 	"-el")
 		${v} ${locConf}
+		;;
+	"-ep")
+		${v} ${profile}
 		;;
 	"-s")
 		exec ${bsh}

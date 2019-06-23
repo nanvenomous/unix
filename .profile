@@ -16,4 +16,5 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-export ANDROID_SDK_ROOT="${HOME}/Projects/android/tools"
+echo "Running Profile"
+

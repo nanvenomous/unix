@@ -7,7 +7,14 @@ projectdir="${HOME}/Projects/android"
 hr="${HOME}/Scripts/android"
 rsrc="${hr}/rsrc"
 buildscript="${rsrc}/buildscript.txt"
+stylesheet="${rsrc}/styles.xml"
+androidManifest="${rsrc}/AndroidManifest.xml"
+
 appBuildFile='./app/build.gradle'
+mainFolder='./app/src/main/'
+styleFolder='./app/src/main/res/values'
+
+
 
 function init() {
 	gradle init
@@ -17,6 +24,10 @@ function init() {
 	mkdir -p ./app
 	touch "${appBuildFile}"
 	cat "${HOME}/Scripts/android/rsrc/app_buildscript.txt" >> "${appBuildFile}"
+
+	mkdir -p "${styleFolder}"
+	cp "${stylesheet}" "${styleFolder}"
+	cp "${androidManifest}" "${mainFolder}"
 }
 
 function setup() {

@@ -14,5 +14,6 @@
 ### other
 * [ ] investigate bind command
 * [ ] git branch completion
+* [ ] choose and configure a git gui (hopefully with dard theme)
 * [ ] Fix sz package it cannot take any arguments
 * [ ] take the [MIT OS Course](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/assignments/)
