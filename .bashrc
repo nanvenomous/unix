@@ -1,8 +1,9 @@
 PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
 
-export ANDROID_SDK_ROOT="${HOME}/Projects/android/tools"
-export ANDROID_HOME="${HOME}/.android"
+export ANDROID_SDK_ROOT="${HOME}/Projects/android/sdk"
+export ANDROID_HOME="${HOME}/Projects/android/sdk"
+export ANDROID_AVD_HOME="${HOME}/.android/avd"
 
 source ${HOME}/Scripts/colorSettings.sh
 
@@ -35,6 +36,7 @@ alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
 alias get='sudo apt-get install'
+alias purge='sudo apt-get purge'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
 alias u-grub='sudo update-grub'
 alias mem='python3.7 ~/Scripts/mem/run.py'
