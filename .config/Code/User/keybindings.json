@@ -282,5 +282,35 @@
 		"key": "ctrl+shift+f10",
 		"command": "-editor.action.peekDefinition",
 		"when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+	},
+	{
+		"key": "alt+u",
+		"command": "cursorMove",
+		 "args": {
+			  "to": "down",
+			  "by": "line",
+			  "value": 10
+		 },
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "alt+pagedown",
+		"command": "-scrollPageDown",
+		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+i",
+		"command": "cursorMove",
+		 "args": {
+			  "to": "up",
+			  "by": "line",
+			  "value": 10
+		 },
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "alt+pageup",
+		"command": "-scrollPageUp",
+		"when": "textInputFocus"
 	}
 ]

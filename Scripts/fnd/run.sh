@@ -21,4 +21,4 @@ while getopts ":hw" opt; do
 	esac
 done
 
-find . -name "${@}"
+find . -name "*${@}*"

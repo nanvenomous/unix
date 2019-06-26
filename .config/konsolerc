@@ -2,7 +2,7 @@
 DefaultProfile=lightYagami.profile
 
 [Favorite Profiles]
-Favorites=lightYagami.profile,kakashiHatake.profile
+Favorites=kakashiHatake.profile,lightYagami.profile
 
 [KonsoleWindow]
 ShowAppNameOnTitleBar=false

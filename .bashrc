@@ -1,11 +1,18 @@
 PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
 
+source ${HOME}/Scripts/colorSettings.sh
+
+#________________________________________________________________________________
+#__________Android SDK Setup
+androidsdk="${HOME}/Projects/android/sdk"
+PATH=${PATH}:"${androidsdk}/platform-tools"
+PATH=${PATH}:"${androidsdk}/tools"
+PATH=${PATH}:"${androidsdk}/tools/bin"
+
 export ANDROID_SDK_ROOT="${HOME}/Projects/android/sdk"
 export ANDROID_HOME="${HOME}/Projects/android/sdk"
 export ANDROID_AVD_HOME="${HOME}/.android/avd"
-
-source ${HOME}/Scripts/colorSettings.sh
 
 #________________________________________________________________________________
 #__________Local (not trackable)
@@ -74,3 +81,7 @@ alias p='python3.7'
 alias pin='sudo python3.7 -m pip install'
 alias create='python3.7 -m virtualenv env'
 alias activate='source env/bin/activate'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/pablo/.sdkman"
+[[ -s "/home/pablo/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pablo/.sdkman/bin/sdkman-init.sh"
