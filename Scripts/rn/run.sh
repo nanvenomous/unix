@@ -1,9 +1,14 @@
 #!/bin/bash
+# Directories
 hr="${HOME}/Scripts/rn"
 rsrc="${hr}/rsrc"
+text="${hr}/text"
+
+# Files
 linter="${rsrc}/eslintrc"
 readme="${rsrc}/readme.md"
 rdm="${rsrc}/rdm"
+help="${text}/help"
 
 function documentationMigration() {
 	echo 'copying readme'
@@ -26,7 +31,7 @@ function runProject() {
 	react-native run-android
 }
 
-function setup() {
+function setupReactNative() {
 	sudo apt install nodejs npm
 	sudo apt install npm
 	sudo npm install -g react-native-cli
@@ -34,3 +39,37 @@ function setup() {
 	sudo apt update
 	sudo apt install oracle-java8-installer
 }
+
+while getopts ":h" opt; do
+	case "${opt}" in
+		h ) 
+			cat "${help}"
+			exit 0
+			;;
+		/? )
+			echo "Invalid Option: -${OPTARG}"
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND -1)) # remove the package flag
+
+cmd="${1}"; shift # remove rn from the arguments
+case "${cmd}" in
+	docs )
+		documentationMigration
+		;;
+	lint )
+		linterInstallation
+		;;
+	r )
+		runProject
+		;;
+	setup )
+		setupReactNative
+		;;
+	* )
+		cat "${help}"
+		;;
+esac
+

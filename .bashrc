@@ -69,10 +69,10 @@ alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
 alias fnd='bash ~/Scripts/fnd/run.sh'
 alias search='bash ~/Scripts/search.sh'
+alias rn='bash ~/Scripts/rn/run.sh'
 
 # Pyhton
 alias studio='python3.7 ~/Scripts/studio/run.py'
-alias rn='python3.7 ~/Scripts/rn/run.py'
 alias mem='python3.7 ~/Scripts/mem/run.py'
 alias dsk='python3.7 ~/Scripts/dsk/run.py'
 

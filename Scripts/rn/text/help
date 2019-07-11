@@ -1,0 +1,8 @@
+options
+	-h: help menu
+
+commands
+	docs: move all the documentation
+	lint: setup eslint in a project directory
+	r: react-native run-android
+	setup: install everything related to react-native
