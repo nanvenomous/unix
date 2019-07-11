@@ -7,6 +7,7 @@ source ${HOME}/Scripts/colorSettings.sh
 #__________Android SDK Setup
 androidsdk="${HOME}/Projects/android/sdk"
 PATH=${PATH}:"${androidsdk}/platform-tools"
+PATH=${PATH}:"${androidsdk}/emulator"
 PATH=${PATH}:"${androidsdk}/tools"
 PATH=${PATH}:"${androidsdk}/tools/bin"
 
@@ -20,7 +21,10 @@ source ${HOME}/.locrc
 
 #________________________________________________________________________________
 #__________File
-alias c='clear'
+alias apps='cd /usr/share/applications'
+
+#________________________________________________________________________________
+#__________Aliases
 function cd() {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
@@ -29,32 +33,23 @@ function cd() {
     builtin cd "${new_directory}" && t
 }
 alias up="cd ..; t"
-
-alias copy='bash ~/Scripts/edit/copy.sh'
-alias view='bash ~/Scripts/edit/view.sh'
-alias apps='cd /usr/share/applications'
-alias fnd='bash ~/Scripts/fnd/run.sh'
-alias search='bash ~/Scripts/search.sh'
-
-#________________________________________________________________________________
-#__________System
+alias c='clear'
 alias linuxDrive='sudo mkfs.ext4'
-alias mouse='bash ~/Scripts/mouse.sh'
-alias apt-size='bash ~/Scripts/apt-size.sh'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
 alias get='sudo apt-get install'
 alias purge='sudo apt-get purge'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
 alias u-grub='sudo update-grub'
-alias mem='python3.7 ~/Scripts/mem/run.py'
-alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
 alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 alias src="source ${HOME}/.bashrc; source ${HOME}/.profile"
 
 
 #________________________________________________________________________________
-#__________Programs
+#__________Scripts
+# BASH
+alias mouse='bash ~/Scripts/mouse.sh'
+alias apt-size='bash ~/Scripts/apt-size.sh'
 alias weather='sudo curl wttr.in'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias render='bash ~/Scripts/render.sh &>/dev/null'
@@ -70,13 +65,24 @@ alias clk='bash ~/Scripts/clk/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
+alias copy='bash ~/Scripts/edit/copy.sh'
+alias view='bash ~/Scripts/edit/view.sh'
+alias fnd='bash ~/Scripts/fnd/run.sh'
+alias search='bash ~/Scripts/search.sh'
+
+# Pyhton
+alias studio='python3.7 ~/Scripts/studio/run.py'
+alias rn='python3.7 ~/Scripts/rn/run.py'
+alias mem='python3.7 ~/Scripts/mem/run.py'
+alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
 #________________________________________________________________________________
 #__________Open
 alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
-# p equates to whichever python is active
+#________________________________________________________________________________
+#__________Python Environment
 alias p='python3.7'
 alias pin='sudo python3.7 -m pip install'
 alias create='python3.7 -m virtualenv env'

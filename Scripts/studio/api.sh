@@ -1,6 +1,15 @@
-droid="${HOME}/Projects/android/android-studio"
-run="${droid}/bin/studio.sh"
+droid="${HOME}/Projects/android"
+run="${droid}/android-studio/bin/studio.sh"
+emulator="${droid}/sdk/emulator/emulator"
 
 run () {
 	"${run}" &
+}
+
+emulator () {
+	"${emulator}" @pixel &
+}
+
+build () {
+	./gradlew installDebug
 }

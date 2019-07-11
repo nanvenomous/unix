@@ -5,6 +5,8 @@
 * [ ] python getopts using git script as an example
 	* dsk and mem packages (to unit test)
 * [ ] Update all modules to new getopts methodology
+* [ ] run .pid version of popen to spawn a no wait subprocess
+	* [examples](https://docs.python.org/2/library/subprocess.html)
 
 ### qutebrowser
 * [ ] use this article to [install](https://askubuntu.com/questions/954539/installing-qutebrowser)

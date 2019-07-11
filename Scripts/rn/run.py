@@ -1,18 +1,21 @@
+# To Do
+#	implement verbose
+
 import sys
 from syspy import Message, BashAPI, parseOptions, fail, succeed, getInputs
 
 version = Message('Version: 1.0')
 
 help = Message(
-'''Useful Android Studio Commands
-
-options
+'''options
 	-h, --help: help menu
 	--version: version
+
 commands
-	build: build and run on a device
-	emulator: start up a pixel 3 for testing
-	run: run android studio'''
+	docs: move all the documentation
+	lint: setup eslint in a project directory
+	r: react-native run-android
+	setup: install everything related to react-native'''
 )
 
 verbose = False
@@ -40,26 +43,22 @@ for opt, arg in options:
 		version.smartPrint()
 		succeed()
 
-try:
-	cmd = remainder[0]
-	inputs = remainder[1:]
-except:
-	print(version.content)
-	print()
-	print(help.content)
-	succeed()
-
+output = ''
 api = BashAPI('api.sh')
-
-if cmd == 'build':
-	api.cmd('build', args=inputs, realTime=True)
-elif cmd == 'run':
-	api.cmd('run', args=inputs, realTime=True)
-elif cmd == 'emulator':
-	api.cmd('emulator', args=inputs, realTime=True)
+if remainder == ['docs']:
+	output = api.cmd('documentationMigration')
+elif remainder == ['lint']:
+	api.cmd('linterInstallation', realTime=True)
+elif remainder == ['r']:
+	api.cmd('runProject', realTime=True)
+elif remainder == ['setup']:
+	api.cmd('setup', realTime=True)
 else:
-	print('Not a recognized command')
+	print('Wrapper for react-native')
+	print()
+	print(version.content)
 	print()
 	print(help.content)
 	fail()
 
+if output not in ['']: print(output)

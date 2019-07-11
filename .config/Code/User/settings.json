@@ -3,7 +3,7 @@
 	"workbench.statusBar.visible": true,
 	"window.enableMenuBarMnemonics": false,
 	"workbench.startupEditor": "none",
-	"window.menuBarVisibility": "default",
+	"window.menuBarVisibility": "toggle",
 	"editor.lineNumbers": "relative",
 	"editor.tabSize": 3,
 	"editor.insertSpaces": false,
