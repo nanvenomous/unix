@@ -70,11 +70,11 @@ alias view='bash ~/Scripts/edit/view.sh'
 alias fnd='bash ~/Scripts/fnd/run.sh'
 alias search='bash ~/Scripts/search.sh'
 alias rn='bash ~/Scripts/rn/run.sh'
+alias dsk='bash ~/Scripts/dsk/run.sh'
 
 # Pyhton
 alias studio='python3.7 ~/Scripts/studio/run.py'
 alias mem='python3.7 ~/Scripts/mem/run.py'
-alias dsk='python3.7 ~/Scripts/dsk/run.py'
 
 #________________________________________________________________________________
 #__________Open
@@ -91,3 +91,5 @@ alias activate='source env/bin/activate'
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/pablo/.sdkman"
 [[ -s "/home/pablo/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pablo/.sdkman/bin/sdkman-init.sh"
+
+echo 'Sourced ~/.bashrc'
