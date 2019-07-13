@@ -13,7 +13,7 @@ while getopts ":h" opt; do
 			cat "${help}"
 			exit 0
 			;;
-		/? )
+		\? )
 			echo "Invalid Option: -${OPTARG}"
 			exit 1
 			;;

@@ -1,0 +1,7 @@
+Wrapper for partclone
+
+options
+	-h: help menu
+commands
+	c: clone <partition> <fileName>
+	r: restore <fileName> <partition>

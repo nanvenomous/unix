@@ -51,11 +51,7 @@ while getopts ":eh" opt; do
 			echo -e "Invalid Option: -${OPTARG}"
 			exit 1
 			;;
-		* )
-			${bsh} "${@}"
-			exit 0
-			;;
 	esac
 done
 
-echo -e "${help}"
+${bsh} "${@}"
