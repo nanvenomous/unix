@@ -72,9 +72,9 @@ alias search='bash ~/Scripts/search.sh'
 alias rn='bash ~/Scripts/rn/run.sh'
 alias dsk='bash ~/Scripts/dsk/run.sh'
 alias mem='bash ~/Scripts/mem/run.sh'
+alias studio='bash ~/Scripts/studio/run.sh'
 
 # Pyhton
-alias studio='python3.7 ~/Scripts/studio/run.py'
 
 #________________________________________________________________________________
 #__________Open
