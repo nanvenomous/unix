@@ -3,18 +3,26 @@
 chrome='/usr/bin/chromium-browser'
 agenda="${HOME}/Scripts/todo/agenda.md"
 
-opts=':e'
-while getopts ${opts} opt; do
-	case ${opt} in
-		e ) # for read/write protected files
-			vim ${agenda}
-			exit
+function editAgendaSource() {
+	vim ${agenda}
+}
+
+while getopts ":he" opt; do
+	case "${opt}" in
+		h ) 
+			cat "${help}"
+			exit 0
+			;;
+		e )
+			editAgendaSource
+			exit 0
 			;;
 		\? )
-			echo "Usage: cmd [-e]"
+			echo "Invalid Option: -${OPTARG}"
+			exit 1
 			;;
 	esac
-	shift
 done
+shift $((OPTIND -1)) # remove the package flag (if exists)
 
 ${chrome} ${agenda} &>/dev/null
