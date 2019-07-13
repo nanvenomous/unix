@@ -54,6 +54,12 @@ while getopts ":h" opt; do
 done
 shift $((OPTIND -1)) # remove the package flag
 
+# Handle case no arguments
+if [[ $# -eq 0 ]] ; then
+	cat "${help}"
+	exit 0
+fi
+
 cmd="${1}"; shift # remove rn from the arguments
 case "${cmd}" in
 	docs )
@@ -69,7 +75,7 @@ case "${cmd}" in
 		setupReactNative
 		;;
 	* )
-		cat "${help}"
+		echo "Not a recognized command: ${cmd}"
 		;;
 esac
 
