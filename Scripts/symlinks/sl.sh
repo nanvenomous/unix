@@ -2,6 +2,13 @@
 
 ln='/bin/ln'
 chmod='/bin/chmod'
+help="commands
+\tlink
+\trelink
+\tunlink
+\tcheck <argument>
+\tlist
+"
 
 #__________________________________________________ Updating a Symlink
 function link() {
@@ -75,7 +82,15 @@ function list() {
 
 #__________________________________________________ Actions
 
-case "$1" in
+# Handle case no arguments
+if [[ $# -eq 0 ]] ; then
+	echo -e "${help}"
+	exit 0
+fi
+
+cmd="${1}"
+
+case "${cmd}" in
 	"link")
 		forEachSymLink link
 		;;
@@ -92,11 +107,6 @@ case "$1" in
 		list
 		;;
 	*)
-		echo commands:
-		echo -e "\t" link
-		echo -e "\t" relink
-		echo -e "\t" unlink
-		echo -e "\t" check "\t" '<argument>'
-		echo -e "\t" list
+		echo "Not a recognized command: ${cmd}"
 		;;
 esac
