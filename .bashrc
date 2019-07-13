@@ -73,6 +73,7 @@ alias rn='bash ~/Scripts/rn/run.sh'
 alias dsk='bash ~/Scripts/dsk/run.sh'
 alias mem='bash ~/Scripts/mem/run.sh'
 alias studio='bash ~/Scripts/studio/run.sh'
+alias android='bash ~/Scripts/android/run.sh'
 
 # Pyhton
 
