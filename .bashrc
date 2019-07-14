@@ -67,7 +67,7 @@ alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
-alias fnd='bash ~/Scripts/fnd/run.sh'
+# alias fnd='bash ~/Scripts/fnd/run.sh'
 alias search='bash ~/Scripts/search.sh'
 alias rn='bash ~/Scripts/rn/run.sh'
 alias dsk='bash ~/Scripts/dsk/run.sh'
@@ -75,7 +75,9 @@ alias mem='bash ~/Scripts/mem/run.sh'
 alias studio='bash ~/Scripts/studio/run.sh'
 alias android='bash ~/Scripts/android/run.sh'
 
-# Pyhton
+#________________________________________________________________________________
+#__________bin
+export PATH="${HOME}/scripts/bin:${PATH}"
 
 #________________________________________________________________________________
 #__________Open

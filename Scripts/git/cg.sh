@@ -19,6 +19,7 @@ case "$1" in
 		${cmd} add ${HOME}'/.inputrc'
 		${cmd} add ${HOME}'/.gitignore'
 		${cmd} add ${HOME}'/Scripts/*'
+		${cmd} add ${HOME}'/scripts/*'
 
 		${cmd} add ${HOME}'/.local/share/konsole/*'
 		${cmd} add ${HOME}'/.config/konsolerc'
