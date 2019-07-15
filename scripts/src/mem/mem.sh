@@ -1,6 +1,6 @@
 #!/bin/bash
 hr="${HOME}/scripts/src/mem"
-help="${hr}/text/help"
+help="${hr}/help"
 
 function cloneToUSB() {
 	# ${1} is the partition
