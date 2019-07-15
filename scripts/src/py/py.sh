@@ -1,6 +1,9 @@
-hr="${HOME}/scripts/src/pylib"
+hr="${HOME}/scripts/src/py"
 help="${hr}/text/help"
-callerPy="${hr}/python/caller.py"
+
+function sysPython() {
+	python3 -c "import sys; sys.path.insert(0, '${hr}'); ${@}"
+}
 
 function callPythonFunctionFromScript() {
 	# take a script and a method, runs the method from the python script
@@ -8,7 +11,9 @@ function callPythonFunctionFromScript() {
 	location=$(dirname "${script}")
 	file=$(basename "${script}")
 	method="${2}"
-	python3.7 "${callerPy}" "${location}" "${file}" "${method}"
+	# use the syspy tool to call a python function
+	sysPython "from tools import functionFromScript; \
+	functionFromScript('${location}', '${file}', '${method}')"
 }
 
 while getopts ":h" opt; do

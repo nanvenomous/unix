@@ -1,12 +1,11 @@
 #!/bin/bash
 hr="${HOME}/scripts"
-pylib="${hr}/src/pylib/run.sh"
 
 to_link="${hr}/to_link.py"
+py="${hr}/src/py/py.sh"
 
-#sources_not_linked=($(python3 "${to_link}"))
-# "${pylib}" caller "${to_link}" get_unlinked_sources
-sources_not_linked=($("${pylib}" caller "${to_link}" get_unlinked_sources))
+sources_not_linked=($("${py}" caller "${to_link}" get_unlinked_sources))
+echo ${sources_not_linked[@]}
 
 # function forEachSymLink() {
 	# operation=($1)
@@ -17,5 +16,3 @@ sources_not_linked=($("${pylib}" caller "${to_link}" get_unlinked_sources))
 		# ${operation} ${file} ${link}
 	# done
 # }
-
-echo ${sources_not_linked[@]}
