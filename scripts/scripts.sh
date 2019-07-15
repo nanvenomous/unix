@@ -11,6 +11,8 @@ executables_to_clean=($("${pylib}" caller "${to_link}" get_executables_to_clean)
 srcDir="${hr}/src"
 exeDir="${hr}/bin"
 
+mkdir -p "${exeDir}"
+
 # will create a symlink in the bin dir using the file name
 function link() {
 	name="${1}"
