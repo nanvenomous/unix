@@ -1,6 +1,6 @@
 #!/bin/bash
-hr="${HOME}/Scripts/dsk"
-help="${hr}/text/help"
+hr="${HOME}/scripts/src/dsk"
+help="${hr}/help"
 
 function list() {
 	# list all drives discluding swap

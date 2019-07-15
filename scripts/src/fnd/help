@@ -1,0 +1,9 @@
+File Search Wrapper:
+
+options
+	-h: help menu
+	-i: finds files with the argument inside the file [case insentive]
+	-w: returns all folders (containing filename containing the argument)
+
+without options:
+	finds all files and folders with the argument [case sensetive]

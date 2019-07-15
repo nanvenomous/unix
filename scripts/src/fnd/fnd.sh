@@ -1,11 +1,12 @@
 #!/bin/bash
+hr="${HOME}/scripts/src/fnd"
+help="${hr}/help"
+
 
 while getopts ":hiw" opt; do
 	case ${opt} in
 		h )
-			echo "Usage:"
-			echo -e " \t -h \t\t Display this help message."
-			echo -e " \t -w <file> \t folders that contain files with string"
+			cat "${help}"
 			exit 0
 			;;
 		i )
