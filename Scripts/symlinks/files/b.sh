@@ -25,7 +25,7 @@ argument
 END
 )
 
-while getopts ":eh" opt; do
+while getopts ":elphs" opt; do
 	case "${opt}" in
 		e )
 			${v} ${conf}
