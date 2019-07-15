@@ -1,0 +1,7 @@
+Wrapper for touchpad activation
+
+options
+	-h: help menu
+commands
+	on: activates the touchpad
+	off: deactivates the touchpad

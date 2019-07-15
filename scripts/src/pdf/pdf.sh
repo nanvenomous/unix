@@ -2,4 +2,4 @@
 
 evince='/usr/bin/evince'
 
-${evince} "${@}" &
+"${evince}" "${@}" &

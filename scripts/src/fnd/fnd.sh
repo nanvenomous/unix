@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts ":hw" opt; do
+while getopts ":hiw" opt; do
 	case ${opt} in
 		h )
 			echo "Usage:"
@@ -8,11 +8,17 @@ while getopts ":hw" opt; do
 			echo -e " \t -w <file> \t folders that contain files with string"
 			exit 0
 			;;
+		i )
+			# finds files with the argument inside the file
+			# appears to be case insentive
+			find . -type f -print | xargs grep "${@}"
+			exit 0;
+			;;
 		w )
-			# find all folders containing file with the string passed in
+			# returns all folders: containing filename containing the argument
 			shift;
 			find . -type f -name "${@}" | sed -r 's|/[^/]+$||' |sort |uniq
-			exit;
+			exit 0;
 			;;
 	 \? )
 		 echo "Invalid Option: -$OPTARG" 1>&2

@@ -48,7 +48,7 @@ alias src="source ${HOME}/.bashrc; source ${HOME}/.profile"
 #________________________________________________________________________________
 #__________Scripts
 # BASH
-alias mouse='bash ~/Scripts/mouse.sh'
+# alias mouse='bash ~/Scripts/mouse.sh'
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias weather='sudo curl wttr.in'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
@@ -61,17 +61,17 @@ alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
 alias todo='bash ~/Scripts/todo/run.sh'
 alias settings='bash ~/Scripts/settings/run.sh'
-alias clk='bash ~/Scripts/clk/run.sh'
+# alias clk='bash ~/Scripts/clk/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
 alias copy='bash ~/Scripts/edit/copy.sh'
 alias view='bash ~/Scripts/edit/view.sh'
 # alias fnd='bash ~/Scripts/fnd/run.sh'
-alias search='bash ~/Scripts/search.sh'
+# alias search='bash ~/Scripts/search.sh'
 alias rn='bash ~/Scripts/rn/run.sh'
-alias dsk='bash ~/Scripts/dsk/run.sh'
-alias mem='bash ~/Scripts/mem/run.sh'
+# alias dsk='bash ~/Scripts/dsk/run.sh'
+# alias mem='bash ~/Scripts/mem/run.sh'
 alias studio='bash ~/Scripts/studio/run.sh'
 alias android='bash ~/Scripts/android/run.sh'
 
@@ -81,7 +81,7 @@ export PATH="${HOME}/scripts/bin:${PATH}"
 
 #________________________________________________________________________________
 #__________Open
-alias pdf="bash ~/Scripts/pdf.sh"
+# alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
 #________________________________________________________________________________

@@ -1,0 +1,6 @@
+Wrapper for BASH calling Python
+
+options
+	-h: help menu
+commands
+	caller <script> <function>: calls a python function from a script

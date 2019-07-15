@@ -1,5 +1,7 @@
+#!/bin/bash
+
 hr="${HOME}/scripts/src/pylib"
-help="${hr}/text/help"
+help="${hr}/help"
 
 function sysPython() {
 	python3 -c "import sys; sys.path.insert(0, '${hr}'); ${@}"

@@ -1,5 +1,5 @@
 #!/bin/bash
-hr="${HOME}/Scripts/mem"
+hr="${HOME}/scripts/src/mem"
 help="${hr}/text/help"
 
 function cloneToUSB() {
