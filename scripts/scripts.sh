@@ -3,9 +3,10 @@ hr="${HOME}/scripts"
 
 
 to_link="${hr}/to_link.py"
-py="${hr}/src/py/py.sh"
+pylib="${hr}/src/pylib/pylib.sh"
 
-sources_not_linked=($("${py}" caller "${to_link}" get_unlinked_sources))
+sources_not_linked=($("${pylib}" caller "${to_link}" get_unlinked_sources))
+executables_to_clean=($("${pylib}" caller "${to_link}" get_executables_to_clean))
 
 srcDir="${hr}/src"
 exeDir="${hr}/bin"
@@ -23,14 +24,20 @@ function link() {
 	sudo ln -s ${file} ${link}
 }
 
+function destroy() {
+	name="${1}"
+	link="${exeDir}/${name}"
+	rm "${link}"
+}
+
 function doForEach() {
 	operation=($1)
 	local -n array=$2
-	echo ${array[@]}
 	for element in "${array[@]}"; do
 		${operation} ${element}
 	done
 }
 
 
+doForEach destroy executables_to_clean
 doForEach link sources_not_linked

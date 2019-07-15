@@ -1,4 +1,4 @@
-hr="${HOME}/scripts/src/py"
+hr="${HOME}/scripts/src/pylib"
 help="${hr}/text/help"
 
 function sysPython() {
