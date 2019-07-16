@@ -18,6 +18,7 @@ case "$1" in
 		${cmd} add ${HOME}'/.xinitrc'
 		${cmd} add ${HOME}'/.inputrc'
 		${cmd} add ${HOME}'/.gitignore'
+		${cmd} add ${HOME}'/.settings/*'
 		${cmd} add ${HOME}'/Scripts/*'
 		${cmd} add ${HOME}'/scripts/src/*'
 		${cmd} add ${HOME}'/scripts/scripts.sh'
