@@ -5,6 +5,7 @@ hr="${HOME}/scripts"
 to_link="${hr}/to_link.py"
 pylib="${hr}/src/pylib/pylib.sh"
 
+all_sources=($("${pylib}" caller "${to_link}" get_all_sources))
 sources_not_linked=($("${pylib}" caller "${to_link}" get_unlinked_sources))
 executables_to_clean=($("${pylib}" caller "${to_link}" get_executables_to_clean))
 
@@ -14,19 +15,24 @@ exeDir="${hr}/bin"
 mkdir -p "${exeDir}"
 
 # will create a symlink in the bin dir using the file name
-function link() {
+function link_file_to_executable() {
 	name="${1}"
 	file="${srcDir}/${name}/${name}.sh"
 	link="${exeDir}/${name}"
 	echo "${file} <--> ${link}"
 
-	# make the file executable
-	chmod +x ${file}
 	# create the link
 	sudo ln -s ${file} ${link}
 }
 
-function destroy() {
+function give_source_priveleges() {
+	name="${1}"
+	file="${srcDir}/${name}/${name}.sh"
+	# make the file executable
+	chmod +x ${file}
+}
+
+function destroy_extra_executable() {
 	name="${1}"
 	link="${exeDir}/${name}"
 	rm "${link}"
@@ -41,5 +47,6 @@ function doForEach() {
 }
 
 
-doForEach destroy executables_to_clean
-doForEach link sources_not_linked
+doForEach destroy_extra_executable executables_to_clean
+doForEach give_source_priveleges all_sources
+doForEach link_file_to_executable sources_not_linked

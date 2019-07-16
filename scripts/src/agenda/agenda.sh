@@ -1,7 +1,8 @@
 #!/bin/bash
+hr="${HOME}/scripts/src/agenda"
 
 chrome='/usr/bin/chromium-browser'
-agenda="${HOME}/Scripts/todo/agenda.md"
+agenda="${hr}/agenda.md"
 
 function editAgendaSource() {
 	vim ${agenda}

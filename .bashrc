@@ -47,17 +47,16 @@ alias src="bash ${HOME}/scripts/scripts.sh; source ${HOME}/.bashrc"
 #________________________________________________________________________________
 #__________Scripts
 # BASH
-alias apt-size='bash ~/Scripts/apt-size.sh'
 alias weather='sudo curl wttr.in'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
-alias render='bash ~/Scripts/render.sh &>/dev/null'
+alias ve='/usr/local/bin/virtualenv'
+
+alias apt-size='bash ~/Scripts/apt-size.sh'
 alias g='bash ~/Scripts/git/g.sh'
 alias cg='bash ~/Scripts/git/cg.sh'
-alias ve='/usr/local/bin/virtualenv'
 alias fetch='bash ~/Scripts/fetch.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias C='bash ~/Scripts/gcc/C.sh'
-alias todo='bash ~/Scripts/todo/run.sh'
 alias settings='bash ~/Scripts/settings/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
