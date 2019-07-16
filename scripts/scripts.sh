@@ -22,7 +22,7 @@ function link_file_to_executable() {
 	echo "${file} <--> ${link}"
 
 	# create the link
-	sudo ln -s ${file} ${link}
+	ln -s ${file} ${link}
 }
 
 function give_source_priveleges() {
