@@ -11,7 +11,6 @@ case "$1" in
 		# stage manually deleted or moved files
 		stageManualChanges cmd
 		# add/stage changes in all configuration files
-		${cmd} add ${HOME}'/.README.md'
 		${cmd} add ${HOME}'/.bashrc'
 		${cmd} add ${HOME}'/.vimrc'
 		${cmd} add ${HOME}'/.profile'

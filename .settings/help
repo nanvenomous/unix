@@ -1,0 +1,7 @@
+options
+	-h: help menu
+	-e: use editor to edit settings
+
+arguments
+	d: documentation
+	s: shortcuts
