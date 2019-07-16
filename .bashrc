@@ -40,17 +40,15 @@ alias get='sudo apt-get install'
 alias purge='sudo apt-get purge'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
 alias u-grub='sudo update-grub'
+alias weather='sudo curl wttr.in'
+alias chrome='/usr/bin/chromium-browser &>/dev/null'
+alias ve='/usr/local/bin/virtualenv'
 
 alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 alias src="bash ${HOME}/scripts/scripts.sh; source ${HOME}/.bashrc"
 
 #________________________________________________________________________________
 #__________Scripts
-# BASH
-alias weather='sudo curl wttr.in'
-alias chrome='/usr/bin/chromium-browser &>/dev/null'
-alias ve='/usr/local/bin/virtualenv'
-
 alias apt-size='bash ~/Scripts/apt-size.sh'
 alias g='bash ~/Scripts/git/g.sh'
 alias cg='bash ~/Scripts/git/cg.sh'
@@ -61,8 +59,6 @@ alias settings='bash ~/Scripts/settings/run.sh'
 alias dsp='bash ~/Scripts/dsp/run.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
-alias copy='bash ~/Scripts/edit/copy.sh'
-alias view='bash ~/Scripts/edit/view.sh'
 alias rn='bash ~/Scripts/rn/run.sh'
 alias studio='bash ~/Scripts/studio/run.sh'
 alias android='bash ~/Scripts/android/run.sh'
