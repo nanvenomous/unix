@@ -25,12 +25,12 @@ alias apps='cd /usr/share/applications'
 
 #________________________________________________________________________________
 #__________Aliases
-function cd() {
+function dn() {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
     fi;
-    builtin cd "${new_directory}" && t
+    builtin cd "${new_directory}"; t
 }
 alias up="cd ..; t"
 alias c='clear'
