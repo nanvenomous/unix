@@ -1,14 +1,13 @@
 #!/bin/bash
 # Directories
-hr="${HOME}/Scripts/rn"
+hr="${HOME}/scripts/src/rn"
 rsrc="${hr}/rsrc"
-text="${hr}/text"
 
 # Files
 linter="${rsrc}/eslintrc"
 readme="${rsrc}/readme.md"
 rdm="${rsrc}/rdm"
-help="${text}/help"
+help="${hr}/help"
 
 function documentationMigration() {
 	echo 'copying readme'
@@ -24,6 +23,7 @@ function linterInstallation() {
 	npm install --save-dev eslint-config-rallycoding
 	echo 'moving .eslintrc'
 	cp "${linter}" "${PWD}/.eslintrc"
+	rm ./.eslintrc.js
 	echo 'NOTE: still need eslint extension in your editor'
 }
 

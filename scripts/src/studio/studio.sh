@@ -2,8 +2,8 @@ droid="${HOME}/Projects/android"
 run="${droid}/android-studio/bin/studio.sh"
 emulator="${droid}/sdk/emulator/emulator"
 
-hr="${HOME}/Scripts/studio"
-help="${hr}/text/help"
+hr="${HOME}/scripts/src/studio"
+help="${hr}/help"
 
 buildProject () {
 	./gradlew installDebug

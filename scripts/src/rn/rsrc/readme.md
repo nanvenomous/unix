@@ -1,7 +1,7 @@
 ### Linter
 
 > rct -l
-* runs the [eslint setup](rdm/lintSetup.md)
+* runs the [eslint setup](.rdm/lintSetup.md)
 
 install [vscode eslint extension](https://github.com/Microsoft/vscode-eslint)
 
@@ -11,4 +11,4 @@ install [vscode eslint extension](https://github.com/Microsoft/vscode-eslint)
 * [firebase snippet](.rdm/firebaseSnippet.txt)
 
 ### General React Notes
-* [link](rdm/general.md)
+* [link](.rdm/general.md)

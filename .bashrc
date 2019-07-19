@@ -58,8 +58,6 @@ alias C='bash ~/Scripts/gcc/C.sh'
 alias settings='bash ~/.settings/settings.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
 alias rct='/usr/local/bin/react-native'
-alias rn='bash ~/Scripts/rn/run.sh'
-alias studio='bash ~/Scripts/studio/run.sh'
 alias android='bash ~/Scripts/android/run.sh'
 
 #________________________________________________________________________________
