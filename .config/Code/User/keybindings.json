@@ -312,5 +312,29 @@
 		"key": "alt+pageup",
 		"command": "-scrollPageUp",
 		"when": "textInputFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "-workbench.action.terminal.toggleFindRegexTerminalFocus",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "-workbench.action.terminal.toggleFindRegex",
+		"when": "terminalFindWidgetFocused"
+	},
+	{
+		"key": "alt+r",
+		"command": "-toggleFindRegex",
+		"when": "editorFocus"
+	},
+	{
+		"key": "alt+r",
+		"command": "-toggleSearchRegex",
+		"when": "searchViewletFocus && searchViewletVisible"
+	},
+	{
+		"key": "alt+r",
+		"command": "workbench.view.extension.references-view"
 	}
 ]

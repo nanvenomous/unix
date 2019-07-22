@@ -1,5 +1,5 @@
 {
-	"workbench.activityBar.visible": false,
+	"workbench.activityBar.visible": true,
 	"workbench.statusBar.visible": true,
 	"window.enableMenuBarMnemonics": false,
 	"workbench.startupEditor": "none",
