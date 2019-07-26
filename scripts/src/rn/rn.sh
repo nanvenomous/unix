@@ -9,6 +9,10 @@ readme="${rsrc}/readme.md"
 rdm="${rsrc}/rdm"
 help="${hr}/help"
 
+droid="${HOME}/Projects/android"
+studio="${droid}/android-studio/bin/studio.sh"
+emulator="${droid}/sdk/emulator/emulator"
+
 function documentationMigration() {
 	echo 'copying readme'
 	cp "${readme}" "${PWD}"
@@ -40,6 +44,20 @@ function setupReactNative() {
 	sudo apt install oracle-java8-installer
 }
 
+###################################
+
+buildProject () {
+	./gradlew installDebug
+}
+
+emulatorLaunch () {
+	"${emulator}" @pixel &
+}
+
+studioLaunch () {
+	"${studio}" &
+}
+
 while getopts ":h" opt; do
 	case "${opt}" in
 		h ) 
@@ -62,8 +80,14 @@ fi
 
 cmd="${1}"; shift # remove rn from the arguments
 case "${cmd}" in
+	b )
+		buildProject
+		;;
 	docs )
 		documentationMigration
+		;;
+	e )
+		emulatorLaunch
 		;;
 	lint )
 		linterInstallation
@@ -73,6 +97,9 @@ case "${cmd}" in
 		;;
 	setup )
 		setupReactNative
+		;;
+	studio )
+		studioLaunch
 		;;
 	* )
 		echo "Not a recognized command: ${cmd}"

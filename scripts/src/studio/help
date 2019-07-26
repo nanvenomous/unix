@@ -1,8 +1,0 @@
-Useful Android Studio Commands
-
-options
-	-h: help menu
-commands
-	build: build and run on a device
-	emulator: start up a pixel 3 for testing
-	run: run android studio
