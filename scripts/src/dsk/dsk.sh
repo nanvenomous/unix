@@ -21,13 +21,20 @@ while getopts ":h" opt; do
 done
 shift $((OPTIND -1)) # remove the package flag
 
-cmd="${1}"; shift # remove rn from the arguments
+# Handle case no arguments
+if [[ $# -eq 0 ]] ; then
+	cat "${help}"
+	exit 0
+fi
+
+cmd="${1}"; shift # remove the package from the arguments
 case "${cmd}" in
 	l )
 		list
 		;;
 	* )
-		cat "${help}"
+		echo "Not a recognized command: ${cmd}"
+		exit 1
 		;;
 esac
 
