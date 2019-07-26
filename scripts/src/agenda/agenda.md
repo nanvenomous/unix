@@ -7,6 +7,7 @@
 
 ### dsp
 * [ ] fix calling of submodules to use best practices (source with path input)
+* [ ] add proper help
 
 ### qutebrowser
 * [ ] use this article to [install](https://askubuntu.com/questions/954539/installing-qutebrowser)

@@ -34,7 +34,7 @@ if [[ $# -eq 0 ]] ; then
 	exit 0
 fi
 
-cmd="${1}"; shift # remove rn from the arguments
+cmd="${1}"; shift # remove the package from the arguments
 case "${cmd}" in
 	clone )
 		cloneToUSB
@@ -44,5 +44,6 @@ case "${cmd}" in
 		;;
 	* )
 		echo "Not a recognized command: ${cmd}"
+		exit 1
 		;;
 esac
