@@ -2,10 +2,10 @@
 # Attempting to streamline the android project setup on an Ubuntu system
 
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
 
 projectdir="${HOME}/Projects/android"
 sdk="${projectdir}/sdk"
-hr="${HOME}/Scripts/android"
 rsrc="${hr}/rsrc"
 buildscript="${rsrc}/buildscript.txt"
 stylesheet="${rsrc}/styles.xml"
@@ -15,7 +15,7 @@ appBuildFile='./app/build.gradle'
 mainFolder='./app/src/main/'
 styleFolder='./app/src/main/res/values'
 
-help="${hr}/text/help"
+help="${hr}/help"
 
 function initializeProjectDirectory() {
 	gradle init
