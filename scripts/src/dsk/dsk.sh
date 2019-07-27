@@ -1,5 +1,6 @@
 #!/bin/bash
-hr="${HOME}/scripts/src/dsk"
+hr="$( dirname "$( realpath "${0}" )" )"
+
 help="${hr}/help"
 
 function list() {

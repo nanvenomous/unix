@@ -1,5 +1,6 @@
 #!/bin/bash
-hr="${HOME}/scripts/src/mem"
+hr="$( dirname "$( realpath "${0}" )" )"
+
 help="${hr}/help"
 
 function cloneToUSB() {

@@ -1,6 +1,6 @@
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
 
-hr="${HOME}/scripts/src/touchpad"
 help="${hr}/help"
 
 while getopts ":h" opt; do

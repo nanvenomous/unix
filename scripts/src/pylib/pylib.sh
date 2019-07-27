@@ -1,6 +1,6 @@
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
 
-hr="${HOME}/scripts/src/pylib"
 help="${hr}/help"
 
 function sysPython() {

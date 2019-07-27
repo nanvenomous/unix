@@ -1,6 +1,6 @@
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
 
-hr="${HOME}/scripts/src/dsp"
 bash='/bin/bash'
 
 subcommand=$1; shift  # Remove package, command is no longer included in #{@}

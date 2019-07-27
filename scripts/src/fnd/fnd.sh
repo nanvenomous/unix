@@ -1,5 +1,6 @@
 #!/bin/bash
-hr="${HOME}/scripts/src/fnd"
+hr="$( dirname "$( realpath "${0}" )" )"
+
 help="${hr}/help"
 
 

@@ -1,6 +1,7 @@
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
+
 # Directories
-hr="${HOME}/scripts/src/rn"
 rsrc="${hr}/rsrc"
 
 # Files
