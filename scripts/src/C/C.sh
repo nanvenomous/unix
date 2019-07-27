@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# specify script directory
-hr="${HOME}/Scripts/gcc"
+hr="$( dirname "$( realpath "${0}" )" )"
 
 # gather helper scripts from this directory
 getHeaderFolders="${hr}/getHeaderFolders.sh"
