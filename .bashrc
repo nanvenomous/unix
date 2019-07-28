@@ -1,7 +1,7 @@
 PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
 
-source ${HOME}/Scripts/colorSettings.sh
+source ${HOME}/.settings/colorSettings.sh
 
 #________________________________________________________________________________
 #__________Android SDK Setup
