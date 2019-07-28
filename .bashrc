@@ -52,7 +52,6 @@ alias settings='bash ~/.settings/settings.sh'
 #________________________________________________________________________________
 #__________Scripts
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
-alias pypi='bash ~/Scripts/pypi/run.sh'
 
 #________________________________________________________________________________
 #__________bin

@@ -1,14 +1,28 @@
 #!/bin/bash
-hr="${HOME}/Scripts/pypi"
-comp="${hr}/components"
+hr="$( dirname "$( realpath "${0}" )" )"
 
-function help() {
-	echo -e "commands:"
-	echo -e "\t build"
-	echo -e "\t init"
-	echo -e "\t update"
-	echo -e "\t upload"
-}
+comp="${hr}/components"
+help="${hr}/help"
+
+while getopts ":h" opt; do
+	case "${opt}" in
+		h ) 
+			cat "${help}"
+			exit 0
+			;;
+		\? )
+			echo "Invalid Option: -${OPTARG}"
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND -1)) # remove the package flag (if exists)
+
+# Handle case no arguments
+if [[ $# -eq 0 ]] ; then
+	cat "${help}"
+	exit 0
+fi
 
 case "$1" in
 	"build")
@@ -26,7 +40,8 @@ case "$1" in
 		python3.7 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 		;;
 	*)
-		echo 'not a recognized command'
-		help
+		echo "Not a recognized command: ${cmd}"
+		exit 1
 		;;
+
 esac

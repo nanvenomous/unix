@@ -1,0 +1,8 @@
+options:
+	-h: this help menu
+
+commands:
+	build: build a pypi project to python package format
+	init: initialize a project directory
+	update: update the remote package
+	upload: first upload of a package
