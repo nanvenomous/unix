@@ -1,8 +1,10 @@
 #!/bin/bash
+hr="$( dirname "$( realpath "${0}" )" )"
 
 chrome='/usr/bin/chromium-browser'
-hr="${HOME}/.settings"
 help="${hr}/help"
+configurations="${hr}/configurations.sh"
+installs="${hr}/installs.sh"
 
 shortcuts="${hr}/shortcuts.md"
 readme="${hr}/readme.md"
@@ -43,8 +45,14 @@ fi
 
 cmd="${1}"; shift # remove package from the arguments
 case "${cmd}" in
+	c )
+		bash "${configurations}"
+		;;
 	d )
 		("${operation}" "${readme}")
+		;;
+	i )
+		bash "${installations}"
 		;;
 	s )
 		("${operation}" "${shortcuts}")

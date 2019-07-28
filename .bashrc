@@ -47,13 +47,12 @@ alias ve='/usr/local/bin/virtualenv'
 
 alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 alias src="bash ${HOME}/scripts/scripts.sh; source ${HOME}/.bashrc"
+alias settings='bash ~/.settings/settings.sh'
 
 #________________________________________________________________________________
 #__________Scripts
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
-alias settings='bash ~/.settings/settings.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
-alias rct='/usr/local/bin/react-native'
 
 #________________________________________________________________________________
 #__________bin
