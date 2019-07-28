@@ -1,0 +1,29 @@
+Wrapper with shortcuts for git operations:
+
+options:
+	-h: this help menu
+	-c: system git tracking configuration
+
+commands:
+	a:	add
+	aa:	add .
+	b:	branch
+	c:	commit
+	ca:	commit --amend
+	ch:	checkout
+	chb:	checkout -b
+	i:	init
+	l:	log
+	m:	merge
+	ph:	push
+	pl:	pull
+	plr:	pull --rebase
+	r:	remote
+	ra:	remote add
+	rma:	rm -r --cached .
+	rs:	remote show
+	s:	status
+	t:	ls-tree -r --name-only
+
+to add:
+	difftool branch1..branch2 -- fileName

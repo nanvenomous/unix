@@ -51,8 +51,6 @@ alias src="bash ${HOME}/scripts/scripts.sh; source ${HOME}/.bashrc"
 #________________________________________________________________________________
 #__________Scripts
 alias apt-size='bash ~/Scripts/apt-size.sh'
-alias g='bash ~/Scripts/git/g.sh'
-alias cg='bash ~/Scripts/git/cg.sh'
 alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
 alias settings='bash ~/.settings/settings.sh'
 alias pypi='bash ~/Scripts/pypi/run.sh'
