@@ -1,6 +1,5 @@
 #!/bin/bash
-hr="${HOME}/scripts"
-
+hr="$( dirname "$( realpath "${0}" )" )"
 
 to_link="${hr}/to_link.py"
 pylib="${hr}/src/pylib/pylib.sh"
