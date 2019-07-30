@@ -15,7 +15,7 @@
 * [ ] use css to [configure colors](https://www.reddit.com/r/qutebrowser/comments/665wdb/is_there_a_dark_mode/)
 
 ### other
-* [ ] git branch completion
+* [ ] implement a pygit module, use git branch completion, password encryption
 * [ ] Fix sz package it cannot take any arguments
 
 ### learning

@@ -74,6 +74,9 @@ case "$shortcut" in
 	"chb")
 		cmd="$cmd checkout -b ${inputs}"
 		;;
+	"chl")
+		cmd="$cmd checkout - ${inputs}"
+		;;
 	"i")
 		cmd="$cmd init ${inputs}"
 		;;
@@ -106,6 +109,9 @@ case "$shortcut" in
 		;;
 	"s")
 		cmd="$cmd status ${inputs}"
+		;;
+	"sh")
+		cmd="$cmd stash ${inputs}"
 		;;
 	"t")
 		cmd="$cmd ls-tree -r --name-only ${inputs}"

@@ -12,6 +12,7 @@ commands:
 	ca:	commit --amend
 	ch:	checkout
 	chb:	checkout -b
+	chl:	checkout -
 	i:	init
 	l:	log
 	m:	merge
@@ -23,6 +24,7 @@ commands:
 	rma:	rm -r --cached .
 	rs:	remote show
 	s:	status
+	sh:	stash
 	t:	ls-tree -r --name-only
 
 to add:
