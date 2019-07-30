@@ -71,6 +71,9 @@ case "$shortcut" in
 	"ch")
 		cmd="$cmd checkout ${inputs}"
 		;;
+	"cha")
+		cmd="$cmd reset --hard ${inputs}"
+		;;
 	"chb")
 		cmd="$cmd checkout -b ${inputs}"
 		;;
@@ -112,6 +115,9 @@ case "$shortcut" in
 		;;
 	"sh")
 		cmd="$cmd stash ${inputs}"
+		;;
+	"shc")
+		cmd="$cmd stash clear ${inputs}"
 		;;
 	"t")
 		cmd="$cmd ls-tree -r --name-only ${inputs}"
