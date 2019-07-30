@@ -5,7 +5,7 @@ addAllConfigFiles="${hr}/addAllConfigFiles.sh"
 help="${hr}/help"
 
 cmd='/usr/bin/git'
-config='false'
+config=false
 
 stageManualChanges () {
 	local -n cmdRef=$1
@@ -17,7 +17,7 @@ while getopts ":hc" opt; do
 	case "${opt}" in
 		c ) 
 			cmd="/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}"
-			config='true'
+			config=true
 			;;
 		h ) 
 			cat "${help}"
@@ -51,7 +51,7 @@ case "$shortcut" in
 
 		# stage manually deleted or moved files
 		stageManualChanges cmd
-		if [[ "${config}" -eq 'true' ]] ; then
+		if [ "${config}" == true ] ; then
 			bash "${addAllConfigFiles}" "${cmd}"
 		else
 			# add/stage changes in all configuration files
