@@ -15,5 +15,6 @@
 	"keyboard.dispatch": "keyCode",
 	"window.restoreWindows": "none",
    "workbench.colorTheme": "Material Theme Palenight",
-   "C_Cpp.updateChannel": "Insiders",
+	"C_Cpp.updateChannel": "Insiders",
+	"workbench.fontAliasing": "auto",
 }

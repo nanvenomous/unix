@@ -4,5 +4,5 @@ options:
 commands:
 	build: build a pypi project to python package format
 	init: initialize a project directory
-	update: update the remote package
-	upload: first upload of a package
+	update: pulls new dependencies for pypi on this machine
+	upload: update version of package on remote pypi
