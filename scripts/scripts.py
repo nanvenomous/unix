@@ -13,12 +13,6 @@ executables = set(listdir(binDir.path))
 unlinked_sources = list(sources - executables)
 executables_to_clean = list(executables - sources)
 
-
-print(sources)
-print(executables)
-print(unlinked_sources)
-print(executables_to_clean)
-
 # remove unecessary executables
 for exe in executables_to_clean:
 	sh.rm(binDir.to(exe))

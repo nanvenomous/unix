@@ -46,7 +46,7 @@ alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias ve='/usr/local/bin/virtualenv'
 
 alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
-alias src="bash ${HOME}/scripts/scripts.sh; source ${HOME}/.bashrc"
+alias src="${HOME}/scripts/scripts.py; source ${HOME}/.bashrc"
 alias settings='bash ~/.settings/settings.sh'
 
 #________________________________________________________________________________
