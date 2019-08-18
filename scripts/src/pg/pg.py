@@ -16,6 +16,7 @@ help = Message(
 commands
 	a: add
 	aa: add .
+	b: branch
 	s: status'''
 )
 
@@ -98,81 +99,44 @@ if (command):
 		else: git(['add .'])
 	elif command == 'b':
 		git(['branch'] + remainder)
+	elif command == 'c':
+		git(['commit'] + remainder)
+	elif command == 'ca':
+		git(['commit', '--amend'] + remainder)
+	elif command == 'ch':
+		git(['checkout'] + remainder)
+	elif command == 'i':
+		git(['init'] + remainder)
+	elif command == 'l':
+		git(['log'] + remainder)
+	elif command == 'm':
+		git(['merge'] + remainder)
+	elif command == 'ph':
+		git(['push'] + remainder)
+	elif command == 'pho':
+		git(['push', 'origin'] + remainder)
+	elif command == 'pl':
+		git(['pull'] + remainder)
+	elif command == 'plr':
+		git(['pull', '--rebase'] + remainder)
+	elif command == 'plo':
+		git(['pull', 'origin'] + remainder)
+	elif command == 'rma':
+		git(['rm', '-r', '--cached', '.'] + remainder)
+	elif command == 'rst':
+		git(['reset'] + remainder)
+	elif command == 'rsth':
+		git(['reset', '--hard', 'HEAD'] + remainder)
 	elif command == 's':
-		if remainder: error('git status does not take arguments')
-		git(['status'])
+		git(['status'] + remainder)
+	elif command == 'sh':
+		git(['stash'] + remainder)
+	elif command == 'shc':
+		git(['stash', 'clear'] + remainder)
+	elif command == 't':
+		git(['ls-tree', '-r', '--name-only'] + remainder)
 	else:
-		error('not a recognized command')
+		git([command] + remainder)
 else:
-	pass # default behavior of package
-
-
-# "b")
-# 	cmd="$cmd branch ${inputs}"
-# 	;;
-# "c")
-# 	cmd="$cmd commit ${inputs}"
-# 	;;
-# "ca")
-# 	cmd="$cmd commit --amend ${inputs}"
-# 	;;
-# "ch")
-# 	cmd="$cmd checkout ${inputs}"
-# 	;;
-# "cha")
-# 	cmd="$cmd reset --hard ${inputs}"
-# 	;;
-# "chb")
-# 	cmd="$cmd checkout -b ${inputs}"
-# 	;;
-# "chl")
-# 	cmd="$cmd checkout - ${inputs}"
-# 	;;
-# "i")
-# 	cmd="$cmd init ${inputs}"
-# 	;;
-# "l")
-# 	cmd="$cmd log ${inputs}"
-# 	;;
-# "m")
-# 	cmd="$cmd merge ${inputs}"
-# 	;;
-# "ph")
-# 	cmd="$cmd push ${inputs}"
-# 	;;
-# "pl")
-# 	cmd="$cmd pull ${inputs}"
-# 	;;
-# "plr")
-# 	cmd="$cmd pull --rebase ${inputs}"
-# 	;;
-# "r")
-# 	cmd="$cmd remote ${inputs}"
-# 	;;
-# "ra")
-# 	cmd="$cmd remote add ${inputs}"
-# 	;;
-# "rma")
-# 	cmd="$cmd rm -r --cached . ${inputs}"
-# 	;;
-# "rs")
-# 	cmd="$cmd remote show ${inputs}"
-# 	;;
-# "s")
-# 	cmd="$cmd status ${inputs}"
-# 	;;
-# "sh")
-# 	cmd="$cmd stash ${inputs}"
-# 	;;
-# "shc")
-# 	cmd="$cmd stash clear ${inputs}"
-# 	;;
-# "t")
-# 	cmd="$cmd ls-tree -r --name-only ${inputs}"
-# 	;;
-# *)
-# 	# to run anything not just the shortcuts
-# 	# cmd="$cmd ${allInputs}"
-# 	echo "Not a recognized command: ${shortcut}"
-# 	exit 1
-# 	;;
+	# default behavior of the package, possibly the help
+	git([''])
