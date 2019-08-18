@@ -16,10 +16,6 @@ export ANDROID_HOME="${HOME}/Projects/android/sdk"
 export ANDROID_AVD_HOME="${HOME}/.android/avd"
 
 #________________________________________________________________________________
-#__________Local (not trackable)
-source ${HOME}/.locrc
-
-#________________________________________________________________________________
 #__________Aliases
 function dn() {
     new_directory="$*";
@@ -39,7 +35,6 @@ alias fetch='neofetch'
 alias chrome='/usr/bin/chromium-browser &>/dev/null'
 alias ve='/usr/local/bin/virtualenv'
 
-alias fixBackground='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 alias src="${HOME}/scripts/scripts.py; source ${HOME}/.bashrc"
 alias settings='bash ~/.settings/settings.sh'
 
@@ -58,8 +53,8 @@ alias pin='sudo python3.7 -m pip install'
 alias create='python3.7 -m virtualenv env'
 alias activate='source env/bin/activate'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/pablo/.sdkman"
-[[ -s "/home/pablo/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pablo/.sdkman/bin/sdkman-init.sh"
+#________________________________________________________________________________
+#__________Local (not trackable)
+source ${HOME}/.locrc
 
 echo 'Sourced ~/.bashrc'

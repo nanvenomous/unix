@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from os import system
 from syspy import parseOptions, fail, succeed, getInputs, Shell, error
 sh = Shell()
 
@@ -77,14 +76,13 @@ for opt, arg in options:
 		succeed()
 	elif opt in ('-v', '--verbose'):
 		verbose = True
+		sh.verbose = True
 	elif opt == '--version':
 		print(version)
 		succeed()
 
 def git(command):
-	command = ' '.join([git_command] + command)
-	if verbose: print(command)
-	system(command)
+	sh.command([git_command] + command)
 
 def add_all_configuration_files():
 	files = [
