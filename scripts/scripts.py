@@ -17,6 +17,7 @@ executables_to_clean = list(executables - sources)
 for exe in executables_to_clean:
 	sh.rm(binDir.to(exe))
 
+# helper
 def get_correct_source(pkg):
 	pkgDir = Directory(srcDir.to(pkg))
 	srcFile = pkg + '.sh'

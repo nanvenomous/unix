@@ -20,10 +20,6 @@ export ANDROID_AVD_HOME="${HOME}/.android/avd"
 source ${HOME}/.locrc
 
 #________________________________________________________________________________
-#__________File
-alias apps='cd /usr/share/applications'
-
-#________________________________________________________________________________
 #__________Aliases
 function dn() {
     new_directory="$*";
@@ -36,8 +32,6 @@ alias up="cd ..; t"
 alias c='clear'
 alias linuxDrive='sudo mkfs.ext4'
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
-alias get='sudo apt-get install'
-alias purge='sudo apt-get purge'
 alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
 alias u-grub='sudo update-grub'
 alias weather='sudo curl wttr.in'
@@ -50,16 +44,11 @@ alias src="${HOME}/scripts/scripts.py; source ${HOME}/.bashrc"
 alias settings='bash ~/.settings/settings.sh'
 
 #________________________________________________________________________________
-#__________Scripts
-alias sl='sudo bash ~/Scripts/symlinks/sl.sh'
-
-#________________________________________________________________________________
 #__________bin
 export PATH="${HOME}/scripts/bin:${PATH}"
 
 #________________________________________________________________________________
 #__________Open
-# alias pdf="bash ~/Scripts/pdf.sh"
 alias image='/usr/bin/xdg-open'
 
 #________________________________________________________________________________
