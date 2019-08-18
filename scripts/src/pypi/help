@@ -3,6 +3,7 @@ options:
 
 commands:
 	build: build a pypi project to python package format
+	clean: remove all unecessary files
 	init: initialize a project directory
 	update: pulls new dependencies for pypi on this machine
 	upload: update version of package on remote pypi

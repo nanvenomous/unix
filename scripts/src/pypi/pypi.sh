@@ -28,6 +28,11 @@ case "$1" in
 	"build")
 		python3.7 setup.py sdist bdist_wheel
 		;;
+	"clean")
+		rm -r build/*
+		rm -r dist/*
+		rm -r syspy.egg-info/
+		;;
 	"init")
 		cp "${comp}/license" "${PWD}"
 		cp "${comp}/setup.py" "${PWD}"

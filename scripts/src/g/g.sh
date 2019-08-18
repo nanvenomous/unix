@@ -39,6 +39,7 @@ fi
 
 
 # gather inputs
+allInputs="${@}"
 shortcut="${1}"
 inputs="${@:2}"
 
@@ -124,10 +125,10 @@ case "$shortcut" in
 		;;
 	*)
 		# to run anything not just the shortcuts
-		# cmd="$cmd ${allInputs}"
-		echo "Not a recognized command: ${shortcut}"
-		exit 1
+		cmd="$cmd ${allInputs}"
+		# echo "Not a recognized command: ${shortcut}"
 		;;
 esac
 
+echo ${cmd}
 command ${cmd}
