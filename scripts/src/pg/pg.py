@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 
 from os import system
-from syspy import getInputs, parseOptions, succeed, error
-
-import sys
-from syspy import parseOptions, fail, succeed, getInputs, Shell
+from syspy import parseOptions, fail, succeed, getInputs, Shell, error
 sh = Shell()
 
 version = 'Version: 1.0'
@@ -33,12 +30,18 @@ shortcuts = {
 	't': ['ls-tree', '-r', '--name-only'],
 	}
 
-help = '''options
-	-c: system configuration tracker
-	-h, --help: help menu
-	--version: version
-commands
-'''
+help_msg = '''options
+	-c :\t\tsystem configuration tracker
+	-h, --help :\thelp menu
+	-v, --verbose :\tlist the actual command being run
+	--version :\tversion
+
+command shortcuts'''
+
+def help():
+	print(help_msg)
+	for sh in shortcuts:
+		print('\t', sh, ':\t', ' '.join(shortcuts[sh]))
 
 configuration = False
 verbose = False
@@ -70,7 +73,7 @@ for opt, arg in options:
 		cmd="/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}"
 		git_command = configuration_git_command
 	elif opt in ('-h', '--help'):
-		print(help)
+		help()
 		succeed()
 	elif opt in ('-v', '--verbose'):
 		verbose = True
@@ -112,6 +115,6 @@ if (command):
 	else:
 		git(shortcuts.get(command, [command]) + remainder)
 else:
-	pass
-	# default behavior of the package, possibly the help
+	# default behavior of the package
+	help()
 	# git(['']) # calls the default git help
