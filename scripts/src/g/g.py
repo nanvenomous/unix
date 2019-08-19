@@ -30,9 +30,9 @@ shortcuts = {
 	}
 
 help_msg = '''options
-	-u :\t\tunix configuration tracker
 	-h, --help :\thelp menu
-	-s :\t\tsystem/platform specific tracker
+	-p :\t\tplatform specific tracker (linux, osx)
+	-u :\t\tunix configuration tracker
 	-v, --verbose :\tlist the actual command being run
 	--version :\tversion
 
@@ -44,7 +44,7 @@ def help():
 		print('\t', sh, ':\t', ' '.join(shortcuts[sh]))
 
 unix = False
-system = False
+platform = False
 verbose = False
 
 git_command = '/usr/bin/git'
@@ -56,11 +56,11 @@ command_with_tree = [
 unix_git_command = ''.join(
 	command_with_tree + [' --git-dir=', sh.home, '/.cfg']
 	)
-system_git_command = ''.join(
+platform_git_command = ''.join(
 	command_with_tree + [' --git-dir=', sh.home, '/.sys']
 	)
 
-shortOpts = 'hsuv'
+shortOpts = 'hpuv'
 longOpts = [
 	'help',
 	'verbose',
@@ -75,9 +75,9 @@ for opt, arg in options:
 	if opt in ('-h', '--help'):
 		help()
 		succeed()
-	elif opt in ('-s'):
-		system = True
-		git_command = system_git_command
+	elif opt in ('-p'):
+		platform = True
+		git_command = platform_git_command
 	elif opt in ('-u'):
 		unix = True
 		git_command = unix_git_command
@@ -107,7 +107,7 @@ def add_all_unix_files():
 		]
 	add_all(files)
 
-def add_all_system_files():
+def add_all_platform_files():
 	files = [
 		'/.vimrc',
 		'/.profile',
@@ -124,7 +124,7 @@ def add_all_system_files():
 if (command):
 	if command == 'aa':
 		if unix: add_all_unix_files()
-		elif system: add_all_system_files()
+		elif platform: add_all_platform_files()
 		else: git(['add .'])
 	else:
 		git(shortcuts.get(command, [command]) + remainder)
