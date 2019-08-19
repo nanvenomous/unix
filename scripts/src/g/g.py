@@ -30,8 +30,9 @@ shortcuts = {
 	}
 
 help_msg = '''options
-	-c :\t\tsystem configuration tracker
+	-u :\t\tunix configuration tracker
 	-h, --help :\thelp menu
+	-s :\t\tsystem/platform specific tracker
 	-v, --verbose :\tlist the actual command being run
 	--version :\tversion
 
@@ -42,7 +43,7 @@ def help():
 	for sh in shortcuts:
 		print('\t', sh, ':\t', ' '.join(shortcuts[sh]))
 
-configuration = False
+unix = False
 system = False
 verbose = False
 
@@ -52,14 +53,14 @@ command_with_tree = [
 	' --work-tree=',
 	sh.home
 	]
-configuration_git_command = ''.join(
+unix_git_command = ''.join(
 	command_with_tree + [' --git-dir=', sh.home, '/.cfg']
 	)
 system_git_command = ''.join(
 	command_with_tree + [' --git-dir=', sh.home, '/.sys']
 	)
 
-shortOpts = 'chsv'
+shortOpts = 'hsuv'
 longOpts = [
 	'help',
 	'verbose',
@@ -71,15 +72,15 @@ options, command, remainder = parseOptions(getInputs(), shortOpts, longOpts)
 
 # deals with options accordingly
 for opt, arg in options:
-	if opt in ('-c'):
-		configuration = True
-		git_command = configuration_git_command
-	elif opt in ('-h', '--help'):
+	if opt in ('-h', '--help'):
 		help()
 		succeed()
-	if opt in ('-s'):
+	elif opt in ('-s'):
 		system = True
 		git_command = system_git_command
+	elif opt in ('-u'):
+		unix = True
+		git_command = unix_git_command
 	elif opt in ('-v', '--verbose'):
 		verbose = True
 		sh.verbose = True
@@ -95,7 +96,7 @@ def add_all(files):
 	for file in files:
 		git(['add', file])
 
-def add_all_configuration_files():
+def add_all_unix_files():
 	files = [
 		'/.bashrc',
 		'/.gitignore',
@@ -122,7 +123,7 @@ def add_all_system_files():
 
 if (command):
 	if command == 'aa':
-		if configuration: add_all_configuration_files()
+		if unix: add_all_unix_files()
 		elif system: add_all_system_files()
 		else: git(['add .'])
 	else:
