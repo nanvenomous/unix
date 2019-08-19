@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from syspy import parseOptions, fail, succeed, getInputs, Shell, error
+from syspy import parseOptions, fail, succeed, getInputs, Shell, error, os
 sh = Shell()
 
 version = 'Version: 1.0'
@@ -108,17 +108,28 @@ def add_all_unix_files():
 	add_all(files)
 
 def add_all_platform_files():
-	files = [
-		'/.vimrc',
-		'/.profile',
-		'/.xinitrc',
-		'/.inputrc',
-		'/.local/share/konsole/*',
-		'/.config/konsolerc',
-		'/.config/Code/User/keybindings.json',
-		'/.config/Code/User/settings.json',
-		'/.config/openbox/lxde-rc.xml',
+	platform = os()
+	if platform == 'linux':
+		files = [
+			'/.vimrc',
+			'/.profile',
+			'/.xinitrc',
+			'/.inputrc',
+			'/.local/share/konsole/*',
+			'/.config/konsolerc',
+			'/.config/Code/User/keybindings.json',
+			'/.config/Code/User/settings.json',
+			'/.config/openbox/lxde-rc.xml',
+			]
+	elif platform =='mac':
+		files = [
+			'/.vimrc',
+			'/.profile',
+			'/Library/Application\ Support/Code/User/keybindings.json',
+			'/Library/Application\ Support/Code/User/settings.json',
 		]
+	else:
+		error('unrecognized platform')
 	add_all(files)
 
 if (command):
