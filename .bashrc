@@ -26,15 +26,6 @@ function dn() {
 }
 alias up="cd ..; t"
 alias c='clear'
-alias linuxDrive='sudo mkfs.ext4'
-alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:|percentage:|time to empty:"'
-alias upgrade='sudo apt-get update; sudo apt-get upgrade; sudo apt update; sudo apt upgrade'
-alias u-grub='sudo update-grub'
-alias weather='sudo curl wttr.in'
-alias fetch='neofetch'
-alias chrome='/usr/bin/chromium-browser &>/dev/null'
-alias ve='/usr/local/bin/virtualenv'
-
 alias src="${HOME}/scripts/scripts.py; source ${HOME}/.bashrc"
 alias settings='bash ~/.settings/settings.sh'
 
@@ -43,14 +34,10 @@ alias settings='bash ~/.settings/settings.sh'
 export PATH="${HOME}/scripts/bin:${PATH}"
 
 #________________________________________________________________________________
-#__________Open
-alias image='/usr/bin/xdg-open'
-
-#________________________________________________________________________________
 #__________Python Environment
-alias p='python3.7'
-alias pin='sudo python3.7 -m pip install'
-alias create='python3.7 -m virtualenv env'
+alias ve='/usr/local/bin/virtualenv'
+alias p='python3'
+alias create='python3 -m virtualenv env'
 alias activate='source env/bin/activate'
 
 #________________________________________________________________________________

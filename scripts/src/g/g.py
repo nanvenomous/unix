@@ -43,19 +43,23 @@ def help():
 		print('\t', sh, ':\t', ' '.join(shortcuts[sh]))
 
 configuration = False
+system = False
 verbose = False
 
 git_command = '/usr/bin/git'
-configuration_git_command = ''.join([
+command_with_tree = [
 	git_command,
-	' --git-dir=',
-	sh.home,
-	'/.cfg',
 	' --work-tree=',
 	sh.home
-	])
+	]
+configuration_git_command = ''.join(
+	command_with_tree + [' --git-dir=', sh.home, '/.cfg']
+	)
+system_git_command = ''.join(
+	command_with_tree + [' --git-dir=', sh.home, '/.sys']
+	)
 
-shortOpts = 'chv'
+shortOpts = 'chsv'
 longOpts = [
 	'help',
 	'verbose',
@@ -69,11 +73,13 @@ options, command, remainder = parseOptions(getInputs(), shortOpts, longOpts)
 for opt, arg in options:
 	if opt in ('-c'):
 		configuration = True
-		cmd="/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}"
 		git_command = configuration_git_command
 	elif opt in ('-h', '--help'):
 		help()
 		succeed()
+	if opt in ('-s'):
+		system = True
+		git_command = system_git_command
 	elif opt in ('-v', '--verbose'):
 		verbose = True
 		sh.verbose = True
@@ -84,31 +90,40 @@ for opt, arg in options:
 def git(command):
 	sh.command([git_command] + command)
 
+def add_all(files):
+	files = [sh.home + f for f in files]
+	for file in files:
+		git(['add', file])
+
 def add_all_configuration_files():
 	files = [
 		'/.bashrc',
-		'/.vimrc',
-		'/.profile',
-		'/.xinitrc',
-		'/.inputrc',
 		'/.gitignore',
 		'/readme.md',
 		'/.settings/*',
 		'/scripts/src/*',
 		'/scripts/scripts.py',
+		]
+	add_all(files)
+
+def add_all_system_files():
+	files = [
+		'/.vimrc',
+		'/.profile',
+		'/.xinitrc',
+		'/.inputrc',
 		'/.local/share/konsole/*',
 		'/.config/konsolerc',
 		'/.config/Code/User/keybindings.json',
 		'/.config/Code/User/settings.json',
-		'/.config/openbox/lxde-rc.xml'
+		'/.config/openbox/lxde-rc.xml',
 		]
-	files = [sh.home + f for f in files]
-	for file in files:
-		git(['add', file])
+	add_all(files)
 
 if (command):
 	if command == 'aa':
 		if configuration: add_all_configuration_files()
+		elif system: add_all_system_files()
 		else: git(['add .'])
 	else:
 		git(shortcuts.get(command, [command]) + remainder)
