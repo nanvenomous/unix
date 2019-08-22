@@ -44,5 +44,5 @@ alias activate='source env/bin/activate'
 #________________________________________________________________________________
 #__________Local (not trackable)
 echo '. ~/.bashrc'
-source ${HOME}/.profile
+source ${HOME}/.platform.sh
 source ${HOME}/.locrc.sh

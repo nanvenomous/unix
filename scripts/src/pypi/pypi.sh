@@ -24,7 +24,8 @@ if [[ $# -eq 0 ]] ; then
 	exit 0
 fi
 
-case "$1" in
+cmd="${1}"; shift # remove package name from the inputs
+case "${cmd}" in
 	"build")
 		python3.7 setup.py sdist bdist_wheel
 		;;
@@ -37,12 +38,15 @@ case "$1" in
 		cp "${comp}/license" "${PWD}"
 		cp "${comp}/setup.py" "${PWD}"
 		;;
-	"update")
+	"pull")
+		pip3 install --upgrade -i https://test.pypi.org/simple/ "${@}"
+		;;
+	"push")
+		python3.7 -m twine upload -u 'mrgarelli' -p "${PYPI_PASSWORD}" --repository-url https://test.pypi.org/legacy/ dist/*
+		;;
+	"setup")
 		python3.7 -m pip install --user --upgrade setuptools wheel
 		python3.7 -m pip install --user --upgrade twine
-		;;
-	"upload")
-		python3.7 -m twine upload --skip-existing -u 'mrgarelli' -p "${PYPI_PASSWORD}" --repository-url https://test.pypi.org/legacy/ dist/*
 		;;
 	*)
 		echo "Not a recognized command: ${cmd}"
