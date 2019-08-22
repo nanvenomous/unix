@@ -4,6 +4,14 @@ hr="$( dirname "$( realpath "${0}" )" )"
 comp="${hr}/components"
 help="${hr}/help"
 
+pwd="${PYPI_PASSWORD}"
+
+check_file="${PWD}/setup.py"
+if [ ! -f "${check_file}" ]; then
+	echo 'Script must be run in a pypi package directory'
+	exit 1
+fi
+
 while getopts ":h" opt; do
 	case "${opt}" in
 		h ) 
@@ -24,29 +32,68 @@ if [[ $# -eq 0 ]] ; then
 	exit 0
 fi
 
+function check_root() {
+	if [[ $EUID -ne 0 ]]; then
+		echo "This script must be run as root" 
+		exit 1
+	fi
+}
+
+function build() {
+	python3.7 setup.py sdist bdist_wheel
+}
+
+function clean() {
+	rm -r build/*
+	rm -r dist/*
+	rm -r syspy.egg-info/
+}
+
+function init() {
+	cp "${comp}/license" "${PWD}"
+	cp "${comp}/setup.py" "${PWD}"
+}
+
+function pull() {
+	sudo -E pip3 install --upgrade -i https://test.pypi.org/simple/ "${@}"
+}
+
+function push() {
+	python3.7 -m twine upload -u 'mrgarelli' -p "${pwd}" --repository-url https://test.pypi.org/legacy/ dist/*
+}
+
+function setup() {
+	python3.7 -m pip install --user --upgrade setuptools wheel
+	python3.7 -m pip install --user --upgrade twine
+}
+
 cmd="${1}"; shift # remove package name from the inputs
 case "${cmd}" in
+	"all")
+		read -p "Press enter to change version of the package."
+		vim "${check_file}"
+		clean
+		build
+		push
+		pull "${@}"
+		;;
 	"build")
-		python3.7 setup.py sdist bdist_wheel
+		build
 		;;
 	"clean")
-		rm -r build/*
-		rm -r dist/*
-		rm -r syspy.egg-info/
+		clean
 		;;
 	"init")
-		cp "${comp}/license" "${PWD}"
-		cp "${comp}/setup.py" "${PWD}"
+		init
 		;;
 	"pull")
-		pip3 install --upgrade -i https://test.pypi.org/simple/ "${@}"
+		pull "${@}"
 		;;
 	"push")
-		python3.7 -m twine upload -u 'mrgarelli' -p "${PYPI_PASSWORD}" --repository-url https://test.pypi.org/legacy/ dist/*
+		push
 		;;
 	"setup")
-		python3.7 -m pip install --user --upgrade setuptools wheel
-		python3.7 -m pip install --user --upgrade twine
+		setup
 		;;
 	*)
 		echo "Not a recognized command: ${cmd}"
