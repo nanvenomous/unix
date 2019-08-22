@@ -7,7 +7,7 @@ v='/usr/bin/vim'
 # Configuration Files
 conf="${HOME}/.bashrc"
 profile="${HOME}/.profile"
-locConf="${HOME}/.locrc"
+locConf="${HOME}/.locrc.sh"
 
 # Variables
 help=$(cat <<-END
@@ -15,7 +15,7 @@ Wrapper for bash command
 
 options
 \t-e: edit .bashrc
-\t-l: edit .locrc
+\t-l: edit .locrc.sh
 \t-p: edit .profile
 \t-h: help menu
 \t-s: exec bash

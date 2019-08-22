@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tree='/usr/bin/tree'
+tree='tree'
 ignore='__pycache__|*.pyc|node_modules'
 
 clear

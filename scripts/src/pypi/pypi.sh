@@ -42,7 +42,7 @@ case "$1" in
 		python3.7 -m pip install --user --upgrade twine
 		;;
 	"upload")
-		python3.7 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+		python3.7 -m twine upload --skip-existing -u 'mrgarelli' -p "${PYPI_PASSWORD}" --repository-url https://test.pypi.org/legacy/ dist/*
 		;;
 	*)
 		echo "Not a recognized command: ${cmd}"
