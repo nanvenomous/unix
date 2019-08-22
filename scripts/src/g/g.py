@@ -54,10 +54,10 @@ command_with_tree = [
 	sh.home
 	]
 unix_git_command = ''.join(
-	command_with_tree + [' --git-dir=', sh.home, '/.cfg']
+	command_with_tree + [' --git-dir=', sh.home, '/.unx']
 	)
 platform_git_command = ''.join(
-	command_with_tree + [' --git-dir=', sh.home, '/.sys']
+	command_with_tree + [' --git-dir=', sh.home, '/.pltfrm']
 	)
 
 shortOpts = 'hpuv'
@@ -104,6 +104,7 @@ def add_all_unix_files():
 		'/.settings/*',
 		'/scripts/src/*',
 		'/scripts/scripts.py',
+		'/Local/scripts.py',
 		]
 	add_all(files)
 

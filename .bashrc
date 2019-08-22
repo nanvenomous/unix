@@ -1,4 +1,4 @@
-PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
+# PROMPT_COMMAND="history -a; history -c" # add to ~/.bash_history after each command
 export EDITOR='vim'
 
 source ${HOME}/.settings/colorSettings.sh
@@ -26,12 +26,13 @@ function dn() {
 }
 alias up="cd ..; t"
 alias c='clear'
-alias src="${HOME}/scripts/scripts.py; source ${HOME}/.bashrc"
+alias src="source ${HOME}/.bashrc; ${HOME}/scripts/scripts.py; ${HOME}/Local/scripts.py"
 alias settings='bash ~/.settings/settings.sh'
 
 #________________________________________________________________________________
 #__________bin
 export PATH="${HOME}/scripts/bin:${PATH}"
+export PATH="${HOME}/Local/bin:${PATH}" # not tracked
 
 #________________________________________________________________________________
 #__________Python Environment
@@ -42,6 +43,6 @@ alias activate='source env/bin/activate'
 
 #________________________________________________________________________________
 #__________Local (not trackable)
-echo 'Sourced ~/.bashrc'
+echo '. ~/.bashrc'
 source ${HOME}/.profile
-source ${HOME}/.locrc
+source ${HOME}/.locrc.sh

@@ -3,8 +3,9 @@ hr="$( dirname "$( realpath "${0}" )" )"
 
 chrome='/usr/bin/chromium-browser'
 help="${hr}/help"
-configurations="${hr}/configurations.sh"
-installs="${hr}/installs.sh"
+src="${hr}/src"
+configurations="${src}/configurations.sh"
+installs="${src}/installs.sh"
 
 shortcuts="${hr}/shortcuts.md"
 readme="${hr}/readme.md"
