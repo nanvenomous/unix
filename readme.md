@@ -1,12 +1,8 @@
-### Setup Unix Configuration
-> cd "${HOME}"
-> alias cfg='/usr/bin/git --git-dir=$HOME/.unx/ --work-tree=$HOME'
-> git clone --bare 'https://github.com/mrgarelli/unix.git' $HOME/.unx
-> cfg checkout
-* may need to fix conflicts by moving files, then re-run previous command
-> cfg config --local status.showUntrackedFiles no
+### System Git Configuration
 
-* [Full Guide](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
+* [Pull all unix config files](.rdm/unixConfig.md)
+
+* [In-depth Guide to tracking dotfiles](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
 
 * enter the following into terminal to run setup and learn more about the system
 > settings

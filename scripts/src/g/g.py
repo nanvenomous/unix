@@ -101,6 +101,7 @@ def add_all_unix_files():
 		'/.bashrc',
 		'/.gitignore',
 		'/readme.md',
+		'/.rdm',
 		'/.settings/*',
 		'/scripts/src/*',
 		'/scripts/scripts.py',
