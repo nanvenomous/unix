@@ -100,7 +100,7 @@ def add_all_unix_files():
 	files = [
 		'/.bashrc',
 		'/.gitignore',
-		'/readme.md',
+		'/readme',
 		'/.settings/*',
 		'/scripts/src/*',
 		'/scripts/scripts.py',

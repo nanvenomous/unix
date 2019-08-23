@@ -6,6 +6,7 @@ help="${hr}/help"
 src="${hr}/src"
 configurations="${src}/configurations.sh"
 installs="${src}/installs.sh"
+platform_config="${src}/platform_git_config.sh"
 
 shortcuts="${hr}/shortcuts.md"
 readme="${hr}/readme.md"
@@ -54,6 +55,9 @@ case "${cmd}" in
 		;;
 	i )
 		bash "${installations}"
+		;;
+	p )
+		bash "${platform_config}"
 		;;
 	s )
 		("${operation}" "${shortcuts}")

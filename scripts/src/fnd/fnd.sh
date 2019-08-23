@@ -4,7 +4,7 @@ hr="$( dirname "$( realpath "${0}" )" )"
 help="${hr}/help"
 
 
-while getopts ":hiw" opt; do
+while getopts ":hiow" opt; do
 	case ${opt} in
 		h )
 			cat "${help}"
@@ -14,6 +14,11 @@ while getopts ":hiw" opt; do
 			# finds files with the argument inside the file
 			# appears to be case insentive
 			find . -type f -print | xargs grep "${@}"
+			exit 0;
+			;;
+		o )
+			# finds files/dirs one level deep
+			t | grep -i "${@}"
 			exit 0;
 			;;
 		w )

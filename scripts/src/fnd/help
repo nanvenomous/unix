@@ -3,6 +3,7 @@ File Search Wrapper:
 options
 	-h: help menu
 	-i: finds files with the argument inside the file [case insentive]
+	-o: finds files in the current directory
 	-w: returns all folders (containing filename containing the argument)
 
 without options:
