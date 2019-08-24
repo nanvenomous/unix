@@ -2,6 +2,10 @@
 
 * [Pull all unix config files](.rdm/unixConfig.md)
 
+* [Pull all osx config files](.rdm/osxConfig.md)
+
+* [Pull all linux config files](.rdm/linuxConfig.md)
+
 * [In-depth Guide to tracking dotfiles](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
 
 * enter the following into terminal to run setup and learn more about the system

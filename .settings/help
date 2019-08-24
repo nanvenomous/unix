@@ -6,5 +6,4 @@ arguments
 	c: update all system configurations
 	d: view/edit documentation
 	i: run all system installations
-	p: install platform configuration files
 	s: view/edit shortcuts
