@@ -17,12 +17,11 @@ def synopsis():
 
 help_msg = '''options
 	-h, --help :\thelp menu
-	-s, --synopsis :\tpackage description
-	-v, --verbose :\tlist the actual command being run
+	--synopsis :\tpackage description
+	-v, --verbose :\ttalk to me
 	--version :\tversion
 commands
-	c: gather relevant files, compile source, create ./execute
-'''
+	c: gather relevant files, compile source, create ./execute'''
 def help():
 	print(help_msg)
 
@@ -30,7 +29,7 @@ unix = False
 platform = False
 verbose = False
 
-shortOpts = 'hsv'
+shortOpts = 'hv'
 longOpts = [
 	'help',
 	'synopsis',
@@ -44,7 +43,7 @@ options, command, remainder = parseOptions(getInputs(), shortOpts, longOpts)
 # deals with options accordingly
 for opt, arg in options:
 	if opt in ('-h', '--help'): help(); succeed()
-	elif opt in ('-s', '--synopsis'): synopsis(); succeed()
+	elif opt in ('--synopsis'): synopsis(); succeed()
 	elif opt in ('-v', '--verbose'):
 		verbose = True
 		sh.verbose = True
