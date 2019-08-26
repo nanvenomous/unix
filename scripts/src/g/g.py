@@ -43,7 +43,7 @@ help_msg = '''options
 	-p :\t\tplatform specific tracker (linux, osx)
 	--synopsis :\tpackage description
 	-u :\t\tunix configuration tracker
-	-v, --verbose :\tlist the actual command being run
+	-v, --verbose :\ttalk to me
 	--version :\tversion
 
 custom commands

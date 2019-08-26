@@ -50,9 +50,8 @@ for opt, arg in options:
 	elif opt == '--version': print(version); succeed()
 
 def compile():
-	source_files = sh.find('*.c')
-	header_files = sh.find('*.h')
-	header_dirs = list(set([sh.dirname(p) for p in header_files]))
+	source_files = sh.find.recurse('*.c')
+	header_dirs = sh.find.directories_with('*.h')
 	header_dirs_with_options = \
 		[y for x in zip(['-I'] * len(header_dirs), header_dirs) for y in x]
 
