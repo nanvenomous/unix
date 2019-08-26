@@ -1,6 +1,24 @@
 #!/bin/bash
 hr="$( dirname "$( realpath "${0}" )" )"
 
+RED='\033[0;31m'
+ORANGE='\033[0;33m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+function succeed() {
+	echo -e "${CYAN}[LIT] ${NC}${@}"
+}
+function warn() {
+	echo -e "${ORANGE}[WARNING] ${NC}${@}"
+}
+function wait() {
+	read -p $'\e[34m[PRESS ENTER]\e[0m to continue.'
+}
+function error() {
+	echo -e "${RED}[ERROR] ${NC}${@}"
+	exit 1
+}
+
 comp="${hr}/components"
 help="${hr}/help"
 
@@ -11,8 +29,7 @@ while getopts ":h" opt; do
 			exit 0
 			;;
 		\? )
-			echo "Invalid Option: -${OPTARG}"
-			exit 1
+			error "Invalid Option: -${OPTARG}"
 			;;
 	esac
 done
@@ -28,14 +45,15 @@ fi
 check_file="${PWD}/setup.py"
 function check_directory() {
 	if [ ! -f "${check_file}" ]; then
-		echo 'Script must be run in a pypi package directory'
-		exit 1
+		error 'script must be run in a pypi package directory'
 	fi
 }
 
 function build() {
 	check_directory
 	python3.7 setup.py sdist bdist_wheel
+	succeed 'built successfully'
+	echo
 }
 
 function clean() {
@@ -43,30 +61,39 @@ function clean() {
 	rm -r build/*
 	rm -r dist/*
 	rm -r syspy.egg-info/
+	succeed 'cleaned successfully'
+	echo
 }
 
 function init() {
 	cp "${comp}/license" "${PWD}"
 	cp "${comp}/setup.py" "${PWD}"
+	succeed 'moved license and generic setup file'
+	echo
 }
 
 function pull() {
-	echo '[WARNING] If your system claims it is up to date, check the version #.'
+	warn 'we will now attempt to update your package locally.'
+	echo 'If your system claims it is up to date, check the version #.'
 	echo 'Sometimes it takes time for the pypi index to update after a push.'
 	echo 'Try again after a few seconds: pypi pull <packageName>'
+	wait
 	echo
 	sudo -EH pip3 install --upgrade -i https://test.pypi.org/simple/ "${@}"
 	echo
-	echo 'Congratulations! you deployed a python package.'
+	succeed 'connection to PYPI test successful. see output above for results of upgrade'
 	echo 'Push your local git repo to keep everything up to date.'
+	echo
 }
 
 function push() {
 	if [ -z "${PYPI_PASSWORD}" ] || [ -z "${PYPI_USERNAME}" ]; then
-		echo "[ERROR] must export environment variables for PYPI_USERNAME & PYPI_PASSWORD"
-		exit 1;
+		error 'must export environment variables for PYPI_USERNAME & PYPI_PASSWORD'
 	fi
 	python3.7 -m twine upload -u "${PYPI_USERNAME}" -p "${PYPI_PASSWORD}" --repository-url https://test.pypi.org/legacy/ dist/*
+	echo
+	succeed 'connection to PYPI test successful. see output above for results of deployment'
+	echo
 }
 
 function setup() {
@@ -77,19 +104,17 @@ function setup() {
 cmd="${1}"; shift # remove package name from the inputs
 case "${cmd}" in
 	"all")
+		if [ -z "${@}" ]; then
+			error 'not enough input arguments'
+		fi
 		check_directory
-		read -p "Press enter to change version of the package."
+		echo "Now change the version of the package."
+		wait
+		echo
 		vim "${check_file}"
 		clean
 		build
-		echo
-		echo Cleaned and Built Successfully
-		echo
 		push
-		echo
-		echo Successfully pushed to the python test index
-		echo
-		read -p "Press enter to update your local package. "
 		pull "${@}"
 		;;
 	"build")
@@ -102,6 +127,9 @@ case "${cmd}" in
 		init
 		;;
 	"pull")
+		if [ -z "${@}" ]; then
+			error 'not enough input arguments'
+		fi
 		pull "${@}"
 		;;
 	"push")
@@ -111,8 +139,7 @@ case "${cmd}" in
 		setup
 		;;
 	*)
-		echo "Not a recognized command: ${cmd}"
-		exit 1
+		error "Not a recognized command: ${cmd}"
 		;;
 
 esac

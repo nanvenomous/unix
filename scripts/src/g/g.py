@@ -1,13 +1,22 @@
 #!/usr/bin/env python3
 
-from syspy import parseOptions, fail, succeed, getInputs, Shell, error, os
+from syspy import parseOptions, fail, succeed, getInputs, Shell, error
 sh = Shell()
 
 version = 'Version: 1.0'
 
+synopsis_msg = '''~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A python git wrapper
+On one hand this is a collection of easily accessible git shortcuts
+In addition it is a clever way to track files around your system
+'''
+def synopsis():
+	print(synopsis_msg)
+
 shortcuts = {
 	'a': ['add'],
-	'aa': ['add', '.'],
 	'b': ['branch'],
 	'c': ['commit'],
 	'ca': ['commit', '--amend'],
@@ -32,9 +41,13 @@ shortcuts = {
 help_msg = '''options
 	-h, --help :\thelp menu
 	-p :\t\tplatform specific tracker (linux, osx)
+	--synopsis :\tpackage description
 	-u :\t\tunix configuration tracker
 	-v, --verbose :\tlist the actual command being run
 	--version :\tversion
+
+custom commands
+	aa: adds all files, same as "add ." in normal repos, custom for -u and -p
 
 command shortcuts'''
 
@@ -63,6 +76,7 @@ platform_git_command = ''.join(
 shortOpts = 'hpuv'
 longOpts = [
 	'help',
+	'synopsis',
 	'verbose',
 	'version',
 	]
@@ -72,24 +86,20 @@ options, command, remainder = parseOptions(getInputs(), shortOpts, longOpts)
 
 # deals with options accordingly
 for opt, arg in options:
-	if opt in ('-h', '--help'):
-		help()
-		succeed()
+	if opt in ('-h', '--help'): help(); succeed()
 	elif opt in ('-p'):
 		platform = True
 		git_command = platform_git_command
+	elif opt in ('--synopsis'): synopsis(); succeed()
 	elif opt in ('-u'):
 		unix = True
 		git_command = unix_git_command
 	elif opt in ('-v', '--verbose'):
 		verbose = True
 		sh.verbose = True
-	elif opt == '--version':
-		print(version)
-		succeed()
+	elif opt == '--version': print(version); succeed()
 
-def git(command):
-	sh.command([git_command] + command)
+def git(command): sh.command([git_command] + command)
 
 def add_all(files):
 	files = [sh.home + f for f in files]
@@ -110,7 +120,7 @@ def add_all_unix_files():
 	add_all(files)
 
 def add_all_platform_files():
-	platform = os()
+	platform = sh.os
 	if platform == 'linux':
 		files = [
 			'/.vimrc',
@@ -143,5 +153,6 @@ if (command):
 		git(shortcuts.get(command, [command]) + remainder)
 else:
 	# default behavior of the package
+	synopsis()
 	help()
 	# git(['']) # calls the default git help
