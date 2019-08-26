@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from syspy import parseOptions, fail, succeed, getInputs, Shell, error
+from syspy import Shell, getInputs, parseOptions, succeed, error
 sh = Shell()
 
 version = 'Version: 1.0'

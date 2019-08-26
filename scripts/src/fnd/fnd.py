@@ -3,30 +3,31 @@
 from syspy import Shell, getInputs, parseOptions, succeed, error
 sh = Shell()
 
-version = 'Version: 0.0.2'
+version = 'Version: 0.0.1'
 
 synopsis_msg = '''~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-C
+fnd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A python package for quickly compiling C/C++ code without a makefile
-Run from top level of project directory
-Useful for rapid prototyping of C/C++ packages
+A python package to explore your filesystem
 '''
 def synopsis():
 	print(synopsis_msg)
 
-help_msg = '''options
+help_msg = '''Usage: fnd (-/--)option command <pattern>
+
+options
 	-h, --help :\thelp menu
 	--synopsis :\tpackage description
 	-v, --verbose :\ttalk to me
 	--version :\tversion
 commands
-	c: gather relevant files, compile source, create ./execute'''
+	d: recursively search for directories containing a file with included pattern
+	h: search current directory one level deep for files with the included pattern
+	i: find files with pattern inside (case sensetive)
+	r: recursively search for files with the included pattern'''
 def help():
 	print(help_msg)
 
-unix = False
-platform = False
 verbose = False
 
 shortOpts = 'hv'
@@ -71,8 +72,18 @@ def compile():
 
 	sh.command(cmd)
 
+# TODO: add command to search for environment variables
 if (command):
-	if command == 'c': compile()
+	if len(remainder) > 1: error('too many input arguments')
+	def list_print(li):
+		for item in li: print('./' + item)
+	try: pattern = remainder[0]
+	except: error('not enough input args, expecting a pattern to search for')
+
+	if command == 'd': list_print(sh.find.directories_with(pattern))
+	elif command == 'h': list_print(sh.find.here(pattern))
+	elif command == 'i': sh.command(['find . -type f -print | xargs grep'] + remainder)
+	elif command == 'r': list_print(sh.find.recurse(pattern))
 	else: error('not a recognized command: ' + command)
 else:
 	# default behavior of the package

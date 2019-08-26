@@ -1,7 +1,8 @@
 # Agenda
 
 ### syspy
-* [ ] increase efficiency of syspy.Shell.find.directories\_with()
+* [ ] Start tackling tech debt in the form of TODO inside syspy
+* [ ] runExample.py is acting as a simple unit test script, look into a proper framework to test syspy
 
 ### dsp
 * [ ] fix calling of submodules to use best practices (source with path input)
