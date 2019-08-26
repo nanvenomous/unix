@@ -2,6 +2,7 @@ options:
 	-h: this help menu
 
 commands:
+	all <package>: edit version, clean, build, push, pull (a typical flow after edits to a python package)
 	build: build a pypi project to python package format
 	clean: remove all unecessary files
 	init: initialize a project directory
