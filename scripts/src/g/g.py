@@ -21,6 +21,7 @@ shortcuts = {
 	'c': ['commit'],
 	'ca': ['commit', '--amend'],
 	'ch': ['checkout'],
+	'cht': ['checkout', '--track'],
 	'i': ['init'],
 	'l': ['log'],
 	'm': ['merge'],
