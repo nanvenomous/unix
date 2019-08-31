@@ -6,7 +6,7 @@ v='/usr/bin/vim'
 
 # Configuration Files
 conf="${HOME}/.bashrc"
-profile="${HOME}/.profile"
+platform="${HOME}/.platform.sh"
 locConf="${HOME}/.locrc.sh"
 
 # Variables
@@ -16,7 +16,7 @@ Wrapper for bash command
 options
 \t-e: edit .bashrc
 \t-l: edit .locrc.sh
-\t-p: edit .profile
+\t-p: edit .platform.sh
 \t-h: help menu
 \t-s: exec bash
 
@@ -36,15 +36,11 @@ while getopts ":elphs" opt; do
 			exit 0
 			;;
 		p )
-			${v} ${profile}
+			${v} ${platform}
 			exit 0
 			;;
 		h ) 
 			echo -e "${help}"
-			exit 0
-			;;
-		s )
-			exec ${bsh}
 			exit 0
 			;;
 		/? )

@@ -16,15 +16,21 @@ def synopsis():
 help_msg = '''Usage: fnd (-/--)option command <pattern>
 
 options
-	-h, --help :\thelp menu
-	--synopsis :\tpackage description
-	-v, --verbose :\ttalk to me
-	--version :\tversion
+	-h, --help\t: help menu
+	--synopsis\t: package description
+	-v, --verbose\t: talk to me
+	--version\t: version
 commands
-	d: recursively search for directories containing a file with included pattern
-	h: search current directory one level deep for files with the included pattern
-	i: find files with pattern inside (case sensetive)
-	r: recursively search for files with the included pattern'''
+	|-----|---------|------|-------|----------|------------------------|
+	| cmd | recurse | from | A = a | pattern  | search for             |
+	|-----|---------|------|-------|----------|------------------------|
+	|  d  | true    | .    | false | is       | directories containing |
+	|  h  | false   | .    | false | is       | inode                  |
+	|  i  | true    | .    | false | is       | text inside file       |
+	|  q  | true    | .    | true  | includes | inode                  |
+	|  r  | true    | .    | false | is       | inode                  |
+	|-----|---------|------|-------|----------|------------------------|'''
+
 def help():
 	print(help_msg)
 
@@ -83,6 +89,7 @@ if (command):
 	if command == 'd': list_print(sh.find.directories_with(pattern))
 	elif command == 'h': list_print(sh.find.here(pattern))
 	elif command == 'i': sh.command(['find . -type f -print | xargs grep'] + remainder)
+	elif command == 'q': sh.command(['find . -type f -iname "*' + remainder[0] + '*"'])
 	elif command == 'r': list_print(sh.find.recurse(pattern))
 	else: error('not a recognized command: ' + command)
 else:
