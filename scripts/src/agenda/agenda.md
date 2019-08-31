@@ -4,6 +4,14 @@
 * [ ] Start tackling tech debt in the form of TODO inside syspy
 * [ ] runExample.py is acting as a simple unit test script, look into a proper framework to test syspy
 
+### g
+* [ ] bug
+	* reproduce: when file is deleted, must run:
+		> g rma
+
+		> g aa
+	* before changes will take effect
+
 ### dsp
 * [ ] fix calling of submodules to use best practices (source with path input)
 * [ ] add proper help
