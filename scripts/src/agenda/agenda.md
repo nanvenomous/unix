@@ -1,5 +1,8 @@
 # Agenda
 
+### chrome
+* [ ] do chrome for mac implementation
+
 ### syspy
 * [ ] Start tackling tech debt in the form of TODO inside syspy
 * [ ] runExample.py is acting as a simple unit test script, look into a proper framework to test syspy

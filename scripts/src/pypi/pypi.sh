@@ -58,10 +58,14 @@ function build() {
 
 function clean() {
 	check_directory
-	rm -r build/*
-	rm -r dist/*
-	rm -r syspy.egg-info/
-	succeed 'cleaned successfully'
+	rm -rf build/*
+	rm -rf dist/*
+	rm -rf syspy.egg-info/
+	if [ $? -eq 0 ]; then
+		succeed 'cleaned successfully'
+	else
+		error 'could not clean the build history'
+	fi
 	echo
 }
 
