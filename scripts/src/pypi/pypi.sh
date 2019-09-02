@@ -61,7 +61,11 @@ function clean() {
 	rm -rf build/*
 	rm -rf dist/*
 	rm -rf syspy.egg-info/
-	succeed 'cleaned successfully'
+	if [ $? -eq 0 ]; then
+		succeed 'cleaned successfully'
+	else
+		error 'could not clean the build history'
+	fi
 	echo
 }
 
