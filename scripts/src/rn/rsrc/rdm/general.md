@@ -11,3 +11,4 @@
 * axios for http requests
 	* axios.get().then() double function
 
+# [lifecycle methods](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)

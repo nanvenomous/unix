@@ -5,7 +5,7 @@ commands
 	b: builds a gradle/android project (to emulator)
 	docs: move all the documentation
 	e: launches Pixel 3 XL emulator
-	lint: setup eslint in a project directory
+	firstInstall: run common project installs
 	r: react-native run-android
 	setup: install everything related to react-native
 	studio: launches the android studio application

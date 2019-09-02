@@ -21,14 +21,17 @@ function documentationMigration() {
 	cp -r "${rdm}" "${PWD}/.rdm"
 }
 
-function linterInstallation() {
+function firstInstallation() {
 	echo 'installing eslint'
 	npm install eslint
-	echo 'installing rallycoding'
-	npm install --save-dev eslint-config-rallycoding
+	echo
+
+	echo 'installing all save dev packages'
+	npm i --save-dev eslint-config-rallycoding jest babel-jest enzyme enzyme-adapter-react-16 enzyme-to-json
+	echo
+
 	echo 'moving .eslintrc'
-	cp "${linter}" "${PWD}/.eslintrc"
-	rm ./.eslintrc.js
+	cp "${linter}" "${PWD}/.eslintrc.js"
 	echo 'NOTE: still need eslint extension in your editor'
 }
 
@@ -90,8 +93,8 @@ case "${cmd}" in
 	e )
 		emulatorLaunch
 		;;
-	lint )
-		linterInstallation
+	firstInstall )
+		firstInstallation
 		;;
 	r )
 		runProject

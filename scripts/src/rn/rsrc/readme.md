@@ -1,10 +1,3 @@
-### Linter
-
-> rct -l
-* runs the [eslint setup](.rdm/lintSetup.md)
-
-install [vscode eslint extension](https://github.com/Microsoft/vscode-eslint)
-
 ### Firebase Setup
 > npm install --save firebase
 
