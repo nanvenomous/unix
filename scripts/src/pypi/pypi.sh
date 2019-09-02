@@ -58,9 +58,9 @@ function build() {
 
 function clean() {
 	check_directory
-	rm -r build/*
-	rm -r dist/*
-	rm -r syspy.egg-info/
+	rm -rf build/*
+	rm -rf dist/*
+	rm -rf syspy.egg-info/
 	succeed 'cleaned successfully'
 	echo
 }
