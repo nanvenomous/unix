@@ -1,6 +1,0 @@
-For general disk operations:
-
-options
-	-h: help menu
-commands
-	l: lists all disks excluding swap

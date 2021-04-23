@@ -1,0 +1,13 @@
+---
+files:
+  - "/.bash_profile"
+  - "/.settings/*"
+  - "/.gitignore"
+  - "/.vimrc"
+  - "/.xinitrc"
+  - "/readme.md"
+  - "/.rdm"
+  - "/.config/g.yaml"
+  - "/.config/bt.yaml"
+  - "/.config/Code - OSS/User/keybindings.json"
+  - "/.config/Code - OSS/User/settings.json"

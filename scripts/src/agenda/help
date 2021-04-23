@@ -1,7 +1,0 @@
-package to manage tasks
-
-options
-	-h: this help menu
-commands
-	e: edit the source agenda markdown in vim
-	v: view the rendered markdown in chromium-browser
