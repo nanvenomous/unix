@@ -9,5 +9,6 @@ files:
   - "/.rdm"
   - "/.config/g.yaml"
   - "/.config/bt.yaml"
+  - "/.config/alacritty/alacritty.yml"
   - "/.config/Code - OSS/User/keybindings.json"
   - "/.config/Code - OSS/User/settings.json"
