@@ -14,5 +14,6 @@ settingsFiles="${HOME}/.settings/*"
 for f in $settingsFiles; do
 	verbose_source "${f}"
 done
+verbose_source "${HOME}/.locrc.sh"
 echo
 neofetch
