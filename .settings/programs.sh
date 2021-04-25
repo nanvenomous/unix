@@ -1,5 +1,5 @@
 alias lg='lazygit'
-alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unxgit"
+alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl wttr.in/?m2'
 alias battery='cat /sys/class/power_supply/BAT0/capacity'
 alias ss='scrot' # scrot -d 20

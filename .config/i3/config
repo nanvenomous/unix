@@ -39,7 +39,7 @@ font pango:monospace 8
 exec --no-startup-id nm-applet
 
 # try to set the background
-exec --no-startup-id feh --bg-scale '/home/naruto/Images/geometric_city_blue_tan.jpg'
+exec --no-startup-id feh --bg-scale '/etc/i3/background'
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
