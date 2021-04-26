@@ -16,8 +16,12 @@ set tabstop=3     " Number of spaces that a <Tab> in the file counts for
 set autoindent
 set smartindent   " Do smart autoindenting when starting a new line
 
-" makes the local clipboard the global clipboard
-set clipboard=unnamedplus
+" makes the local clipboard the global clipboard"
+if has('macunix')
+	set clipboard=unnamed
+else
+	set clipboard=unnamedplus
+endif
 syntax on
 
 " saves clipboard when exiting vim (has xsel as dependency)
