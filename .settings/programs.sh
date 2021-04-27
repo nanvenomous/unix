@@ -2,6 +2,9 @@ alias lg='lazygit'
 alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl wttr.in/?m2'
 alias battery='cat /sys/class/power_supply/BAT0/capacity'
+alias hr="echo ${PWD}"
+alias clk="date +%I:%M"
+alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
 
