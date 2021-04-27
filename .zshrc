@@ -15,6 +15,7 @@ function verbose_source {
 
 verbose_source "${HOME}/.settings/navigation.sh"
 verbose_source "${HOME}/.settings/programs.sh"
+verbose_source "${HOME}/.settings/system-clipboard/zsh-system-clipboard.zsh"
 verbose_source "${HOME}/.locrc.sh"
 
 precmd() { print -rP "%(?.%F{green}V.%F{red}?%?)%f %B%F{cyan}%~%f%b" }

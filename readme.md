@@ -27,6 +27,5 @@
 * [vim-plug](https://aur.archlinux.org/packages/vim-plug/)
 * [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) -> sound
 * [lazy git](https://archlinux.org/packages/community/x86_64/lazygit/)
-* [git-prompt.zsh](https://aur.archlinux.org/packages/git-prompt.zsh/)
-* [zplug](https://github.com/zplug/zplug)
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
+	> cfg submodule add https://github.com/kutsan/zsh-system-clipboard $HOME/.settings/system-clipboard
