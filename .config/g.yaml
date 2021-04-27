@@ -1,6 +1,6 @@
 ---
 files:
-  - "/.bash_profile"
+  - "/.zshrc"
   - "/.settings/*"
   - "/.gitignore"
   - "/.vimrc"

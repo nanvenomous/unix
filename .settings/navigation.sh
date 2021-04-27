@@ -1,4 +1,4 @@
-alias t='clear; tree -L 1 --dirsfirst'
+alias t='clear; tree -C -L 1 --dirsfirst'
 alias r='clear; tree --dirsfirst'
 alias c='clear'
 set -o vi

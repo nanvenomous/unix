@@ -14,3 +14,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export ANDROID_HOME='/opt/android-sdk'
 export ANDROID_AVD_HOME="${HOME}/.android/avd"
+
+export JAVA_HOME='/usr/lib/jvm/default'
