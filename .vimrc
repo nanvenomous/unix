@@ -41,5 +41,6 @@ call plug#begin()
 	Plug 'tpope/vim-commentary'
 	Plug 'Vimjas/vim-python-pep8-indent'
 	Plug 'drewtempelmeyer/palenight.vim'
+	Plug 'fatih/vim-go'
 
 call plug#end()

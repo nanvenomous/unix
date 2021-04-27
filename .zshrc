@@ -12,15 +12,20 @@ function verbose_source {
 	source "${filePath}"
 }
 
-verbose_source '/usr/share/zsh/scripts/git-prompt.zsh'
-# settingsFiles="${HOME}/.settings/*"
-# for f in $settingsFiles; do
-# 	verbose_source "${f}"
-# done
-verbose_source "${HOME}/.settings/programs.sh"
 verbose_source "${HOME}/.settings/navigation.sh"
-verbose_source "${HOME}/.settings/prompt.zsh"
+verbose_source "${HOME}/.settings/programs.sh"
 verbose_source "${HOME}/.locrc.sh"
+
+precmd() { print -rP "%(?.%F{green}V.%F{red}?%?)%f %B%F{cyan}%~%f%b" }
+PROMPT='%# '
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:*' enable git
 
 echo
 neofetch
