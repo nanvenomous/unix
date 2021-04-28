@@ -8,7 +8,16 @@ alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
 
-source /usr/share/nvm/init-nvm.sh
+case "$(uname -s)" in
+	Linux*)
+		source /usr/share/nvm/init-nvm.sh
+		;;
+	Darwin*)
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+		;;
+esac
 
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
