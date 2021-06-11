@@ -21,7 +21,8 @@ case "$(uname -s)" in
 		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-		export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+		# export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+		export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home'
 		export ANDROID_HOME="${HOME}/Library/Android/sdk"
 		export ANDROID_SDK="${ANDROID_HOME}"
 		export ANDROID_SDK_ROOT="${ANDROID_HOME}"
