@@ -1,6 +1,5 @@
 {
 	"window.enableMenuBarMnemonics": false,
-	"workbench.startupEditor": "none",
 	"window.menuBarVisibility": "toggle",
 	"editor.lineNumbers": "relative",
 	"editor.tabSize": 2,
@@ -10,14 +9,12 @@
 		"editor.insertSpaces": true
 	},
 	"vim.useSystemClipboard": true,
-	"workbench.settings.editor": "json",
 	"editor.fontSize": 12,
 	"terminal.integrated.fontSize": 12,
 	"python.linting.pylintEnabled": true,
 	"keyboard.dispatch": "keyCode",
 	"window.restoreWindows": "none",
 	"C_Cpp.updateChannel": "Insiders",
-  "workbench.fontAliasing": "auto",
   "editor.suggestSelection": "first",
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "files.associations": {
@@ -39,5 +36,10 @@
 	"go.toolsManagement.autoUpdate": true,
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.colorTheme": "Material Theme Palenight",
+	"workbench.settings.editor": "json",
+	"workbench.startupEditor": "none",
+  "workbench.fontAliasing": "auto",
+	"workbench.panel.visible": false,
+	"window.zoomLevel": 1,
 	"workbench.activityBar.visible": false,
 }
