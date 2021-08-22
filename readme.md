@@ -29,3 +29,4 @@
 * [lazy git](https://archlinux.org/packages/community/x86_64/lazygit/)
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
 	> cfg submodule add https://github.com/kutsan/zsh-system-clipboard $HOME/.settings/system-clipboard
+* [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)

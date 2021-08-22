@@ -35,7 +35,7 @@
 	"go.formatTool": "goimports",
 	"go.toolsManagement.autoUpdate": true,
 	"workbench.iconTheme": "material-icon-theme",
-	"workbench.colorTheme": "Material Theme Palenight",
+	"workbench.colorTheme": "Tokyo Night",
 	"workbench.settings.editor": "json",
 	"workbench.startupEditor": "none",
   "workbench.fontAliasing": "auto",
