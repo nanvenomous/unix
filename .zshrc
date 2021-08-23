@@ -13,12 +13,11 @@ function verbose_source {
 	source "${filePath}"
 }
 
+neofetch
 verbose_source "${HOME}/.settings/navigation.sh"
-verbose_source "${HOME}/.settings/programs.sh"
+verbose_source "${HOME}/.settings/programs.zsh"
 verbose_source "${HOME}/.settings/prompt.zsh"
 verbose_source "${HOME}/.settings/system-clipboard/zsh-system-clipboard.zsh"
 verbose_source "${HOME}/.locrc.sh"
 
-echo
-neofetch
 
