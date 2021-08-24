@@ -44,8 +44,11 @@ noremap <m-j>  :tabnext<CR>
 noremap <m-k>  :tabprevious<CR>
 noremap <m-n>  :tabclose<CR>
 noremap <m-r> <c-o>
-" noremap <m-d> <C-]>
-noremap <m-d> :exec("tag ".expand("<cword>"))<CR> :normal zz<CR>
+noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR> :normal zz<CR>
+noremap <m-f> :call CocAction('jumpDefinition')<CR> :normal zz<CR>
+noremap <m-u> :call CocAction('jumpReferences')<CR>
+" noremap <silent> gt :call CocAction('jumpDefinition', 'tabe')<CR> :normal zz<CR>
+" noremap <silent> gd :call CocAction('jumpDefinition')<CR> :normal zz<CR>
 
 call plug#begin()
 	Plug 'raimondi/delimitmate'
@@ -57,7 +60,7 @@ call plug#begin()
 	Plug 'Vimjas/vim-python-pep8-indent'
 	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
