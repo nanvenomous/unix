@@ -4,6 +4,7 @@ set ignorecase              " case insensitive
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
 set incsearch               " incremental search
+set scrolloff=999               " incremental search
 
 " ---- Minimal configuration:
 set shiftwidth=3  " Set number of spaces per auto indentation
@@ -32,7 +33,8 @@ set ttyfast                 " Speed up scrolling in Vim
 " " set backupdir=~/.cache/vim " Directory to store backup files.")
 
 " keymaps
-let g:ctrlp_map = '<m-o>'
+" let g:ctrlp_map = '<m-o>'
+noremap <m-o> :CtrlPCurWD<CR>
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
     \ 'AcceptSelection("t")': ['<cr>'],
@@ -54,7 +56,7 @@ call plug#begin()
 	Plug 'raimondi/delimitmate'
 	Plug 'kien/ctrlp.vim'
 	Plug 'tpope/vim-surround'
-	Plug 'ervandew/supertab'
+	" Plug 'ervandew/supertab'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-obsession'
 	Plug 'Vimjas/vim-python-pep8-indent'
