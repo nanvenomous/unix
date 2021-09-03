@@ -41,8 +41,8 @@ noremap <m-j>  :tabnext<CR>
 noremap <m-k>  :tabprevious<CR>
 noremap <m-n>  :tabclose<CR>
 noremap <m-r> <c-o>
-noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR> :normal zz<CR>
-noremap <m-f> :call CocAction('jumpDefinition')<CR> :normal zz<CR>
+noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR>
+noremap <m-f> :call CocAction('jumpDefinition')<CR>
 noremap <m-u> :call CocAction('jumpReferences')<CR>
 
 call plug#begin()
