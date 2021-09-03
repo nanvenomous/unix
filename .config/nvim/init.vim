@@ -21,7 +21,7 @@ syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
-" set cursorline              " highlight current cursorline
+set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download
 " language package)
@@ -29,7 +29,7 @@ set ttyfast                 " Speed up scrolling in Vim
 " " set backupdir=~/.cache/vim " Directory to store backup files.")
 
 " keymaps
-let g:ctrlp_map = '<m-o>'
+noremap <m-o> :CtrlPCurWD<CR>
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
     \ 'AcceptSelection("t")': ['<cr>'],
@@ -44,8 +44,6 @@ noremap <m-r> <c-o>
 noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR> :normal zz<CR>
 noremap <m-f> :call CocAction('jumpDefinition')<CR> :normal zz<CR>
 noremap <m-u> :call CocAction('jumpReferences')<CR>
-" noremap <silent> gt :call CocAction('jumpDefinition', 'tabe')<CR> :normal zz<CR>
-" noremap <silent> gd :call CocAction('jumpDefinition')<CR> :normal zz<CR>
 
 call plug#begin()
 	Plug 'raimondi/delimitmate'
