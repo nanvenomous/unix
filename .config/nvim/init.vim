@@ -4,18 +4,15 @@ set ignorecase              " case insensitive
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
 set incsearch               " incremental search
+set scrolloff=999
 
 " ---- Minimal configuration:
 set shiftwidth=3  " Set number of spaces per auto indentation
 set tabstop=3     " Number of spaces that a <Tab> in the file counts for
 set autoindent
 set smartindent   " Do smart autoindenting when starting a new line
+set wrap!
 
-" set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-" set expandtab               " converts tabs to white space
-" set shiftwidth=4            " width for autoindents
-" set tabstop=4               " number of columns occupied by a tab 
-" set autoindent              " indent a new line the same amount as the line just typed
 set number relativenumber
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                  " set an 80 column border for good coding style
@@ -54,10 +51,10 @@ call plug#begin()
 	Plug 'raimondi/delimitmate'
 	Plug 'kien/ctrlp.vim'
 	Plug 'tpope/vim-surround'
-	Plug 'ervandew/supertab'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-obsession'
 	Plug 'Vimjas/vim-python-pep8-indent'
+	Plug 'peitalin/vim-jsx-typescript'
 	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
