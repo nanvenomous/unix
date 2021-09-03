@@ -1,0 +1,17 @@
+[alias]
+	b = branch
+	ch = checkout
+	c = commit
+	ca = commit --amend
+	s = status
+	alias = config --get-regexp alias
+	a = add
+	pho = push origin
+	pl = pull
+	l = log
+	lv = ! git log | vim -
+	cp = cherry-pick
+	i = init
+	rst = reset
+	ph = push
+	t = ls-tree -r HEAD --name-only
