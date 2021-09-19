@@ -16,5 +16,5 @@
 	t = ls-tree -r HEAD --name-only
 	sh = stash
 	aa = add .
-	lv = !git --no-pager log | vim -
-	bv = !git branch | vim -
+	lv = !git --no-pager log | vi -
+	bv = !git branch | vi -
