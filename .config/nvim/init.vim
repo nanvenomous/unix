@@ -41,22 +41,25 @@ noremap <m-.> :tabmove +1<CR>
 noremap <m-j>  :tabnext<CR>
 noremap <m-k>  :tabprevious<CR>
 noremap <m-n>  :tabclose<CR>
+map <esc> :noh<CR>
 noremap <m-r> <c-o>
 noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR>
 noremap <m-f> :call CocAction('jumpDefinition')<CR>
 noremap <m-u> :call CocAction('jumpReferences')<CR>
 
+noremap <m-s> :CocSearch <CR>
+
 call plug#begin()
-	Plug 'raimondi/delimitmate'
-	Plug 'kien/ctrlp.vim'
-	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-obsession'
-	Plug 'Vimjas/vim-python-pep8-indent'
-	Plug 'peitalin/vim-jsx-typescript'
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'raimondi/delimitmate'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-obsession'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
