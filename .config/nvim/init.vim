@@ -47,7 +47,7 @@ noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR>
 noremap <m-f> :call CocAction('jumpDefinition')<CR>
 noremap <m-u> :call CocAction('jumpReferences')<CR>
 
-noremap <m-s> :CocSearch <CR>
+xnoremap <m-s> y<Esc>:CocSearch <C-R>"
 
 call plug#begin()
 Plug 'raimondi/delimitmate'
