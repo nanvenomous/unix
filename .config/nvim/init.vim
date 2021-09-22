@@ -7,10 +7,10 @@ set incsearch               " incremental search
 set scrolloff=999
 
 " ---- Minimal configuration:
-set shiftwidth=3  " Set number of spaces per auto indentation
-set tabstop=3     " Number of spaces that a <Tab> in the file counts for
-set autoindent
-set smartindent   " Do smart autoindenting when starting a new line
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
 set wrap!
 
 set number relativenumber
@@ -29,12 +29,20 @@ set ttyfast                 " Speed up scrolling in Vim
 " " set backupdir=~/.cache/vim " Directory to store backup files.")
 
 " keymaps
+" let g:ctrlp_working_path_mode = 0
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_clear_cache_on_exit = 0
+endif
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|__pycache__'
 noremap <m-o> :CtrlPCurWD<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|__pycache__'
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-    \ 'AcceptSelection("t")': ['<cr>'],
-    \ }
+      \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+      \ 'AcceptSelection("t")': ['<cr>'],
+      \ }
 noremap ss :Obsession<CR>
 noremap <m-,> :tabmove -1<CR>
 noremap <m-.> :tabmove +1<CR>
@@ -67,14 +75,14 @@ let g:tokyonight_style = "night"
 colorscheme tokyonight
 
 function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
 inoremap <silent><expr> <Tab>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<Tab>" :
-			\ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
