@@ -29,7 +29,6 @@ set ttyfast                 " Speed up scrolling in Vim
 " " set backupdir=~/.cache/vim " Directory to store backup files.")
 
 " keymaps
-" let g:ctrlp_working_path_mode = 0
 if executable('rg')
   set grepprg=rg\ --color=never
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -37,7 +36,7 @@ if executable('rg')
 else
   let g:ctrlp_clear_cache_on_exit = 0
 endif
-" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|__pycache__'
+
 noremap <m-o> :CtrlPCurWD<CR>
 let g:ctrlp_prompt_mappings = {
       \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
@@ -54,6 +53,10 @@ noremap <m-r> <c-o>
 noremap <m-t> :call CocAction('jumpDefinition', 'tabe')<CR>
 noremap <m-f> :call CocAction('jumpDefinition')<CR>
 noremap <m-u> :call CocAction('jumpReferences')<CR>
+" prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" formats next # of lines as input
+nmap <silent> gl <Plug>(coc-format-selected)
 
 xnoremap <m-s> y<Esc>:CocSearch <C-R>"
 
