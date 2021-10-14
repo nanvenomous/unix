@@ -8,6 +8,8 @@ alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
 
+alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
+
 function _goog() {
   # surf "https://www.google.com/search?q=$(printf %q ${@})" &
   query="https://www.google.com/search?q=${@}"
