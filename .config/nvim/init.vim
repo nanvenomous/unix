@@ -3,10 +3,11 @@ set ignorecase              " case insensitive
 
 " ---- possible speed increases
 syntax on                   " syntax highlighting
-set synmaxcol=200
-set foldmethod=manual
-set noshowmatch
-set regexpengine=1
+" set synmaxcol=200
+" set foldmethod=manual
+" set noshowmatch
+" syntax sync fromstart
+" syntax sync minlines=10
 
 " ---- Minimal configuration:
 set tabstop=2
@@ -18,8 +19,8 @@ set wrap!
 set number relativenumber
 
 set cursorline              " highlight current cursorline
-set ttyfast                 " Speed up scrolling in Vim
-set lazyredraw
+" set ttyfast                 " Speed up scrolling in Vim
+" set lazyredraw
 
 set clipboard+=unnamedplus   " using system clipboard
 
@@ -40,11 +41,11 @@ noremap <silent>gj :+10<CR>
 noremap <silent>gk :-10<CR>
 noremap <silent>gb <c-o>
 noremap ss :Obsession<CR>
-noremap <m-,> :tabmove -1<CR>
-noremap <m-.> :tabmove +1<CR>
-noremap <m-j>  :tabnext<CR>
-noremap <m-k>  :tabprevious<CR>
-noremap <m-n>  :tabclose<CR>
+noremap <silent>tj  :tabnext<CR>
+noremap <silent>tk  :tabprevious<CR>
+noremap <silent>tn  :tabclose<CR>
+noremap <silent>t, :tabmove -1<CR>
+noremap <silent>t. :tabmove +1<CR>
 map <esc> :noh<CR>
 
 call plug#begin()
@@ -60,7 +61,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'mileszs/ack.vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 "
