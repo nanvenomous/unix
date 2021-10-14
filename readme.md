@@ -30,3 +30,4 @@
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
 	> cfg submodule add https://github.com/kutsan/zsh-system-clipboard $HOME/.settings/system-clipboard
 * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
+* [st](https://github.com/siduck76/st)
