@@ -1,8 +1,8 @@
 #!/bin/bash
 
 unclutter --timeout 1 &
+xfce4-power-manager &
 # bluetoothctl power on
-# xfce4-power-manager &
+# picom &
 
-picom &
 exec i3
