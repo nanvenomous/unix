@@ -63,7 +63,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 "
