@@ -32,7 +32,7 @@ else
   let g:ctrlp_clear_cache_on_exit = 0
 endif
 
-noremap <silent>go :CtrlPCurWD<CR>
+noremap <silent>to :CtrlPCurWD<CR>
 let g:ctrlp_prompt_mappings = {
       \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
       \ 'AcceptSelection("t")': ['<cr>'],
@@ -60,8 +60,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
-" Plug 'peitalin/vim-jsx-typescript'
+Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 "
@@ -135,9 +137,12 @@ lua <<EOF
       ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
     },
     sources = {
       { name = 'nvim_lsp' },
