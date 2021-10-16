@@ -4,6 +4,8 @@ unclutter --timeout 1 &
 xfce4-power-manager &
 
 # bluetoothctl power on
-# picom &
+if command -v picom &> /dev/null; then 
+  picom &
+fi
 
 exec i3
