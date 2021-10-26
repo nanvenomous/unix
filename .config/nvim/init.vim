@@ -54,7 +54,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -63,6 +62,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
@@ -108,6 +108,11 @@ nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
 
+lua require('lsp_config')
+
+" autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
+autocmd BufWritePre *.go lua goimports(1000)
+
 " ---- tab completion
 "  https://github.com/hrsh7th/nvim-cmp
 
@@ -116,22 +121,22 @@ set completeopt=menu,menuone,noselect
 " S-Tab
 
 lua <<EOF
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
+-- Setup nvim-cmp.
+local cmp = require'cmp'
 
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        -- For `vsnip` user.
-        vim.fn["vsnip#anonymous"](args.body)
+cmp.setup({
+snippet = {
+  expand = function(args)
+  -- For `vsnip` user.
+  vim.fn["vsnip#anonymous"](args.body)
 
-        -- For `luasnip` user.
-        -- require('luasnip').lsp_expand(args.body)
+  -- For `luasnip` user.
+  -- require('luasnip').lsp_expand(args.body)
 
-        -- For `ultisnips` user.
-        -- vim.fn["UltiSnips#Anon"](args.body)
-      end,
-    },
+  -- For `ultisnips` user.
+  -- vim.fn["UltiSnips#Anon"](args.body)
+end,
+},
     mapping = {
       ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -140,32 +145,36 @@ lua <<EOF
       ['<C-space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.close(),
       ['<CR>'] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
       }),
     },
-    sources = {
-      { name = 'nvim_lsp' },
+  sources = {
+    { name = 'nvim_lsp' },
 
-      -- For vsnip user.
-      { name = 'vsnip' },
+    -- For vsnip user.
+    { name = 'vsnip' },
 
-      -- For luasnip user.
-      -- { name = 'luasnip' },
+    -- For luasnip user.
+    -- { name = 'luasnip' },
 
-      -- For ultisnips user.
-      -- { name = 'ultisnips' },
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
 
-      { name = 'buffer' },
+    { name = 'buffer' },
     }
   })
 
-  -- Setup lspconfig.
-  require('lspconfig')['gopls'].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
-  require('lspconfig')['tsserver'].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
+-- Setup lspconfig.
+  local servers = { 'gopls', 'tsserver' }
+  local nvim_lsp = require('lspconfig')
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
+      }
+    }
+  end
 EOF
 
