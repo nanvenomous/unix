@@ -62,7 +62,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
@@ -101,17 +101,13 @@ colorscheme tokyonight
 lua << EOF
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.pyright.setup{}
 EOF
 
 " ---- lsp
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
-
-lua require('lsp_config')
-
-" autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.go lua goimports(1000)
 
 " ---- tab completion
 "  https://github.com/hrsh7th/nvim-cmp
@@ -166,7 +162,7 @@ end,
   })
 
 -- Setup lspconfig.
-  local servers = { 'gopls', 'tsserver' }
+  local servers = { 'gopls', 'tsserver', 'pyright' }
   local nvim_lsp = require('lspconfig')
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
