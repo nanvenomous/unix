@@ -1,45 +1,168 @@
 {
 	"window.enableMenuBarMnemonics": false,
 	"window.menuBarVisibility": "toggle",
-	"editor.lineNumbers": "relative",
-	"editor.tabSize": 2,
-	"editor.insertSpaces": false,
-	"[python]": {
-		"editor.tabSize": 4,
-		"editor.insertSpaces": true
-	},
-	"vim.useSystemClipboard": true,
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.statusBar.visible": true,
+  "workbench.startupEditor": "none",
+	"workbench.panel.visible": false,
+  "editor.lineNumbers": "relative",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.autoClosingBrackets": "always",
 	"editor.fontSize": 12,
 	"terminal.integrated.fontSize": 12,
-	"python.linting.pylintEnabled": true,
-	"keyboard.dispatch": "keyCode",
-	"window.restoreWindows": "none",
-	"C_Cpp.updateChannel": "Insiders",
-  "editor.suggestSelection": "first",
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "files.associations": {
-    "*.xsh": "python"
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4  
   },
-	"center-editor-window.offset": 4,
-	"glassit.alpha": 200,
-	"glassit-linux.opacity": 80,
-	"materialTheme.accent": "Bright Teal",
+  "vim.useSystemClipboard": true,
+  "workbench.settings.editor": "json",
 	"explorer.autoReveal": false,
+  "editor.tabCompletion": "onlySnippets",
+  "keyboard.dispatch": "keyCode",
+  "window.restoreWindows": "none",
+  "jest.debugMode": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "python.jediEnabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.pythonPath": "/usr/local/opt/python/bin/python3.7",
+	"python.linting.pylintEnabled": true,
+  "python.languageServer": "Pylance",
+  "[typescriptreact]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.ignoreRecommendations": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "go.toolsManagement.autoUpdate": true,
 	"go.autocompleteUnimportedPackages": true,
 	"go.useCodeSnippetsOnFunctionSuggest": true,
-	"editor.quickSuggestions": true,
-	"editor.quickSuggestionsDelay": 5,
 	"go.gotoSymbol.includeImports": true,
 	"go.gotoSymbol.includeGoroot": true,
 	"go.inferGopath": true,
 	"go.formatTool": "goimports",
 	"go.toolsManagement.autoUpdate": true,
-	"workbench.iconTheme": "material-icon-theme",
-	"workbench.colorTheme": "Tokyo Night",
-	"workbench.settings.editor": "json",
-	"workbench.startupEditor": "none",
-  "workbench.fontAliasing": "auto",
-	"workbench.panel.visible": false,
-	"window.zoomLevel": 1,
-	"workbench.activityBar.visible": false,
+  "ruby.useBundler": true, //run non-lint commands with bundle exec
+  "ruby.useLanguageServer": true, // use the internal language server (see below)
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true // enable rubocop via bundler
+    },
+    "reek": {
+      "useBundler": true // enable reek via bundler
+    }
+  },
+  "ruby.format": "rubocop",
+  "python.defaultInterpreterPath": "/usr/local/opt/python/bin/python3.7",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "update.mode": "none", // use rubocop for formatting
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "t",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.showCommands",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.nextEditor",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.previousEditor",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "f"
+      ],
+      "commands": [
+        "editor.action.revealDefinition",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.navigateBack",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "k"
+      ],
+      "commands": [
+        {
+          "command": "cursorMove",
+          "args": {
+            "to": "up",
+            "by": "line",
+            "value": 10
+          }
+        }
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "j"
+      ],
+      "commands": [
+        {
+          "command": "cursorMove",
+          "args": {
+            "to": "down",
+            "by": "line",
+            "value": 10
+          }
+        }
+      ]
+    }
+  ],
+  "editor.cursorSurroundingLines": 200
 }
