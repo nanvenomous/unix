@@ -2,8 +2,8 @@
 ## If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-autoload -U compinit; compinit
-alias ls='ls --color=auto'
+autoload -U compinit; compinit # zsh completions
+
 COLOR_SEA_GREEN="\033[0;36m"
 COLOR_RESET="\033[0m"
 

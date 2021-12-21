@@ -38,7 +38,7 @@ font pango:monospace 8
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 #
-exec --no-startup-id xrdb merge '/home/rick/.Xresources'
+exec --no-startup-id xrdb merge ~/.Xresources
 
 # try to set the background
 exec --no-startup-id feh --bg-scale '/etc/i3/background'
@@ -147,7 +147,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec sh -c '[ $(echo "yes\nno"|dmenu -i -p "Do you really want to exit i3?") = "yes" ] && i3-msg exit'
+bindsym $mod+Shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

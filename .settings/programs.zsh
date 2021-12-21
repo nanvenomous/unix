@@ -10,12 +10,11 @@ alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate arc
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
 
-function _goog() {
-  # surf "https://www.google.com/search?q=$(printf %q ${@})" &
-  query="https://www.google.com/search?q=${@}"
-  surf "${query}" &
+function _color() {
+  xrdb merge "${1}"
+  kill -USR1 $(pidof st)
 }
-alias goog=_goog
+alias color=_color
 
 function _hr() {
   echo "${PWD}"
