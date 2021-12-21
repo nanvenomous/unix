@@ -1,3 +1,6 @@
+list_command='ls --color=auto --group-directories-first'
+alias ls="${list_command}"
+
 alias t='clear; tree -C -L 1 --dirsfirst'
 alias r='clear; tree -C --dirsfirst'
 alias c='clear'
