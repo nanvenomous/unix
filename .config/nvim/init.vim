@@ -46,6 +46,7 @@ noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
 noremap <silent>t, :tabmove -1<CR>
 noremap <silent>t. :tabmove +1<CR>
+noremap <leader>j :%!python -m json.tool<CR>
 map <esc> :noh<CR>
 
 call plug#begin()
@@ -100,7 +101,6 @@ colorscheme tokyonight
 
 lua << EOF
 require'lspconfig'.gopls.setup{}
-require'lspconfig'.tsserver.setup{}
 require'lspconfig'.pyright.setup{}
 EOF
 
@@ -162,7 +162,7 @@ end,
   })
 
 -- Setup lspconfig.
-  local servers = { 'gopls', 'tsserver', 'pyright' }
+  local servers = { 'gopls', 'pyright' }
   local nvim_lsp = require('lspconfig')
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {

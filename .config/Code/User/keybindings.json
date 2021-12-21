@@ -1,20 +1,16 @@
 // Place your key bindings in this file to overwrite the defaults
 [
 	{
-		"key": "ctrl+1",
-		"command": "-workbench.action.focusFirstEditorGroup"
+		"key": "f10",
+		"command": "workbench.action.toggleMenuBar"
 	},
 	{
-		"key": "ctrl+2",
+		"key": "f11",
 		"command": "workbench.action.toggleActivityBarVisibility"
 	},
 	{
-		"key": "ctrl+2",
-		"command": "-workbench.action.focusSecondEditorGroup"
-	},
-	{
-		"key": "ctrl+1",
-		"command": "workbench.action.toggleMenuBar"
+		"key": "f12",
+		"command": "workbench.action.toggleSidebarVisibility"
 	},
 	{
 		"key": "alt+j",
@@ -94,14 +90,6 @@
 	{
 		"key": "ctrl+j",
 		"command": "-workbench.action.togglePanel"
-	},
-	{
-		"key": "ctrl+3",
-		"command": "-workbench.action.focusThirdEditorGroup"
-	},
-	{
-		"key": "ctrl+3",
-		"command": "workbench.action.toggleSidebarVisibility"
 	},
 	{
 		"key": "ctrl+b",
@@ -204,32 +192,7 @@
 		"command": "-editor.action.jumpToBracket",
 		"when": "editorTextFocus"
 	},
-	{
-		"key": "alt+c",
-		"command": "-workbench.action.terminal.toggleFindCaseSensitive",
-		"when": "terminalFindWidgetFocused"
-	},
-	{
-		"key": "alt+c",
-		"command": "-workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "alt+c",
-		"command": "-toggleFindCaseSensitive",
-		"when": "editorFocus"
-	},
-	{
-		"key": "alt+c",
-		"command": "-toggleSearchCaseSensitive",
-		"when": "searchViewletFocus && searchViewletVisible && !fileMatchOrFolderMatchFocus"
-	},
-	{
-		"key": "alt+c",
-		"command": "editor.action.commentLine",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
+  {
 		"key": "ctrl+/",
 		"command": "-editor.action.commentLine",
 		"when": "editorTextFocus && !editorReadonly"
@@ -399,5 +362,5 @@
 	{
 		"key": "alt+f",
 		"command": "editor.action.revealDefinition"
-	}
+  }
 ]

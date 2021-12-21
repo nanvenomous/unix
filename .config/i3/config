@@ -9,8 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 for_window [class=".*"] border pixel 1
-gaps inner 8
-gaps outer 8
+# gaps inner 8
+# gaps outer 8
 
 # attempt to stack all matplotlib windows
 for_window [class="Matplotlib"] focus; split v; layout stacked
@@ -36,7 +36,7 @@ font pango:monospace 8
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 #
 exec --no-startup-id xrdb merge '/home/rick/.Xresources'
 
@@ -147,7 +147,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec sh -c '[ $(echo "yes\nno"|dmenu -i -p "Do you really want to exit i3?") = "yes" ] && i3-msg exit'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

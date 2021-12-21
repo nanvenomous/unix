@@ -13,11 +13,9 @@ function verbose_source {
 	source "${filePath}"
 }
 
-neofetch
+neofetch --disable gpu
 verbose_source "${HOME}/.settings/navigation.sh"
 verbose_source "${HOME}/.settings/programs.zsh"
 verbose_source "${HOME}/.settings/prompt.zsh"
 verbose_source "${HOME}/.settings/system-clipboard/zsh-system-clipboard.zsh"
 verbose_source "${HOME}/.locrc.sh"
-
-

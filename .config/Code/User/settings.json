@@ -30,7 +30,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "python.pythonPath": "/usr/local/opt/python/bin/python3.7",
-	"python.linting.pylintEnabled": true,
+	"python.linting.pylintEnabled": false,
   "python.languageServer": "Pylance",
   "[typescriptreact]": {
     "editor.autoClosingBrackets": "always",
@@ -164,5 +164,6 @@
       ]
     }
   ],
-  "editor.cursorSurroundingLines": 200
+  "editor.cursorSurroundingLines": 200,
+  "workbench.activityBar.visible": false
 }

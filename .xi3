@@ -1,6 +1,6 @@
 #!/bin/bash
 
-unclutter --timeout 1 &
+unclutter -idle 1 &
 xfce4-power-manager &
 
 # bluetoothctl power on
