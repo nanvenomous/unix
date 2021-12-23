@@ -26,7 +26,9 @@ PATH="$PATH:${HOME}/.local/bin"
 case "$(uname -s)" in
   Linux*)
     ################### NVM
-    source /usr/share/nvm/init-nvm.sh
+    if [ -f /usr/share/nvm/init-nvm.sh ]; then 
+      . /usr/share/nvm/init-nvm.sh
+    fi
 
     ################### JAVA
     export JAVA_HOME='/usr/lib/jvm/default'

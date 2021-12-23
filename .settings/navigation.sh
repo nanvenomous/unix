@@ -8,7 +8,8 @@ set -o vi
 
 function fnd() {
 	pattern="$*"
-	find . -type f -iname "*${pattern}*"
+	# find . -type f -iname "*${pattern}*"
+  rg --files -g "*${pattern}*"
 }
 
 function dn() {

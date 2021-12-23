@@ -1,0 +1,169 @@
+{
+	"window.enableMenuBarMnemonics": false,
+	"window.menuBarVisibility": "toggle",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.statusBar.visible": true,
+  "workbench.startupEditor": "none",
+	"workbench.panel.visible": false,
+  "editor.lineNumbers": "relative",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.autoClosingBrackets": "always",
+	"editor.fontSize": 12,
+	"terminal.integrated.fontSize": 12,
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4  
+  },
+  "vim.useSystemClipboard": true,
+  "workbench.settings.editor": "json",
+	"explorer.autoReveal": false,
+  "editor.tabCompletion": "onlySnippets",
+  "keyboard.dispatch": "keyCode",
+  "window.restoreWindows": "none",
+  "jest.debugMode": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "python.jediEnabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.pythonPath": "/usr/local/opt/python/bin/python3.7",
+	"python.linting.pylintEnabled": false,
+  "python.languageServer": "Pylance",
+  "[typescriptreact]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.ignoreRecommendations": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "go.toolsManagement.autoUpdate": true,
+	"go.autocompleteUnimportedPackages": true,
+	"go.useCodeSnippetsOnFunctionSuggest": true,
+	"go.gotoSymbol.includeImports": true,
+	"go.gotoSymbol.includeGoroot": true,
+	"go.inferGopath": true,
+	"go.formatTool": "goimports",
+	"go.toolsManagement.autoUpdate": true,
+  "ruby.useBundler": true, //run non-lint commands with bundle exec
+  "ruby.useLanguageServer": true, // use the internal language server (see below)
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true // enable rubocop via bundler
+    },
+    "reek": {
+      "useBundler": true // enable reek via bundler
+    }
+  },
+  "ruby.format": "rubocop",
+  "python.defaultInterpreterPath": "/usr/local/opt/python/bin/python3.7",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "update.mode": "none", // use rubocop for formatting
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "t",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.showCommands",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.nextEditor",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.previousEditor",
+      ]
+    },
+    {
+      "before": [
+        "t",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "f"
+      ],
+      "commands": [
+        "editor.action.revealDefinition",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.navigateBack",
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "k"
+      ],
+      "commands": [
+        {
+          "command": "cursorMove",
+          "args": {
+            "to": "up",
+            "by": "line",
+            "value": 10
+          }
+        }
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "j"
+      ],
+      "commands": [
+        {
+          "command": "cursorMove",
+          "args": {
+            "to": "down",
+            "by": "line",
+            "value": 10
+          }
+        }
+      ]
+    }
+  ],
+  "editor.cursorSurroundingLines": 200,
+  "workbench.activityBar.visible": false
+}
