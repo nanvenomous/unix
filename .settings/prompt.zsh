@@ -4,6 +4,8 @@ oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats "${oParen}%b${cParen}"
