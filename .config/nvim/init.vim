@@ -48,6 +48,7 @@ noremap <silent>t, :tabmove -1<CR>
 noremap <silent>t. :tabmove +1<CR>
 noremap <leader>j :%!python -m json.tool<CR>
 map <esc> :noh<CR>
+nnoremap * :keepjumps normal! mi*`i<CR>
 
 call plug#begin()
 Plug 'raimondi/delimitmate'
