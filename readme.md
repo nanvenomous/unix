@@ -28,7 +28,7 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 
 # Recommended installations and symbolic links
 * [google chrome](https://aur.archlinux.org/packages/google-chrome/)
-* [gtk palenight](https://aur.archlinux.org/packages/palenight-gtk-theme/)
+* [gtk tokyo night](https://github.com/stronk-dev/Tokyo-Night-Linux)
 * [pcmanfm](https://archlinux.org/packages/community/x86_64/pcmanfm/) -> files
 * [vim-plug](https://aur.archlinux.org/packages/vim-plug/)
 * [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) -> sound
