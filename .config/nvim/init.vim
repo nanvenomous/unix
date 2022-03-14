@@ -107,6 +107,7 @@ colorscheme tokyonight
 lua << EOF
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.tsserver.setup{}
 EOF
 
 " ---- lsp
@@ -167,7 +168,7 @@ end,
   })
 
 -- Setup lspconfig.
-  local servers = { 'gopls', 'pyright' }
+  local servers = { 'gopls', 'pyright', 'tsserver' }
   local nvim_lsp = require('lspconfig')
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
