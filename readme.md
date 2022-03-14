@@ -6,15 +6,21 @@
 
 > cd "${HOME}"
 
-> alias cfg='/usr/bin/git --git-dir=$HOME/.unx/ --work-tree=$HOME'
+> alias cg="git --git-dir=${HOME}/.unx/ --work-tree=${HOME}"
 
-> git clone --bare 'https://github.com/mrgarelli/unix.git' $HOME/.unx
+> git clone --bare 'https://github.com/nanvenomous/unix.git' "${HOME}/.unx"
 
-> cfg checkout
+> cg checkout
 
 * may need to fix conflicts by moving files, then re-run previous command
 
-> cfg config --local status.showUntrackedFiles no
+> cg config --local status.showUntrackedFiles no
+
+you can then optionally add a permanent alias to your login script
+```
+# ~/.bashrc, ~/.zshrc, ~/.xonshrc, ...
+alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
+```
 
 
 
@@ -22,13 +28,12 @@
 
 # Recommended installations and symbolic links
 * [google chrome](https://aur.archlinux.org/packages/google-chrome/)
-* [gtk palenight](https://aur.archlinux.org/packages/palenight-gtk-theme/)
+* [gtk tokyo night](https://github.com/stronk-dev/Tokyo-Night-Linux)
 * [pcmanfm](https://archlinux.org/packages/community/x86_64/pcmanfm/) -> files
 * [vim-plug](https://aur.archlinux.org/packages/vim-plug/)
 * [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) -> sound
 * [lazy git](https://archlinux.org/packages/community/x86_64/lazygit/)
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
-	> cfg submodule add https://github.com/kutsan/zsh-system-clipboard $HOME/.settings/system-clipboard
 * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
 * [st](https://github.com/siduck76/st)
-* [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-complete/)
+  * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-complete/)

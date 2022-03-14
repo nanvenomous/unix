@@ -26,10 +26,11 @@ storage_files='*.json=00;33:*.yml=00;33:*.yaml=00;33:'
 text_notes_logs='*.md=00;35:*.txt=00;35:*.log=00;35:'
 # red
 template_files='*.html=00;31:*.css=00;31:'
+# blue
+directories='di=1;34:'
 
 eval "$(dircolors)"
-LS_COLORS="${LS_COLORS}${programming_languages}${storage_files}${text_notes_logs}${template_files}"
-# LS_COLORS="${LS_COLORS}*.py=00;33:*.go=00;36:*.c=00;35:*.js=00;31:*.jsx=00;31:*.ts=00;31:*.tsx=00;31:"
+LS_COLORS="${LS_COLORS}${directories}${programming_languages}${storage_files}${text_notes_logs}${template_files}"
 export LS_COLORS
 
 # export TERM='xterm-256color'
