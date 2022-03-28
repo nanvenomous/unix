@@ -36,4 +36,4 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
 * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
 * [st](https://github.com/siduck76/st)
-  * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-complete/)
+  * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-jetbrains-mono/)
