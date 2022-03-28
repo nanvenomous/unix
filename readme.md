@@ -37,3 +37,19 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
 * [st](https://github.com/siduck76/st)
   * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-jetbrains-mono/)
+* firefox shortcuts
+```
+map tj nextTab
+map tk previousTab
+map tn removeTab
+map to createTab
+map t, moveTabLeft
+map t. moveTabRight
+map tp openCopiedUrlInNewTab
+
+map gb goBack
+map gj scrollPageDown
+map gk scrollPageUp
+
+map u restoreTab
+```
