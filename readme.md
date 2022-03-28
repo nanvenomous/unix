@@ -37,6 +37,7 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
 * [st](https://github.com/siduck76/st)
   * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-jetbrains-mono/)
+* [dns with systemd-resolvd](https://wiki.archlinux.org/title/NetworkManager#systemd-resolved)
 * firefox shortcuts
 ```
 map tj nextTab
