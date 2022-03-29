@@ -47,6 +47,7 @@ noremap <silent>tn  :tabclose<CR>
 noremap <silent>t, :tabmove -1<CR>
 noremap <silent>t. :tabmove +1<CR>
 noremap <leader>j :%!python -m json.tool<CR>
+noremap <leader>f :set foldmethod=syntax<CR>
 map <esc> :noh<CR>
 nnoremap * :keepjumps normal! mi*`i<CR>
 
@@ -66,9 +67,15 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
+Plug 'Konfekt/FastFold'
 " Plug 'peitalin/vim-jsx-typescript'
 " Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
+
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 let g:gitgutter_grep = 'rg'
 autocmd BufWritePost * GitGutter
