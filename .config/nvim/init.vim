@@ -41,6 +41,8 @@ noremap <silent>gj :+10<CR>
 noremap <silent>gk :-10<CR>
 noremap <silent>gb <c-o>
 noremap ss :Obsession<CR>
+noremap sf :w<CR>
+noremap se :wqa<CR>
 noremap <silent>tj  :tabnext<CR>
 noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
