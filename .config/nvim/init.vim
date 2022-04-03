@@ -44,8 +44,8 @@ noremap ss :Obsession<CR>
 noremap <silent>tj  :tabnext<CR>
 noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
-noremap <silent>t, :tabmove -1<CR>
-noremap <silent>t. :tabmove +1<CR>
+noremap <silent>th :tabmove -1<CR>
+noremap <silent>tl :tabmove +1<CR>
 noremap <leader>j :%!python -m json.tool<CR>
 noremap <leader>f :set foldmethod=syntax<CR>
 map <esc> :noh<CR>

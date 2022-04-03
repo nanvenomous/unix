@@ -44,8 +44,8 @@ map tj nextTab
 map tk previousTab
 map tn removeTab
 map to createTab
-map t, moveTabLeft
-map t. moveTabRight
+map th moveTabLeft
+map tl moveTabRight
 map tp openCopiedUrlInNewTab
 
 map gb goBack
