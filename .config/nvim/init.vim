@@ -16,6 +16,8 @@ set expandtab
 set smartindent
 set wrap!
 
+set mouse=a
+
 set number relativenumber
 
 set cursorline              " highlight current cursorline
@@ -43,6 +45,12 @@ noremap <silent>gb <c-o>
 noremap ss :Obsession<CR>
 noremap sf :w<CR>
 noremap se :wqa<CR>
+noremap sq :qa!<CR>
+noremap sn :q!<CR>
+noremap sj :wincmd j<CR>
+noremap sk :wincmd k<CR>
+noremap sl :wincmd l<CR>
+noremap sh :wincmd h<CR>
 noremap <silent>tj  :tabnext<CR>
 noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
@@ -70,9 +78,18 @@ Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
 Plug 'Konfekt/FastFold'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+Plug 'sbdchd/neoformat'
+Plug 'seblj/nvim-echo-diagnostics'
 call plug#end()
+
+" let g:prettier#autoformat = 1
+nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
+
+" prettier
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Neoformat
 
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
@@ -124,6 +141,7 @@ EOF
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
 
 " ---- tab completion
 "  https://github.com/hrsh7th/nvim-cmp
