@@ -1,15 +1,12 @@
-list_command='ls --color=auto --group-directories-first'
-alias ls="${list_command}"
+alias t='clear; exa --tree --level=1 --group-directories-first'
+alias r='clear; exa --tree --group-directories-first'
 
-alias t='clear; tree -C -L 1 --dirsfirst'
-alias r='clear; tree -C --dirsfirst'
 alias c='clear'
 set -o vi
 
 function fnd() {
 	pattern="$*"
-	# find . -type f -iname "*${pattern}*"
-  rg --files -g "*${pattern}*"
+    rg -i --files --glob "*${pattern}*"
 }
 
 function dn() {
@@ -17,7 +14,10 @@ function dn() {
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
     fi;
-    builtin cd "${new_directory}"; c; t
+    builtin cd "${new_directory}"; t
 }
-alias up="cd ..; c; t"
+alias up="cd ..; t"
+
+eval "$(zoxide init zsh)"
+alias to='z'
 
