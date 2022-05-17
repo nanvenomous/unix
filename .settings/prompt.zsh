@@ -1,10 +1,18 @@
+case "$(uname -s)" in
+  Linux*)
+    eval "$(dircolors)"
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+  Darwin*)
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+esac
+
 oBrack='%F{magenta}{%f'
 cBrack='%F{magenta}}%f'
 oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -29,7 +37,6 @@ template_files='*.html=00;31:*.css=00;31:'
 # blue
 directories='di=1;34:'
 
-eval "$(dircolors)"
 LS_COLORS="${LS_COLORS}${directories}${programming_languages}${storage_files}${text_notes_logs}${template_files}"
 export LS_COLORS
 
