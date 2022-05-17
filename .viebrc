@@ -1,1 +1,19 @@
 set search=https://www.google.com/search?q=%s
+
+nmap to <openNewTab><toExploreMode>
+nmap tn d
+nmap tj <nextTab>
+nmap tk <previousTab>
+nmap th <moveTabBackward>
+nmap tl <moveTabForward>
+nmap tp <openNewTab><openFromClipboard>
+unmap t
+unmap gt
+unmap gT
+
+nmap gb <backInHistory>
+nmap ge <toExploreMode><End>
+nmap gj <scrollPageDownHalf>
+nmap gk <scrollPageUpHalf>
+
+nmap o <toExploreMode>
