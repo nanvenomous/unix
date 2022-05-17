@@ -7,6 +7,8 @@ alias clk="date +%I:%M"
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
+alias cat='bat'
+
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
 
@@ -46,12 +48,12 @@ case "$(uname -s)" in
   Darwin*)
     ################### NVM
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
     ################### JAVA
-    # export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-    export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home'
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
 
     ################### ANDROID
     export ANDROID_HOME="${HOME}/Library/Android/sdk"
@@ -64,6 +66,7 @@ case "$(uname -s)" in
 
     ################### GO
     export GOPATH=$HOME/go
+    export GOPATH=${GOPATH}:`pwd`
     export GOROOT=/usr/local/opt/go/libexec
     export PATH=$PATH:$GOPATH/bin
     export PATH=$PATH:$GOROOT/bin
