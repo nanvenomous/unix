@@ -34,7 +34,9 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 * [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) -> sound
 * [lazy git](https://archlinux.org/packages/community/x86_64/lazygit/)
 * [zsh system clipboard](https://github.com/kutsan/zsh-system-clipboard)
-* [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
+* firefox 
+  * [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
+  * `browser.fullscreen.autohide`
 * [st](https://github.com/siduck76/st)
   * [nerdfonts](https://aur.archlinux.org/packages/nerd-fonts-jetbrains-mono/)
 * [dns with systemd-resolvd](https://wiki.archlinux.org/title/NetworkManager#systemd-resolved)
