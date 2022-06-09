@@ -183,3 +183,4 @@ bar {
         mode hide
 }
 
+exec i3-msg workspace 5
