@@ -53,54 +53,34 @@ window-decoration = false
 shell-integration = zsh
 
 
-# foreground = #EFEFFD # delta
-# background = #2B2233 # delta
-foreground = #8BA7A7
-background = #262335
-# cursor-color = #ffffff # delta
-# cursor-text = #2f383e # delta
-cursor-color = #8BA7A7
-cursor-text = #282A36
-# selection-background = #626880 # delta
-# selection-foreground = #c6d0f5 # delta
+foreground = #ecf0c1
+background = #0f111b
+cursor-color = #ffffff
+cursor-text = #0f111b
 selection-background = #282A36
 selection-foreground = #463465
 # black
-# palette = 0=#251D2B # delta
-# palette = 8=#FFFFFF # delta
-palette = 0=#241B2F
-palette = 8=#FFFFFF
+palette = 0=#000000
+palette = 8=#4e5173
 # red
-# palette = 1=#FF98B3 # delta
-# palette = 9=#FF98B3 # delta
-palette = 1=#FE4450
-palette = 9=#FC199A
+palette = 1=#e33400
+palette = 9=#e33400
 # green
-# palette = 2=#C0FF98
-# palette = 10=#C0FF98
-palette = 2=#72F1B8
-palette = 10=#72F1B8
+palette = 2=#5ccc96
+palette = 10=#5ccc96
 # yellow
-# palette = 3=#EDFF98 # delta
-# palette = 11=#EDFF98 # delta
-palette = 3=#FFCC00
-palette = 11=#FF8B39
+palette = 3=#f2ce00
+palette = 11=#f2ce00
 # blue
-# palette = 4=#D598FF # delta
-# palette = 12=#D598FF # delta
-palette = 4=#61E2FF
-palette = 12=#61E2FF
+palette = 4=#818596
+palette = 12=#c1c3cc
 # magenta
-# palette = 5=#D598FF
-# palette = 13=#FF67D4
-palette = 5=#AF6DF9
-palette = 13=#AF6DF9
+palette = 5=#ce6f8f
+palette = 13=#ce6f8f
 # cyan
-# palette = 6=#98FFFB
-# palette = 14=#98FFFB
-palette = 6=#61E2FF
-palette = 14=#61E2FF
+palette = 6=#00a3cc
+palette = 14=#00a3cc
 # white
-palette = 7=#FFFFFF
-palette = 15=#FFFFFF
+palette = 7=#acb0d0
+palette = 15=#acb0d0
 keybind = shift+enter=text:\n
