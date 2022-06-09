@@ -19,5 +19,9 @@ function dn() {
 alias up="cd ..; t"
 
 eval "$(zoxide init zsh)"
-alias to='z'
 
+# alias to='z'
+function to() {
+  z "${@}"
+  t
+}
