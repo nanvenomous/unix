@@ -13,7 +13,7 @@ function verbose_source {
 	source "${filePath}"
 }
 
-neofetch --battery_display barinfo
+neofetch
 verbose_source "${HOME}/.settings/navigation.zsh"
 verbose_source "${HOME}/.settings/programs.zsh"
 verbose_source "${HOME}/.settings/prompt.zsh"
