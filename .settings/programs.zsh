@@ -13,6 +13,13 @@ function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
 }
 
+background_dir='/etc/i3/background'
+function background() {
+  if [ "${#}" -eq 1 ]; then
+    sudo mv ${1} ${background_dir}
+  fi
+  feh --bg-scale ${background_dir}
+}
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
 
