@@ -59,3 +59,8 @@ map gk scrollPageUp
 
 map u restoreTab
 ```
+
+# XPS 13
+- [compatibility](https://wiki.archlinux.org/title/Dell_XPS_13_(9310))
+    - [libfprint fork](https://aur.archlinux.org/packages/libfprint-tod-git), [util for computer](https://aur.archlinux.org/packages/libfprint-2-tod1-xps9300-bin)
+    - [fprint docs](https://wiki.archlinux.org/title/Fprint)

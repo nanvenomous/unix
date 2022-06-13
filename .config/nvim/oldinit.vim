@@ -106,8 +106,7 @@ autocmd BufEnter * EnableBlameLine
 " prettier
 " let g:prettier#autoformat = 1
 let g:neoformat_try_node_exe = 1
-let g:neoformat_enabled_javascript = ['prettier', 'eslint']
-let g:neoformat_enabled_typescript = ['prettier', 'eslint']
+let g:neoformat_enabled_javascript = ['prettier', 'eslint_d']
 let g:neoformat_run_all_formatters = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Neoformat
 
@@ -147,8 +146,13 @@ nnoremap <silent>gs :Ack!<Space>
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+ colorscheme cyberpunk-neon
 
 " ---- https://github.com/neovim/nvim-lspconfig
 

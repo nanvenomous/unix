@@ -1,44 +1,41 @@
-!Tokyo Night theme
 ! general
-*foreground: #a9b1d6
-*background: #1a1b26
-*cursorColor: #a9b1d6
-
+*background:  #000b1e
+*foreground:  #0abdc6
+*cursorColor: #ffffff
 ! terminal padding color
 *borderColor: #1a1b26
 
 ! black
-*color0: #1a1b26
-*color8: #4e5173
+*color0:  #123e7c
+*color8:  #1c61c2
 
 ! red
-*color1: #F7768E
-*color9: #F7768E
+*color1:  #ff0000
+*color9:  #ff0000
 
 ! green
-*color2: #9ECE6A
-*color10: #9ECE6A
+*color2:  #d300c4
+*color10: #d300c4
 
 ! yellow
-*color3: #E0AF68
-*color11: #E0AF68
+*color3:  #f57800
+*color11: #f57800
 
 ! blue
-*color4: #7AA2F7
-*color12: #7AA2F7
+*color4:  #123e7c
+*color12: #00ff00
 
 ! magenta
-*color5: #9a7ecc
-*color13: #9a7ecc
+*color5:  #711c91
+*color13: #711c91
 
 ! cyan
-*color6: #4abaaf
-*color14: #4abaaf
+*color6:  #0abdc6
+*color14: #0abdc6
 
 ! white
-*color7: #acb0d0
-*color15: #acb0d0
-! Tokyo Night theme ends
+*color7:  #d7d7d5
+*color15: #d7d7d5
 
 ! Sizing
 /*SMALL*/

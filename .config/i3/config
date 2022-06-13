@@ -8,9 +8,9 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-for_window [class=".*"] border pixel 3
-# gaps inner 8
-# gaps outer 8
+for_window [class=".*"] border pixel 4
+gaps inner 8
+gaps outer 8
 
 # jump to any urgent workspace
 for_window [urgent="latest"] focus
@@ -44,7 +44,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrdb merge ~/.Xresources
 
 # try to set the background
-exec --no-startup-id feh --bg-scale '/etc/i3/background'
+# exec --no-startup-id feh --bg-scale '/etc/i3/background'
+exec --no-startup-id feh --bg-scale ~/Images/background
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -63,8 +64,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n kill
 
 # start dmenu (a program launcher)
-bindsym $mod+f exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
-
+bindsym $mod+f exec dmenu_run -nb '#000b1e' -nf '#0abdc6' -sb '#711c91' -sf '#d7d7d5' -fn 'DejaVu Sans Mono:pixelsize=28'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -186,13 +186,17 @@ bindsym $mod+r mode "resize"
 bar {
     font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
     font pango:DejaVu Sans Mono 14
-    status_command i3status
-    mode hide
-    colors {
-        statusline #f2ce00
-        separator #00a3cc
-        background #0f111b
-    }
+        status_command i3status
+        mode hide
+        colors {
+            background #000b1e
+            statusline #0abdc6
+
+            focused_workspace  #ffffff #285577
+            active_workspace   #ffffff #333333
+            inactive_workspace #888888 #222222
+            urgent_workspace   #ffffff #900000
+        }
 }
 
 exec i3-msg workspace 5

@@ -14,7 +14,7 @@ cBrack='%F{magenta}}%f'
 oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
-arrow='%F{red}|>%f'
+arrow='%F{cyan}|>%f'
 
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -46,5 +46,3 @@ directories='di=1;34:'
 
 LS_COLORS="${LS_COLORS}${directories}${programming_languages}${storage_files}${text_notes_logs}${template_files}"
 export LS_COLORS
-
-# export TERM='xterm-256color'
