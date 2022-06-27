@@ -1,5 +1,6 @@
 alias lg='lazygit'
 alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
+alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl wttr.in/Austin'
 alias battery='cat /sys/class/power_supply/BAT0/capacity'
