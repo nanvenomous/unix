@@ -164,5 +164,6 @@
       ]
     }
   ],
-  "editor.cursorSurroundingLines": 200
+  "editor.cursorSurroundingLines": 200,
+  "window.menuBarVisibility": "toggle"
 }
