@@ -79,7 +79,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'sainnhe/everforest'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -147,8 +147,12 @@ nnoremap <silent>gs :Ack!<Space>
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+if has('termguicolors')
+  set termguicolors
+endif
+set background=dark
+let g:everforest_better_performance = 1
+colorscheme everforest
 
 " ---- https://github.com/neovim/nvim-lspconfig
 
