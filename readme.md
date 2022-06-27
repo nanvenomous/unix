@@ -4,17 +4,19 @@
 
 ### Pulling Unix files (for mac or linux), onto your machine
 
-> cd "${HOME}"
+```
+cd "${HOME}"
 
-> alias cg="git --git-dir=${HOME}/.unx/ --work-tree=${HOME}"
+alias cg="git --git-dir=${HOME}/.unx/ --work-tree=${HOME}"
 
-> git clone --bare 'https://github.com/nanvenomous/unix.git' "${HOME}/.unx"
+git clone --bare 'https://github.com/nanvenomous/unix.git' "${HOME}/.unx"
 
-> cg checkout
+cg checkout
 
-* may need to fix conflicts by moving files, then re-run previous command
+# may need to fix conflicts by moving files, then re-run previous command
 
-> cg config --local status.showUntrackedFiles no
+cg config --local status.showUntrackedFiles no
+```
 
 you can then optionally add a permanent alias to your login script
 ```

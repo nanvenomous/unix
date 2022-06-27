@@ -7,7 +7,6 @@ alias clk="date '+%I:%M %p'"
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
-alias cat='bat'
 
 function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
