@@ -51,6 +51,11 @@ noremap sj :wincmd j<CR>
 noremap sk :wincmd k<CR>
 noremap sl :wincmd l<CR>
 noremap sh :wincmd h<CR>
+
+nnoremap yp :let @+ = expand("%")<CR>
+nnoremap cj :GitGutterNextHunk<CR>
+nnoremap ck :GitGutterPrevHunk<CR>
+nnoremap ch :GitGutterPreviewHunk<CR>
 noremap <silent>tj  :tabnext<CR>
 noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
@@ -77,6 +82,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
 Plug 'Konfekt/FastFold'
 " Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 Plug 'sbdchd/neoformat'
@@ -85,6 +91,7 @@ call plug#end()
 
 " let g:prettier#autoformat = 1
 nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
+autocmd BufEnter * EnableBlameLine
 
 " prettier
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync

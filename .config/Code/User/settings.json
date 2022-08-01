@@ -165,5 +165,7 @@
     }
   ],
   "editor.cursorSurroundingLines": 200,
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.initvscode.vim",
   "workbench.activityBar.visible": false
 }

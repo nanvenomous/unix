@@ -12,6 +12,9 @@ for_window [class=".*"] border pixel 3
 # gaps inner 8
 # gaps outer 8
 
+# jump to any urgent workspace
+for_window [urgent="latest"] focus
+
 # attempt to stack all matplotlib windows
 for_window [class="Matplotlib"] focus; split v; layout stacked
 

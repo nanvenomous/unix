@@ -1,4 +1,8 @@
 set search=https://www.google.com/search?q=%s
+set darkreader true
+set darkreaderbg="#0f111b"
+set darkreaderfg="#ecf0c1"
+set firefoxmode="always"
 
 nmap to <openNewTab><toExploreMode>
 nmap tn d
