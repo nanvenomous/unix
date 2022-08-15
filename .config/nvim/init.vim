@@ -24,7 +24,7 @@ set cursorline              " highlight current cursorline
 " set ttyfast                 " Speed up scrolling in Vim
 " set lazyredraw
 
-set clipboard+=unnamedplus   " using system clipboard
+set clipboard=unnamedplus   " using system clipboard
 
 if executable('rg')
   set grepprg=rg\ --color=never
@@ -53,9 +53,12 @@ noremap sl :wincmd l<CR>
 noremap sh :wincmd h<CR>
 
 nnoremap yp :let @+ = expand("%")<CR>
+nnoremap yn :let @+ = expand("%:t")<CR>
 nnoremap cj :GitGutterNextHunk<CR>
 nnoremap ck :GitGutterPrevHunk<CR>
 nnoremap ch :GitGutterPreviewHunk<CR>
+nnoremap db :let g:gitgutter_diff_base = 'mainline'<CR>
+nnoremap di :let g:gitgutter_diff_base = 'head'<CR>
 noremap <silent>tj  :tabnext<CR>
 noremap <silent>tk  :tabprevious<CR>
 noremap <silent>tn  :tabclose<CR>
@@ -84,25 +87,28 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
 Plug 'Konfekt/FastFold'
-" Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 Plug 'sbdchd/neoformat'
 Plug 'seblj/nvim-echo-diagnostics'
+Plug 'jamestthompson3/sort-import.nvim'
 call plug#end()
 
-" let g:prettier#autoformat = 1
 nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
 autocmd BufEnter * EnableBlameLine
 
 " prettier
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
-
+let g:neoformat_try_node_exe = 1
+let g:neoformat_enabled_javascript = ['prettier', 'eslint']
+let g:neoformat_enabled_typescript = ['prettier', 'eslint']
+let g:neoformat_run_all_formatters = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Neoformat
+
 
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
+let g:gitgutter_diff_base = 'mainline'
 let g:gitgutter_grep = 'rg'
 autocmd BufWritePost * GitGutter
 
