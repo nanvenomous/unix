@@ -90,6 +90,7 @@ Plug 'Konfekt/FastFold'
 Plug 'sbdchd/neoformat'
 Plug 'seblj/nvim-echo-diagnostics'
 Plug 'jamestthompson3/sort-import.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
@@ -164,6 +165,7 @@ set completeopt=menu,menuone,noselect
 " S-Tab
 
 lua <<EOF
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -219,5 +221,18 @@ end,
       }
     }
   end
+
+-- Setup nvim-treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "lua", "go", "typescript" },
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+  indent = {
+    enable = true
+  },
+}
 EOF
 
