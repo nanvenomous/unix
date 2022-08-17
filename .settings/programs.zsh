@@ -3,7 +3,7 @@ alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl wttr.in/Austin'
-alias battery='cat /sys/class/power_supply/BAT0/capacity'
+alias battery='bat /sys/class/power_supply/BAT0/capacity'
 alias clk="date '+%I:%M %p'"
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20

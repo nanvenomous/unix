@@ -15,6 +15,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 set wrap!
+set cursorline
 
 set mouse=a
 
@@ -97,12 +98,12 @@ nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic(
 autocmd BufEnter * EnableBlameLine
 
 " prettier
+" let g:prettier#autoformat = 1
 let g:neoformat_try_node_exe = 1
 let g:neoformat_enabled_javascript = ['prettier', 'eslint']
 let g:neoformat_enabled_typescript = ['prettier', 'eslint']
 let g:neoformat_run_all_formatters = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Neoformat
-
 
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
