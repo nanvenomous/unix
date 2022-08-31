@@ -154,6 +154,7 @@ EOF
 
 " ---- lsp
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
