@@ -9,11 +9,11 @@ COLOR_RESET="\033[0m"
 
 function verbose_source {
 	filePath="${1}"
-	echo -e "${COLOR_SEA_GREEN}[SOURCING]${COLOR_RESET} ${filePath}"
+	# echo -e "${COLOR_SEA_GREEN}[SOURCING]${COLOR_RESET} ${filePath}"
 	source "${filePath}"
 }
 
-neofetch
+# neofetch
 verbose_source "${HOME}/.settings/navigation.zsh"
 verbose_source "${HOME}/.settings/programs.zsh"
 verbose_source "${HOME}/.settings/prompt.zsh"

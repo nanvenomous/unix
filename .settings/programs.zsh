@@ -3,11 +3,16 @@ alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl wttr.in/Austin'
-alias battery='bat /sys/class/power_supply/BAT0/capacity'
 alias clk="date '+%I:%M %p'"
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
+
+function battery() {
+  battery_status=$(cat /sys/class/power_supply/BAT0/status)
+  battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+  echo "${battery_capacity}% ${battery_status}"
+}
 
 function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
@@ -55,6 +60,9 @@ case "$(uname -s)" in
     export GOROOT=/usr/lib/go
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+    
+    ################### RUST
+    export PATH=$PATH:$HOME/.cargo/bin
     ;;
   Darwin*)
     ################### NVM

@@ -22,6 +22,8 @@ set mouse=a
 set number relativenumber
 
 set cursorline              " highlight current cursorline
+filetype plugin indent on
+
 " set ttyfast                 " Speed up scrolling in Vim
 " set lazyredraw
 
@@ -85,6 +87,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'mileszs/ack.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
 Plug 'Konfekt/FastFold'
@@ -213,7 +216,7 @@ end,
   })
 
 -- Setup lspconfig.
-  local servers = { 'gopls', 'pyright', 'tsserver' }
+  local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer' }
   local nvim_lsp = require('lspconfig')
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {

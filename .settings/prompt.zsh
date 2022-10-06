@@ -13,6 +13,7 @@ cBrack='%F{magenta}}%f'
 oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
+arrow='%F{yellow}|>%f'
 
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -24,7 +25,7 @@ precmd() {
 	print -rP "%B%F{blue}%~%f%b ${vcs_info_msg_0_}"
 }
 RPROMPT="${oBrack}%n${at}%m${cBrack}"
-PROMPT='%(?.%F{green}0.%F{red}%?)%f %# '
+PROMPT='%(?.%F{green}0.%F{red}%?)%f${arrow} '
 
 # cyan
 programming_languages='*.py=00;36:*.go=00;36:*.c=00;36:*.js=00;36:*.jsx=00;36:*.ts=00;36:*.tsx=00;36:'
