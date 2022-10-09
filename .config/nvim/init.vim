@@ -3,6 +3,7 @@ set ignorecase              " case insensitive
 
 " ---- possible speed increases
 syntax on                   " syntax highlighting
+filetype on
 " set synmaxcol=200
 " set foldmethod=manual
 " set noshowmatch
@@ -95,7 +96,10 @@ Plug 'sbdchd/neoformat'
 Plug 'seblj/nvim-echo-diagnostics'
 Plug 'jamestthompson3/sort-import.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rust-lang/rust.vim'
 call plug#end()
+
+let g:rustfmt_autosave = 1
 
 nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
 autocmd BufEnter * EnableBlameLine
