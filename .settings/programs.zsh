@@ -63,6 +63,10 @@ case "$(uname -s)" in
     
     ################### RUST
     export PATH=$PATH:$HOME/.cargo/bin
+
+    ################### MASON
+    export PATH="${PATH}:${HOME}/.local/share/nvim/mason/bin"
+    
     ;;
   Darwin*)
     ################### NVM

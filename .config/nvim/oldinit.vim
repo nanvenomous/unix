@@ -95,7 +95,6 @@ Plug 'Konfekt/FastFold'
 Plug 'sbdchd/neoformat'
 Plug 'seblj/nvim-echo-diagnostics'
 Plug 'jamestthompson3/sort-import.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
@@ -153,18 +152,12 @@ colorscheme tokyonight
 
 " ---- https://github.com/neovim/nvim-lspconfig
 
-lua << EOF
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.tsserver.setup{}
-EOF
-
 " ---- lsp
-nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
+" nnoremap <silent> gf <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
+" nnoremap <silent> gu <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
 
 " ---- tab completion
 "  https://github.com/hrsh7th/nvim-cmp
@@ -172,76 +165,4 @@ nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescrip
 set completeopt=menu,menuone,noselect
 
 " S-Tab
-
-lua <<EOF
-
--- Setup nvim-cmp.
-local cmp = require'cmp'
-
-cmp.setup({
-snippet = {
-  expand = function(args)
-  -- For `vsnip` user.
-  vim.fn["vsnip#anonymous"](args.body)
-
-  -- For `luasnip` user.
-  -- require('luasnip').lsp_expand(args.body)
-
-  -- For `ultisnips` user.
-  -- vim.fn["UltiSnips#Anon"](args.body)
-end,
-},
-    mapping = {
-      ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-      }),
-    },
-  sources = {
-    { name = 'nvim_lsp' },
-
-    -- For vsnip user.
-    { name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
-    { name = 'buffer' },
-    }
-  })
-
--- Setup lspconfig.
-  local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer' }
-  local nvim_lsp = require('lspconfig')
-  for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150,
-      }
-    }
-  end
-
--- Setup nvim-treesitter
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "go", "typescript" },
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = true,
-  },
-  indent = {
-    enable = true
-  },
-}
-EOF
 
