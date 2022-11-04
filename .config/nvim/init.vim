@@ -1,5 +1,5 @@
 set scrolloff=999
-set ignorecase              " case insensitive 
+set smartcase              " case insensitive 
 
 " ---- possible speed increases
 syntax on                   " syntax highlighting
