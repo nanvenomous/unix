@@ -66,11 +66,12 @@ vim.g.ack_use_cword_for_empty_search = 1
 vim.cmd [[ 
 cnoreabbrev Ack Ack!
 ]]
-
 -- vim.g.ack_autoclose = 1
 
 vim.g.gitgutter_diff_base = 'mainline'
 vim.g.gitgutter_grep = 'rg'
--- autocmd BufWritePost * GitGutter
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 -- noremap <leader>j :%!python -m json.tool<CR>
