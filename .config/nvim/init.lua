@@ -27,6 +27,7 @@ keymap('n', 'ch', ':GitGutterPreviewHunk<CR>', nOpts)
 keymap('n', 'gj', ':+10<CR>', nsOpts)
 keymap('n', 'gk', ':-10<CR>', nsOpts)
 keymap('n', 'gb', '<c-o>', nOpts)
+keymap('n', 'gs', ':Ack!<Space>', nOpts)
 
 keymap('n', 'ss', ':Obsession<CR>', nOpts)
 keymap('n', 'sf', ':w<CR>', nOpts)
@@ -59,6 +60,14 @@ let g:ctrlp_prompt_mappings = {
       \ 'AcceptSelection("t")': ['<cr>'],
       \ }
 ]]
+
+vim.g.ackprg = "rg --vimgrep --type-not sql --type-not vim --smart-case"
+vim.g.ack_use_cword_for_empty_search = 1
+vim.cmd [[ 
+cnoreabbrev Ack Ack!
+]]
+
+-- vim.g.ack_autoclose = 1
 
 vim.g.gitgutter_diff_base = 'mainline'
 vim.g.gitgutter_grep = 'rg'

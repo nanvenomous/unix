@@ -20,5 +20,6 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-obsession'
+	use 'mileszs/ack.vim'
 	use 'airblade/vim-gitgutter'
 end)
