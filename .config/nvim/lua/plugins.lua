@@ -24,4 +24,8 @@ return require('packer').startup(function(use)
 
 	use 'airblade/vim-gitgutter'
 	use 'tveskag/nvim-blame-line'
+
+	-- GO
+	use 'ray-x/go.nvim'
+	use 'ray-x/guihua.lua' -- recommanded if need floating window support
 end)

@@ -75,3 +75,12 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 -- noremap <leader>j :%!python -m json.tool<CR>
+
+require('go').setup()
+local function formatGo()
+	require("go.format").goimport()  -- goimport + gofmt
+end
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.go' }, callback = formatGo })
+
+-- autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
