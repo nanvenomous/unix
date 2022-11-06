@@ -15,6 +15,5 @@
 	ph = push
 	t = ls-tree -r HEAD --name-only
 	sh = stash
-	aa = add .
 	lv = !git --no-pager log | nvim -
 	bv = !git branch | nvim -

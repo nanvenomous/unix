@@ -40,5 +40,15 @@
 *color15: #acb0d0
 ! Tokyo Night theme ends
 
-st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=13
-Xft.dpi: 100
+! Sizing
+/*SMALL*/
+/* st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=22 */
+/* Xft.dpi: 100 */
+
+/*MEDIUM*/
+st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=28
+Xft.dpi: 150
+
+/*BIG*/
+/* st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=38 */
+/* Xft.dpi: 200 */

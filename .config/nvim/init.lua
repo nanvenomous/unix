@@ -1,12 +1,15 @@
 require('plugins')
 require('lsp')
 
+vim.o.scrolloff = 999
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.bo.expandtab = true
 vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
+vim.bo.tabstop = 2
+-- vim.bo.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
