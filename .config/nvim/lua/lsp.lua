@@ -41,10 +41,46 @@ cmp.setup({
 		{ name = 'buffer' },
 	}
 })
+-- LSP Diagnostics Options Setup 
+local sign = function(opts)
+	vim.fn.sign_define(opts.name, {
+		texthl = opts.name,
+		text = opts.text,
+		numhl = ''
+	})
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+vim.diagnostic.config({
+	virtual_text = false,
+	signs = true,
+	update_in_insert = true,
+	underline = true,
+	severity_sort = false,
+	float = {
+		border = 'rounded',
+		source = 'always',
+		header = '',
+		prefix = '',
+	},
+})
+
+vim.cmd([[
+set signcolumn=yes
+]])
+-- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 
 -- nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
 -- nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
+-- nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
 
+local function show_diagnostic()
+	vim.diagnostic.open_float(nil, { focusable = false })
+end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -58,6 +94,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
+
 	-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
