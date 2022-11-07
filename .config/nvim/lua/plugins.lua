@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 	use { 'pineapplegiant/spaceduck', branch = 'main' }
 
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use 'sbdchd/neoformat'
 
 	use 'raimondi/delimitmate'
 	use 'kien/ctrlp.vim'
