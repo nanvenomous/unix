@@ -6,9 +6,10 @@ vim.o.scrolloff = 999
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.tabstop = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+-- vim.opt.smartindent = true
 -- vim.bo.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'

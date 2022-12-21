@@ -75,8 +75,11 @@ set signcolumn=yes
 -- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 
 -- nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
--- nnoremap <silent> gl <cmd>lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>
 -- nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
+
+local function organize_imports()
+    vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
+end
 
 local function show_diagnostic()
 	vim.diagnostic.open_float(nil, { focusable = false })
@@ -96,6 +99,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
+	vim.keymap.set('n', 'gl', organize_imports, bufopts)
 
 	-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
