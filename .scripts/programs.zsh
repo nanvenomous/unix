@@ -44,9 +44,9 @@ PATH="$PATH:${HOME}/.local/bin"
 case "$(uname -s)" in
   Linux*)
     ################### NVM
-    if [ -f /usr/share/nvm/init-nvm.sh ]; then 
-      . /usr/share/nvm/init-nvm.sh
-    fi
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
     ################### JAVA
     export JAVA_HOME='/usr/lib/jvm/default'
@@ -57,7 +57,7 @@ case "$(uname -s)" in
     export ANDROID_AVD_HOME="${HOME}/.android/avd"
 
     ################### GO
-    export GOROOT=/usr/lib/go
+    export GOROOT='/usr/local/go'
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     

@@ -1,19 +1,12 @@
-case "$(uname -s)" in
-  Linux*)
-    eval "$(dircolors)"
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ;;
-  Darwin*)
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ;;
-esac
+eval "$(dircolors)"
+source ~/.scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 oBrack='%F{magenta}{%f'
 cBrack='%F{magenta}}%f'
 oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
-arrow='%F{yellow}|>%f'
+arrow='%F{red}|>%f'
 
 autoload -Uz vcs_info
 setopt prompt_subst
