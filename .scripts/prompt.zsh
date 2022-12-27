@@ -1,5 +1,13 @@
 eval "$(dircolors)"
-source ~/.scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+case "$(uname -s)" in
+  Linux*)
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+    ;;
+  Darwin*)
+    source ~/.scripts/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+esac
 
 oBrack='%F{magenta}{%f'
 cBrack='%F{magenta}}%f'
