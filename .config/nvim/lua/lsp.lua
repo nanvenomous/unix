@@ -113,50 +113,67 @@ local on_attach = function(client, bufnr)
 	-- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+require('neural').setup({
+    mappings = {
+        swift = '<C-n>', -- Context completion
+        prompt = '<C-space>', -- Open prompt
+    },
+    open_ai = {
+        api_key = os.getenv("OPENAI_SECRET_KEY")
+    },
+    ui = {
+        use_prompt = true, -- Use visual floating Input
+        use_animated_sign = true, -- Use animated sign mark
+        show_hl = true,
+        show_icon = true,
+        icon = '🗲', -- Prompt/Static sign icon
+    },
+})
+
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer' }
+local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-		}
-	}
+    nvim_lsp[lsp].setup {
+        on_attach = on_attach,
+        flags = {
+            debounce_text_changes = 150,
+        }
+    }
 end
 
 nvim_lsp.sumneko_lua.setup({
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-	},
-	settings = {
-		Lua = {
-			diagnostics = { globals = { 'vim' } }
-		}
-	}
+    on_attach = on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
+    settings = {
+        Lua = {
+            diagnostics = { globals = { 'vim' } }
+        }
+    }
 })
 
 -- gopls, pyright, typescript-language-server, rust-analyzer, lua-language-server
 require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗"
-		}
-	}
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
 })
 
 -- Setup nvim-treesitter
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "lua", "go", "typescript" },
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = true,
-	},
-	indent = {
-		enable = true
-	},
+    ensure_installed = { "c", "lua", "go", "typescript" },
+    auto_install = true,
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true,
+    },
+    indent = {
+        enable = true
+    },
 }
