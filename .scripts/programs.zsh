@@ -57,7 +57,7 @@ case "$(uname -s)" in
     export ANDROID_AVD_HOME="${HOME}/.android/avd"
 
     ################### GO
-    export GOROOT='/usr/local/go'
+    export GOROOT='/usr/lib/go'
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     
