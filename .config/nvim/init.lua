@@ -16,8 +16,8 @@ vim.opt.expandtab = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
 
-vim.opt.termguicolors = true
-vim.cmd [[ colorscheme spaceduck ]]
+-- vim.opt.termguicolors = true
+vim.cmd [[ colorscheme everforest ]]
 
 local keymap = vim.api.nvim_set_keymap
 local nOpts = { noremap = true }

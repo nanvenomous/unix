@@ -11,7 +11,13 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
-    use { 'pineapplegiant/spaceduck', branch = 'main' }
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup()
+        end,
+    })
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'sbdchd/neoformat'
