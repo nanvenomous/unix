@@ -142,16 +142,16 @@ for _, lsp in ipairs(servers) do
     }
 end
 
-nvim_lsp.sumneko_lua.setup({
-    on_attach = on_attach,
-    flags = {
-        debounce_text_changes = 150,
-    },
-    settings = {
-        Lua = {
-            diagnostics = { globals = { 'vim' } }
-        }
-    }
+nvim_lsp.lua_ls.setup({
+	on_attach = on_attach,
+	flags = {
+		debounce_text_changes = 150,
+	},
+	settings = {
+		Lua = {
+			diagnostics = { globals = { 'vim' } }
+		}
+	}
 })
 
 -- gopls, pyright, typescript-language-server, rust-analyzer, lua-language-server
