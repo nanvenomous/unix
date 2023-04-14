@@ -78,6 +78,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+m fullscreen toggle
+bindsym $mod+z exec --no-startup-id i3zen --workspace zen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking

@@ -7,10 +7,10 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.wrap = false
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
--- vim.opt.smartindent = true
+vim.opt.smartindent = true
 -- vim.bo.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'
@@ -56,6 +56,10 @@ keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
 keymap('n', '<esc>', ':noh<CR>', nsOpts)
 keymap('n', '*', ':keepjumps normal! mi*`i<CR>', nsOpts)
 
+vim.cmd [[ 
+let g:neoformat_try_node_exe = 1
+autocmd BufWritePre *.ts,*tsx Neoformat
+]]
 
 vim.g.ctrlp_use_caching = 0
 vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
