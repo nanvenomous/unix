@@ -1,6 +1,6 @@
 alias lg='lazygit'
 alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
-alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources'
+alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources && kill -USR1 $(pidof st)'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl "wttr.in/Austin?m"'
 alias clk="date '+%I:%M %p'"
