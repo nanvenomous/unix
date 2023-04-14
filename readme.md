@@ -43,6 +43,7 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
   - [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
   - nav to [configuration page](about:config) `browser.fullscreen.autohide`
   - [ ] firefox shortcuts
+- [i3ass](https://github.com/budlabs/i3ass)
 ```
 map tj nextTab
 map tk previousTab
