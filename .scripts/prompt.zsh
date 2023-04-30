@@ -21,8 +21,13 @@ setopt prompt_subst
 zstyle ':vcs_info:git:*' formats "${oParen}%b${cParen}"
 zstyle ':vcs_info:*' enable git
 
+function set_terminal_title() {
+  echo -n -e "\033]0;$(hostnamectl hostname) | $(dirs -c; dirs)\007"
+}
+
 precmd() {
 	vcs_info
+  set_terminal_title
 	print -rP "%B%F{blue}%~%f%b ${vcs_info_msg_0_}"
 }
 RPROMPT="${oBrack}%n${at}%m${cBrack}"
