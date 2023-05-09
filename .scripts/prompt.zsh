@@ -14,7 +14,7 @@ cBrack='%F{magenta}}%f'
 oParen='%F{cyan}(%f'
 cParen='%F{cyan})%f'
 at='%F{yellow}@%f'
-arrow='%F{red}|>%f'
+arrow='%F{blue}|>%f'
 
 autoload -Uz vcs_info
 setopt prompt_subst
