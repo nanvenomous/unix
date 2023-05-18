@@ -58,7 +58,7 @@ keymap('n', '*', ':keepjumps normal! mi*`i<CR>', nsOpts)
 
 vim.cmd [[ 
 let g:neoformat_try_node_exe = 1
-autocmd BufWritePre *.ts,*tsx Neoformat
+autocmd BufWritePre *.ts,*.tsx,*.rs Neoformat
 ]]
 
 vim.g.ctrlp_use_caching = 0
@@ -82,6 +82,8 @@ vim.g.gitgutter_grep = 'rg'
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
+
+vim.g.rustfmt_autosave = 1
 
 -- noremap <leader>j :%!python -m json.tool<CR>
 

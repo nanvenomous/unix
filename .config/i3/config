@@ -44,7 +44,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrdb merge ~/.Xresources
 
 # try to set the background
-exec --no-startup-id feh --bg-scale ~/Images/space_background.jpg
+exec --no-startup-id feh --bg-scale ~/Images/background.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status

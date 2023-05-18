@@ -26,6 +26,14 @@ return require('packer').startup(function(use)
     use 'airblade/vim-gitgutter'
     use 'tveskag/nvim-blame-line'
 
+    use 'wakatime/vim-wakatime'
+
+    -- Rust
+    use 'simrat39/rust-tools.nvim'
+    -- Debugging
+    use 'nvim-lua/plenary.nvim'
+    use 'mfussenegger/nvim-dap'
+
     -- GO
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommanded if need floating window support

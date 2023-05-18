@@ -18,12 +18,9 @@ function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
 }
 
-background_dir='/etc/i3/background'
+alias lock='i3lock -i ~/Images/background_lock.jpg'
 function background() {
-  if [ "${#}" -eq 1 ]; then
-    sudo mv ${1} ${background_dir}
-  fi
-  feh --bg-scale ${background_dir}
+  feh --bg-scale ~/Images/background.jpg
 }
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
@@ -50,9 +47,9 @@ case "$(uname -s)" in
     export JAVA_HOME='/usr/lib/jvm/default'
 
     ################### ANDROID
-    export ANDROID_SDK_ROOT='/opt/android-sdk'
-    export ANDROID_HOME='/opt/android-sdk'
-    export ANDROID_AVD_HOME="${HOME}/.android/avd"
+    export ANDROID_HOME="${HOME}/.android"
+    export ANDROID_SDK_ROOT="${ANDROID_HOME}"
+    # export ANDROID_AVD_HOME="${HOME}/.android/avd"
 
     ################### GO
     export GOROOT='/usr/lib/go'
