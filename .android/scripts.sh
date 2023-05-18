@@ -1,9 +1,14 @@
 #!/usr/bin/env sh
 
+# https://wiki.archlinux.org/title/java
+sudo pacman -S jdk8-openjdk
+
 # https://wiki.archlinux.org/title/android
 sudo pacman -S android-tools
+~/.android/tools/bin/sdkmanager --update
 ~/.android/tools/bin/sdkmanager --install tools
 ~/.android/tools/bin/sdkmanager --install emulator
+~/.android/tools/bin/sdkmanager "platform-tools"
 ~/.android/tools/bin/sdkmanager "platforms;android-28"
 ~/.android/tools/bin/sdkmanager "system-images;android-28;google_apis;x86"
 
