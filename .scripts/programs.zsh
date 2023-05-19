@@ -18,7 +18,7 @@ function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
 }
 
-alias lock='i3lock -i ~/Images/background_lock.jpg'
+alias lock='i3lock -i ~/Images/background_lock.png'
 function background() {
   feh --bg-scale ~/Images/background.jpg
 }
