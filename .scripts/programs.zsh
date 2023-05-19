@@ -54,7 +54,7 @@ case "$(uname -s)" in
     export PATH="$PATH:$ANDROID_HOME/tools"
     export PATH="$PATH:$ANDROID_HOME/tools/bin"
     export PATH="$PATH:$ANDROID_HOME/platform-tools"
-    export ANDROID_BUILD_TOOLS=30.0.3
+    export ANDROID_BUILD_TOOLS=33.0.2
 
     ################### GO
     export GOROOT='/usr/lib/go'
