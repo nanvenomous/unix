@@ -49,7 +49,12 @@ case "$(uname -s)" in
     ################### ANDROID
     export ANDROID_HOME="${HOME}/.android"
     export ANDROID_SDK_ROOT="${ANDROID_HOME}"
-    # export ANDROID_AVD_HOME="${HOME}/.android/avd"
+
+    export PATH="$PATH:$ANDROID_HOME/emulator"
+    export PATH="$PATH:$ANDROID_HOME/tools"
+    export PATH="$PATH:$ANDROID_HOME/tools/bin"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools"
+    export ANDROID_BUILD_TOOLS=30.0.3
 
     ################### GO
     export GOROOT='/usr/lib/go'
