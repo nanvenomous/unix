@@ -18,7 +18,10 @@ function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
 }
 
+alias brightness='xrandr --output eDP-1 --brightness'
+
 alias lock='i3lock -i ~/Images/background_lock.png'
+alias bye='lock && systemctl suspend'
 function background() {
   feh --bg-scale ~/Images/background.jpg
 }

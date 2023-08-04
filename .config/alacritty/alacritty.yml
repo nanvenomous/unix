@@ -2,6 +2,7 @@ font:
   normal:
     family: jetbrainsmono nerd font
   bold:
+    family: jetbrainsmono nerd font
     style: ExtraBold
   size: 13.0
 colors:

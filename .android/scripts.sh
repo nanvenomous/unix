@@ -21,4 +21,4 @@ sudo pacman -S android-tools
 ~/.android/tools/bin/avdmanager create avd -n pixel -k "system-images;android-33;google_apis;x86_64" --device "17"
 
 ~/.android/emulator/emulator -list-avds
-~/.android/emulator/emulator -avd pixel
+/home/natsu/.android/emulator/emulator -gpu host -avd pixel

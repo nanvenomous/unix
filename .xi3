@@ -2,6 +2,7 @@
 
 unclutter -idle 1 &
 xfce4-power-manager &
+dunst &
 
 # bluetoothctl power on
 if command -v picom &> /dev/null; then 
