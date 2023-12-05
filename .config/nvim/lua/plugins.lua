@@ -24,7 +24,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-obsession'
   use 'mileszs/ack.vim'
 
-  use 'airblade/vim-gitgutter'
   use 'tveskag/nvim-blame-line'
 
   -- LLM
@@ -50,4 +49,5 @@ return require('packer').startup(function(use)
       'ElPiloto/significant.nvim'
     }
   })
+
 end)
