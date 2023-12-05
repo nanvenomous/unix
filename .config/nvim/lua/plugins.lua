@@ -50,8 +50,4 @@ return require('packer').startup(function(use)
       'ElPiloto/significant.nvim'
     }
   })
-  -- Debugging
-  use 'leoluz/nvim-dap-go'
-  use 'nvim-lua/plenary.nvim'
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 end)

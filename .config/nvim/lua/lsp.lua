@@ -131,7 +131,7 @@ require('neural').setup({
 })
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'dap-go' }
+local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
