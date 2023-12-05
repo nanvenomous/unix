@@ -1,0 +1,85 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/natsu/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+font-size = 11
+
+gtk-tabs-location = hidden
+scrollback-limit = 10_000
+window-theme = ghostty
+clipboard-read = allow
+clipboard-paste-protection = false
+window-decoration = false
+shell-integration = zsh
+
+
+foreground = #d3c6aa
+background = #2f383e
+cursor-color = #ffffff
+cursor-text = #2f383e
+selection-background = #626880
+selection-foreground = #c6d0f5
+# black
+palette = 0=#4b565c
+palette = 8=#4b565c
+# red
+palette = 1=#e67e80
+palette = 9=#e67e80
+# green
+palette = 2=#a7c080
+palette = 10=#a7c080
+# yellow
+palette = 3=#dbbc7f
+palette = 11=#dbbc7f
+# blue
+palette = 4=#7fbbb3
+palette = 12=#7fbbb3
+# magenta
+palette = 5=#d699b6
+palette = 13=#d699b6
+# cyan
+palette = 6=#83c092
+palette = 14=#83c092
+# white
+palette = 7=#d3c6aa
+palette = 15=#d3c6aa
