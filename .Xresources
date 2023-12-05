@@ -1,44 +1,45 @@
-!Tokyo Night theme
-! general
-*foreground: #a9b1d6
-*background: #1a1b26
-*cursorColor: #a9b1d6
+! Everforest Dark Medium theme
+! 8 - 15 Bright Colors
 
-! terminal padding color
-*borderColor: #1a1b26
+! general
+*background: #2f383e
+*foreground: #d3c6aa
+*cursorColor: #a9b1d6
+*borderColor: #dbbc7f
+/* *borderColor: #1a1b26 */
 
 ! black
-*color0: #1a1b26
-*color8: #4e5173
+*color0:   #4b565c
+*color8:   #4b565c
 
 ! red
-*color1: #F7768E
-*color9: #F7768E
+*color1:     #e67e80
+*color9:     #e67e80
 
 ! green
-*color2: #9ECE6A
-*color10: #9ECE6A
+*color2:   #a7c080
+*color10:   #a7c080
 
 ! yellow
-*color3: #E0AF68
-*color11: #E0AF68
+*color3:  #dbbc7f
+*color11:  #dbbc7f
 
 ! blue
-*color4: #7AA2F7
-*color12: #7AA2F7
+*color4:    #7fbbb3
+*color12:    #7fbbb3
 
 ! magenta
-*color5: #9a7ecc
-*color13: #9a7ecc
+*color5: #d699b6
+*color13: #d699b6
 
 ! cyan
-*color6: #4abaaf
-*color14: #4abaaf
+*color6:    #83c092
+*color14:    #83c092
 
 ! white
-*color7: #acb0d0
-*color15: #acb0d0
-! Tokyo Night theme ends
+*color7:   #d3c6aa
+*color15:   #d3c6aa
+! End theme
 
 ! Sizing
 /*SMALL*/
@@ -46,9 +47,9 @@
 /* Xft.dpi: 100 */
 
 /*MEDIUM*/
-st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=26
-Xft.dpi: 150
+st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=24
+Xft.dpi: 140
 
 /*BIG*/
-/* st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=38 */
-/* Xft.dpi: 200 */
+/* Xft.dpi: 150 */
+/* st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=28 */

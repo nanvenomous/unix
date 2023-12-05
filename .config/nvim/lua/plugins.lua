@@ -10,8 +10,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
-
-  use { 'pineapplegiant/spaceduck', branch = 'main' }
+  use 'sainnhe/everforest'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-context' }
