@@ -4,9 +4,14 @@ alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources && kill -USR1 $(pidof st)'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl "wttr.in/Austin?m"'
 alias clk="date '+%I:%M %p'"
+
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
+
+function agenda() {
+  gcalcli --nocolor agenda --no-military "$(date '+%a %b %d')" "$(date '+%a %b %d' -d "8 days")"
+}
 
 function battery() {
   battery_status=$(cat /sys/class/power_supply/BAT0/status)
