@@ -22,3 +22,4 @@ sudo pacman -S android-tools
 
 ~/.android/emulator/emulator -list-avds
 /home/natsu/.android/emulator/emulator -gpu host -avd pixel
+/home/natsu/.android/emulator/emulator -gpu host -avd pixel -no-snapshot-load
