@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/gin/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?/init.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/gin/.cache/nvim/packer_hererocks/2.1.1700008891/lib/lua/5.1/?.so"
+local package_path_str = "/home/gin/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?/init.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?.lua;/home/gin/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/gin/.cache/nvim/packer_hererocks/2.1.1702233742/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -134,17 +134,6 @@ _G.packer_plugins = {
     path = "/home/gin/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
   },
-  neural = {
-    config = { "\27LJ\2\n†\1\0\0\a\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\4'\6\5\0B\4\2\2=\4\a\3=\3\t\2B\0\2\1K\0\1\0\fopen_ai\1\0\0\fapi_key\1\0\0\22OPENAI_SECRET_KEY\vgetenv\aos\nsetup\vneural\frequire\0" },
-    loaded = true,
-    path = "/home/gin/.local/share/nvim/site/pack/packer/start/neural",
-    url = "https://github.com/dense-analysis/neural"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/home/gin/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["nvim-blame-line"] = {
     loaded = true,
     path = "/home/gin/.local/share/nvim/site/pack/packer/start/nvim-blame-line",
@@ -165,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/gin/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/gin/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/gin/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -174,11 +168,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gin/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
-  },
-  ["significant.nvim"] = {
-    loaded = true,
-    path = "/home/gin/.local/share/nvim/site/pack/packer/start/significant.nvim",
-    url = "https://github.com/ElPiloto/significant.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -203,10 +192,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neural
-time([[Config for neural]], true)
-try_loadstring("\27LJ\2\n†\1\0\0\a\0\n\0\0146\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0006\4\3\0009\4\4\4'\6\5\0B\4\2\2=\4\a\3=\3\t\2B\0\2\1K\0\1\0\fopen_ai\1\0\0\fapi_key\1\0\0\22OPENAI_SECRET_KEY\vgetenv\aos\nsetup\vneural\frequire\0", "config", "neural")
-time([[Config for neural]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

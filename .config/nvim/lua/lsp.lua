@@ -101,34 +101,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
 	vim.keymap.set('n', 'gl', organize_imports, bufopts)
 
-	-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-	-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-	-- vim.keymap.set('n', '<space>wl', function()
-	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	-- end, bufopts)
-	-- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-	-- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-	-- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
-
-require('neural').setup({
-    mappings = {
-        swift = '<C-n>', -- Context completion
-        prompt = '<C-space>', -- Open prompt
-    },
-    open_ai = {
-        api_key = os.getenv("OPENAI_SECRET_KEY")
-    },
-    ui = {
-        use_prompt = true, -- Use visual floating Input
-        use_animated_sign = true, -- Use animated sign mark
-        show_hl = true,
-        show_icon = true,
-        icon = '🗲', -- Prompt/Static sign icon
-    },
-})
 
 -- Setup lspconfig.
 local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server' }
@@ -178,51 +151,17 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-local llamacpp = require("llm.providers.llamacpp")
-local llmutil = require('llm.util')
-
-local function create_llm_opts(model)
-  return {
-    server_start = {
-      command = "/home/gin/projects/3p/llama.cpp/build/bin/server",
-      args = {
-        "-m", model,
-        "-c", 2048,
-        "-ngl", 70,
-      }
-    },
-  }
-end
-local llm_builder = function(input, context)
-  return {
-    prompt = llamacpp.llama_2_user_prompt({
-      user = context.args or "",
-      message = input
-    })
-  }
-end
-
-require("llm").setup({
-  prompts = {
-    llamacpp = {
-      provider = llamacpp,
-      options = create_llm_opts("/home/gin/.local/share/nvim/llama.cpp/models/codellama-13b.Q4_K_M.gguf"),
-      builder = function(input, context)
-        return {
-          prompt = llamacpp.llama_2_user_prompt({
-            user = context.args or "",
-            message = input
-          })
-        }
-      end,
-    },
-    ask = {
-      provider = llamacpp,
-      options = create_llm_opts("/home/gin/projects/3p/llama.cpp/models/llama-2-13b-chat.ggmlv3.q4_1.bin"),
-      builder = llm_builder,
-    }
-  },
-})
-
-
-
+require'treesitter-context'.setup{
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20, -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}

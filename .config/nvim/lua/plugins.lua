@@ -15,6 +15,10 @@ return require('packer').startup(function(use)
   use { 'pineapplegiant/spaceduck', branch = 'main' }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter-context' }
+  -- use { 'wellle/context.vim' }
+
+
   use 'sbdchd/neoformat'
 
   use 'raimondi/delimitmate'
@@ -35,19 +39,6 @@ return require('packer').startup(function(use)
   -- GO
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
-  use({
-    'dense-analysis/neural',
-    config = function()
-      require('neural').setup({
-        open_ai = {
-          api_key = os.getenv("OPENAI_SECRET_KEY")
-        }
-      })
-    end,
-    requires = {
-      'MunifTanjim/nui.nvim',
-      'ElPiloto/significant.nvim'
-    }
-  })
 
 end)
+
