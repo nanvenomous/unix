@@ -165,3 +165,42 @@ require'treesitter-context'.setup{
   zindex = 20, -- The Z-index of the context window
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
+
+if vim.fn.hostname() == "oddjobs" then
+  config = function()
+    require('model').setup()
+
+    require('model.providers.llamacpp').setup({
+      binary = '~/.local/share/nvim/llama.cpp/models',
+      models = '~/projects/3p/llama.cpp/build/bin/server'
+    })
+  end
+
+  local llamacpp = require('model.providers.llamacpp')
+
+  require('model').setup({
+    prompts = {
+      codellama = {
+        provider = llamacpp,
+        options = {
+          model = 'codellama-34b.Q6_K.gguf',
+          args = {
+            '-c', 8192,
+            '-ngl', 70
+          }
+        },
+        builder = function(input, context)
+          return {
+            prompt =
+              '<|system|>'
+              .. (context.args or 'You are a helpful assistant')
+              .. '\n</s>\n<|user|>\n'
+              .. input
+              .. '</s>\n<|assistant|>',
+            stops = { '</s>' }
+          }
+        end
+      }
+    }
+  })
+end

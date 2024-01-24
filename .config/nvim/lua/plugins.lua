@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
   use 'tveskag/nvim-blame-line'
 
   -- LLM
-  use 'gsuuon/llm.nvim'
+  use 'gsuuon/model.nvim'
 
   -- Rust
   use 'simrat39/rust-tools.nvim'
