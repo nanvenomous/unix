@@ -171,8 +171,8 @@ if vim.fn.hostname() == "oddjobs" then
     require('model').setup()
 
     require('model.providers.llamacpp').setup({
-      binary = '~/.local/share/nvim/llama.cpp/models',
-      models = '~/projects/3p/llama.cpp/build/bin/server'
+      binary = '~/projects/3p/llama.cpp/build/bin/server',
+      models = '~/.local/share/nvim/llama.cpp/models'
     })
   end
 
@@ -183,7 +183,7 @@ if vim.fn.hostname() == "oddjobs" then
       codellama = {
         provider = llamacpp,
         options = {
-          model = 'codellama-34b.Q6_K.gguf',
+          model = 'codellama-70b-hf.Q5_K_M.gguf',
           args = {
             '-c', 8192,
             '-ngl', 70
@@ -200,7 +200,7 @@ if vim.fn.hostname() == "oddjobs" then
             stops = { '</s>' }
           }
         end
-      }
+      },
     }
   })
 end

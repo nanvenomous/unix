@@ -23,9 +23,9 @@ local keymap = vim.api.nvim_set_keymap
 local nOpts = { noremap = true }
 local nsOpts = { noremap = true, silent = true }
 
--- keymap('n', 'cj', ':GitGutterNextHunk<CR>', nOpts)
--- keymap('n', 'ck', ':GitGutterPrevHunk<CR>', nOpts)
--- keymap('n', 'ch', ':GitGutterPreviewHunk<CR>', nOpts)
+keymap('n', 'cj', ':GitGutterNextHunk<CR>', nOpts)
+keymap('n', 'ck', ':GitGutterPrevHunk<CR>', nOpts)
+keymap('n', 'ch', ':GitGutterPreviewHunk<CR>', nOpts)
 -- nnoremap db :let g:gitgutter_diff_base = 'mainline'<CR>
 -- nnoremap di :let g:gitgutter_diff_base = 'head'<CR>
 
@@ -77,9 +77,10 @@ cnoreabbrev Ack Ack!
 ]]
 -- vim.g.ack_autoclose = 1
 
--- vim.g.gitgutter_diff_base = 'mainline'
--- vim.g.gitgutter_grep = 'rg'
--- vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
+-- GitGutter
+vim.g.gitgutter_diff_base = 'gamma'
+vim.g.gitgutter_grep = 'rg'
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 

@@ -8,9 +8,10 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-for_window [class=".*"] border pixel 3
-# gaps inner 8
-# gaps outer 8
+for_window [class=".*"] border pixel 5
+gaps inner 8
+gaps outer 8
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 
 # jump to any urgent workspace
 for_window [urgent="latest"] focus

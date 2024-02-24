@@ -16,8 +16,9 @@ return require('packer').startup(function(use)
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-context' }
-  -- use { 'wellle/context.vim' }
 
+  -- git
+  use { 'airblade/vim-gitgutter' }
 
   use 'sbdchd/neoformat'
 
