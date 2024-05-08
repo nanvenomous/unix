@@ -104,7 +104,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server' }
+local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -166,41 +166,61 @@ require'treesitter-context'.setup{
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
-if vim.fn.hostname() == "oddjobs" then
-  config = function()
-    require('model').setup()
+local home = os.getenv("HOME")
 
-    require('model.providers.llamacpp').setup({
-      binary = '~/projects/3p/llama.cpp/build/bin/server',
-      models = '~/.local/share/nvim/llama.cpp/models'
-    })
-  end
+local llamacpp = require('model.providers.llamacpp')
+llamacpp.setup({
+  binary = home .. '/projects/3p/llama.cpp/build/bin/server',
+  models = home .. '/.local/share/nvim/llama.cpp/models'
+})
 
-  local llamacpp = require('model.providers.llamacpp')
 
-  require('model').setup({
-    prompts = {
-      codellama = {
-        provider = llamacpp,
-        options = {
-          model = 'codellama-70b-hf.Q5_K_M.gguf',
-          args = {
-            '-c', 8192,
-            '-ngl', 70
-          }
-        },
-        builder = function(input, context)
-          return {
-            prompt =
-              '<|system|>'
-              .. (context.args or 'You are a helpful assistant')
-              .. '\n</s>\n<|user|>\n'
-              .. input
-              .. '</s>\n<|assistant|>',
-            stops = { '</s>' }
-          }
-        end
-      },
-    }
-  })
+local simple_builder = function(input, context)
+  return {
+    prompt = '### Instruction:\n' .. input .. '\n\n### Response:\n',
+    stop = '</s>',
+  }
 end
+
+require('model').setup({
+  prompts = {
+    codellama = {
+      provider = llamacpp,
+      options = {
+        model = 'codellama-13b.Q4_K_M.gguf',
+        args = {
+          '-c', 2048,
+          '-ngl', 70
+        }
+      },
+      builder = function(input)
+        return {
+          prompt = '### System Prompt\nYou are an intelligent programming assistant\n\n### User Message\n'
+            .. input
+            .. '\n\n### Assistant\n',
+        }
+      end,
+    },
+  }
+})
+
+vim.filetype.add({ extension = { templ = "templ" } })
+
+nvim_lsp.html.setup({
+    on_attach = on_attach,
+    filetypes = { "html", "templ" },
+})
+
+-- builder = function(input, context)
+--   return {
+--     prompt =
+--       '<|system|>'
+--       .. (context.args or 'You are a helpful assistant')
+--       .. '\n</s>\n<|user|>\n'
+--       .. input
+--       .. '</s>\n<|assistant|>',
+--     stops = { '</s>' }
+--   }
+-- end
+
+

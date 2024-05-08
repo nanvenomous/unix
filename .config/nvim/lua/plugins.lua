@@ -21,6 +21,10 @@ return require('packer').startup(function(use)
   use { 'airblade/vim-gitgutter' }
 
   use 'sbdchd/neoformat'
+  -- use('nvim-lua/plenary.nvim')
+  -- use('jose-elias-alvarez/null-ls.nvim')
+  -- use('nvimtools/none-ls.nvim')
+  -- use('MunifTanjim/prettier.nvim')
 
   use 'raimondi/delimitmate'
   use 'kien/ctrlp.vim'

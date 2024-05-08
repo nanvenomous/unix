@@ -56,10 +56,14 @@ keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
 keymap('n', '<esc>', ':noh<CR>', nsOpts)
 keymap('n', '*', ':keepjumps normal! mi*`i<CR>', nsOpts)
 
-vim.cmd [[ 
-let g:neoformat_try_node_exe = 1
-autocmd BufWritePre *.ts,*.tsx,*.rs Neoformat
-]]
+vim.g.neoformat_try_node_exe = 1
+vim.api.nvim_create_autocmd(
+  { 'BufWritePre' },
+  {
+    pattern = { '*.ts', '*.js', '*.html', '*.md' },
+    command = 'Neoformat',
+  }
+)
 
 vim.g.ctrlp_use_caching = 0
 vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -95,4 +99,4 @@ end
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.go' }, callback = formatGo })
 
--- autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+
