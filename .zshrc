@@ -21,3 +21,10 @@ verbose_source "${SCRIPTS_DIR}/prompt.zsh"
 verbose_source "${SCRIPTS_DIR}/system-clipboard/zsh-system-clipboard.zsh"
 verbose_source "${HOME}/.locrc.zsh"
 verbose_source "${SCRIPTS_DIR}/window_manager.zsh"
+
+# bun completions
+[ -s "/home/gin/.bun/_bun" ] && source "/home/gin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -104,7 +104,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ' }
+local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss', 'htmx' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -210,17 +210,3 @@ nvim_lsp.html.setup({
     on_attach = on_attach,
     filetypes = { "html", "templ" },
 })
-
--- builder = function(input, context)
---   return {
---     prompt =
---       '<|system|>'
---       .. (context.args or 'You are a helpful assistant')
---       .. '\n</s>\n<|user|>\n'
---       .. input
---       .. '</s>\n<|assistant|>',
---     stops = { '</s>' }
---   }
--- end
-
-
