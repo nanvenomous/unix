@@ -104,7 +104,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss', 'htmx' }
+local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -125,17 +125,6 @@ nvim_lsp.lua_ls.setup({
 			diagnostics = { globals = { 'vim' } }
 		}
 	}
-})
-
--- gopls, pyright, typescript-language-server, rust-analyzer, lua-language-server
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
 })
 
 -- Setup nvim-treesitter
@@ -166,47 +155,74 @@ require'treesitter-context'.setup{
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
-local home = os.getenv("HOME")
+-- local home = os.getenv("HOME")
 
-local llamacpp = require('model.providers.llamacpp')
-llamacpp.setup({
-  binary = home .. '/projects/3p/llama.cpp/build/bin/server',
-  models = home .. '/.local/share/nvim/llama.cpp/models'
-})
+-- local llamacpp = require('model.providers.llamacpp')
+-- llamacpp.setup({
+--   binary = home .. '/projects/3p/llama.cpp/build/bin/server',
+--   models = home .. '/.local/share/nvim/llama.cpp/models'
+-- })
 
-
-local simple_builder = function(input, context)
-  return {
-    prompt = '### Instruction:\n' .. input .. '\n\n### Response:\n',
-    stop = '</s>',
-  }
-end
-
-require('model').setup({
-  prompts = {
-    codellama = {
-      provider = llamacpp,
-      options = {
-        model = 'codellama-13b.Q4_K_M.gguf',
-        args = {
-          '-c', 2048,
-          '-ngl', 70
-        }
-      },
-      builder = function(input)
-        return {
-          prompt = '### System Prompt\nYou are an intelligent programming assistant\n\n### User Message\n'
-            .. input
-            .. '\n\n### Assistant\n',
-        }
-      end,
-    },
-  }
-})
+-- require('model').setup({
+--   prompts = {
+--     codellama = {
+--       provider = llamacpp,
+--       options = {
+--         model = 'codellama-13b.Q4_K_M.gguf',
+--         args = {
+--           '-c', 2048,
+--           '-ngl', 70
+--         }
+--       },
+--       builder = function(input)
+--         return {
+--           prompt = '### System Prompt\nYou are an intelligent programming assistant\n\n### User Message\n'
+--             .. input
+--             .. '\n\n### Assistant\n',
+--         }
+--       end,
+--     },
+--   }
+-- })
 
 vim.filetype.add({ extension = { templ = "templ" } })
+
+-- format templ files
+local custom_format = function()
+    if vim.bo.filetype == "templ" then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+        vim.fn.jobstart(cmd, {
+            on_exit = function()
+                -- Reload the buffer only if it's still the current buffer
+                if vim.api.nvim_get_current_buf() == bufnr then
+                    vim.cmd('e!')
+                end
+            end,
+        })
+    else
+        vim.lsp.buf.format()
+    end
+end
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = custom_format })
 
 nvim_lsp.html.setup({
     on_attach = on_attach,
     filetypes = { "html", "templ" },
 })
+nvim_lsp.htmx.setup({
+    on_attach = on_attach,
+    filetypes = { "html", "templ" },
+})
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
+require('go').setup()

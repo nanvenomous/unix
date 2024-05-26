@@ -65,27 +65,6 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- format templ files
-local custom_format = function()
-    if vim.bo.filetype == "templ" then
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-
-        vim.fn.jobstart(cmd, {
-            on_exit = function()
-                -- Reload the buffer only if it's still the current buffer
-                if vim.api.nvim_get_current_buf() == bufnr then
-                    vim.cmd('e!')
-                end
-            end,
-        })
-    else
-        vim.lsp.buf.format()
-    end
-end
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = custom_format })
-
 vim.g.ctrlp_use_caching = 0
 vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 vim.cmd [[ 
@@ -100,7 +79,6 @@ vim.g.ack_use_cword_for_empty_search = 1
 vim.cmd [[ 
 cnoreabbrev Ack Ack!
 ]]
--- vim.g.ack_autoclose = 1
 
 -- GitGutter
 vim.g.gitgutter_diff_base = 'gamma'
@@ -110,14 +88,4 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
-
--- noremap <leader>j :%!python -m json.tool<CR>
-
-require('go').setup()
-local function formatGo()
-	require("go.format").goimport()  -- goimport + gofmt
-end
-
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, { pattern = { '*.go' }, callback = formatGo })
-
 

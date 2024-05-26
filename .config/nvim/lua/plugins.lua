@@ -2,7 +2,6 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use { 'williamboman/mason.nvim' }
 
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use 'hrsh7th/cmp-nvim-lsp'
@@ -21,10 +20,6 @@ return require('packer').startup(function(use)
   use { 'airblade/vim-gitgutter' }
 
   use 'sbdchd/neoformat'
-  -- use('nvim-lua/plenary.nvim')
-  -- use('jose-elias-alvarez/null-ls.nvim')
-  -- use('nvimtools/none-ls.nvim')
-  -- use('MunifTanjim/prettier.nvim')
 
   use 'raimondi/delimitmate'
   use 'kien/ctrlp.vim'
@@ -34,9 +29,6 @@ return require('packer').startup(function(use)
   use 'mileszs/ack.vim'
 
   use 'tveskag/nvim-blame-line'
-
-  -- LLM
-  use 'gsuuon/model.nvim'
 
   -- Rust
   use 'simrat39/rust-tools.nvim'
