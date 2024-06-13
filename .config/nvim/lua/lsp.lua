@@ -155,6 +155,57 @@ require'treesitter-context'.setup{
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
+vim.filetype.add({ extension = { templ = "templ" } })
+
+-- format templ files
+
+local custom_format = function()
+    if vim.bo.filetype == "templ" then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+        vim.fn.jobstart(cmd, {
+            on_exit = function()
+                -- Reload the buffer only if it's still the current buffer
+                if vim.api.nvim_get_current_buf() == bufnr then
+                    vim.cmd('e!')
+                end
+            end,
+        })
+    else
+        vim.lsp.buf.format()
+    end
+end
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ", "*.go" }, callback = custom_format })
+
+nvim_lsp.html.setup({
+  on_attach = on_attach,
+  filetypes = { "html", "templ" },
+})
+nvim_lsp.htmx.setup({
+  on_attach = on_attach,
+  filetypes = { "html", "templ" },
+})
+
+local ollama = require('model.providers.ollama')
+
+require('model').setup({
+  prompts = {
+  ['ollama'] = {
+    provider = ollama,
+    params = {
+      model = 'llama3'
+    },
+    builder = function(input)
+      return {
+        prompt = '### user: ' .. input .. '### assistant: '
+      }
+    end
+  },
+  }
+})
+
 -- local home = os.getenv("HOME")
 
 -- local llamacpp = require('model.providers.llamacpp')
@@ -185,44 +236,3 @@ require'treesitter-context'.setup{
 --   }
 -- })
 
-vim.filetype.add({ extension = { templ = "templ" } })
-
--- format templ files
-local custom_format = function()
-    if vim.bo.filetype == "templ" then
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-
-        vim.fn.jobstart(cmd, {
-            on_exit = function()
-                -- Reload the buffer only if it's still the current buffer
-                if vim.api.nvim_get_current_buf() == bufnr then
-                    vim.cmd('e!')
-                end
-            end,
-        })
-    else
-        vim.lsp.buf.format()
-    end
-end
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = custom_format })
-
-nvim_lsp.html.setup({
-    on_attach = on_attach,
-    filetypes = { "html", "templ" },
-})
-nvim_lsp.htmx.setup({
-    on_attach = on_attach,
-    filetypes = { "html", "templ" },
-})
-
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimports()
-  end,
-  group = format_sync_grp,
-})
-require('go').setup()

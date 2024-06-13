@@ -7,6 +7,12 @@ alias clk="date '+%I:%M %p'"
 alias review='git diff --name-only HEAD HEAD~1 | uniq | xargs nvim -p'
 alias resolve='git diff --name-only | uniq | xargs nvim -p'
 
+function release() {
+  lastTag=$(git describe --tags --abbrev=0 @^)
+  git log ${lastTag}..@ | e -
+}
+
+
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
 alias keychain='sudo pacman -S archlinux-keyring; sudo pacman-key --populate archlinux; sudo pacman-key --refresh'
