@@ -81,7 +81,9 @@ cnoreabbrev Ack Ack!
 ]]
 
 -- GitGutter
-vim.g.gitgutter_diff_base = 'gamma'
+-- vim.g.gitgutter_diff_base = 'gamma'
+-- vim.g.gitgutter_diff_base = 'v0.0.49'
+vim.g.gitgutter_diff_base = 'HEAD~1'
 vim.g.gitgutter_grep = 'rg'
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 
