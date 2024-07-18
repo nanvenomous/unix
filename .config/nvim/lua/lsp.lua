@@ -15,8 +15,8 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-space>'] = cmp.mapping.complete(),
@@ -77,9 +77,30 @@ set signcolumn=yes
 -- nnoremap <silent> tf <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
 -- nnoremap <silent>ge <cmd>lua require("echo-diagnostics").echo_entire_diagnostic()<CR>
 
-local function organize_imports()
-    vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
+-- templ files
+vim.filetype.add({ extension = { templ = "templ" } })
+
+local custom_format = function()
+    if vim.bo.filetype == "templ" then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+        vim.fn.jobstart(cmd, {
+            on_exit = function()
+                -- Reload the buffer only if it's still the current buffer
+                if vim.api.nvim_get_current_buf() == bufnr then
+                    vim.cmd('e!')
+                end
+            end,
+        })
+    else
+        vim.lsp.buf.format()
+    end
 end
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go", "*.templ" }, callback = custom_format })
+
 
 local function show_diagnostic()
 	vim.diagnostic.open_float(nil, { focusable = false })
@@ -99,7 +120,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
-	vim.keymap.set('n', 'gl', organize_imports, bufopts)
+	vim.keymap.set('n', 'gl', custom_format, bufopts)
 
 end
 
@@ -155,29 +176,6 @@ require'treesitter-context'.setup{
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 }
 
-vim.filetype.add({ extension = { templ = "templ" } })
-
--- format templ files
-
-local custom_format = function()
-    if vim.bo.filetype == "templ" then
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-
-        vim.fn.jobstart(cmd, {
-            on_exit = function()
-                -- Reload the buffer only if it's still the current buffer
-                if vim.api.nvim_get_current_buf() == bufnr then
-                    vim.cmd('e!')
-                end
-            end,
-        })
-    else
-        vim.lsp.buf.format()
-    end
-end
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ", "*.go" }, callback = custom_format })
 
 nvim_lsp.html.setup({
   on_attach = on_attach,

@@ -91,3 +91,4 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
 
+-- require("go.format").goimports()  -- goimports + gofmt
