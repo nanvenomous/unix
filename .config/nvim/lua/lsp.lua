@@ -191,8 +191,8 @@ Hostname = nil
 if handle then
     Hostname = string.gsub(handle:read("*a"), "^%s+", "")
     handle:close()
-    vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
-    vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
+    -- vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
+    -- vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
 end
 
 require('gen').setup({
