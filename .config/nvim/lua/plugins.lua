@@ -37,7 +37,8 @@ return require('packer').startup(function(use)
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
 
-  use 'gsuuon/model.nvim'
+  -- LLM
+  use 'David-Kunz/gen.nvim'
 
 end)
 

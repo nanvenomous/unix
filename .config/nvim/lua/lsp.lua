@@ -186,51 +186,35 @@ nvim_lsp.htmx.setup({
   filetypes = { "html", "templ" },
 })
 
-local ollama = require('model.providers.ollama')
+local handle = io.popen('hostname')
+Hostname = nil
+if handle then
+    Hostname = string.gsub(handle:read("*a"), "^%s+", "")
+    handle:close()
+    vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
+    vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
+end
 
-require('model').setup({
-  prompts = {
-  ['ollama'] = {
-    provider = ollama,
-    params = {
-      model = 'llama3'
-    },
-    builder = function(input)
-      return {
-        prompt = '### user: ' .. input .. '### assistant: '
-      }
+require('gen').setup({
+  model = "codestral", -- The default model to use.
+  host = "localhost", -- The host running the Ollama service.
+  port = "4005", -- The port on which the Ollama service is listening.
+  quit_map = "q", -- set keymap for close the response window
+  retry_map = "<c-r>", -- set keymap to re-send the current prompt
+  init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+  -- Function to initialize Ollama
+  command = function(options)
+    local body = {model = options.model, stream = true}
+    if Hostname:find("oddjobs") ~= nil then
+      return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
     end
-  },
-  }
+
+    local api_key = os.getenv("LIBERO_API_KEY")
+    return "curl --silent --no-buffer -X POST https://" .. "ollama.fiore.one" .. "/api/chat -d $body --header 'Key: " .. api_key .."'"
+  end,
+  display_mode = "horizontal-split", -- The display mode. Can be "float" or "split" or "horizontal-split".
+  show_prompt = false, -- Shows the prompt submitted to Ollama.
+  show_model = false, -- Displays which model you are using at the beginning of your chat session.
+  no_auto_close = false, -- Never closes the window automatically.
+  debug = false -- Prints errors and the command which is run.
 })
-
--- local home = os.getenv("HOME")
-
--- local llamacpp = require('model.providers.llamacpp')
--- llamacpp.setup({
---   binary = home .. '/projects/3p/llama.cpp/build/bin/server',
---   models = home .. '/.local/share/nvim/llama.cpp/models'
--- })
-
--- require('model').setup({
---   prompts = {
---     codellama = {
---       provider = llamacpp,
---       options = {
---         model = 'codellama-13b.Q4_K_M.gguf',
---         args = {
---           '-c', 2048,
---           '-ngl', 70
---         }
---       },
---       builder = function(input)
---         return {
---           prompt = '### System Prompt\nYou are an intelligent programming assistant\n\n### User Message\n'
---             .. input
---             .. '\n\n### Assistant\n',
---         }
---       end,
---     },
---   }
--- })
-
