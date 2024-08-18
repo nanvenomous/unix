@@ -17,6 +17,19 @@ c.auto_save.session = True
 # c.editor.command = ["st", "-e", "nvim '{}'"]
 c.editor.command = ["st", "-e", "nvim", "{}"]
 c.url.default_page = "about:blank"
-c.colors.tabs.even.bg = "#535454"
-c.colors.tabs.odd.bg = "#7e807f"
+c.colors.tabs.even.bg = "#000000"
+c.colors.tabs.odd.bg = "#333333"
+c.colors.tabs.selected.even.bg = "#cfd0d1"
+c.colors.tabs.selected.odd.bg = "#cfd0d1"
+c.colors.tabs.selected.even.fg = "#000000"
+c.colors.tabs.selected.odd.fg = "#000000"
 config.load_autoconfig(False)
+c.tabs.padding = {
+    "left": 5,
+    "right": 5,
+    "top": 5,
+    "bottom": 5,
+}
+c.fonts.tabs.selected = '12pt default_family'
+c.fonts.tabs.unselected = '10pt default_family'
+c.tabs.favicons.scale = 1.3
