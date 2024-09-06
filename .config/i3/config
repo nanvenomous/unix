@@ -8,17 +8,14 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-for_window [class=".*"] border pixel 5
 gaps inner 8
 gaps outer 8
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 
-# jump to any urgent workspace
+for_window [class=".*"] border pixel 5
 for_window [urgent="latest"] focus
-
-# attempt to stack all matplotlib windows
+for_window [class="synapse"] border none
 for_window [class="Matplotlib"] focus; split v; layout stacked
-
 for_window [title="^Android Emulator - "] floating enable
 
 set $mod Mod4
@@ -64,7 +61,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n kill
 
 # start dmenu (a program launcher)
-bindsym $mod+f exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
+# bindsym $mod+f exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
+bindsym $mod+f exec rofi -show run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
