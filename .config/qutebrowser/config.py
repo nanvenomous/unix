@@ -12,6 +12,8 @@ config.bind('tj', 'tab-next')
 config.bind('tk', 'tab-prev')
 config.bind('tn', 'tab-close')
 config.bind("to", "cmd-set-text :open -t ")
+config.bind("th", "tab-move -")
+config.bind("tl", "tab-move +")
 
 c.auto_save.session = True
 # c.editor.command = ["st", "-e", "nvim '{}'"]
