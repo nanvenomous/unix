@@ -43,7 +43,6 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
   - [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
   - nav to [configuration page](about:config) `browser.fullscreen.autohide`
   - [ ] firefox shortcuts
-- [i3ass](https://github.com/budlabs/i3ass)
 ```
 map tj nextTab
 map tk previousTab
@@ -59,3 +58,6 @@ map gk scrollPageUp
 
 map u restoreTab
 ```
+
+# Devices
+- [xps 13 9310](https://wiki.archlinux.org/title/Dell_XPS_13_(9310))

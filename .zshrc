@@ -18,7 +18,7 @@ SCRIPTS_DIR="${HOME}/.scripts"
 verbose_source "${SCRIPTS_DIR}/navigation.zsh"
 verbose_source "${SCRIPTS_DIR}/programs.zsh"
 verbose_source "${SCRIPTS_DIR}/prompt.zsh"
-verbose_source "${SCRIPTS_DIR}/system-clipboard/zsh-system-clipboard.zsh"
+verbose_source "${SCRIPTS_DIR}/zsh-system-clipboard/zsh-system-clipboard.zsh"
 verbose_source "${HOME}/.locrc.zsh"
 verbose_source "${SCRIPTS_DIR}/window_manager.zsh"
 

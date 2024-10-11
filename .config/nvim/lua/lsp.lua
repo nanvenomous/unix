@@ -125,7 +125,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'tsserver', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss' }
+local servers = { 'gopls', 'pyright', 'ts_ls', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss' }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
