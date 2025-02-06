@@ -196,7 +196,8 @@ if handle then
 end
 
 require('gen').setup({
-  model = "codestral", -- The default model to use.
+  -- model = "codestral", -- The default model to use.
+  model = "deepseek-r1:32b", -- The default model to use.
   host = "localhost", -- The host running the Ollama service.
   port = "4005", -- The port on which the Ollama service is listening.
   quit_map = "q", -- set keymap for close the response window

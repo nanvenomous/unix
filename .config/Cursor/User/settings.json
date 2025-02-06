@@ -81,5 +81,6 @@
             "before": ["y", "p"],
             "commands": ["copyFilePath"]
         }
-    ]
+    ],
+    "workbench.colorTheme": "spaceduck"
 }

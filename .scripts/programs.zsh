@@ -2,7 +2,7 @@ alias lg='lazygit'
 alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources && kill -USR1 $(pidof st)'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
-alias weather='curl "wttr.in/Austin?m"'
+alias weather='curl "wttr.in/Chicago?m"'
 alias clk="date '+%I:%M %p'"
 alias review='git diff --name-only HEAD HEAD~1 | uniq | xargs nvim -p'
 alias resolve='git diff --name-only | uniq | xargs nvim -p'
