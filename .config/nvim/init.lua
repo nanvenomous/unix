@@ -1,5 +1,4 @@
-require('plugins')
-require('lsp')
+require("config.lazy")
 
 vim.o.scrolloff = 999
 
@@ -33,6 +32,7 @@ keymap('n', 'gj', ':+10<CR>', nsOpts)
 keymap('n', 'gk', ':-10<CR>', nsOpts)
 keymap('n', 'gb', '<c-o>', nOpts)
 keymap('n', 'gs', ':Ack!<Space>', nOpts)
+keymap('n', 'go', ':Telescope find_files<CR>', nOpts)
 
 keymap('n', 'ss', ':Obsession<CR>', nOpts)
 keymap('n', 'sf', ':w<CR>', nOpts)
@@ -48,7 +48,10 @@ keymap('n', 'tk', ':tabprevious<CR>', nsOpts)
 keymap('n', 'tn', ':tabclose<CR>', nsOpts)
 keymap('n', 'th', ':tabmove -1<CR>', nsOpts)
 keymap('n', 'tl', ':tabmove +1<CR>', nsOpts)
-keymap('n', 'to', ':CtrlPCurWD<CR>', nOpts)
+-- keymap('n', 'to', ':CtrlPCurWD<CR>', nOpts)
+keymap('n', 'to', ':Telescope find_files<CR>', nOpts)
+keymap('n', 'tg', ':Telescope live_grep<CR>', nOpts)
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 
 keymap('n', 'yp', ':let @+ = expand("%")<CR>', nOpts)
 keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
@@ -86,7 +89,6 @@ cnoreabbrev Ack Ack!
 vim.g.gitgutter_diff_base = 'HEAD~1'
 vim.g.gitgutter_grep = 'rg'
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
-
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
