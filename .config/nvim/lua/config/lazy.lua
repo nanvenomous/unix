@@ -14,12 +14,25 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
 
-local libero_api_key = os.getenv("LIBERO_API_KEY")
+-- local libero_api_key = os.getenv("LIBERO_API_KEY")
+local home = os.getenv("HOME")
 
 require("lazy").setup({
    spec = {
-    { 'pineapplegiant/spaceduck', branch = 'main' },
+    {
+      "neanias/everforest-nvim",
+      version = false,
+      lazy = false,
+      priority = 1000, -- make sure to load this before all the other start plugins
+      -- Optional; default configuration will be used if setup isn't called.
+      config = function()
+        require("everforest").setup({
+          -- Your config here
+        })
+      end,
+    },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' },
@@ -57,6 +70,7 @@ require("lazy").setup({
     { 'tveskag/nvim-blame-line' },
     { 'ray-x/go.nvim' },
     { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
+    { 'sbdchd/neoformat' },
     {
       "yetone/avante.nvim",
       event = "VeryLazy",
@@ -66,7 +80,8 @@ require("lazy").setup({
         -- for example
         provider = "ollama",
         ollama = {
-          model = "deepseek-r1:32b",
+          -- model = "deepseek-r1:32b",
+          model = "deepseek-coder-v2:16b",
           -- api_key_name = "LIBERO_API_KEY",
           -- endpoint = "https://ollama.fiore.one",
           -- parse_curl_args = function(opts, code_opts)
@@ -204,8 +219,10 @@ end
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap=true, silent=true, buffer=bufnr }
-	vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gf', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', 'gf', function() require('telescope.builtin').lsp_document_symbols({ symbols = {'function', 'method'} }) end, bufopts)
+  vim.keymap.set('n', 'gv', function() require('telescope.builtin').lsp_document_symbols({ symbols = {'variable', 'constant', 'struct'} }) end, bufopts)
 	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
