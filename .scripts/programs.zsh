@@ -81,8 +81,9 @@ case "$(uname -s)" in
     ################### RUST
     export PATH=$PATH:$HOME/.cargo/bin
 
-    ################### MASON
-    export PATH="${PATH}:${HOME}/.local/share/nvim/mason/bin"
+    ################### CSHARP
+    export PATH="$PATH:$HOME/.dotnet/tools"
+    export PATH="$PATH:$HOME/csharp/netcoredbg"
     
     ;;
   Darwin*)

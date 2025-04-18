@@ -1,3 +1,5 @@
 **.vscode/
 *.pyc
 Session.vim
+package-lock.json
+tmp_sql_scripts

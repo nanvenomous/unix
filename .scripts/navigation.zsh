@@ -9,4 +9,4 @@ function fnd() {
 
 eval "$(where-to init)"
 
-alias fd='cd $(find * -maxdepth 0 -type d | fzf); t'
+# alias fd='cd $(find * -maxdepth 0 -type d | fzf); t'

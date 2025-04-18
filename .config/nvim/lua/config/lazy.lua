@@ -45,15 +45,35 @@ require("lazy").setup({
 
         configs.setup({
             -- ensure_installed = { "c", "lua", "go", "typescript", "vim", "html" },
-            ensure_installed = { "go", "typescript", "html", "templ", "c", "lua", "vim", "html" },
+            ensure_installed = {
+            "go",
+            "typescript", "javascript",
+            "html",
+            "templ",
+            "c",
+            "lua",
+            "vim",
+            "html",
+            "c_sharp",
+          },
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
         })
       end
      },
-
-    { 'nvim-treesitter/nvim-treesitter-context' },
+    {
+      'nvim-treesitter/nvim-treesitter-context',
+      opts = function()
+        -- local tsc = require("treesitter-context")
+        return {
+          enable = true,
+          mode = "cursor",
+          max_lines = 5,
+          multiline_threshold = 1,
+        }
+      end
+    },
     { 'neovim/nvim-lspconfig' }, -- Configurations for Nvim LSP
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
@@ -71,6 +91,12 @@ require("lazy").setup({
     { 'ray-x/go.nvim' },
     { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
     { 'sbdchd/neoformat' },
+    { 'mfussenegger/nvim-dap' },
+    {
+      'rcarriga/nvim-dap-ui',
+      dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    },
+    { 'leoluz/nvim-dap-go' },
     {
       "yetone/avante.nvim",
       event = "VeryLazy",
@@ -80,10 +106,10 @@ require("lazy").setup({
         -- for example
         provider = "ollama",
         ollama = {
-          -- model = "deepseek-r1:32b",
           model = "deepseek-coder-v2:16b",
-          -- api_key_name = "LIBERO_API_KEY",
-          -- endpoint = "https://ollama.fiore.one",
+          api_key_name = "LIBERO_API_KEY",
+          endpoint = "https://ollama.fiore.one",
+          -- model = "deepseek-r1:32b",
           -- parse_curl_args = function(opts, code_opts)
           --   return {
           --     url = opts.endpoint .. "/chat/completions",
@@ -232,7 +258,16 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local servers = { 'gopls', 'pyright', 'ts_ls', 'rust_analyzer', 'kotlin_language_server', 'templ', 'tailwindcss' }
+local servers = {
+  'gopls',
+  'pyright',
+  'ts_ls',
+  'rust_analyzer',
+  'kotlin_language_server',
+  'templ',
+  'tailwindcss',
+  'csharp_ls'
+}
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -255,34 +290,6 @@ nvim_lsp.lua_ls.setup({
 	}
 })
 
--- Setup nvim-treesitter
--- require'nvim-treesitter.configs'.setup {
---     ensure_installed = { "c", "lua", "go", "typescript" },
---     auto_install = true,
---     highlight = {
---         enable = true,
---         additional_vim_regex_highlighting = true,
---     },
---     indent = {
---         enable = true
---     },
--- }
-
--- require'treesitter-context'.setup{
---   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
---   max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
---   min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
---   line_numbers = true,
---   multiline_threshold = 20, -- Maximum number of lines to show for a single context
---   trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
---   mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
---   -- Separator between context and content. Should be a single character string, like '-'.
---   -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
---   separator = nil,
---   zindex = 20, -- The Z-index of the context window
---   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
--- }
-
 
 nvim_lsp.html.setup({
   on_attach = on_attach,
@@ -301,3 +308,63 @@ if handle then
     -- vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
     -- vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
 end
+
+local dap, dapui = require('dap'), require('dapui')
+local dapgo = require('dap-go')
+dapui.setup()
+dapgo.setup()
+dap.listeners.before.attach.dapui_config = function()
+ dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+ dapui.open()
+end
+
+
+-- Include the next few lines until the comment only if you feel you need it
+dap.listeners.before.event_terminated.dapui_config = function()
+ dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+ dapui.close()
+end
+-- Include everything after this
+
+
+-- DAP SHORTCUTS --------------------------------------------------
+-- vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+-- vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+-- vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+-- vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+-- vim.keymap.set('n', '<Leader>q', function()
+-- require('dap').toggle_breakpoint() end)
+-- vim.keymap.set('n', '<Leader>Q', function() require('dap').set_breakpoint()
+-- end)
+-- vim.keymap.set('n', '<Leader>lp', function()
+-- require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+-- end)
+-- vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+-- vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+
+-- vim.keymap.set('n', '<Leader>w', function() dapui.open() end)
+-- vim.keymap.set('n', '<Leader>W', function() dapui.close() end)
+
+
+
+-- DAP CSHARP --------------------------------------------------
+-- local dap = require('dap')
+-- dap.adapters.coreclr = {
+--   type = 'executable',
+--   command = home .. '/csharp/netcoredbg',
+--   args = {'--interpreter=vscode'}
+-- }
+-- dap.configurations.cs = {
+--   {
+--     type = "coreclr",
+--     name = "launch - netcoredbg",
+--     request = "launch",
+--     program = function()
+--         return vim.fn.input(vim.fn.getcwd() .. '/bin/Debug/net8.0/')
+--     end,
+--   },
+-- }
