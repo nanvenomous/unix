@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
--- local libero_api_key = os.getenv("LIBERO_API_KEY")
+local libero_api_key = os.getenv("LIBERO_API_KEY")
 local home = os.getenv("HOME")
 
 require("lazy").setup({
@@ -98,63 +98,107 @@ require("lazy").setup({
     },
     { 'leoluz/nvim-dap-go' },
     {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      version = false, -- Never set this value to "*"! Never!
-      opts = {
-        -- add any opts here
-        -- for example
-        provider = "ollama",
-        ollama = {
-          model = "deepseek-coder-v2:16b",
-          api_key_name = "LIBERO_API_KEY",
-          endpoint = "https://ollama.fiore.one",
-          -- model = "deepseek-r1:32b",
-          -- parse_curl_args = function(opts, code_opts)
-          --   return {
-          --     url = opts.endpoint .. "/chat/completions",
-          --     headers = {
-          --       ["Accept"] = "application/json",
-          --       ["Content-Type"] = "application/json",
-          --       ["Key"] = libero_api_key,
-          --     },
-          --     body = {
-          --       model = opts.model,
-          --       messages = require("avante.providers").copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
-          --       max_tokens = 2048,
-          --       stream = true,
-          --     },
-          --   }
-          -- end,
-        },
-      },
-      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-      build = "make",
-      -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+      'tpope/vim-dadbod',
+      dependencies = { 'kristijanhusak/vim-dadbod-completion', 'kristijanhusak/vim-dadbod-ui' },
+    },
+    {
+      'stevearc/oil.nvim',
+      ---@module 'oil'
+      ---@type oil.SetupOpts
+      opts = {},
+      -- Optional dependencies
+      dependencies = { { "echasnovski/mini.icons", opts = {} } },
+      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+      lazy = false,
+    },
+    {
+      "olimorris/codecompanion.nvim",
+      opts = {},
       dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "echasnovski/mini.pick", -- for file_selector provider mini.pick
-        "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-        "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-        "ibhagwan/fzf-lua", -- for file_selector provider fzf
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        -- "zbirenbaum/copilot.lua", -- for providers='copilot'
-        {
-          -- Make sure to set this up properly if you have lazy=true
-          'MeanderingProgrammer/render-markdown.nvim',
-          opts = {
-            file_types = { "markdown", "Avante" },
-          },
-          ft = { "markdown", "Avante" },
-        },
+        "nvim-treesitter/nvim-treesitter",
       },
     },
+    -- {
+    --   "yetone/avante.nvim",
+    --   event = "VeryLazy",
+    --   version = false, -- Never set this value to "*"! Never!
+    --   opts = {
+    --     -- add any opts here
+    --     -- for example
+    --     provider = "ollama",
+    --     ollama = {
+    --       model = "deepseek-coder-v2:16b",
+    --       api_key_name = "LIBERO_API_KEY",
+    --       endpoint = "https://ollama.fiore.one",
+    --       -- model = "deepseek-r1:32b",
+    --       -- parse_curl_args = function(opts, code_opts)
+    --       --   return {
+    --       --     url = opts.endpoint .. "/chat/completions",
+    --       --     headers = {
+    --       --       ["Accept"] = "application/json",
+    --       --       ["Content-Type"] = "application/json",
+    --       --       ["Key"] = libero_api_key,
+    --       --     },
+    --       --     body = {
+    --       --       model = opts.model,
+    --       --       messages = require("avante.providers").copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
+    --       --       max_tokens = 2048,
+    --       --       stream = true,
+    --       --     },
+    --       --   }
+    --       -- end,
+    --     },
+    --   },
+    --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    --   build = "make",
+    --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    --   dependencies = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "stevearc/dressing.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "MunifTanjim/nui.nvim",
+    --     --- The below dependencies are optional,
+    --     "echasnovski/mini.pick", -- for file_selector provider mini.pick
+    --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    --     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    --     -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+    --     {
+    --       -- Make sure to set this up properly if you have lazy=true
+    --       'MeanderingProgrammer/render-markdown.nvim',
+    --       opts = {
+    --         file_types = { "markdown", "Avante" },
+    --       },
+    --       ft = { "markdown", "Avante" },
+    --     },
+    --   },
+    -- },
   },
   checker = { enabled = true },
+})
+
+require("codecompanion").setup({
+  adapters = {
+    ollama = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        env = {
+          url = "https://ollama.fiore.one",
+          -- api_key = "OLLAMA_API_KEY",
+        },
+        headers = {
+          ["Content-Type"] = "application/json",
+          ["Authorization"] = libero_api_key,
+          -- ["Authorization"] = "${api_key}",
+        },
+        parameters = {
+          sync = true,
+        },
+      })
+    end,
+  },
 })
 
 local cmp = require'cmp'
@@ -181,6 +225,9 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'vsnip' },
 		{ name = 'buffer' },
+    per_filetype = {
+      codecompanion = { "codecompanion" },
+    }
 	}
 })
 -- LSP Diagnostics Options Setup 
@@ -328,6 +375,15 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
  dapui.close()
 end
+
+vim.api.nvim_create_augroup("fmt", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = "fmt",
+  pattern = "*",
+  callback = function()
+    vim.cmd("undojoin | Neoformat")
+  end
+})
 -- Include everything after this
 
 
