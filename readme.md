@@ -28,6 +28,14 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 
 - [In-depth Guide to tracking dotfiles](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
 
+
+- edit `/etc/default/grub`
+```
+GRUB_TIMEOUT=0
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"
+```
+then run `grub-mkconfig -o /boot/grub/grub.cfg`
+
 # To Automate
 - [ ] [google chrome](https://aur.archlinux.org/packages/google-chrome/)
 - [ ] [gtk tokyo night](https://github.com/stronk-dev/Tokyo-Night-Linux)
@@ -39,6 +47,7 @@ alias cg="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 - [ ] [st](https://github.com/siduck76/st)
   - [jetbrains mono nerdfont](https://archlinux.org/packages/community/any/ttf-jetbrains-mono-nerd/)
 - [ ] [dns with systemd-resolvd](https://wiki.archlinux.org/title/NetworkManager#systemd-resolved)
+- [ ] [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 - [ ] firefox 
   - [firefox markdown](https://github.com/KeithLRobertson/markdown-viewer#support-for-local-files-on-linux)
   - nav to [configuration page](about:config) `browser.fullscreen.autohide`
