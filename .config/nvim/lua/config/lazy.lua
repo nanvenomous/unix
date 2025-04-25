@@ -18,6 +18,8 @@ vim.g.mapleader = " "
 
 local libero_api_key = os.getenv("LIBERO_API_KEY")
 local home = os.getenv("HOME")
+local host = os.getenv("HOST")
+
 
 require("lazy").setup({
    spec = {
@@ -92,6 +94,7 @@ require("lazy").setup({
     { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
     { 'sbdchd/neoformat' },
     { 'mfussenegger/nvim-dap' },
+    { 'MeanderingProgrammer/render-markdown.nvim' },
     {
       'rcarriga/nvim-dap-ui',
       dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
@@ -181,17 +184,44 @@ require("lazy").setup({
 })
 
 require("codecompanion").setup({
+  strategies = {
+    chat = {
+      adapter = "ollama",
+    },
+    inline = {
+      adapter = "ollama",
+    },
+  },
   adapters = {
+    llama3 = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        name = "llama3", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "llama3.2",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
     ollama = function()
       return require("codecompanion.adapters").extend("ollama", {
         env = {
-          url = "https://ollama.fiore.one",
+          -- url = "http://127.0.0.1:11434",
+          -- url = "https://ollama.fiore.one",
           -- api_key = "OLLAMA_API_KEY",
+          -- api_key = "LIBERO_API_KEY",
+          api_key = libero_api_key,
         },
         headers = {
           ["Content-Type"] = "application/json",
-          ["Authorization"] = libero_api_key,
-          -- ["Authorization"] = "${api_key}",
+          -- ["Authorization"] = libero_api_key,
+          ["Authorization"] = "${api_key}",
         },
         parameters = {
           sync = true,
@@ -200,6 +230,8 @@ require("codecompanion").setup({
     end,
   },
 })
+
+
 
 local cmp = require'cmp'
 
