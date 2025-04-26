@@ -186,10 +186,10 @@ require("lazy").setup({
 require("codecompanion").setup({
   strategies = {
     chat = {
-      adapter = "ollama",
+      adapter = "deepseek",
     },
     inline = {
-      adapter = "ollama",
+      adapter = "deepseek",
     },
   },
   adapters = {
@@ -209,7 +209,23 @@ require("codecompanion").setup({
         },
       })
     end,
-    ollama = function()
+    deepseek = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        name = "deepseek", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "deepseek-r1:14b",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
+    remoteollama = function()
       return require("codecompanion.adapters").extend("ollama", {
         env = {
           -- url = "http://127.0.0.1:11434",
