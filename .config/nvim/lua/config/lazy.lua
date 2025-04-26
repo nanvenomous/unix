@@ -22,7 +22,23 @@ local host = os.getenv("HOST")
 
 require("lazy").setup({
   spec = {
-    { 'pineapplegiant/spaceduck', branch = 'main' },
+    {
+        'maxmx03/fluoromachine.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function ()
+         local fm = require 'fluoromachine'
+
+         fm.setup {
+            glow = true,
+            theme = 'fluoromachine',
+            -- theme = 'retrowave',
+            -- theme = 'delta',
+         }
+         -- vim.opt.termguicolors = true
+         vim.cmd.colorscheme 'fluoromachine'
+        end
+    },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' },

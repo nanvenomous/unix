@@ -17,8 +17,9 @@ vim.opt.smartindent = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
 
-vim.opt.termguicolors = true
-vim.cmd [[ colorscheme spaceduck ]]
+-- vim.opt.termguicolors = true
+-- vim.cmd [[ syntax enable ]]
+-- vim.cmd [[ colorscheme shades_of_purple ]]
 
 local keymap = vim.api.nvim_set_keymap
 local nOpts = { noremap = true }
