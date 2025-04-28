@@ -1,0 +1,105 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/natsu/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+font-size = 11
+
+gtk-tabs-location = hidden
+scrollback-limit = 10_000
+window-theme = ghostty
+clipboard-read = allow
+clipboard-paste-protection = false
+window-decoration = false
+shell-integration = zsh
+
+
+# foreground = #EFEFFD # delta
+# background = #2B2233 # delta
+foreground = #8BA7A7
+background = #262335
+# cursor-color = #ffffff # delta
+# cursor-text = #2f383e # delta
+cursor-color = #8BA7A7
+cursor-text = #282A36
+# selection-background = #626880 # delta
+# selection-foreground = #c6d0f5 # delta
+selection-background = #282A36
+selection-foreground = #463465
+# black
+# palette = 0=#251D2B # delta
+# palette = 8=#FFFFFF # delta
+palette = 0=#241B2F
+palette = 8=#FFFFFF
+# red
+# palette = 1=#FF98B3 # delta
+# palette = 9=#FF98B3 # delta
+palette = 1=#FE4450
+palette = 9=#FC199A
+# green
+# palette = 2=#C0FF98
+# palette = 10=#C0FF98
+palette = 2=#72F1B8
+palette = 10=#72F1B8
+# yellow
+# palette = 3=#EDFF98 # delta
+# palette = 11=#EDFF98 # delta
+palette = 3=#FFCC00
+palette = 11=#FF8B39
+# blue
+# palette = 4=#D598FF # delta
+# palette = 12=#D598FF # delta
+palette = 4=#61E2FF
+palette = 12=#61E2FF
+# magenta
+# palette = 5=#D598FF
+# palette = 13=#FF67D4
+palette = 5=#AF6DF9
+palette = 13=#AF6DF9
+# cyan
+# palette = 6=#98FFFB
+# palette = 14=#98FFFB
+palette = 6=#61E2FF
+palette = 14=#61E2FF
+# white
+palette = 7=#FFFFFF
+palette = 15=#FFFFFF

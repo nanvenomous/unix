@@ -424,14 +424,14 @@ dap.listeners.before.event_exited.dapui_config = function()
  dapui.close()
 end
 
-vim.api.nvim_create_augroup("fmt", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "fmt",
-  pattern = "*",
-  callback = function()
-    vim.cmd("undojoin | Neoformat")
-  end
-})
+-- vim.api.nvim_create_augroup("fmt", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   group = "fmt",
+--   pattern = "*",
+--   callback = function()
+--     vim.cmd("undojoin | Neoformat")
+--   end
+-- })
 -- Include everything after this
 
 
