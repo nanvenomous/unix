@@ -13,6 +13,9 @@ function release() {
   git log ${lastTag}..@ | e -
 }
 
+function help() {
+  cat ~/.config/i3/config | rg '^bindsym' 
+}
 
 alias dsk="lsblk | grep -v -e 'SWAP' -e 'loop'"
 alias ss='scrot' # scrot -d 20
@@ -34,7 +37,11 @@ function random_ssh_port() {
 
 alias brightness='xrandr --output eDP-1 --brightness'
 
-alias lock='i3lock -i ~/Images/background_lock.png'
+function lock() {
+  clear
+  neofetch
+  i3lock -i ~/Images/background_lock.png
+}
 alias bye='lock && systemctl suspend'
 function background() {
   feh --bg-scale ~/Images/background.jpg

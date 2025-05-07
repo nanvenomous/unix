@@ -16,25 +16,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
-local libero_api_key = os.getenv("LIBERO_API_KEY")
+local libero_api_key = os.getenv("LIBERO_API_KEY") or ''
 local home = os.getenv("HOME")
 local host = os.getenv("HOST")
 
 
 require("lazy").setup({
-   spec = {
-    {
-      "neanias/everforest-nvim",
-      version = false,
-      lazy = false,
-      priority = 1000, -- make sure to load this before all the other start plugins
-      -- Optional; default configuration will be used if setup isn't called.
-      config = function()
-        require("everforest").setup({
-          -- Your config here
-        })
-      end,
-    },
+  spec = {
+    { 'pineapplegiant/spaceduck', branch = 'main' },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' },
@@ -46,8 +35,8 @@ require("lazy").setup({
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
-            -- ensure_installed = { "c", "lua", "go", "typescript", "vim", "html" },
-            ensure_installed = {
+          -- ensure_installed = { "c", "lua", "go", "typescript", "vim", "html" },
+          ensure_installed = {
             "go",
             "typescript", "javascript",
             "html",
@@ -58,12 +47,12 @@ require("lazy").setup({
             "html",
             "c_sharp",
           },
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },
+          sync_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },
         })
       end
-     },
+    },
     {
       'nvim-treesitter/nvim-treesitter-context',
       opts = function()
@@ -96,6 +85,10 @@ require("lazy").setup({
     { 'mfussenegger/nvim-dap' },
     { 'MeanderingProgrammer/render-markdown.nvim' },
     {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
       'rcarriga/nvim-dap-ui',
       dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     },
@@ -115,6 +108,15 @@ require("lazy").setup({
       -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
     },
+    -- { 'romgrk/barbar.nvim',
+    --   dependencies = {
+    --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+    --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    --   },
+    --   init = function() vim.g.barbar_auto_setup = false end,
+    --   opts = {
+    --   },
+    -- },
     {
       "olimorris/codecompanion.nvim",
       opts = {},
@@ -183,66 +185,60 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
+local function createOllamaSchema(name, model)
+  local ollama_url = 'http://127.0.0.1:11434'
+  local ollama_api_key = ''
+  if host ~= 'oddjobs' then
+    ollama_url = 'https://ollama.fiore.one'
+    ollama_api_key = libero_api_key
+  end
+  return {
+    name = name,
+    schema = {
+      model = {
+        default = model,
+      },
+      num_ctx = {
+        default = 16384,
+      },
+      num_predict = {
+        default = -1,
+      },
+    },
+    env = {
+      url = ollama_url,
+      api_key = ollama_api_key,
+    },
+    headers = {
+      ["Content-Type"] = "application/json",
+      ["Authorization"] = "${api_key}",
+    },
+    parameters = {
+      sync = true,
+    },
+  }
+end
+
+require('lualine').setup()
+
 require("codecompanion").setup({
   strategies = {
     chat = {
-      adapter = "deepseek",
+      adapter = "qwen",
     },
     inline = {
-      adapter = "deepseek",
+      adapter = "qwen",
     },
   },
   adapters = {
+    qwen = function()
+      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen2.5-coder:14b'))
+    end,
     llama3 = function()
-      return require("codecompanion.adapters").extend("ollama", {
-        name = "llama3", -- Give this adapter a different name to differentiate it from the default ollama adapter
-        schema = {
-          model = {
-            default = "llama3.2",
-          },
-          num_ctx = {
-            default = 16384,
-          },
-          num_predict = {
-            default = -1,
-          },
-        },
-      })
+      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('llama3', 'llama3.2'))
     end,
     deepseek = function()
-      return require("codecompanion.adapters").extend("ollama", {
-        name = "deepseek", -- Give this adapter a different name to differentiate it from the default ollama adapter
-        schema = {
-          model = {
-            default = "deepseek-r1:14b",
-          },
-          num_ctx = {
-            default = 16384,
-          },
-          num_predict = {
-            default = -1,
-          },
-        },
-      })
-    end,
-    remoteollama = function()
-      return require("codecompanion.adapters").extend("ollama", {
-        env = {
-          -- url = "http://127.0.0.1:11434",
-          -- url = "https://ollama.fiore.one",
-          -- api_key = "OLLAMA_API_KEY",
-          -- api_key = "LIBERO_API_KEY",
-          api_key = libero_api_key,
-        },
-        headers = {
-          ["Content-Type"] = "application/json",
-          -- ["Authorization"] = libero_api_key,
-          ["Authorization"] = "${api_key}",
-        },
-        parameters = {
-          sync = true,
-        },
-      })
+      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('deepseek', 'deepseek-r1:14b'))
     end,
   },
 })
@@ -252,39 +248,39 @@ require("codecompanion").setup({
 local cmp = require'cmp'
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
-		end,
-	},
-	mapping = {
-		['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.close(),
-		['<CR>'] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
-	},
-	sources = {
-		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' },
-		{ name = 'buffer' },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+    { name = 'buffer' },
     per_filetype = {
       codecompanion = { "codecompanion" },
     }
-	}
+  }
 })
 -- LSP Diagnostics Options Setup 
 local sign = function(opts)
-	vim.fn.sign_define(opts.name, {
-		texthl = opts.name,
-		text = opts.text,
-		numhl = ''
-	})
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
 end
 
 sign({name = 'DiagnosticSignError', text = ''})
@@ -293,17 +289,17 @@ sign({name = 'DiagnosticSignHint', text = ''})
 sign({name = 'DiagnosticSignInfo', text = ''})
 
 vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	update_in_insert = true,
-	underline = true,
-	severity_sort = false,
-	float = {
-		border = 'rounded',
-		source = 'always',
-		header = '',
-		prefix = '',
-	},
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+  underline = true,
+  severity_sort = false,
+  float = {
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
 })
 
 vim.cmd([[
@@ -313,43 +309,43 @@ set signcolumn=yes
 vim.filetype.add({ extension = { templ = "templ" } })
 
 local custom_format = function()
-    if vim.bo.filetype == "templ" then
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+  if vim.bo.filetype == "templ" then
+    local bufnr = vim.api.nvim_get_current_buf()
+    local filename = vim.api.nvim_buf_get_name(bufnr)
+    local cmd = "templ fmt " .. vim.fn.shellescape(filename)
 
-        vim.fn.jobstart(cmd, {
-            on_exit = function()
-                -- Reload the buffer only if it's still the current buffer
-                if vim.api.nvim_get_current_buf() == bufnr then
-                    vim.cmd('e!')
-                end
-            end,
-        })
-    else
-        vim.lsp.buf.format()
-    end
+    vim.fn.jobstart(cmd, {
+      on_exit = function()
+        -- Reload the buffer only if it's still the current buffer
+        if vim.api.nvim_get_current_buf() == bufnr then
+          vim.cmd('e!')
+        end
+      end,
+    })
+  else
+    vim.lsp.buf.format()
+  end
 end
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go", "*.templ" }, callback = custom_format })
 
 
 local function show_diagnostic()
-	vim.diagnostic.open_float(nil, { focusable = false })
+  vim.diagnostic.open_float(nil, { focusable = false })
 end
 local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	local bufopts = { noremap=true, silent=true, buffer=bufnr }
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'gf', function() require('telescope.builtin').lsp_document_symbols({ symbols = {'function', 'method'} }) end, bufopts)
   vim.keymap.set('n', 'gv', function() require('telescope.builtin').lsp_document_symbols({ symbols = {'variable', 'constant', 'struct'} }) end, bufopts)
-	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
-	vim.keymap.set('n', 'gl', custom_format, bufopts)
+  vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
+  vim.keymap.set('n', 'gl', custom_format, bufopts)
 end
 
 -- Setup lspconfig.
@@ -365,24 +361,24 @@ local servers = {
 }
 local nvim_lsp = require('lspconfig')
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
-        }
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
     }
+  }
 end
 
 nvim_lsp.lua_ls.setup({
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-	},
-	settings = {
-		Lua = {
-			diagnostics = { globals = { 'vim' } }
-		}
-	}
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = { globals = { 'vim' } }
+    }
+  }
 })
 
 
@@ -398,10 +394,10 @@ nvim_lsp.htmx.setup({
 local handle = io.popen('hostname')
 Hostname = nil
 if handle then
-    Hostname = string.gsub(handle:read("*a"), "^%s+", "")
-    handle:close()
-    -- vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
-    -- vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
+  Hostname = string.gsub(handle:read("*a"), "^%s+", "")
+  handle:close()
+  -- vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
+  -- vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
 end
 
 local dap, dapui = require('dap'), require('dapui')
@@ -409,19 +405,19 @@ local dapgo = require('dap-go')
 dapui.setup()
 dapgo.setup()
 dap.listeners.before.attach.dapui_config = function()
- dapui.open()
+  dapui.open()
 end
 dap.listeners.before.launch.dapui_config = function()
- dapui.open()
+  dapui.open()
 end
 
 
 -- Include the next few lines until the comment only if you feel you need it
 dap.listeners.before.event_terminated.dapui_config = function()
- dapui.close()
+  dapui.close()
 end
 dap.listeners.before.event_exited.dapui_config = function()
- dapui.close()
+  dapui.close()
 end
 
 -- vim.api.nvim_create_augroup("fmt", { clear = true })
