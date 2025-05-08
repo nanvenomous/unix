@@ -108,15 +108,17 @@ require("lazy").setup({
       -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
     },
-    -- { 'romgrk/barbar.nvim',
-    --   dependencies = {
-    --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-    --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    --   },
-    --   init = function() vim.g.barbar_auto_setup = false end,
-    --   opts = {
-    --   },
-    -- },
+    { 'romgrk/barbar.nvim',
+      dependencies = {
+        'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+        'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+      },
+      init = function() vim.g.barbar_auto_setup = false end,
+      opts = {
+        animation = false,
+        clickable = false,
+      },
+    },
     {
       "olimorris/codecompanion.nvim",
       opts = {},
@@ -125,62 +127,6 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
       },
     },
-    -- {
-    --   "yetone/avante.nvim",
-    --   event = "VeryLazy",
-    --   version = false, -- Never set this value to "*"! Never!
-    --   opts = {
-    --     -- add any opts here
-    --     -- for example
-    --     provider = "ollama",
-    --     ollama = {
-    --       model = "deepseek-coder-v2:16b",
-    --       api_key_name = "LIBERO_API_KEY",
-    --       endpoint = "https://ollama.fiore.one",
-    --       -- model = "deepseek-r1:32b",
-    --       -- parse_curl_args = function(opts, code_opts)
-    --       --   return {
-    --       --     url = opts.endpoint .. "/chat/completions",
-    --       --     headers = {
-    --       --       ["Accept"] = "application/json",
-    --       --       ["Content-Type"] = "application/json",
-    --       --       ["Key"] = libero_api_key,
-    --       --     },
-    --       --     body = {
-    --       --       model = opts.model,
-    --       --       messages = require("avante.providers").copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
-    --       --       max_tokens = 2048,
-    --       --       stream = true,
-    --       --     },
-    --       --   }
-    --       -- end,
-    --     },
-    --   },
-    --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    --   build = "make",
-    --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    --   dependencies = {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     "stevearc/dressing.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --     "MunifTanjim/nui.nvim",
-    --     --- The below dependencies are optional,
-    --     "echasnovski/mini.pick", -- for file_selector provider mini.pick
-    --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    --     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
-    --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    --     -- "zbirenbaum/copilot.lua", -- for providers='copilot'
-    --     {
-    --       -- Make sure to set this up properly if you have lazy=true
-    --       'MeanderingProgrammer/render-markdown.nvim',
-    --       opts = {
-    --         file_types = { "markdown", "Avante" },
-    --       },
-    --       ft = { "markdown", "Avante" },
-    --     },
-    --   },
-    -- },
   },
   checker = { enabled = true },
 })
