@@ -282,7 +282,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go", "*.templ" }
 
 
 local function show_diagnostic()
-  vim.diagnostic.open_float(nil, { focusable = false })
+  vim.diagnostic.open_float()
 end
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
