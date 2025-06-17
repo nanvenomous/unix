@@ -25,6 +25,7 @@ local nsOpts = { noremap = true, silent = true }
 keymap('n', 'cj', ':GitGutterNextHunk<CR>', nOpts)
 keymap('n', 'ck', ':GitGutterPrevHunk<CR>', nOpts)
 keymap('n', 'ch', ':GitGutterPreviewHunk<CR>', nOpts)
+keymap('n', 'cc', ':CodeCompanionActions<CR>', nOpts)
 -- nnoremap db :let g:gitgutter_diff_base = 'mainline'<CR>
 -- nnoremap di :let g:gitgutter_diff_base = 'head'<CR>
 

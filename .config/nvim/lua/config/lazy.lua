@@ -165,7 +165,12 @@ local function createOllamaSchema(name, model)
   }
 end
 
-require('lualine').setup()
+require('lualine').setup({
+  options = {
+    'filename',
+    path = 1,
+  }
+})
 
 require("codecompanion").setup({
   strategies = {
