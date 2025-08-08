@@ -6,6 +6,8 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.wrap = false
 
+vim.g.mapleader = " "
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -43,22 +45,20 @@ keymap('n', 'sj', ':wincmd j<CR>', nOpts)
 keymap('n', 'sk', ':wincmd k<CR>', nOpts)
 keymap('n', 'sh', ':wincmd h<CR>', nOpts)
 keymap('n', 'sl', ':wincmd l<CR>', nOpts)
+keymap('n', 'sm', ':tab split<CR>', nOpts)
 
 keymap('n', 'tj', ':BufferNext<CR>', nsOpts)
 keymap('n', 'tk', ':BufferPrevious<CR>', nsOpts)
 keymap('n', 'tl', ':BufferMoveNext<CR>', nsOpts)
 keymap('n', 'th', ':BufferMovePrevious<CR>', nsOpts)
 keymap('n', 'tn', ':BufferClose<CR>', nsOpts)
+vim.keymap.set('n', 'td', function()
+  vim.cmd('tabnew')
+  vim.cmd('DBUI')
+end, { desc = 'Open DBUI in new tab' })
 
--- keymap('n', 'tj', ':tabnext<CR>', nsOpts)
--- keymap('n', 'tk', ':tabprevious<CR>', nsOpts)
--- keymap('n', 'tn', ':tabclose<CR>', nsOpts)
--- keymap('n', 'th', ':tabmove -1<CR>', nsOpts)
--- keymap('n', 'tl', ':tabmove +1<CR>', nsOpts)
--- keymap('n', 'to', ':CtrlPCurWD<CR>', nOpts)
 keymap('n', 'to', ':Telescope find_files<CR>', nOpts)
 keymap('n', 'tg', ':Telescope live_grep<CR>', nOpts)
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 
 keymap('n', 'yp', ':let @+ = expand("%")<CR>', nOpts)
 keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)

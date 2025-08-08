@@ -14,10 +14,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
 
 local libero_api_key = os.getenv("LIBERO_API_KEY") or ''
-local home = os.getenv("HOME")
+-- local home = os.getenv("HOME")
 local host = os.getenv("HOST")
 
 
@@ -183,7 +182,10 @@ require("codecompanion").setup({
   },
   adapters = {
     qwen = function()
-      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen2.5-coder:14b'))
+      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen3-coder:30b'))
+    end,
+    qwen2 = function()
+      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen2', 'qwen2.5-coder:14b'))
     end,
     llama3 = function()
       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('llama3', 'llama3.2'))
@@ -197,6 +199,13 @@ require("codecompanion").setup({
 
 
 local cmp = require'cmp'
+
+cmp.setup.filetype({"sql"}, {
+  sources = {
+    {name = "vim-dadbod-completion"},
+    {name = "buffer"},
+  }
+})
 
 cmp.setup({
   snippet = {

@@ -28,9 +28,9 @@ function set_terminal_title() {
 precmd() {
 	vcs_info
   set_terminal_title
-	print -rP "%B%F{blue}%~%f%b ${vcs_info_msg_0_}"
+	print -rP "%B%F{blue}%~%f%b ${vcs_info_msg_0_} ${oBrack}%n${at}%m${cBrack}"
 }
-RPROMPT="${oBrack}%n${at}%m${cBrack}"
+# RPROMPT="${oBrack}%n${at}%m${cBrack}"
 PROMPT='%(?.%F{green}0.%F{red}%?)%f${arrow} '
 
 # cyan
