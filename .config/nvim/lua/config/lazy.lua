@@ -234,23 +234,18 @@ cmp.setup({
     -- }
   }
 })
+
 -- LSP Diagnostics Options Setup 
-local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = ''
-  })
-end
-
-sign({name = 'DiagnosticSignError', text = ''})
-sign({name = 'DiagnosticSignWarn', text = ''})
-sign({name = 'DiagnosticSignHint', text = ''})
-sign({name = 'DiagnosticSignInfo', text = ''})
-
 vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '󰟷',
+    }
+  },
   update_in_insert = true,
   underline = true,
   severity_sort = false,
@@ -308,6 +303,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gl', custom_format, bufopts)
 end
 
+local function setup_lsp(server, config)
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
+end
+
 -- Setup lspconfig.
 local servers = {
   'gopls',
@@ -321,16 +321,15 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  vim.lsp.config(lsp, {
+  setup_lsp(lsp, {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
   })
-  vim.lsp.enable(lsp)
 end
 
-vim.lsp.config('lua_ls', {
+setup_lsp('lua_ls', {
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
@@ -341,27 +340,22 @@ vim.lsp.config('lua_ls', {
     }
   }
 })
-vim.lsp.enable('lua_ls')
 
-vim.lsp.config('html', {
+setup_lsp('html', {
   on_attach = on_attach,
   filetypes = { "html", "templ" },
 })
-vim.lsp.enable('html')
 
-vim.lsp.config('htmx', {
+setup_lsp('htmx', {
   on_attach = on_attach,
   filetypes = { "html", "templ" },
 })
-vim.lsp.enable('htmx')
 
 local handle = io.popen('hostname')
 Hostname = nil
 if handle then
   Hostname = string.gsub(handle:read("*a"), "^%s+", "")
   handle:close()
-  -- vim.notify(tostring(string.find(Hostname, "oddjobs")), vim.log.levels.INFO)
-  -- vim.notify(string.format("Hostname: %s", Hostname), vim.log.levels.INFO)
 end
 
 local dap, dapui = require('dap'), require('dapui')
