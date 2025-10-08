@@ -7,6 +7,6 @@ function fnd() {
     rg -i --files --glob "*${pattern}*"
 }
 
-eval "$(where-to init)"
+eval "$(where-to)"
 
 # alias fd='cd $(find * -maxdepth 0 -type d | fzf); t'
