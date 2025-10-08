@@ -8,6 +8,8 @@ alias review='git diff --name-only HEAD HEAD~1 | uniq | xargs nvim -p'
 alias resolve='git diff --name-only | uniq | xargs nvim -p'
 alias packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
+alias db='nvim -c ":DBUI" -'
+
 alias space='duf --only local'
 
 function release() {

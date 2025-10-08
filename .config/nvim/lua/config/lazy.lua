@@ -118,14 +118,14 @@ require("lazy").setup({
         clickable = false,
       },
     },
-    {
-      "olimorris/codecompanion.nvim",
-      opts = {},
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
+    -- {
+    --   "olimorris/codecompanion.nvim",
+    --   opts = {},
+    --   dependencies = {
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-treesitter/nvim-treesitter",
+    --   },
+    -- },
   },
   checker = { enabled = true },
 })
@@ -171,30 +171,30 @@ require('lualine').setup({
   }
 })
 
-require("codecompanion").setup({
-  strategies = {
-    chat = {
-      adapter = "qwen",
-    },
-    inline = {
-      adapter = "qwen",
-    },
-  },
-  adapters = {
-    qwen = function()
-      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen3-coder:30b'))
-    end,
-    qwen2 = function()
-      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen2', 'qwen2.5-coder:14b'))
-    end,
-    llama3 = function()
-      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('llama3', 'llama3.2'))
-    end,
-    deepseek = function()
-      return require("codecompanion.adapters").extend("ollama", createOllamaSchema('deepseek', 'deepseek-r1:14b'))
-    end,
-  },
-})
+-- require("codecompanion").setup({
+--   strategies = {
+--     chat = {
+--       adapter = "qwen",
+--     },
+--     inline = {
+--       adapter = "qwen",
+--     },
+--   },
+--   adapters = {
+--     qwen = function()
+--       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen3-coder:30b'))
+--     end,
+--     qwen2 = function()
+--       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen2', 'qwen2.5-coder:14b'))
+--     end,
+--     llama3 = function()
+--       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('llama3', 'llama3.2'))
+--     end,
+--     deepseek = function()
+--       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('deepseek', 'deepseek-r1:14b'))
+--     end,
+--   },
+-- })
 
 
 
@@ -229,9 +229,9 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'buffer' },
-    per_filetype = {
-      codecompanion = { "codecompanion" },
-    }
+    -- per_filetype = {
+    --   codecompanion = { "codecompanion" },
+    -- }
   }
 })
 -- LSP Diagnostics Options Setup 
