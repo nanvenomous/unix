@@ -9,6 +9,7 @@ alias resolve='git diff --name-only | uniq | xargs nvim -p'
 alias packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
 alias db='nvim -c ":DBUI" -'
+alias gdiff='nvim -c ":DiffviewOpen" -'
 
 alias space='duf --only local'
 
