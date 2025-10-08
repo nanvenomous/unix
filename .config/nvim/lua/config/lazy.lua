@@ -319,17 +319,18 @@ local servers = {
   'tailwindcss',
   'csharp_ls'
 }
-local nvim_lsp = require('lspconfig')
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
-nvim_lsp.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
@@ -340,16 +341,19 @@ nvim_lsp.lua_ls.setup({
     }
   }
 })
+vim.lsp.enable('lua_ls')
 
-
-nvim_lsp.html.setup({
+vim.lsp.config('html', {
   on_attach = on_attach,
   filetypes = { "html", "templ" },
 })
-nvim_lsp.htmx.setup({
+vim.lsp.enable('html')
+
+vim.lsp.config('htmx', {
   on_attach = on_attach,
   filetypes = { "html", "templ" },
 })
+vim.lsp.enable('htmx')
 
 local handle = io.popen('hostname')
 Hostname = nil
