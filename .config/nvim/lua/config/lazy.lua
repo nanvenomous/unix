@@ -284,10 +284,10 @@ end
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go", "*.templ" }, callback = custom_format })
 
-
 local function show_diagnostic()
   vim.diagnostic.open_float()
 end
+
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -308,7 +308,13 @@ local function setup_lsp(server, config)
   vim.lsp.enable(server)
 end
 
--- Setup lspconfig.
+local default_config = {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
 local servers = {
   'gopls',
   'pyright',
@@ -317,39 +323,35 @@ local servers = {
   'kotlin_language_server',
   'templ',
   'tailwindcss',
-  'csharp_ls'
-}
-
-for _, lsp in ipairs(servers) do
-  setup_lsp(lsp, {
+  'csharp_ls',
+  { 'lua_ls', {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
+    },
+    settings = {
+      Lua = {
+        diagnostics = { globals = { 'vim' } }
+      }
     }
-  })
+  }},
+  { 'html', {
+    on_attach = on_attach,
+    filetypes = { "html", "templ" },
+  }},
+  { 'htmx', {
+    on_attach = on_attach,
+    filetypes = { "html", "templ" },
+  }},
+}
+
+for _, lsp in ipairs(servers) do
+  if type(lsp) == 'string' then
+    setup_lsp(lsp, default_config)
+  else
+    setup_lsp(lsp[1], lsp[2])
+  end
 end
-
-setup_lsp('lua_ls', {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  settings = {
-    Lua = {
-      diagnostics = { globals = { 'vim' } }
-    }
-  }
-})
-
-setup_lsp('html', {
-  on_attach = on_attach,
-  filetypes = { "html", "templ" },
-})
-
-setup_lsp('htmx', {
-  on_attach = on_attach,
-  filetypes = { "html", "templ" },
-})
 
 local handle = io.popen('hostname')
 Hostname = nil
