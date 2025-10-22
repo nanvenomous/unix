@@ -1,5 +1,5 @@
 terminal:
-    command: alacritty
+    command: xterm
     args:
         - -e
 tui_apps:
@@ -8,5 +8,5 @@ tui_apps:
     - nano
     - htop
     - lazygit
-    - bluetuith
-    - ugm
+behavior:
+    closeOnLossOfFocus: false

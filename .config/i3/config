@@ -65,8 +65,14 @@ bindsym $mod+n kill
 bindsym $mod+d exec rofi -show run
 
 # bindsym $mod+f exec --no-startup-id ghostty --class fling -e fling
-bindsym $mod+f exec --no-startup-id alacritty --class fling -e fling
-for_window [class="fling"] floating enable, resize set 800 600, move position center
+# bindsym $mod+f exec --no-startup-id alacritty --class fling -e fling
+# for_window [class="fling"] floating enable, resize set 800 600, move position center
+
+# bindsym $mod+f exec --no-startup-id alacritty -e fling --x11
+bindsym $mod+f exec --no-startup-id fling --x11
+
+# bindsym $mod+d exec --no-startup-id alacritty -e fsel
+# for_window [class="fling"] floating enable, resize set 800 600, move position center
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that

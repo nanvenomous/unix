@@ -10,6 +10,7 @@ alias packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort
 
 alias db='nvim -c ":DBUI" -'
 alias gdiff='nvim -c ":DiffviewOpen" -'
+alias s="t; git status"
 
 alias space='duf --only local'
 

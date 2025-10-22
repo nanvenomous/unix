@@ -78,8 +78,36 @@ require("lazy").setup({
     { 'tpope/vim-commentary' },
     { 'mileszs/ack.vim' },
     { 'tveskag/nvim-blame-line' },
-    { 'ray-x/go.nvim' },
-    { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
+
+    {
+      "ray-x/go.nvim",
+      dependencies = {  -- optional packages
+        "ray-x/guihua.lua",
+        "neovim/nvim-lspconfig",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      opts = {
+        -- lsp_keymaps = false,
+        -- other options
+      },
+      config = function(lp, opts)
+        require("go").setup(opts)
+        local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.go",
+          callback = function()
+          require('go.format').goimports()
+          end,
+          group = format_sync_grp,
+        })
+      end,
+      event = {"CmdlineEnter"},
+      ft = {"go", 'gomod'},
+      build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
+    -- { 'ray-x/go.nvim' },
+    -- { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
+
     { 'sbdchd/neoformat' },
     { 'mfussenegger/nvim-dap' },
     { 'MeanderingProgrammer/render-markdown.nvim' },
@@ -270,20 +298,17 @@ local custom_format = function()
     local filename = vim.api.nvim_buf_get_name(bufnr)
     local cmd = "templ fmt " .. vim.fn.shellescape(filename)
 
-    vim.fn.jobstart(cmd, {
-      on_exit = function()
-        -- Reload the buffer only if it's still the current buffer
-        if vim.api.nvim_get_current_buf() == bufnr then
-          vim.cmd('e!')
-        end
-      end,
-    })
+    vim.fn.system(cmd)
+    -- Reload the buffer
+    if vim.api.nvim_get_current_buf() == bufnr then
+      vim.cmd('e!')
+    end
   else
-    vim.lsp.buf.format()
+    -- vim.lsp.buf.format()
   end
 end
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.go", "*.templ" }, callback = custom_format })
+vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = { "*.templ" }, callback = custom_format })
 
 local function show_diagnostic()
   vim.diagnostic.open_float()
