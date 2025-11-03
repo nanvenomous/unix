@@ -10,5 +10,6 @@ tui_apps:
     - lazygit
     - pulsemixer
     - bluetuith
+    - cava
 behavior:
     closeOnLossOfFocus: false

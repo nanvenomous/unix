@@ -11,7 +11,8 @@ function fnd() {
     rg -i --files --glob "*${pattern}*"
 }
 
-eval "$(where-to)"
+# eval "$(where-to)"
+eval "$(${HOME}/projects/where-to/where-to)"
 
 # to
 
