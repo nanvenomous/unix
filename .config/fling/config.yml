@@ -1,5 +1,5 @@
 terminal:
-    command: xterm
+    command: kitty
     args:
         - -e
 tui_apps:
@@ -8,5 +8,7 @@ tui_apps:
     - nano
     - htop
     - lazygit
+    - pulsemixer
+    - bluetuith
 behavior:
     closeOnLossOfFocus: false

@@ -10,9 +10,12 @@ alias packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort
 
 alias db='nvim -c ":DBUI" -'
 alias gdiff='nvim -c ":DiffviewOpen" -'
-alias s="t; git status"
+alias s="t && echo && git status -sb"
 
 alias space='duf --only local'
+
+alias gpp='gopass show --password  $(gopass list -f | fzf) | xsel -ib'
+alias gp='gopass edit  $(gopass list -f | fzf)'
 
 function release() {
   lastTag=$(git describe --tags --abbrev=0 @^)

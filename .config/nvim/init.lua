@@ -93,7 +93,7 @@ cnoreabbrev Ack Ack!
 -- GitGutter
 -- vim.g.gitgutter_diff_base = 'gamma'
 -- vim.g.gitgutter_diff_base = 'v0.0.49'
-vim.g.gitgutter_diff_base = 'HEAD~1'
+-- vim.g.gitgutter_diff_base = 'HEAD~1'
 vim.g.gitgutter_grep = 'rg'
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
@@ -101,3 +101,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 vim.g.rustfmt_autosave = 1
 
 -- require("go.format").goimports()  -- goimports + gofmt
+
+-- Map Escape to exit terminal mode
+vim.keymap.set('t', '<C-x>', '<C-\\><C-n>', { noremap = true })

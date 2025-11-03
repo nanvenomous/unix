@@ -8,7 +8,7 @@
 	a = add
 	pho = push origin
 	pl = pull
-	l = log
+	l = log --graph --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative
 	cp = cherry-pick
 	i = init
 	rst = reset
