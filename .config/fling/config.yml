@@ -11,5 +11,8 @@ tui_apps:
     - pulsemixer
     - bluetuith
     - cava
+    - vis 
+    - pulsetui
+    - termpicker
 behavior:
     closeOnLossOfFocus: false

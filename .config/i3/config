@@ -9,10 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 gaps inner 8
-gaps outer 8
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+gaps outer 0
+client.focused          #00a3cc #285577 #ffffff #2e9ef4 #00a3cc
 
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 2
 for_window [urgent="latest"] focus
 for_window [class="synapse"] border none
 for_window [class="Matplotlib"] focus; split v; layout stacked
@@ -43,13 +43,6 @@ exec --no-startup-id xrdb merge ~/.Xresources
 
 # try to set the background
 exec --no-startup-id feh --bg-scale ~/Images/background.jpg
-
-# Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -190,18 +183,20 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Kill any existing polybar instances and launch
+exec_always --no-startup-id ~/.scripts/launch_polybar.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-    font pango:DejaVu Sans Mono 14
-    status_command i3status
-    mode hide
-    colors {
-        statusline #f2ce00
-        separator #00a3cc
-        background #0f111b
-    }
-}
-
-exec i3-msg workspace 5
+# bar {
+#     font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#     font pango:DejaVu Sans Mono 20
+#     status_command i3status
+#     mode hide
+#     colors {
+#         statusline #f2ce00
+#         separator #00a3cc
+#         background #0f111b
+#     }
+# }
+# exec i3-msg workspace 5

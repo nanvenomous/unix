@@ -47,7 +47,7 @@ alias brightness='xrandr --output eDP-1 --brightness'
 
 function lock() {
   clear
-  neofetch
+  fastfetch
   i3lock -i ~/Images/background_lock.png
 }
 alias bye='lock && systemctl suspend'
@@ -69,6 +69,8 @@ function _hr() {
 alias hr=_hr
 
 PATH="$PATH:${HOME}/.local/bin"
+
+export CRUSH_DISABLE_PROVIDER_AUTO_UPDATE=1
 
 case "$(uname -s)" in
   Linux*)

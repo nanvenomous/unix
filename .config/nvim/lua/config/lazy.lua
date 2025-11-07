@@ -685,3 +685,22 @@ end
 --     end,
 --   },
 -- }
+
+
+-- In your nvim config
+vim.keymap.set('n', 'g@', function()
+  require('telescope.builtin').find_files({
+    attach_mappings = function(prompt_bufnr, map)
+      local telActions = require('telescope.actions')
+      telActions.select_default:replace(function()
+        local selection = require('telescope.actions.state').get_selected_entry()
+        telActions.close(prompt_bufnr)
+        -- vim.api.nvim_put({'@' .. selection.value}, '', true, true)
+        vim.api.nvim_put({selection.value}, '', true, true)
+      end)
+      return true
+    end,
+  })
+end, { desc = 'Insert file with @ prefix' })
+
+
