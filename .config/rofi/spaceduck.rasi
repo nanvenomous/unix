@@ -1,0 +1,167 @@
+/**
+ * Rofi theme: Spaceduck
+ * Palette taken from provided Xresources colors.
+ */
+
+* {
+    foreground:      #ecf0c1;
+    background:      #0f111b;
+    background-color:@background;
+    cursor-color:    #ffffff;
+    bordercolor:     #00a3cc;
+
+    color0:  #000000;
+    color1:  #e33400;
+    color2:  #5ccc96;
+    color3:  #f2ce00;
+    color4:  #818596;
+    color5:  #ce6f8f;
+    color6:  #00a3cc;
+    color7:  #acb0d0;
+    color8:  #4e5173;
+    color9:  #e39400;
+    color10: #5ccc96;
+    color11: #f2ce00;
+    color12: #c1c3cc;
+    color13: #ce6f8f;
+    color14: #00a3cc;
+    color15: #acb0d0;
+
+    accent:      @color2;
+    accent-alt:  @color6;
+    highlight:   underline bold #ffffff;
+    muted:       @color8;
+    surface:     #151723;
+    surface-alt: #1a1b26;
+    transparent: rgba(15,17,27,0.0);
+}
+
+window {
+    location: center;
+    anchor: center;
+    padding: 16px;
+    border: 2px;
+    border-radius: 0px;
+    border-color: @bordercolor;
+    background-color: @surface;
+    transparency: "real";
+    children: [mainbox];
+    color: @foreground;
+}
+
+mainbox {
+    spacing: 6px;
+    children: [inputbar, message, listview];
+}
+
+message {
+    background-color: @surface-alt;
+    border-radius: 8px;
+    border: 1px 1px 1px 1px;
+    border-color: @bordercolor;
+    padding: 6px 8px;
+    text-color: @foreground;
+}
+
+#textbox-prompt-colon {
+  content: " ";
+  expand: false;
+  // padding: 5px 5px 5px 5px;
+  color: #ffffff;
+}
+
+#inputbar {
+  children: [ textbox-prompt-colon, entry ];
+}
+
+
+inputbar {
+    background-color: @surface-alt;
+    border: 2px;
+    border-radius: 10px;
+    border-color: #f2ce00;
+    padding: 10px;
+    color: @accent-alt;
+    font: inherit;
+}
+
+prompt, entry, case-indicator {
+    text-color: inherit;
+    text-font: inherit;
+}
+
+listview {
+    padding: 6px;
+    border: 2px;
+    border-color: #818596;
+    border-radius: 10px;
+    background-color: @surface-alt;
+    lines: 8;
+    dynamic: false;
+}
+
+element {
+    padding: 6px 8px;
+    border-radius: 6px;
+    background-color: transparent;
+    color: @foreground;
+    font: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal active {
+    color: @color12;
+}
+
+element normal urgent {
+    color: @color1;
+}
+
+element selected normal {
+    background-color: @accent;
+    color: @background;
+}
+
+element selected active {
+    background-color: @accent-alt;
+    color: @background;
+}
+
+element selected urgent {
+    background-color: @color1;
+    color: @background;
+}
+
+element alternate normal {
+    background-color: rgba(26,27,38,0.2);
+    color: @foreground;
+}
+
+button {
+    font: inherit;
+    padding: 6px 10px;
+    border: 2px;
+    border-radius: 8px;
+    border-color: @bordercolor;
+    background-color: @surface-alt;
+    color: @foreground;
+}
+
+button selected normal {
+    background-color: @accent;
+    border-color: @accent-alt;
+    color: @background;
+}
+
+error-message {
+    expand: true;
+    background-color: @color1;
+    border-color: @bordercolor;
+    border: 2px;
+    padding: 10px;
+    text-color: @background;
+}

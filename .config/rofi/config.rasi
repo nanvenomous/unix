@@ -1,8 +1,9 @@
 configuration {
 /*	modes: "window,drun,run,ssh";*/
-	font: "mono 16";
+	// font: "mono 30";
+  font: "JetBrainsMono Nerd Font 24";
 	terminal: "st";
-	show-icons: true;
+	show-icons: false;
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -150,4 +151,5 @@ configuration {
   }
 }
 
-@theme "arthur"
+// @theme "arthur"
+@theme "spaceduck"

@@ -42,7 +42,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xrdb merge ~/.Xresources
 
 # try to set the background
-exec --no-startup-id feh --bg-scale ~/Images/background.jpg
+exec --no-startup-id feh --bg-scale ~/Images/background.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -54,11 +54,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+n kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+f exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
-bindsym $mod+d exec rofi -show run
+# bindsym $mod+d exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
+bindsym $mod+f exec rofi -show run
 
 # bindsym $mod+f exec --no-startup-id ghostty --class fling -e fling
-bindsym $mod+f exec --no-startup-id kitty --single-instance --class fling -e fling
+bindsym $mod+d exec --no-startup-id kitty --single-instance --class fling -e fling
 for_window [class="fling"] floating enable, resize set 800 600, move position center
 
 # bindsym $mod+f exec --no-startup-id alacritty -e fling --x11

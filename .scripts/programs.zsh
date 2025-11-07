@@ -48,11 +48,11 @@ alias brightness='xrandr --output eDP-1 --brightness'
 function lock() {
   clear
   fastfetch
-  i3lock -i ~/Images/background_lock.png
+  i3lock -i ~/Images/background.png
 }
 alias bye='lock && systemctl suspend'
 function background() {
-  feh --bg-scale ~/Images/background.jpg
+  feh --bg-scale ~/Images/background.png
 }
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
