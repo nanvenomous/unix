@@ -102,6 +102,9 @@ case "$(uname -s)" in
     export PATH="$PATH:$HOME/.dotnet/tools"
     export PATH="$PATH:$HOME/csharp/netcoredbg"
     
+    ################### CISCO
+    export PATH=$PATH:/opt/cisco/secureclient/bin
+
     ;;
   Darwin*)
     ################### NVM

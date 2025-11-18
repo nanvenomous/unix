@@ -39,7 +39,7 @@
 window {
     location: center;
     anchor: center;
-    padding: 16px;
+    padding: 1em;
     border: 2px;
     border-radius: 0px;
     border-color: @bordercolor;
@@ -59,15 +59,15 @@ message {
     border-radius: 8px;
     border: 1px 1px 1px 1px;
     border-color: @bordercolor;
-    padding: 6px 8px;
+    padding: 0.375em 0.5em;
     text-color: @foreground;
 }
 
 #textbox-prompt-colon {
   content: " ";
   expand: false;
-  // padding: 5px 5px 5px 5px;
   color: #ffffff;
+  background-color: inherit;
 }
 
 #inputbar {
@@ -80,7 +80,7 @@ inputbar {
     border: 2px;
     border-radius: 10px;
     border-color: #f2ce00;
-    padding: 10px;
+    padding: 0.625em;
     color: @accent-alt;
     font: inherit;
 }
@@ -88,12 +88,13 @@ inputbar {
 prompt, entry, case-indicator {
     text-color: inherit;
     text-font: inherit;
+    background-color: inherit;
 }
 
 listview {
-    padding: 6px;
+    padding: 0.375em;
     border: 2px;
-    border-color: #818596;
+    border-color: @color4;
     border-radius: 10px;
     background-color: @surface-alt;
     lines: 8;
@@ -101,7 +102,7 @@ listview {
 }
 
 element {
-    padding: 6px 8px;
+    padding: 0.375em 0.5em;
     border-radius: 6px;
     background-color: transparent;
     color: @foreground;
@@ -143,7 +144,7 @@ element alternate normal {
 
 button {
     font: inherit;
-    padding: 6px 10px;
+    padding: 0.375em 0.625em;
     border: 2px;
     border-radius: 8px;
     border-color: @bordercolor;
@@ -162,6 +163,6 @@ error-message {
     background-color: @color1;
     border-color: @bordercolor;
     border: 2px;
-    padding: 10px;
+    padding: 0.625em;
     text-color: @background;
 }

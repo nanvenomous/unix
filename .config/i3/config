@@ -55,7 +55,9 @@ bindsym $mod+n kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run -nb '#0f111b' -sf '#0f111b' -sb '#f2ce00' -nf '#00a3cc' -fn 'DejaVu Sans Mono:pixelsize=28'
-bindsym $mod+f exec rofi -show run
+# bindsym $mod+f exec rofi -show run
+# bindsym $mod+f exec rofi -show run -dpi $(xrdb -query | grep Xft.dpi | cut -f2)
+bindsym $mod+f exec ~/.scripts/run_rofi.sh
 
 # bindsym $mod+f exec --no-startup-id ghostty --class fling -e fling
 bindsym $mod+d exec --no-startup-id kitty --single-instance --class fling -e fling
@@ -199,4 +201,4 @@ exec_always --no-startup-id ~/.scripts/launch_polybar.sh
 #         background #0f111b
 #     }
 # }
-# exec i3-msg workspace 5
+exec i3-msg workspace 5
