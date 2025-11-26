@@ -70,3 +70,5 @@ map u restoreTab
 
 # Devices
 - [xps 13 9310](https://wiki.archlinux.org/title/Dell_XPS_13_(9310))
+- [Framework_Laptop_13](https://wiki.archlinux.org/title/Framework_Laptop_13)
+    - [framework-system](https://archlinux.org/packages/extra/x86_64/framework-system/)

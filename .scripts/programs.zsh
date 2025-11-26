@@ -34,8 +34,8 @@ function agenda() {
 }
 
 function battery() {
-  battery_status=$(cat /sys/class/power_supply/BAT0/status)
-  battery_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+  battery_status=$(cat /sys/class/power_supply/BAT1/status)
+  battery_capacity=$(cat /sys/class/power_supply/BAT1/capacity)
   echo "${battery_capacity}% ${battery_status}"
 }
 

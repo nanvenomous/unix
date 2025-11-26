@@ -12,7 +12,7 @@ function fnd() {
 }
 
 # eval "$(where-to)"
-eval "$(${HOME}/projects/where-to/where-to)"
+eval "$(where-to)"
 
 # to
 
