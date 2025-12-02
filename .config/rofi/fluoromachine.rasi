@@ -1,0 +1,168 @@
+/**
+ * Rofi theme: Fluoromachine
+ * Palette taken from fluoromachine colorscheme.
+ */
+
+* {
+    foreground:      #8BA7A7;
+    background:      #200933;
+    background-color:@background;
+    cursor-color:    #8BA7A7;
+    bordercolor:     #61E2FF;
+
+    color0:  #200933;
+    color1:  #FE4450;
+    color2:  #72F1B8;
+    color3:  #FFCC00;
+    color4:  #AF6DF9;
+    color5:  #FC199A;
+    color6:  #61E2FF;
+    color7:  #8BA7A7;
+    color8:  #495495;
+    color9:  #FF8B39;
+    color10: #72F1B8;
+    color11: #FFCC00;
+    color12: #AF6DF9;
+    color13: #FC199A;
+    color14: #61E2FF;
+    color15: #8BA7A7;
+
+    accent:      @color2;
+    accent-alt:  @color6;
+    highlight:   underline bold #8BA7A7;
+    muted:       @color8;
+    surface:     #1A0726;
+    surface-alt: #463465;
+    transparent: rgba(32,9,51,0.0);
+}
+
+window {
+    location: center;
+    anchor: center;
+    padding: 1em;
+    border: 2px;
+    border-radius: 0px;
+    border-color: @bordercolor;
+    background-color: @surface;
+    transparency: "real";
+    children: [mainbox];
+    color: @foreground;
+}
+
+mainbox {
+    spacing: 6px;
+    children: [inputbar, message, listview];
+}
+
+message {
+    background-color: @surface;
+    border-radius: 8px;
+    border: 1px 1px 1px 1px;
+    border-color: @bordercolor;
+    padding: 0.375em 0.5em;
+    text-color: @foreground;
+}
+
+#textbox-prompt-colon {
+  content: " ";
+  expand: false;
+  color: #8BA7A7;
+  background-color: inherit;
+}
+
+#inputbar {
+  children: [ textbox-prompt-colon, entry ];
+}
+
+
+inputbar {
+    background-color: @surface;
+    border: 2px;
+    border-radius: 10px;
+    border-color: @color3;
+    padding: 0.625em;
+    color: @accent-alt;
+    font: inherit;
+}
+
+prompt, entry, case-indicator {
+    text-color: inherit;
+    text-font: inherit;
+    background-color: inherit;
+}
+
+listview {
+    padding: 0.375em;
+    border: 2px;
+    border-color: @color4;
+    border-radius: 10px;
+    background-color: @surface;
+    lines: 8;
+    dynamic: false;
+}
+
+element {
+    padding: 0.375em 0.5em;
+    border-radius: 6px;
+    background-color: transparent;
+    color: @foreground;
+    font: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal active {
+    color: @color12;
+}
+
+element normal urgent {
+    color: @color1;
+}
+
+element selected normal {
+    background-color: @accent;
+    color: @background;
+}
+
+element selected active {
+    background-color: @accent-alt;
+    color: @background;
+}
+
+element selected urgent {
+    background-color: @color1;
+    color: @background;
+}
+
+element alternate normal {
+    background-color: @surface;
+    color: @foreground;
+}
+
+button {
+    font: inherit;
+    padding: 0.375em 0.625em;
+    border: 2px;
+    border-radius: 8px;
+    border-color: @bordercolor;
+    background-color: @surface;
+    color: @foreground;
+}
+
+button selected normal {
+    background-color: @accent;
+    border-color: @accent-alt;
+    color: @background;
+}
+
+error-message {
+    expand: true;
+    background-color: @color1;
+    border-color: @bordercolor;
+    border: 2px;
+    padding: 0.625em;
+    text-color: @background;
+}

@@ -1,0 +1,18 @@
+# Theme configuration
+general.import = ["~/.config/alacritty/themes/fluoromachine.toml"]
+
+[font]
+size = 13.0
+
+[font.bold]
+family = "jetbrainsmono nerd font"
+style = "ExtraBold"
+
+[font.normal]
+family = "jetbrainsmono nerd font"
+
+[terminal]
+
+[terminal.shell]
+args = ["--login"]
+program = "/usr/bin/zsh"

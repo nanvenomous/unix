@@ -1,0 +1,34 @@
+# Fluoromachine theme for Alacritty
+# A vibrant neon-inspired color scheme
+
+[colors.primary]
+background = "0x200933"
+foreground = "0x8BA7A7"
+
+[colors.cursor]
+cursor = "0x8BA7A7"
+text = "0x282A36"
+
+[colors.selection]
+background = "0x463465"
+foreground = "0x8BA7A7"
+
+[colors.normal]
+black = "0x241B2F"
+red = "0xFE4450"
+green = "0x72F1B8"
+yellow = "0xFFCC00"
+blue = "0x61E2FF"
+magenta = "0xFC199A"
+cyan = "0x61E2FF"
+white = "0x8BA7A7"
+
+[colors.bright]
+black = "0x495495"
+red = "0xFE4450"
+green = "0x72F1B8"
+yellow = "0xFFCC00"
+blue = "0x61E2FF"
+magenta = "0xAF6DF9"
+cyan = "0x61E2FF"
+white = "0x8BA7A7"

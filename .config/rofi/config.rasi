@@ -2,7 +2,7 @@ configuration {
 /*	modes: "window,drun,run,ssh";*/
 	// font: "mono 30";
   font: "JetBrainsMono Nerd Font 16";
-	terminal: "st";
+	terminal: "kitty";
 	show-icons: false;
   timeout {
       action: "kb-cancel";
@@ -150,5 +150,5 @@ configuration {
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 
-// @theme "arthur"
-@theme "spaceduck"
+// @theme "spaceduck"
+@theme "fluoromachine"

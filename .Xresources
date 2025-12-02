@@ -42,12 +42,12 @@
 
 ! Sizing
 /*SMALL*/
-st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=18
-Xft.dpi: 90
+st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=20
+Xft.dpi: 100
 
 /*MEDIUM*/
-/* st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=26 */
-/* Xft.dpi: 120 */
+! st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=26 
+! Xft.dpi: 120 
 
 /*BIG*/
 ! st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=36
