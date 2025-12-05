@@ -12,8 +12,9 @@ alias db='nvim -c ":DBUI" -'
 alias gdiff='nvim -c ":DiffviewOpen" -'
 
 alias space='duf --only local'
+alias screenshot='grim -g "$(slurp)"'
 
-alias gpp='gopass show --password  $(gopass list -f | fzf) | xsel -ib'
+alias gpp='gopass show --password  $(gopass list -f | fzf) | wl-copy'
 alias gp='gopass edit  $(gopass list -f | fzf)'
 
 function release() {
@@ -43,15 +44,11 @@ function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
 }
 
-alias brightness='xrandr --output eDP-1 --brightness'
-
-function background() {
-  feh --bg-scale ~/Images/fluoromachine_background.png
-}
 function lock() {
   clear
   fastfetch
-  i3lock -i ~/Images/fluoromachine_background.png
+  # i3lock -i ~/Images/fluoromachine_background.png
+  swaylock -i ~/Images/fluoromachine_background.png
 }
 alias bye='lock && systemctl suspend'
 
@@ -104,6 +101,7 @@ case "$(uname -s)" in
     
     ################### CISCO
     export PATH=$PATH:/opt/cisco/secureclient/bin
+    export PATH=$PATH:/opt/microsoft/microsoft-azurevpnclient
 
     ;;
   Darwin*)
