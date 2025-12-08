@@ -23,6 +23,13 @@ verbose_source "${HOME}/.locrc.zsh"
 # verbose_source "${SCRIPTS_DIR}/window_manager.zsh"
 verbose_source "${SCRIPTS_DIR}/dotnet_completions.zsh"
 
+# At the end of your zshrc
+if [[ -n ${INIT_CMD} ]]; then
+    print -s "${INIT_CMD}"
+    eval "${INIT_CMD}"
+    unset INIT_CMD
+fi
+
 # bun completions
 [ -s "/home/gin/.bun/_bun" ] && source "/home/gin/.bun/_bun"
 

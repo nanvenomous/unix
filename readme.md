@@ -101,3 +101,20 @@ systemctl --user enable xdg-desktop-portal.service
 systemctl --user start xdg-desktop-portal-wlr.service
 systemctl --user enable xdg-desktop-portal-wlr.service
 ```
+
+### for screen rotation
+```bash
+yay -S rot8
+```
+
+
+Create a config file at `~/.config/rot8/rot8.toml`:
+```ini
+[laptop]
+display = "eDP-1"
+touchscreen = "eDP-1"
+threshold = 0.5
+```
+then `rot8 &`
+
+
