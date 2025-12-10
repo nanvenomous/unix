@@ -9,6 +9,7 @@ tui_apps=(
   "lazygit"
   "pulsemixer"
   "bluetuith"
+  "bluetui"
   "cava"
   "vis"
   "pulsetui"

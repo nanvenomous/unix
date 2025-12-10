@@ -100,6 +100,10 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
 
+vim.api.nvim_create_user_command('NumberLines', function()
+  vim.cmd([[:'<,'>s/^/\=line('.') - line("'<") + 1 . '. '/]])
+end, { range = true })
+
 -- require("go.format").goimports()  -- goimports + gofmt
 
 -- Map Escape to exit terminal mode
