@@ -75,7 +75,7 @@ require("lazy").setup({
         return {
           enable = true,
           mode = "cursor",
-          max_lines = 5,
+          max_lines = 20,
           multiline_threshold = 1,
         }
       end
@@ -361,6 +361,7 @@ local servers = {
   'templ',
   'tailwindcss',
   'csharp_ls',
+  'clangd',
   { 'lua_ls', {
     on_attach = on_attach,
     flags = {
@@ -652,55 +653,6 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
-
--- vim.api.nvim_create_augroup("fmt", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   group = "fmt",
---   pattern = "*",
---   callback = function()
---     vim.cmd("undojoin | Neoformat")
---   end
--- })
--- Include everything after this
-
-
--- DAP SHORTCUTS --------------------------------------------------
--- vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
--- vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
--- vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
--- vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
--- vim.keymap.set('n', '<Leader>q', function()
--- require('dap').toggle_breakpoint() end)
--- vim.keymap.set('n', '<Leader>Q', function() require('dap').set_breakpoint()
--- end)
--- vim.keymap.set('n', '<Leader>lp', function()
--- require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
--- end)
--- vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
--- vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-
--- vim.keymap.set('n', '<Leader>w', function() dapui.open() end)
--- vim.keymap.set('n', '<Leader>W', function() dapui.close() end)
-
-
-
--- DAP CSHARP --------------------------------------------------
--- local dap = require('dap')
--- dap.adapters.coreclr = {
---   type = 'executable',
---   command = home .. '/csharp/netcoredbg',
---   args = {'--interpreter=vscode'}
--- }
--- dap.configurations.cs = {
---   {
---     type = "coreclr",
---     name = "launch - netcoredbg",
---     request = "launch",
---     program = function()
---         return vim.fn.input(vim.fn.getcwd() .. '/bin/Debug/net8.0/')
---     end,
---   },
--- }
 
 
 -- In your nvim config

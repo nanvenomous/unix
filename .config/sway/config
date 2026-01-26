@@ -33,7 +33,8 @@ font pango:monospace 8
 
 exec --no-startup-id swaybg -i ~/Images/fluoromachine_background.png &
 
-exec --no-startup-id ./.scripts/tablet_rotation.sh &
+# exec --no-startup-id ./.scripts/tablet_rotation.sh &
+exec --no-startup-id ~/projects/rotation_monitor/rotation_monitor &
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -47,9 +48,9 @@ bindsym $mod+n kill
 bindsym $mod+d exec wofi --show drun
 bindsym $mod+f exec ~/.scripts/run_rofi.sh
 
-# bindsym $mod+d exec --no-startup-id kitty --single-instance --class fling -e fling
-# for_window [class="fling"] floating enable, resize set 800 600, move position center
-# bindsym $mod+f exec --no-startup-id alacritty -e fling --x11
+bindsym $mod+p exec alacritty --class modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
+bindsym $mod+a exec alacritty --class modal -e sh -c '/home/tanjiro/.local/bin/music.sh'
+for_window [app_id="modal"] floating enable, resize set 800 600, move position center
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -94,7 +95,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -159,6 +160,11 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+}
+
+input "type:keyboard" {
+    repeat_delay 200
+    repeat_rate 40
 }
 
 bindsym $mod+r mode "resize"

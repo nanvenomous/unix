@@ -15,6 +15,7 @@ tui_apps=(
   "pulsetui"
   "termpicker"
   "alarm"
+  "battery"
 )
 
 # If called with an argument, we're handling the launch

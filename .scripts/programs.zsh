@@ -8,7 +8,30 @@ alias review='git diff --name-only HEAD HEAD~1 | uniq | xargs nvim -p'
 alias resolve='git diff --name-only | uniq | xargs nvim -p'
 alias packages='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base-devel | sort | uniq)'
 
+alias -g C="| sed -z 's/^[[:space:]]*//; s/[[:space:]]*$//' | wl-copy"
+
+fzf-kill() {
+    ps aux | fzf -m | awk '{print $2}' | xargs kill -9
+}
+
+fzf-rg() {
+    rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+    fzf --ansi \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+}
+
+alias -s go="${EDITOR}"
+alias -s lua="${EDITOR}"
+alias -s c="${EDITOR}"
+alias -s h="${EDITOR}"
+alias -s rs="${EDITOR}"
+alias -s ts="${EDITOR}"
+alias -s js="${EDITOR}"
+
 alias db='nvim -c ":DBUI" -'
+alias dps="docker ps --format 'table {{.Names}}\\t{{.Status}}\\t{{.Image}}\\t{{.ID}}'"
 alias gdiff='nvim -c ":DiffviewOpen" -'
 
 alias space='duf --only local'
@@ -34,11 +57,11 @@ function agenda() {
   gcalcli --nocolor agenda --no-military "$(date '+%a %b %d')" "$(date '+%a %b %d' -d "8 days")"
 }
 
-function battery() {
-  battery_status=$(cat /sys/class/power_supply/BAT1/status)
-  battery_capacity=$(cat /sys/class/power_supply/BAT1/capacity)
-  echo "${battery_capacity}% ${battery_status}"
-}
+# function battery() {
+#   battery_status=$(cat /sys/class/power_supply/BAT1/status)
+#   battery_capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+#   echo "${battery_capacity}% ${battery_status}"
+# }
 
 function random_ssh_port() {
   python -c 'import random; print(random.randrange(1024, 32767))'
@@ -47,10 +70,9 @@ function random_ssh_port() {
 function lock() {
   clear
   fastfetch
-  # i3lock -i ~/Images/fluoromachine_background.png
   swaylock -i ~/Images/fluoromachine_background.png
 }
-alias bye='lock && systemctl suspend'
+alias bye='systemctl suspend && lock'
 
 alias chrome='chromium --args --use-gl=swiftshader --disable-gpu --disable-software-rasterizer --no-xshm --no-gpu --disable-accelerated-compositing --disable-gpu-compositing &'
 
