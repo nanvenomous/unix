@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+terminal='kitty'
+
+# ${terminal} -e bash \
+#   -c 'INIT_CMD="cd ~/projects/pcf/pcf-backend/portal/Pcf.Portal/Pcf.Portal.Api && dotnet run" $SHELL'
+
+${terminal} -e bash \
+  -c 'INIT_CMD="cd ~/projects/pcf/pcf-backend/portal/Pcf.Portal && docker compose up" $SHELL'

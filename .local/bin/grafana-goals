@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+$BROWSER --app=https://grafana.pcfcash.com/d/ma8mc5c/goals

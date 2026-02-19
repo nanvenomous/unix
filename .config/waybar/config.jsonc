@@ -114,7 +114,7 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%Y-%m-%d %I:%M %p}",
-        "on-click": "google-chrome-stable 'calendar.google.com'",
+        "on-click": "brave --app=https://calendar.google.com",
         "calendar": {
             "mode": "month",
             "mode-mon-col": 3,

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# kitty -e bash \
+#   -c 'INIT_CMD="vid_choice=$(lf --print-selection ${HOME}/Videos) && nohup mpv ${vid_choice} > /dev/null 2>&1 &" $SHELL'
+
+# kitty -e bash \
+#   -c 'INIT_CMD="vid_choice=$(lf --print-selection ${HOME}/Videos) && mpv ${vid_choice}" $SHELL'
+
+# kitty -e 'vid_choice=$(lf --print-selection /home/tanjiro/Videos) && mpv ${vid_choice}'
+
+kitty -e nohup mpv $(lf --print-selection ${HOME}/Videos) > /dev/null 2>&1
+
+# kitty -e lf --print-selection ${HOME}/Videos

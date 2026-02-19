@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+terminal='kitty'
+
+# ${terminal} -e bash \
+#   -c 'INIT_CMD="nvm use 14 && cd ~/projects/pcf/pcf-frontend && npm run start" $SHELL'
+
+${terminal} -e bash \
+  -c 'INIT_CMD="cd ~/projects/pcf/pcf-frontend && docker compose up" $SHELL'

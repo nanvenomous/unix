@@ -1,0 +1,23 @@
+[core]
+	excludesfile = ~/.gitignore
+  pager = delta
+[include]
+	path = ./.keybindings_git
+[user]
+	email = mrgarelli@gmail.com
+	name = nanvenomous
+[init]
+	defaultBranch = mainline
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictStyle = zdiff3
+[delta]
+  navigate = true
+  side-by-side = true
+  dark = true
+  syntax-theme = fluoromachine
+  plus-style = "syntax #292A43"
+  plus-emph-style = "syntax #345160"
+  minus-style = "syntax #3D1133"
+  minus-emph-style = "syntax #64183C"

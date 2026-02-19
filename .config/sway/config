@@ -57,7 +57,10 @@ bindsym $mod+g split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# smart fullscreen:
+# - Brave gets a fake fullscreen (floating, borderless, fills output) so toolbar/tabs stay visible
+# - other apps use normal fullscreen toggle
+# bindsym $mod+m exec ~/.config/sway/scripts/toggle-fullscreen-smart.sh
 bindsym $mod+m fullscreen toggle
 
 set $zen_mode "zen mode: (mod+Shift+z) to exit"
