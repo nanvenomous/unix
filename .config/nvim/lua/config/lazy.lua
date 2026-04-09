@@ -45,26 +45,11 @@ require("lazy").setup({
     },
     {
       "nvim-treesitter/nvim-treesitter",
+      branch = "main",
       build = ":TSUpdate",
       config = function ()
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
-          -- ensure_installed = { "c", "lua", "go", "typescript", "vim", "html" },
-          ensure_installed = {
-            "go",
-            "typescript", "javascript",
-            "html",
-            "templ",
-            "c",
-            "lua",
-            "vim",
-            "html",
-            "c_sharp",
-          },
-          sync_install = false,
-          highlight = { enable = true },
-          indent = { enable = true },
+        require("nvim-treesitter").setup({
+          install_dir = vim.fn.stdpath("data") .. "/site",
         })
       end
     },
@@ -126,7 +111,11 @@ require("lazy").setup({
 
     { 'sbdchd/neoformat' },
     { 'mfussenegger/nvim-dap' },
-    { 'MeanderingProgrammer/render-markdown.nvim' },
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      dependencies = { 'nvim-treesitter/nvim-treesitter' },
+      opts = {},
+    },
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -670,5 +659,3 @@ vim.keymap.set('n', 'g@', function()
     end,
   })
 end, { desc = 'Insert file with @ prefix' })
-
-

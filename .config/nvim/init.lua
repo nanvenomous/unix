@@ -105,6 +105,28 @@ vim.api.nvim_create_user_command('NumberLines', function()
   vim.cmd([[:'<,'>s/^/\=line('.') - line("'<") + 1 . '. '/]])
 end, { range = true })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'c',
+    'cs',
+    'go',
+    'html',
+    'javascript',
+    'lua',
+    'markdown',
+    'templ',
+    'typescript',
+    'vim',
+    'vimdoc',
+  },
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo[0][0].foldmethod = 'expr'
+  end,
+})
+
 -- require("go.format").goimports()  -- goimports + gofmt
 
 -- Map Escape to exit terminal mode
