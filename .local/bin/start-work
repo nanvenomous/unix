@@ -23,13 +23,14 @@ sleep 1
 # sleep 0.5
 
 swaymsg 'workspace 6'
+swaymsg 'exec pcf-app'
+sleep 1
 swaymsg 'exec pcf-backend'
 sleep 1
 swaymsg 'exec pcf-frontend'
 sleep 1
 
 swaymsg 'workspace 10'
-swaymsg 'exec signal-desktop'
 swaymsg 'exec whatsapp'
 sleep 1
 

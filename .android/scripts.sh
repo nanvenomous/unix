@@ -1,20 +1,25 @@
 #!/usr/bin/env sh
 
+curl -O https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+unzip commandlinetools-linux-11076708_latest.zip
+rm commandlinetools-linux-11076708_latest.zip
+# had to move into "latest" directory
+
 # https://wiki.archlinux.org/title/java
-sudo pacman -S jdk8-openjdk
+sudo pacman -S jdk-openjdk
+sudo pacman -S android-tools
 
 ~/.android/tools/bin/sdkmanager --list | grep build-tools
 ~/.android/tools/bin/sdkmanager --list | grep system-images
 
 # https://wiki.archlinux.org/title/android
-sudo pacman -S android-tools
-~/.android/tools/bin/sdkmanager --update
-~/.android/tools/bin/sdkmanager --install tools
-~/.android/tools/bin/sdkmanager --install emulator
-~/.android/tools/bin/sdkmanager "platform-tools"
-~/.android//tools/bin/sdkmanager "build-tools;33.0.2"
-~/.android/tools/bin/sdkmanager "platforms;android-33"
-~/.android/tools/bin/sdkmanager "system-images;android-33;google_apis;x86_64"
+sdkmanager --update
+sdkmanager --install tools
+sdkmanager --install emulator
+sdkmanager "platform-tools"
+sdkmanager "build-tools;33.0.2"
+sdkmanager "platforms;android-33"
+sdkmanager "system-images;android-33;google_apis;x86_64"
 
 ~/.android/tools/bin/avdmanager list
 ~/.android/tools/bin/avdmanager delete avd -n pixel

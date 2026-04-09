@@ -1,7 +1,7 @@
 alias lg='lazygit'
 alias cg="lazygit --work-tree=${HOME} --git-dir=${HOME}/.unx"
 # alias x='nvim ~/.Xresources; xrdb merge ~/.Xresources && kill -USR1 $(pidof st)'
-alias x='nvim ~/.config/kitty/kitty.conf && nvim ~/.config/chrome-flags.conf'
+alias x='nvim ~/.config/kitty/kitty.conf && nvim ~/.config/brave-flags.conf'
 alias g="git --work-tree=${HOME} --git-dir=${HOME}/.unx"
 alias weather='curl "wttr.in/Chicago?m"'
 alias clk="date '+%I:%M %p'"
@@ -104,11 +104,12 @@ case "$(uname -s)" in
     export ANDROID_HOME="${HOME}/.android"
     export ANDROID_SDK_ROOT="${ANDROID_HOME}"
 
+    export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
     export PATH="$PATH:$ANDROID_HOME/emulator"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools"
+    export PATH="$PATH:$ANDROID_HOME/build-tools/33.0.2"
     export PATH="$PATH:$ANDROID_HOME/tools"
     export PATH="$PATH:$ANDROID_HOME/tools/bin"
-    export PATH="$PATH:$ANDROID_HOME/platform-tools"
-    export ANDROID_BUILD_TOOLS=33.0.2
 
     ################### GO
     export GOROOT='/usr/lib/go'

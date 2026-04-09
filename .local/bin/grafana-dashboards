@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+$BROWSER --app=https://grafana.pcfcash.com/dashboards
+
