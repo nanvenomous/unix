@@ -72,7 +72,12 @@ require("lazy").setup({
     { 'hrsh7th/cmp-vsnip' },
     { 'hrsh7th/vim-vsnip' },
 
-    { 'airblade/vim-gitgutter' },
+    {
+      'lewis6991/gitsigns.nvim',
+      opts = {
+        current_line_blame = false,
+      },
+    },
     { 'raimondi/delimitmate' },
     { 'tpope/vim-obsession' },
     { 'tpope/vim-surround' },
@@ -320,7 +325,7 @@ local function show_diagnostic()
 end
 
 local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
@@ -328,7 +333,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gv', function() require('telescope.builtin').lsp_document_symbols({ symbols = {'variable', 'constant', 'struct'} }) end, bufopts)
   vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', 'ge', show_diagnostic, bufopts)
   vim.keymap.set('n', 'gl', custom_format, bufopts)
@@ -616,12 +620,7 @@ require("diffview").setup({
   },
 })
 
-local handle = io.popen('hostname')
-Hostname = nil
-if handle then
-  Hostname = string.gsub(handle:read("*a"), "^%s+", "")
-  handle:close()
-end
+Hostname = vim.uv.os_gethostname()
 
 local dap, dapui = require('dap'), require('dapui')
 local dapgo = require('dap-go')

@@ -21,14 +21,20 @@ vim.opt.cursorline = true
 -- vim.cmd [[ syntax enable ]]
 -- vim.cmd [[ colorscheme shades_of_purple ]]
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local nOpts = { noremap = true }
 local nsOpts = { noremap = true, silent = true }
 
-keymap('n', 'cj', ':GitGutterNextHunk<CR>', nOpts)
-keymap('n', 'ck', ':GitGutterPrevHunk<CR>', nOpts)
-keymap('n', 'ch', ':GitGutterPreviewHunk<CR>', nOpts)
-keymap('n', 'cc', ':CodeCompanionActions<CR>', nOpts)
+keymap('n', 'cj', function()
+  require('gitsigns').nav_hunk('next')
+end, nOpts)
+keymap('n', 'ck', function()
+  require('gitsigns').nav_hunk('prev')
+end, nOpts)
+keymap('n', 'ch', function()
+  require('gitsigns').preview_hunk()
+end, nOpts)
+keymap('n', 'cc', '<cmd>CodeCompanionActions<CR>', nOpts)
 -- nnoremap db :let g:gitgutter_diff_base = 'mainline'<CR>
 -- nnoremap di :let g:gitgutter_diff_base = 'head'<CR>
 
@@ -36,36 +42,36 @@ keymap('n', 'gj', ':+10<CR>', nsOpts)
 keymap('n', 'gk', ':-10<CR>', nsOpts)
 keymap('n', 'gb', '<c-o>', nOpts)
 keymap('n', 'gs', ':Ack!<Space>', nOpts)
-keymap('n', 'go', ':Telescope find_files<CR>', nOpts)
+keymap('n', 'go', '<cmd>Telescope find_files<CR>', nOpts)
 
-keymap('n', 'ss', ':Obsession<CR>', nOpts)
-keymap('n', 'sf', ':w<CR>', nOpts)
-keymap('n', 'se', ':wqa<CR>', nOpts)
-keymap('n', 'sn', ':q!<CR>', nOpts)
-keymap('n', 'sj', ':wincmd j<CR>', nOpts)
-keymap('n', 'sk', ':wincmd k<CR>', nOpts)
-keymap('n', 'sh', ':wincmd h<CR>', nOpts)
-keymap('n', 'sl', ':wincmd l<CR>', nOpts)
-keymap('n', 'sm', ':tab split<CR>', nOpts)
+keymap('n', 'ss', '<cmd>Obsession<CR>', nOpts)
+keymap('n', 'sf', '<cmd>w<CR>', nOpts)
+keymap('n', 'se', '<cmd>wqa<CR>', nOpts)
+keymap('n', 'sn', '<cmd>q!<CR>', nOpts)
+keymap('n', 'sj', '<cmd>wincmd j<CR>', nOpts)
+keymap('n', 'sk', '<cmd>wincmd k<CR>', nOpts)
+keymap('n', 'sh', '<cmd>wincmd h<CR>', nOpts)
+keymap('n', 'sl', '<cmd>wincmd l<CR>', nOpts)
+keymap('n', 'sm', '<cmd>tab split<CR>', nOpts)
 
-keymap('n', 'tj', ':BufferNext<CR>', nsOpts)
-keymap('n', 'tk', ':BufferPrevious<CR>', nsOpts)
-keymap('n', 'tl', ':BufferMoveNext<CR>', nsOpts)
-keymap('n', 'th', ':BufferMovePrevious<CR>', nsOpts)
-keymap('n', 'tn', ':BufferClose<CR>', nsOpts)
+keymap('n', 'tj', '<cmd>BufferNext<CR>', nsOpts)
+keymap('n', 'tk', '<cmd>BufferPrevious<CR>', nsOpts)
+keymap('n', 'tl', '<cmd>BufferMoveNext<CR>', nsOpts)
+keymap('n', 'th', '<cmd>BufferMovePrevious<CR>', nsOpts)
+keymap('n', 'tn', '<cmd>BufferClose<CR>', nsOpts)
 vim.keymap.set('n', 'td', function()
   vim.cmd('tabnew')
   vim.cmd('DBUI')
 end, { desc = 'Open DBUI in new tab' })
 
-keymap('n', 'to', ':Telescope find_files<CR>', nOpts)
-keymap('n', 'tg', ':Telescope live_grep<CR>', nOpts)
+keymap('n', 'to', '<cmd>Telescope find_files<CR>', nOpts)
+keymap('n', 'tg', '<cmd>Telescope live_grep<CR>', nOpts)
 
 keymap('n', 'yp', ':let @+ = expand("%")<CR>', nOpts)
 keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
 
-keymap('n', '<esc>', ':noh<CR>', nsOpts)
-keymap('n', '*', ':keepjumps normal! mi*`i<CR>', nsOpts)
+keymap('n', '<esc>', '<cmd>noh<CR>', nsOpts)
+keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', nsOpts)
 
 -- vim.g.neoformat_try_node_exe = 1
 -- vim.api.nvim_create_autocmd(
@@ -91,12 +97,6 @@ vim.cmd [[
 cnoreabbrev Ack Ack!
 ]]
 
--- GitGutter
--- vim.g.gitgutter_diff_base = 'gamma'
--- vim.g.gitgutter_diff_base = 'v0.0.49'
--- vim.g.gitgutter_diff_base = 'HEAD~1'
-vim.g.gitgutter_grep = 'rg'
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, { command = 'GitGutter' })
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
@@ -122,8 +122,8 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
     pcall(vim.treesitter.start, args.buf)
     vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.wo[0][0].foldmethod = 'expr'
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldmethod = 'expr'
   end,
 })
 
