@@ -1,6 +1,7 @@
 require("config.lazy")
 
 vim.o.scrolloff = 999
+vim.o.foldlevel = 99
 
 vim.wo.number = true
 vim.wo.relativenumber = true
