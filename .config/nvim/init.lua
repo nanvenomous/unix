@@ -12,14 +12,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
--- vim.bo.softtabstop = 2
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
-
--- vim.opt.termguicolors = true
--- vim.cmd [[ syntax enable ]]
--- vim.cmd [[ colorscheme shades_of_purple ]]
 
 local keymap = vim.keymap.set
 local nOpts = { noremap = true }
@@ -35,13 +30,10 @@ keymap('n', 'ch', function()
   require('gitsigns').preview_hunk()
 end, nOpts)
 keymap('n', 'cc', '<cmd>CodeCompanionActions<CR>', nOpts)
--- nnoremap db :let g:gitgutter_diff_base = 'mainline'<CR>
--- nnoremap di :let g:gitgutter_diff_base = 'head'<CR>
 
 keymap('n', 'gj', ':+10<CR>', nsOpts)
 keymap('n', 'gk', ':-10<CR>', nsOpts)
 keymap('n', 'gb', '<c-o>', nOpts)
-keymap('n', 'gs', ':Ack!<Space>', nOpts)
 keymap('n', 'go', '<cmd>Telescope find_files<CR>', nOpts)
 
 keymap('n', 'ss', '<cmd>Obsession<CR>', nOpts)
@@ -73,30 +65,6 @@ keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
 keymap('n', '<esc>', '<cmd>noh<CR>', nsOpts)
 keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', nsOpts)
 
--- vim.g.neoformat_try_node_exe = 1
--- vim.api.nvim_create_autocmd(
---   { 'BufWritePre' },
---   {
---     pattern = { '*.ts', '*.js', '*.html', '*.md' },
---     command = 'Neoformat',
---   }
--- )
-
-vim.g.ctrlp_use_caching = 0
-vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-vim.cmd [[ 
-let g:ctrlp_prompt_mappings = {
-      \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-      \ 'AcceptSelection("t")': ['<cr>'],
-      \ }
-]]
-
-vim.g.ackprg = "rg --vimgrep --type-not sql --type-not vim --smart-case"
-vim.g.ack_use_cword_for_empty_search = 1
-vim.cmd [[ 
-cnoreabbrev Ack Ack!
-]]
-
 vim.api.nvim_create_autocmd({ 'BufEnter' }, { command = 'EnableBlameLine' })
 
 vim.g.rustfmt_autosave = 1
@@ -126,8 +94,6 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.wo.foldmethod = 'expr'
   end,
 })
-
--- require("go.format").goimports()  -- goimports + gofmt
 
 -- Map Escape to exit terminal mode
 vim.keymap.set('t', '<C-x>', '<C-\\><C-n>', { noremap = true })

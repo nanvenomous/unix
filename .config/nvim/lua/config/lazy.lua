@@ -40,7 +40,8 @@ require("lazy").setup({
         end
     },
     {
-      'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      'nvim-telescope/telescope.nvim',
+      version = '*',
       dependencies = { 'nvim-lua/plenary.nvim' },
     },
     {
@@ -82,7 +83,6 @@ require("lazy").setup({
     { 'tpope/vim-obsession' },
     { 'tpope/vim-surround' },
     { 'tpope/vim-commentary' },
-    { 'mileszs/ack.vim' },
     { 'tveskag/nvim-blame-line' },
 
     {
@@ -157,14 +157,6 @@ require("lazy").setup({
       },
     },
     {'sindrets/diffview.nvim'},
-    -- {
-    --   "olimorris/codecompanion.nvim",
-    --   opts = {},
-    --   dependencies = {
-    --     "nvim-lua/plenary.nvim",
-    --     "nvim-treesitter/nvim-treesitter",
-    --   },
-    -- },
   },
   checker = { enabled = true },
 })
@@ -209,33 +201,6 @@ require('lualine').setup({
     path = 1,
   }
 })
-
--- require("codecompanion").setup({
---   strategies = {
---     chat = {
---       adapter = "qwen",
---     },
---     inline = {
---       adapter = "qwen",
---     },
---   },
---   adapters = {
---     qwen = function()
---       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen', 'qwen3-coder:30b'))
---     end,
---     qwen2 = function()
---       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('qwen2', 'qwen2.5-coder:14b'))
---     end,
---     llama3 = function()
---       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('llama3', 'llama3.2'))
---     end,
---     deepseek = function()
---       return require("codecompanion.adapters").extend("ollama", createOllamaSchema('deepseek', 'deepseek-r1:14b'))
---     end,
---   },
--- })
-
-
 
 local cmp = require'cmp'
 
