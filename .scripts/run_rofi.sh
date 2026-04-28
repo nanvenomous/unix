@@ -16,6 +16,7 @@ tui_apps=(
   "termpicker"
   "alarm"
   "battery"
+  "bang"
 )
 
 # If called with an argument, we're handling the launch

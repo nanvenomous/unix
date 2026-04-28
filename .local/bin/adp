@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+gopass show --password websites/adp.com/mrgarelli | wl-copy
 $BROWSER --disable-features=IdleDetection --app=https://signin.adp.com/
+# google-chrome-stable
