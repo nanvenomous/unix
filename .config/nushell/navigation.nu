@@ -1,6 +1,9 @@
 def t [] {
   clear
-  ls | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
+  ls
+  | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
+  | reject type
+  | table --index false
 }
 
 def nav_dirs [] {
@@ -9,6 +12,16 @@ def nav_dirs [] {
   | get name
   | each {|name| $name | path basename }
   | sort -i
+}
+
+def --env dn [dir?: directory] {
+  if $dir == null {
+    cd ~
+  } else {
+    cd $dir
+  }
+
+  t
 }
 
 def --env nav [start?: directory] {
