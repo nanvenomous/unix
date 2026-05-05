@@ -1,11 +1,13 @@
 source ~/.config/nushell/navigation.nu
+source ~/.config/nushell/display.nu
 source-env ~/.config/nushell/paths.nu
+source-env ~/.local.nu
 
 alias lg = lazygit
 alias weather = ^curl "wttr.in/Chicago?m"
 alias clk = ^date "+%I:%M %p"
 alias db = ^nvim -c ":DBUI" -
-alias dps = ^docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Image}}\t{{.ID}}"
+alias dps = ^docker ps --format json | lines | each { from json } | select Names Status Image ID
 alias gdiff = ^nvim -c ":DiffviewOpen" -
 alias space = ^duf --only local
 alias hr = pwd
@@ -169,6 +171,7 @@ let carapace_completer = {|spans|
   }
 }
 
+$env.TERM = "xterm-256color"
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false

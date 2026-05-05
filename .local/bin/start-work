@@ -22,9 +22,9 @@ sleep 1
 # swaymsg 'move left; move left'
 # sleep 0.5
 
-swaymsg 'workspace 6'
-swaymsg 'exec pcf-app'
-sleep 1
+# swaymsg 'workspace 6'
+# swaymsg 'exec pcf-app'
+# sleep 1
 # swaymsg 'exec pcf-backend'
 # sleep 1
 # swaymsg 'exec pcf-frontend'

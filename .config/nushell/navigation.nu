@@ -1,13 +1,15 @@
-def t [] {
+alias core-ls = ls
+
+def ls [] {
   clear
-  ls
+  core-ls
   | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
   | reject type
   | table --index false
 }
 
 def nav_dirs [] {
-  ls -a
+  core-ls -a
   | where type == dir
   | get name
   | each {|name| $name | path basename }
@@ -21,7 +23,7 @@ def --env dn [dir?: directory] {
     cd $dir
   }
 
-  t
+  ls
 }
 
 def --env nav [start?: directory] {
@@ -62,5 +64,5 @@ def --env nav [start?: directory] {
     }
   }
 
-  t
+  ls
 }
