@@ -11,6 +11,7 @@ def ls [
   --threads (-t),     # Use multiple threads to list contents
   ...pattern: glob,   # The glob pattern to use
 ]: [ nothing -> table ] {
+  ^clear
   let pattern = if ($pattern | is-empty) { [ "." ] } else { $pattern }
   (
     core-ls
