@@ -131,6 +131,7 @@ $env.TERM = "xterm-256color"
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false
+$env.config.table.index_mode = "never"
 $env.config.completions.external = {
   enable: true
   max_results: 100

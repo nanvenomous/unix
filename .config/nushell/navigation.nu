@@ -12,7 +12,7 @@ def ls [
   ...pattern: glob,   # The glob pattern to use
 ]: [ nothing -> table ] {
   let pattern = if ($pattern | is-empty) { [ "." ] } else { $pattern }
-  let entries = (
+  (
     core-ls
       --all=$all
       --long=$long
@@ -23,18 +23,7 @@ def ls [
       --mime-type=$mime_type
       --threads=$threads
       ...$pattern
-  )
-
-  let sorted = (
-    $entries
-    | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
-  )
-
-  if $long or $mime_type {
-    $sorted | table --index false
-  } else {
-    $sorted | reject type | table --index false
-  }
+  ) | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
 }
 
 def nav_dirs [] {
