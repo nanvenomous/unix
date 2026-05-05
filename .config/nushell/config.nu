@@ -1,7 +1,7 @@
 source ~/.config/nushell/navigation.nu
 source ~/.config/nushell/display.nu
 source-env ~/.config/nushell/paths.nu
-source-env ~/.local.nu
+source-env ~/.config/nushell/local.nu
 
 alias lg = lazygit
 alias weather = ^curl "wttr.in/Chicago?m"
