@@ -1,11 +1,40 @@
 alias core-ls = ls
 
-def ls [] {
-  clear
-  core-ls
-  | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
-  | reject type
-  | table --index false
+def ls [
+  --all (-a),         # Show hidden files
+  --long (-l),        # Get all available columns for each entry
+  --short-names (-s), # Only print the file names, and not the path
+  --full-paths (-f),  # Display paths as absolute paths
+  --du (-d),          # Display the apparent directory size for directories
+  --directory (-D),   # List the specified directory itself instead of its contents
+  --mime-type (-m),   # Show mime-type in the type column
+  --threads (-t),     # Use multiple threads to list contents
+  ...pattern: glob,   # The glob pattern to use
+]: [ nothing -> table ] {
+  let pattern = if ($pattern | is-empty) { [ "." ] } else { $pattern }
+  let entries = (
+    core-ls
+      --all=$all
+      --long=$long
+      --short-names=$short_names
+      --full-paths=$full_paths
+      --du=$du
+      --directory=$directory
+      --mime-type=$mime_type
+      --threads=$threads
+      ...$pattern
+  )
+
+  let sorted = (
+    $entries
+    | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
+  )
+
+  if $long or $mime_type {
+    $sorted | table --index false
+  } else {
+    $sorted | reject type | table --index false
+  }
 }
 
 def nav_dirs [] {
@@ -23,6 +52,7 @@ def --env dn [dir?: directory] {
     cd $dir
   }
 
+  clear
   ls
 }
 

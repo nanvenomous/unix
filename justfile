@@ -28,3 +28,14 @@ docker-ps:
 git-ls-tree:
     #!/usr/bin/env nu
     git --work-tree $env.HOME --git-dir $"($env.HOME)/.unx" ls-tree mainline --name-only -r
+
+pacman-packages:
+    #!/usr/bin/env nu
+    let explicit = (^pacman -Qqett | lines | uniq)
+    let base_devel = (try {
+      ^pacman -Qqg base-devel e>| ignore | lines | uniq
+    } catch {
+      []
+    })
+
+    $explicit | where {|pkg| $pkg not-in $base_devel }
