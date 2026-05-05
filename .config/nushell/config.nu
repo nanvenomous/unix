@@ -5,11 +5,8 @@ source-env ~/.config/nushell/local.nu
 
 alias lg = lazygit
 alias weather = ^curl "wttr.in/Chicago?m"
-alias clk = ^date "+%I:%M %p"
 alias db = ^nvim -c ":DBUI" -
-alias dps = ^docker ps --format json | lines | each { from json } | select Names Status Image ID
 alias gdiff = ^nvim -c ":DiffviewOpen" -
-alias space = ^duf --only local
 alias hr = pwd
 
 def --wrapped g [...args] {
@@ -55,34 +52,6 @@ def resolve [] {
   }
 }
 
-def packages [] {
-  let explicit = (^pacman -Qqett | lines | uniq)
-  let base_devel = (try {
-    ^pacman -Qqg base-devel e>| ignore | lines | uniq
-  } catch {
-    []
-  })
-
-  $explicit | where {|pkg| $pkg not-in $base_devel }
-}
-
-def fzf-kill [] {
-  let pids = (
-    ps
-    | sort-by name
-    | each {|process| $"($process.pid)\t($process.name)\t($process.status)" }
-    | str join "\n"
-    | ^fzf -m
-    | lines
-    | each {|line| $line | split column "\t" pid name status | get pid.0 }
-    | into int
-  )
-
-  if ($pids | is-not-empty) {
-    ^kill -9 ...$pids
-  }
-}
-
 def fzf-rg [...query] {
   ^rg --color=always --line-number --no-heading --smart-case ...$query
   | ^fzf --ansi --delimiter ":" --preview "bat --color=always {1} --highlight-line {2}" --preview-window "up,60%,border-bottom,+{2}+3/3,~3"
@@ -110,19 +79,6 @@ def gpp [] {
   if $entry != "" {
     let password = (^gopass show --password $entry)
     do { print -n $password } | ^wl-copy
-  }
-}
-
-def release [] {
-  let describe_result = (do { ^git describe --tags --abbrev=0 "@^" } | complete)
-  let last_tag = if $describe_result.exit_code == 0 {
-    $describe_result.stdout | str trim
-  } else {
-    ""
-  }
-
-  if $last_tag != "" {
-    ^git log $"($last_tag)..@"
   }
 }
 

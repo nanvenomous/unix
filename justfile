@@ -10,17 +10,6 @@ random-secret-32:
 reown:
     sudo chown -R tanjiro:users go/pkg/mod
 
-update-linodes:
-    ssh pcf-caddy 'sudo pacman -Syu --noconfirm'
-    ssh pcf-portal 'sudo pacman -Syu --noconfirm'
-
-check-dns:
-    #!/usr/bin/env bash
-    for r in 1.1.1.1 8.8.8.8 9.9.9.9 208.67.222.222; do
-        echo "=== $r"
-        dig temporal.pcfcash.com @$r +noall +answer
-    done
-
 docker-ps:
     #!/usr/bin/env nu
     docker ps --format json | lines | each { from json } | select Names Status Image ID
@@ -39,3 +28,31 @@ pacman-packages:
     })
 
     $explicit | where {|pkg| $pkg not-in $base_devel }
+
+kill:
+    #!/usr/bin/env nu
+    let pids = (
+      ps
+      | sort-by name
+      | each {|process| $"($process.pid)\t($process.name)\t($process.status)" }
+      | str join "\n"
+      | ^fzf -m
+      | lines
+      | each {|line| $line | split column "\t" pid name status | get pid.0 }
+      | into int
+    )
+
+    if ($pids | is-not-empty) {
+      ^kill -9 ...$pids
+    }
+
+check-dns:
+    #!/usr/bin/env bash
+    for r in 1.1.1.1 8.8.8.8 9.9.9.9 208.67.222.222; do
+        echo "=== $r"
+        dig temporal.pcfcash.com @$r +noall +answer
+    done
+
+disk-space:
+    #!/usr/bin/env bash
+    duf --only local
