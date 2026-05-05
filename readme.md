@@ -4,7 +4,7 @@
 
 ### Pulling Unix files (for mac or linux), onto your machine
 
-```
+```bash
 cd "${HOME}"
 
 alias cg="git --git-dir=${HOME}/.unx/ --work-tree=${HOME}"
@@ -16,6 +16,12 @@ cg checkout
 # may need to fix conflicts by moving files, then re-run previous command
 
 cg config --local status.showUntrackedFiles no
+```
+
+then you can make nushell your shell of choice:
+```bash
+touch "${HOME}/.config/nushell/local.nu"
+chsh -s /usr/bin/nu
 ```
 
 - [In-depth Guide to tracking dotfiles](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
