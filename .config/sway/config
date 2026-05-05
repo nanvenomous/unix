@@ -46,7 +46,7 @@ floating_modifier $mod
 bindsym $mod+n kill
 
 bindsym $mod+d exec wofi --show drun
-bindsym $mod+f exec ~/.scripts/run_rofi.sh
+bindsym $mod+f exec ~/.config/rofi/launch_rofi.sh
 
 bindsym $mod+p exec alacritty --class modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
 bindsym $mod+a exec alacritty --class modal -e sh -c '/home/tanjiro/.local/bin/music.sh'
@@ -172,7 +172,7 @@ input "type:keyboard" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id ~/.scripts/launch_waybar.sh
+exec_always --no-startup-id ~/.config/waybar/launch_waybar.sh
 exec_always --no-startup-id mako
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
