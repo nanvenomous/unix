@@ -127,7 +127,11 @@ let carapace_completer = {|spans|
   }
 }
 
-$env.TERM = "xterm-256color"
+$env.BROWSER = "brave"
+$env.EDITOR = "nvim"
+$env.TERMINAL = "footclient"
+$env.LANG = "en_US.UTF-8"
+$env.LC_CTYPE = "en_US.UTF-8"
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false
@@ -137,6 +141,13 @@ $env.config.completions.external = {
   max_results: 100
   completer: $carapace_completer
 }
+$env.config.history = {
+    file_format: "sqlite"  # Required for isolation control
+    isolation: true        # false = shared across sessions; true = per-session
+    sync_on_enter: true    # Writes to disk after each command
+    max_size: 100000       # Maximum number of history entries
+}   
+
 $env.PROMPT_COMMAND = {
   let user = ($env.USER? | default $env.LOGNAME? | default "unknown")
   let host = (sys host | get hostname)

@@ -1,9 +1,3 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env nu
 
-terminal='kitty'
-
-${terminal} -e bash \
-  -c 'INIT_CMD="cd ~/projects/pcf/pcf-backend/portal/Pcf.Portal/Pcf.Portal.Api && dotnet run" $SHELL'
-
-# ${terminal} -e bash \
-#   -c 'INIT_CMD="cd ~/projects/pcf/pcf-backend/portal/Pcf.Portal && docker compose up" $SHELL'
+^$env.TERMINAL -e nu -e 'cd ~/projects/pcf/pcf-backend/portal/Pcf.Portal; task'

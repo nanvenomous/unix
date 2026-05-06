@@ -33,8 +33,10 @@ if $nu.os-info.name == "linux" {
   $env.ANDROID_SDK_ROOT = $env.ANDROID_HOME
   $env.GOROOT = "/usr/lib/go"
   $env.GOPATH = $"($env.HOME)/go"
+  $env.CARGO_HOME = $"($env.HOME)/.cargo"
+  $env.DOTNET_ROOT = $"($env.HOME)/.dotnet"
 
-  [
+  let extra_paths = [
     $"($env.ANDROID_HOME)/cmdline-tools/latest/bin"
     $"($env.ANDROID_HOME)/emulator"
     $"($env.ANDROID_HOME)/platform-tools"
@@ -48,5 +50,9 @@ if $nu.os-info.name == "linux" {
     $"($env.HOME)/csharp/netcoredbg"
     "/opt/cisco/secureclient/bin"
     "/opt/microsoft/microsoft-azurevpnclient"
-  ] | each {|entry| add-path $entry }
+  ]
+
+  for entry in $extra_paths {
+    add-path $entry
+  }
 }

@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-terminal='kitty'
-
-${terminal} -e bash \
-  -c 'INIT_CMD="cd ~/projects/pcf/app && task up" $SHELL'

@@ -1,5 +1,7 @@
+# see system info
 default:
-    nmcli c 
+    #!/usr/bin/env bash
+    fastfetch 
 
 random-secret-32:
     #!/usr/bin/env bash
@@ -10,18 +12,22 @@ random-secret-32:
 reown:
     sudo chown -R tanjiro:users go/pkg/mod
 
+# show all running docker processes
 docker-ps:
     #!/usr/bin/env nu
     docker ps --format json | lines | each { from json } | select Names Status Image ID
 
+# show tracked dotfiles system to system
 git-ls-tree:
     #!/usr/bin/env nu
     git --work-tree $env.HOME --git-dir $"($env.HOME)/.unx" ls-tree mainline --name-only -r
 
+# update the operating system
 update:
     #!/usr/bin/env bash
     sudo pacman -Syu --noconfirm
 
+# list all deliberately installed packages
 packages:
     #!/usr/bin/env nu
     let explicit = (^pacman -Qqett | lines | uniq)
@@ -33,6 +39,7 @@ packages:
 
     $explicit | where {|pkg| $pkg not-in $base_devel }
 
+# fuzzy search processes to kill
 kill:
     #!/usr/bin/env nu
     let pids = (
@@ -60,3 +67,12 @@ check-dns:
 disk-space:
     #!/usr/bin/env bash
     duf --only local
+
+# set screen brightness to any value 2-10
+brightness num="10":
+    #!/usr/bin/env nu
+    if {{num}} not-in 2..10 {
+        error make {msg: $"brightness must be 2–10, got {{num}}"}
+    }
+    let pct = {{num}} * 10
+    ^brightnessctl s $"($pct)%"
