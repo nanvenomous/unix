@@ -3,6 +3,12 @@ default:
     #!/usr/bin/env bash
     fastfetch 
 
+resolution:
+    #!/usr/bin/env bash
+    nvim ~/.config/foot/foot.ini
+    nvim ~/.config/brave-flags.conf
+    systemctl --user restart foot-server.socket 
+
 random-secret-32:
     #!/usr/bin/env bash
     sec=$(openssl rand -base64 32)

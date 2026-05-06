@@ -17,10 +17,10 @@ def --wrapped cg [...args] {
   ^lazygit --work-tree $env.HOME --git-dir $"($env.HOME)/.unx" ...$args
 }
 
-def x [] {
-  ^nvim ~/.config/kitty/kitty.conf
-  ^nvim ~/.config/brave-flags.conf
-}
+# def x [] {
+#   ^nvim ~/.config/kitty/kitty.conf
+#   ^nvim ~/.config/brave-flags.conf
+# }
 
 def git_changed_files [...args] {
   let diff_result = (do { ^git diff --name-only ...$args } | complete)
