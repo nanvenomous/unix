@@ -49,9 +49,30 @@ require("lazy").setup({
       branch = "main",
       build = ":TSUpdate",
       config = function ()
-        require("nvim-treesitter").setup({
+        local treesitter_languages = {
+          "bash",
+          "c",
+          "c_sharp",
+          "go",
+          "html",
+          "javascript",
+          "just",
+          "lua",
+          "markdown",
+          "nu",
+          "python",
+          "query",
+          "templ",
+          "typescript",
+          "vim",
+          "vimdoc",
+        }
+
+        local treesitter = require("nvim-treesitter")
+        treesitter.setup({
           install_dir = vim.fn.stdpath("data") .. "/site",
         })
+        treesitter.install(treesitter_languages)
       end
     },
     {

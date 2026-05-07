@@ -1,22 +1,19 @@
-# see system info
+# see fastfetch system info
 default:
     #!/usr/bin/env bash
     fastfetch 
 
+# battery health statistics
+battery:
+    #!/usr/bin/env bash
+    battery
+
+# changes resolution in brave and foot terminal, kills all terminals
 resolution:
     #!/usr/bin/env bash
     nvim ~/.config/foot/foot.ini
     nvim ~/.config/brave-flags.conf
     systemctl --user restart foot-server.socket 
-
-random-secret-32:
-    #!/usr/bin/env bash
-    sec=$(openssl rand -base64 32)
-    echo $sec | wl-copy
-    echo $sec
-
-reown:
-    sudo chown -R tanjiro:users go/pkg/mod
 
 # show all running docker processes
 docker-ps:
@@ -45,6 +42,12 @@ packages:
 
     $explicit | where {|pkg| $pkg not-in $base_devel }
 
+# list all custom executables tracked with the system
+local-bin:
+    #!/usr/bin/env nu
+    cd ~/.local/bin
+    ls -l | where type == "file" and mode =~ "x" | get name
+
 # fuzzy search processes to kill
 kill:
     #!/usr/bin/env nu
@@ -63,13 +66,7 @@ kill:
       ^kill -9 ...$pids
     }
 
-check-dns:
-    #!/usr/bin/env bash
-    for r in 1.1.1.1 8.8.8.8 9.9.9.9 208.67.222.222; do
-        echo "=== $r"
-        dig temporal.pcfcash.com @$r +noall +answer
-    done
-
+# show the current disk space used on the system
 disk-space:
     #!/usr/bin/env bash
     duf --only local
@@ -82,3 +79,20 @@ brightness num="10":
     }
     let pct = {{num}} * 10
     ^brightnessctl s $"($pct)%"
+
+check-dns:
+    #!/usr/bin/env bash
+    for r in 1.1.1.1 8.8.8.8 9.9.9.9 208.67.222.222; do
+        echo "=== $r"
+        dig temporal.pcfcash.com @$r +noall +answer
+    done
+
+random-secret-32:
+    #!/usr/bin/env bash
+    sec=$(openssl rand -base64 32)
+    echo $sec | wl-copy
+    echo $sec
+
+reown:
+    #!/usr/bin/env bash
+    sudo chown -R tanjiro:users go/pkg/mod

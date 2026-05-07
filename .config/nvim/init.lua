@@ -89,13 +89,18 @@ end, { range = true })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
+    'bash',
     'c',
     'cs',
     'go',
     'html',
+    'just',
     'javascript',
     'lua',
     'markdown',
+    'nu',
+    'python',
+    'sh',
     'templ',
     'typescript',
     'vim',
