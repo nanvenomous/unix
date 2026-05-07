@@ -66,7 +66,7 @@ def --env nav [start?: directory] {
       break
     }
 
-    let result = (do { $options | str join "\n" | ^fzf --prompt $"($current_dir)/" --height 40% --layout reverse --border --exit-0 } | complete)
+    let result = (do { $options | str join "\n" | ^fzf --prompt $"($current_dir)/" --layout reverse --border --exit-0 } | complete)
 
     if $result.exit_code != 0 {
       break
