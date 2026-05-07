@@ -331,6 +331,10 @@ local default_config = {
   }
 }
 
+local function executable(name)
+  return vim.fn.executable(name) == 1
+end
+
 local servers = {
   'gopls',
   'rust_analyzer',
@@ -373,6 +377,45 @@ for _, lsp in ipairs(servers) do
   else
     setup_lsp(lsp[1], lsp[2])
   end
+end
+
+if executable('nu') then
+  setup_lsp('nushell', default_config)
+end
+
+if executable('just-lsp') then
+  setup_lsp('just', default_config)
+end
+
+if executable('bash-language-server') then
+  setup_lsp('bashls', default_config)
+end
+
+if executable('kakehashi') then
+  setup_lsp('kakehashi', {
+    on_attach = on_attach,
+    filetypes = { 'just' },
+    init_options = {
+      languageServers = {
+        pyright = {
+          cmd = { 'pyright-langserver', '--stdio' },
+          languages = { 'python' },
+        },
+        nushell = {
+          cmd = { 'nu', '--lsp' },
+          languages = { 'nu' },
+        },
+      },
+      languages = {
+        just = {
+          bridge = {
+            pyright = { enabled = true },
+            nushell = { enabled = true },
+          },
+        },
+      },
+    },
+  })
 end
 
 -- Lua
