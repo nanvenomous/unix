@@ -3,7 +3,7 @@
 	ch = checkout
 	c = commit
 	ca = commit --amend
-	s = status
+	s = status -sb
 	alias = config --get-regexp alias
 	a = add
 	pho = push origin
