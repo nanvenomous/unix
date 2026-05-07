@@ -1,5 +1,6 @@
 source ~/.config/nushell/navigation.nu
 source ~/.config/nushell/display.nu
+source ~/.config/nushell/carapace.nu
 source-env ~/.config/nushell/paths.nu
 source-env ~/.config/nushell/local.nu
 
@@ -87,16 +88,6 @@ def random_ssh_port [] {
   random int 1024..32766
 }
 
-let carapace_completer = {|spans|
-  let results = (do { ^carapace $spans.0 nushell ...$spans } | complete)
-
-  if $results.exit_code == 0 and ($results.stdout | str trim) != "" {
-    $results.stdout | from json
-  } else {
-    null
-  }
-}
-
 $env.BROWSER = "brave"
 $env.EDITOR = "nvim"
 $env.TERMINAL = "footclient"
@@ -106,11 +97,6 @@ $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false
 $env.config.table.index_mode = "never"
-$env.config.completions.external = {
-  enable: true
-  max_results: 100
-  completer: $carapace_completer
-}
 $env.config.history = {
     file_format: "sqlite"  # Required for isolation control
     isolation: true        # false = shared across sessions; true = per-session
