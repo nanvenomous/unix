@@ -17,11 +17,6 @@ def --wrapped cg [...args] {
   ^lazygit --work-tree $env.HOME --git-dir $"($env.HOME)/.unx" ...$args
 }
 
-# def x [] {
-#   ^nvim ~/.config/kitty/kitty.conf
-#   ^nvim ~/.config/brave-flags.conf
-# }
-
 def git_changed_files [...args] {
   let diff_result = (do { ^git diff --name-only ...$args } | complete)
 
@@ -92,31 +87,6 @@ def random_ssh_port [] {
   random int 1024..32766
 }
 
-def bye [] {
-  ^systemctl suspend
-  ^lock
-}
-
-# def prompt_path [] {
-#   let cwd = (pwd | to text)
-#   let home = ($env.HOME | to text)
-
-#   if $cwd == $home {
-#     "~"
-#   } else if ($cwd | str starts-with $"($home)/") {
-#     $cwd | str replace $home "~"
-#   } else {
-#     $cwd
-#   }
-# }
-
-# def prompt_status [indicator: string] {
-#   let exit_code = ($env.LAST_EXIT_CODE? | default 0)
-#   let status_color = if $exit_code == 0 { ansi green } else { ansi red }
-
-#   $"($status_color)($exit_code)(ansi blue) ($indicator)(ansi reset)"
-# }
-
 let carapace_completer = {|spans|
   let results = (do { ^carapace $spans.0 nushell ...$spans } | complete)
 
@@ -147,18 +117,6 @@ $env.config.history = {
     sync_on_enter: true    # Writes to disk after each command
     max_size: 100000       # Maximum number of history entries
 }   
-
-# $env.PROMPT_COMMAND = {
-#   let user = ($env.USER? | default $env.LOGNAME? | default "unknown")
-#   let host = (sys host | get hostname)
-#   let path = (prompt_path)
-
-#   $"(ansi blue)($path)(ansi reset) (ansi magenta){(ansi yellow)($user)(ansi reset)(ansi magenta)@(ansi yellow)($host)(ansi magenta)}(ansi reset)\n"
-# }
-# $env.PROMPT_COMMAND_RIGHT = ""
-# $env.PROMPT_INDICATOR = {|| prompt_status "> " }
-# $env.PROMPT_INDICATOR_VI_NORMAL = {|| prompt_status "> " }
-# $env.PROMPT_INDICATOR_VI_INSERT = {|| prompt_status ": " }
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
