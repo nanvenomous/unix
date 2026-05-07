@@ -1,45 +1,21 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
 add_newline = true
-format = """\
-$username$hostname$localip$shlvl$singularity$kubernetes\
-$directory$vcsh$fossil_branch$fossil_metrics\
-$git_branch${custom.git_clean}$git_commit$git_state$git_metrics$git_status\
-$hg_branch$pijul_channel$docker_context\
-$package$c$cmake$cobol$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$gleam\
-$golang$guix_shell$haskell$herd$java$julia$kotlin$lua$nim$nodejs$ocaml$opa\
-$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala\
-$solidity$swift$terraform$typst$vlang$vagrant$zig$buf$nix_shell$conda\
-$meson$spack$memory_usage$aws$gcloud$openstack$azure$nats$direnv$env_var\
-$crystal$sudo$cmd_duration$line_break$jobs$battery$time$status$container$os$shell\
-$character\
-"""
 
-# Replace the '❯' symbol in the prompt with '➜'
-# [character] # The name of the module we are configuring is 'character'
-# success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-
-# Disable the package module, hiding it from the prompt completely
-# [package]
-# disabled = true
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
-[custom.git_clean]
-command = 'git diff --quiet && git diff --cached --quiet && test -z "$(git ls-files --others --exclude-standard)" && echo "[✔]"'
-when = 'git rev-parse --is-inside-work-tree'
-shell = ["bash"]
-style = "green bold"
-format = "[$output ]($style)"
+
+# [username]
+# show_always = true
+
+# [hostname]
+# ssh_only = false
 
 [directory]
-truncation_length = 0        # don't truncate
-# truncate_to_repo = false     # don't truncate to git repo root either
+truncation_length = 0
 
 [golang]
 format = '[$symbol($version )]($style)'
-# version_format = 'v${major}.${minor}.${patch}'
 
 [bun]
 format = '[$symbol($version )]($style)'
