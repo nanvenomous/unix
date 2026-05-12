@@ -1,0 +1,16 @@
+terminal:
+    command: foot
+tui_apps:
+    - nvim
+    - vim
+    - nano
+    - htop
+    - lazygit
+    - pulsemixer
+    - bluetuith
+    - cava
+    - vis 
+    - pulsetui
+    - termpicker
+behavior:
+    closeOnLossOfFocus: true

@@ -45,12 +45,17 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+n kill
 
-bindsym $mod+d exec wofi --show drun
-bindsym $mod+f exec ~/.config/rofi/launch_rofi.sh
-
-bindsym $mod+p exec alacritty --class modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
-bindsym $mod+a exec alacritty --class modal -e sh -c '/home/tanjiro/.local/bin/music.sh'
+# bindsym $mod+d exec wofi --show drun
+bindsym $mod+d exec ~/.config/rofi/launch_rofi.sh
+bindsym $mod+a exec footclient --app-id=modal -e /home/tanjiro/.local/bin/music
+bindsym $mod+p exec footclient --app-id=modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
 for_window [app_id="modal"] floating enable, resize set 800 600, move position center
+bindsym $mod+f exec footclient --app-id=fling fling
+for_window [app_id="fling"] floating enable, resize set 600 500, move position center
+
+# bindsym $mod+p exec alacritty --class modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
+# bindsym $mod+a exec alacritty --class modal -e sh -c '/home/tanjiro/.local/bin/music.sh'
+# for_window [app_id="modal"] floating enable, resize set 800 600, move position center
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -60,7 +65,6 @@ bindsym $mod+v split v
 # smart fullscreen:
 # - Brave gets a fake fullscreen (floating, borderless, fills output) so toolbar/tabs stay visible
 # - other apps use normal fullscreen toggle
-# bindsym $mod+m exec ~/.config/sway/scripts/toggle-fullscreen-smart.sh
 bindsym $mod+m fullscreen toggle
 
 set $zen_mode "zen mode: (mod+Shift+z) to exit"
@@ -172,10 +176,12 @@ input "type:keyboard" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id ~/.config/waybar/launch_waybar.sh
-exec_always --no-startup-id mako
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always --no-startup-id ~/.config/waybar/launch_waybar.sh
+exec_always --no-startup-id ~/.config/sway/scripts/focus-dismiss.nu
+exec_always --no-startup-id mako
+exec foot --server
 
 for_window [title="Microsoft Teams Notification"] floating enable, move 20 20
 no_focus [title="Microsoft Teams Notification"]

@@ -17,3 +17,10 @@
 	sh = stash
 	lv = !git --no-pager log | nvim -
 	bv = !git branch | nvim -
+	nvim-diff = !nvim -c ":DiffviewOpen" -
+	lazy = !lazygit
+  lazy-dotfiles = !lazygit --work-tree $HOME --git-dir $HOME/.unx
+  dotfiles = "!git --work-tree $HOME --git-dir $HOME/.unx"
+  resolve = !nvim -p $(git diff --name-only)
+  review = !nvim -p $(git diff --name-only HEAD HEAD~1)
+  nvim-diff = !nvim -c ":DiffviewOpen" -
