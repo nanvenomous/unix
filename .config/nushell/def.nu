@@ -29,17 +29,6 @@ def gp [] {
   }
 }
 
-def gpp [] {
-  let entry = (select_gopass_entry)
-
-  if $entry != "" {
-    let password = (^gopass show --password $entry)
-    do { print -n $password } | ^wl-copy
-  }
-}
-
-
 def random_ssh_port [] {
   random int 1024..32766
 }
-
