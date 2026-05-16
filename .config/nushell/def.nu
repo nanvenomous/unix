@@ -32,3 +32,5 @@ def gp [] {
 def random_ssh_port [] {
   random int 1024..32766
 }
+
+alias e = nvim

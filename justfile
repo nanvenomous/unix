@@ -11,24 +11,25 @@ battery:
 # changes resolution in brave and foot terminal font size, kills all terminals
 size:
   #!/usr/bin/env nu
-  let font = "JetBrainsMono Nerd Font Mono"
 
-  mut size = 0
-  loop {
-      let raw = input "Font size (8-20): "
-      try {
-          let n = $raw | into int
-          if $n >= 8 and $n <= 20 {
-              $size = $n
-              break
-          } else {
-              print "Must be a number between 8 and 20"
-          }
-      } catch {
-          print "Must be a number between 8 and 20"
-      }
+  let braveConfFile = ($env.HOME | path join ".config/brave-flags.conf")
+  let braveScaleRaw = input "Scale factor (0.5–1.5): "
+  let braveScale = try { $braveScaleRaw | into float } catch { error make { msg: "Not a number" } }
+  if $braveScale < 0.5 or $braveScale > 1.5 {
+      error make { msg: $"($braveScale) is out of range \(0.5–1.5\)" }
   }
-  let size = $size  # shadow as immutable for closure capture
+  open --raw $braveConfFile
+  | str replace --regex '(?m)^--force-device-scale-factor=[\d.]+' $"--force-device-scale-factor=($braveScale)"
+  | save --force $braveConfFile
+
+  ^pkill -f brave | complete
+
+  let font = "JetBrainsMono Nerd Font Mono"
+  let footSizeRaw = input "Scale factor (8–20): "
+  let footSize = try { $footSizeRaw | into int } catch { error make { msg: "Not a number" } }
+  if $footSize < 8 or $footSize > 20 {
+      error make { msg: $"($footSize) is out of range \(8–20\)" }
+  }
 
   let styles = [
       [key style];
@@ -38,12 +39,12 @@ size:
       ["font-bold-italic" "ExtraBold Italic"]
   ]
 
-  let config = $styles | each { |row|
-      $"($row.key)=($font):style=($row.style):size=($size)"
+  let footConfigFile = $styles | each { |row|
+      $"($row.key)=($font):style=($row.style):size=($footSize)"
   } | str join "\n"
 
-  $config | save --force ~/.config/foot/font.ini
-  ^nvim ~/.config/brave-flags.conf
+  $footConfigFile | save --force ~/.config/foot/font.ini
+
   ^pkill foot | complete
   job spawn { ^setsid foot --server out+err>/dev/null }
 
