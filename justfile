@@ -87,7 +87,7 @@ kill:
   let port_map = (
     ^sudo ss -tulnp
     | from ssv -m 1
-    | where { |row| ($row.Peer | str contains "pid=") }
+    | where { |row| (($row | get -o Peer) | default "" | str contains "pid=") }
     | each {|row|
       let port = ($row.Local | split row ":" | last)
       let pid  = ($row.Peer | parse --regex 'pid=(?P<pid>\d+)' | get -o 0.pid)
