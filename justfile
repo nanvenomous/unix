@@ -10,11 +10,11 @@ battery:
 
 # changes resolution in brave and foot terminal, kills all terminals
 resolution:
-  #!/usr/bin/env bash
-  nvim ~/.config/foot/foot.ini
-  nvim ~/.config/brave-flags.conf
-  # systemctl --user restart foot-server.socket
-  pkill foot && foot --server & # if started from sway
+  #!/usr/bin/env nu
+  ^nvim ~/.config/foot/foot.ini
+  ^nvim ~/.config/brave-flags.conf
+  ^pkill foot | ignore
+  job spawn { ^setsid foot --server out+err>/dev/null }
 
 # show all running docker processes
 docker-ps:

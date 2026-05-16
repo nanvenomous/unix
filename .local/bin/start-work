@@ -3,21 +3,20 @@
 swaymsg 'workspace 4; exec brave'
 sleep 1
 
-swaymsg 'workspace 1; exec microsoft-teams'
-sleep 1
-
-swaymsg 'workspace 7; exec microsoft-outlook'
-sleep 1
-
-# swaymsg 'workspace 6'
-# swaymsg 'exec pcf-backend'
-# sleep 1
-# swaymsg 'exec pcf-frontend'
-# sleep 1
-
 swaymsg 'workspace 10'
+swaymsg 'exec microsoft-teams'
+sleep 1
+swaymsg 'exec microsoft-outlook'
+sleep 1
+
+swaymsg 'workspace 3'
 swaymsg 'exec whatsapp'
 sleep 1
 
-# swaymsg 'workspace 5; exec kitty'
+swaymsg 'workspace 6'
+swaymsg 'exec pcf-backend'
+sleep 1
+swaymsg 'exec pcf-frontend'
+sleep 1
+
 swaymsg 'workspace 5; exec adp'

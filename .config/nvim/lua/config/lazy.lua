@@ -101,7 +101,15 @@ require("lazy").setup({
       },
     },
     { 'raimondi/delimitmate' },
-    { 'tpope/vim-obsession' },
+    {
+      "rmagatti/auto-session",
+      lazy = false,
+      ---@module "auto-session"
+      ---@type AutoSession.Config
+      opts = {
+        suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      },
+    },
     { 'tpope/vim-surround' },
     { 'tpope/vim-commentary' },
     { 'tveskag/nvim-blame-line' },
