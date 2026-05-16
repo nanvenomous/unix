@@ -8,12 +8,43 @@ battery:
   #!/usr/bin/env bash
   battery
 
-# changes resolution in brave and foot terminal, kills all terminals
-resolution:
+# changes resolution in brave and foot terminal font size, kills all terminals
+size:
   #!/usr/bin/env nu
-  ^nvim ~/.config/foot/foot.ini
+  let font = "JetBrainsMono Nerd Font Mono"
+
+  mut size = 0
+  loop {
+      let raw = input "Font size (8-20): "
+      try {
+          let n = $raw | into int
+          if $n >= 8 and $n <= 20 {
+              $size = $n
+              break
+          } else {
+              print "Must be a number between 8 and 20"
+          }
+      } catch {
+          print "Must be a number between 8 and 20"
+      }
+  }
+  let size = $size  # shadow as immutable for closure capture
+
+  let styles = [
+      [key style];
+      ["font" "Bold"]
+      ["font-bold" "ExtraBold"]
+      ["font-italic" "Bold Italic"]
+      ["font-bold-italic" "ExtraBold Italic"]
+  ]
+
+  let config = $styles | each { |row|
+      $"($row.key)=($font):style=($row.style):size=($size)"
+  } | str join "\n"
+
+  $config | save --force ~/.config/foot/font.ini
   ^nvim ~/.config/brave-flags.conf
-  ^pkill foot | ignore
+  ^pkill foot | complete
   job spawn { ^setsid foot --server out+err>/dev/null }
 
 # show all running docker processes
