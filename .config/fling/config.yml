@@ -12,5 +12,6 @@ tui_apps:
     - vis 
     - pulsetui
     - termpicker
+    - alarm
 behavior:
     closeOnLossOfFocus: true

@@ -4,7 +4,7 @@ def work [] {
 }
 
 def home [] {
-    wlr-randr --output DP-1 --mode 3840x2160 --on
+    wlr-randr --output DP-3 --mode 3840x2160 --on
     wlr-randr --output eDP-1 --off
 }
 

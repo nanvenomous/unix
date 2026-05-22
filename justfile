@@ -8,6 +8,27 @@ battery:
   #!/usr/bin/env bash
   battery
 
+weather:
+  #!/usr/bin/env nu
+  def to-12hr [t: string] {
+      let h = ($t | into int) // 100
+      if $h == 0 { "12:00 AM" } else if $h < 12 { $"($h):00 AM" } else if $h == 12 { "12:00 PM" } else { $"($h - 12):00 PM" }
+  }
+  http get "https://wttr.in/Chicago?format=j1" | from json | get weather
+  | enumerate
+  | each { |day|
+      print $"\n── ($day.item.date | into datetime | format date "%A") · ($day.item.date) ──────────────"
+      print ($day.item.hourly | where ($it.time | into int) >= 600 | each { |h|
+          {
+              time: (to-12hr $h.time),
+              temp_c: $h.tempC,
+              rain_%: $h.chanceofrain,
+              wind_mph: $h.windspeedMiles,
+          }
+      } | table)
+  }
+  | ignore
+
 # changes resolution in brave and foot terminal font size, kills all terminals
 size:
   #!/usr/bin/env nu
@@ -45,8 +66,10 @@ size:
 
   $footConfigFile | save --force ~/.config/foot/font.ini
 
+  # ^pkill foot | complete
+  # job spawn { ^setsid foot --server out+err>/dev/null }
+  ^swaymsg exec "nu -c 'sleep 100ms; setsid foot --server'"
   ^pkill foot | complete
-  job spawn { ^setsid foot --server out+err>/dev/null }
 
 # show all running docker processes
 docker-ps:

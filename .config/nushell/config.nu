@@ -34,13 +34,20 @@ $env.config.history = {
     max_size: 100000       # Maximum number of history entries
 }   
 $env.config.keybindings = [
-    {
-        name: open_in_editor
-        modifier: control
-        keycode: char_e
-        mode: emacs
-        event: { send: OpenEditor }
-    }
+  {
+    name: open_in_editor
+    modifier: control
+    keycode: char_e
+    mode: emacs
+    event: { send: OpenEditor }
+  },
+  # {
+  #   name: open_in_editor
+  #   modifier: shift
+  #   keycode: char_e
+  #   mode: vi_normal
+  #   event: { send: OpenEditor }
+  # }
 ]
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
