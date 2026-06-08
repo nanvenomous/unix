@@ -5,6 +5,30 @@ def retry [interval: duration, ...cmd: string] {
     }
 }
 
+
+def dns-check [domain: string] {
+  ["1.1.1.1" "8.8.8.8" "9.9.9.9" "208.67.222.222"]
+    | each { |res|
+        ^dig $domain $"@($res)" +noall +answer
+          | lines
+          | where { |l| ($l | str trim) != "" }
+          | each { |line| { resolver: $res, answer: $line } }
+      }
+    | flatten
+}
+
+def reown [dir: string] {
+  ^sudo chown -R $"($env.USER):users" $"($dir)"
+}
+
+def random-secret-openssl-32 [] {
+  ^openssl rand -base64 32
+}
+
+def random-ssh-port [] {
+  random int 1024..65535
+}
+
 def screenshot [output?: string] {
   let area = (^slurp | str trim)
 
@@ -27,10 +51,6 @@ def gp [] {
   if $entry != "" {
     ^gopass edit $entry
   }
-}
-
-def random_ssh_port [] {
-  random int 1024..32766
 }
 
 alias e = nvim

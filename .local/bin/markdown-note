@@ -1,0 +1,3 @@
+#!/usr/bin/env nu
+
+^$env.TERMINAL -e nvim (mktemp --suffix .md)

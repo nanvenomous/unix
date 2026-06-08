@@ -116,3 +116,4 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Map Escape to exit terminal mode
 vim.keymap.set('t', '<C-x>', '<C-\\><C-n>', { noremap = true })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true })

@@ -5,9 +5,7 @@ source ~/.config/nushell/carapace.nu
 source-env ~/.config/nushell/paths.nu
 source-env ~/.config/nushell/local.nu
 
-# alias lg = lazygit
 alias hr = pwd
-alias weather = ^curl "wttr.in/Chicago?m"
 alias db = ^nvim -c ":DBUI" -
 
 def --wrapped g [...args] {
@@ -41,16 +39,7 @@ $env.config.keybindings = [
     mode: emacs
     event: { send: OpenEditor }
   },
-  # {
-  #   name: open_in_editor
-  #   modifier: shift
-  #   keycode: char_e
-  #   mode: vi_normal
-  #   event: { send: OpenEditor }
-  # }
 ]
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-
-# ls

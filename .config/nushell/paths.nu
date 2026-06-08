@@ -34,7 +34,8 @@ if $nu.os-info.name == "linux" {
   $env.GOROOT = "/usr/lib/go"
   $env.GOPATH = $"($env.HOME)/go"
   $env.CARGO_HOME = $"($env.HOME)/.cargo"
-  $env.DOTNET_ROOT = $"($env.HOME)/.dotnet"
+  $env.DOTNET_ROOT = '/usr/share/dotnet'
+  # $env.DOTNET_ROOT = $"($env.HOME)/.dotnet"
 
   let extra_paths = [
     $"($env.ANDROID_HOME)/cmdline-tools/latest/bin"

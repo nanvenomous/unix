@@ -1,0 +1,29 @@
+#!/usr/bin/env nu
+
+def screenshot [output: path] {
+  let selection = (^slurp | complete)
+
+  if $selection.exit_code != 0 {
+    return false
+  }
+
+  let area = ($selection.stdout | str trim)
+
+  if $area == "" {
+    return false
+  }
+
+  let result = (^grim -g $area $output | complete)
+  $result.exit_code == 0
+}
+
+def main [] {
+  let output = (^mktemp --tmpdir=/tmp XXXXXXXXXXX.png | str trim)
+  let captured = (screenshot $output)
+
+  if $captured {
+    ^dragon-drop $output | complete | ignore
+  }
+
+  rm --force $output
+}

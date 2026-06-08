@@ -8,10 +8,12 @@ tui_apps:
     - lazygit
     - pulsemixer
     - bluetuith
+    - bluetui
     - cava
     - vis 
     - pulsetui
     - termpicker
     - alarm
+    - bang
 behavior:
     closeOnLossOfFocus: true

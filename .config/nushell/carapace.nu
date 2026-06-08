@@ -1,12 +1,28 @@
 let carapace_completer = {|spans|
-  let results = (do { ^carapace $spans.0 nushell ...$spans } | complete)
+  let cmd = $spans.0
+  let primary = (do { ^carapace $cmd nushell ...$spans } | complete)
 
-  if $results.exit_code == 0 and ($results.stdout | str trim) != "" {
-    $results.stdout | from json
+  let result = if $primary.exit_code == 0 and ($primary.stdout | str trim) != "" {
+    $primary
+  } else {
+    do { ^$cmd _carapace nushell ...$spans } | complete
+  }
+
+  if $result.exit_code == 0 and ($result.stdout | str trim) != "" {
+    $result.stdout | from json
   } else {
     null
   }
 }
+# let carapace_completer = {|spans|
+#   let results = (do { ^carapace $spans.0 nushell ...$spans } | complete)
+
+#   if $results.exit_code == 0 and ($results.stdout | str trim) != "" {
+#     $results.stdout | from json
+#   } else {
+#     null
+#   }
+# }
 
 $env.CARAPACE_LENIENT = "1"
 $env.config.completions.algorithm = "prefix"
@@ -47,3 +63,5 @@ $env.config.keybindings ++= [
     }
   }
 ]
+
+# source ~/.cache/completions/pcf.nu

@@ -8,6 +8,7 @@ battery:
   #!/usr/bin/env bash
   battery
 
+# show a preview of temp, rain, wind for 3 days
 weather:
   #!/usr/bin/env nu
   def to-12hr [t: string] {
@@ -34,7 +35,7 @@ size:
   #!/usr/bin/env nu
 
   let braveConfFile = ($env.HOME | path join ".config/brave-flags.conf")
-  let braveScaleRaw = input "Scale factor (0.5–1.5): "
+  let braveScaleRaw = input "Brave scale factor (0.5–1.5): "
   let braveScale = try { $braveScaleRaw | into float } catch { error make { msg: "Not a number" } }
   if $braveScale < 0.5 or $braveScale > 1.5 {
       error make { msg: $"($braveScale) is out of range \(0.5–1.5\)" }
@@ -46,7 +47,7 @@ size:
   ^pkill -f brave | complete
 
   let font = "JetBrainsMono Nerd Font Mono"
-  let footSizeRaw = input "Scale factor (8–20): "
+  let footSizeRaw = input "Foot font size (8–20): "
   let footSize = try { $footSizeRaw | into int } catch { error make { msg: "Not a number" } }
   if $footSize < 8 or $footSize > 20 {
       error make { msg: $"($footSize) is out of range \(8–20\)" }
@@ -66,8 +67,6 @@ size:
 
   $footConfigFile | save --force ~/.config/foot/font.ini
 
-  # ^pkill foot | complete
-  # job spawn { ^setsid foot --server out+err>/dev/null }
   ^swaymsg exec "nu -c 'sleep 100ms; setsid foot --server'"
   ^pkill foot | complete
 
@@ -85,6 +84,18 @@ git-ls-tree:
 update:
   #!/usr/bin/env bash
   sudo pacman -Syu --noconfirm
+
+# update aur packages
+update-yay:
+  #!/usr/bin/env bash
+  yay -Syu --noconfirm
+
+# update and refresh pacman keyring
+update-keyring:
+  #!/usr/bin/env bash
+  sudo pacman -S archlinux-keyring
+  sudo pacman-key --populate archlinux
+  sudo pacman-key --refresh
 
 # list all deliberately installed packages
 packages:
@@ -166,25 +177,3 @@ brightness num="10":
   let pct = {{num}} * 10
   ^brightnessctl s $"($pct)%"
 
-check-dns:
-  #!/usr/bin/env bash
-  for r in 1.1.1.1 8.8.8.8 9.9.9.9 208.67.222.222; do
-    echo "=== $r"
-    dig temporal.pcfcash.com @$r +noall +answer
-  done
-
-random-secret-32:
-  #!/usr/bin/env bash
-  sec=$(openssl rand -base64 32)
-  echo $sec | wl-copy
-  echo $sec
-
-reown:
-  #!/usr/bin/env bash
-  sudo chown -R tanjiro:users go/pkg/mod
-
-pacman-update-keychain:
-  #!/usr/bin/env bash
-  sudo pacman -S archlinux-keyring
-  sudo pacman-key --populate archlinux
-  sudo pacman-key --refresh
