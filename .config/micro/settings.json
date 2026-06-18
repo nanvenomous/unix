@@ -1,0 +1,8 @@
+{
+    "colorscheme": "fluoromachine",
+    "lsp.server": "go=gopls,python=pylsp",
+    "Alt-h": "command:lsp hover",
+    "Alt-d": "command:lsp goto-definition",
+    "Alt-r": "command:lsp find-references",
+    "Alt-f": "command:lsp format"
+}
