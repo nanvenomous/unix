@@ -15,9 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local libero_api_key = os.getenv("LIBERO_API_KEY") or ''
+-- local libero_api_key = os.getenv("LIBERO_API_KEY") or ''
 -- local home = os.getenv("HOME")
-local host = os.getenv("HOST")
+-- local host = os.getenv("HOST")
 
 
 require("lazy").setup({
@@ -88,19 +88,46 @@ require("lazy").setup({
       end
     },
     { 'neovim/nvim-lspconfig' }, -- Configurations for Nvim LSP
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-vsnip' },
-    { 'hrsh7th/vim-vsnip' },
+    {
+      'saghen/blink.cmp',
+      version = '*',
+      opts = {
+        keymap = {
+          preset = 'none',
+          ['<Down>'] = { 'select_next', 'fallback' },
+          ['<Up>'] = { 'select_prev', 'fallback' },
+          ['<C-d>'] = { 'scroll_documentation_up', 'fallback' },
+          ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+          ['<C-space>'] = { 'show', 'fallback' },
+          ['<C-e>'] = { 'hide', 'fallback' },
+          ['<CR>'] = { 'accept', 'fallback' },
+        },
+        completion = {
+          documentation = { auto_show = true },
+        },
+        sources = {
+          default = { 'lsp', 'buffer' },
+          per_filetype = {
+            sql = { 'dadbod', 'buffer' },
+          },
+          providers = {
+            dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+          },
+        },
+      },
+    },
 
     {
       'lewis6991/gitsigns.nvim',
       opts = {
-        current_line_blame = false,
+        current_line_blame = true,
       },
     },
-    { 'raimondi/delimitmate' },
+    {
+      'windwp/nvim-autopairs',
+      event = 'InsertEnter',
+      opts = {},
+    },
     {
       "rmagatti/auto-session",
       lazy = false,
@@ -110,9 +137,12 @@ require("lazy").setup({
         suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       },
     },
-    { 'tpope/vim-surround' },
-    { 'tpope/vim-commentary' },
-    { 'tveskag/nvim-blame-line' },
+    {
+      'kylechui/nvim-surround',
+      version = '*',
+      event = 'VeryLazy',
+      opts = {},
+    },
 
     {
       "ray-x/go.nvim",
@@ -190,81 +220,10 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-local function createOllamaSchema(name, model)
-  local ollama_url = 'http://127.0.0.1:11434'
-  local ollama_api_key = ''
-  if host ~= 'oddjobs' then
-    ollama_url = 'https://ollama.fiore.one'
-    ollama_api_key = libero_api_key
-  end
-  return {
-    name = name,
-    schema = {
-      model = {
-        default = model,
-      },
-      num_ctx = {
-        default = 16384,
-      },
-      num_predict = {
-        default = -1,
-      },
-    },
-    env = {
-      url = ollama_url,
-      api_key = ollama_api_key,
-    },
-    headers = {
-      ["Content-Type"] = "application/json",
-      ["Authorization"] = "${api_key}",
-    },
-    parameters = {
-      sync = true,
-    },
-  }
-end
-
 require('lualine').setup({
   options = {
     'filename',
     path = 1,
-  }
-})
-
-local cmp = require'cmp'
-
-cmp.setup.filetype({"sql"}, {
-  sources = {
-    {name = "vim-dadbod-completion"},
-    {name = "buffer"},
-  }
-})
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'buffer' },
-    -- per_filetype = {
-    --   codecompanion = { "codecompanion" },
-    -- }
   }
 })
 
@@ -373,6 +332,8 @@ local servers = {
     filetypes = { "html", "templ" },
   }},
 }
+
+vim.lsp.config('*', { capabilities = require('blink.cmp').get_lsp_capabilities() })
 
 local function setup_lsp(server, config)
   vim.lsp.config(server, config)

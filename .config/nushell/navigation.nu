@@ -24,7 +24,7 @@ def ls [
       --mime-type=$mime_type
       --threads=$threads
       ...$pattern
-  ) | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str downcase }
+  ) | sort-by { $in.type != "dir" } { $in.name | path parse | get extension } { $in.name | str lowercase }
 }
 
 def nav_dirs [] {
