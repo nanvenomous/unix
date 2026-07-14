@@ -173,7 +173,25 @@ require("lazy").setup({
     -- { 'ray-x/go.nvim' },
     -- { 'ray-x/guihua.lua' }, -- recommanded if need floating window support
 
-    { 'sbdchd/neoformat' },
+    {
+      'stevearc/conform.nvim',
+      opts = {
+        formatters_by_ft = {
+          templ = { 'templ' },
+          typescript = { 'prettier' },
+          javascript = { 'prettier' },
+          json = { 'prettier' },
+          html = { 'prettier' },
+          css = { 'prettier' },
+        },
+        default_format_opts = { lsp_format = 'fallback' },
+        format_on_save = function(bufnr)
+          if require('conform').formatters_by_ft[vim.bo[bufnr].filetype] then
+            return { timeout_ms = 1000 }
+          end
+        end,
+      },
+    },
     { 'mfussenegger/nvim-dap' },
     {
       'MeanderingProgrammer/render-markdown.nvim',
@@ -256,22 +274,8 @@ set signcolumn=yes
 vim.filetype.add({ extension = { templ = "templ" } })
 
 local custom_format = function()
-  if vim.bo.filetype == "templ" then
-    local bufnr = vim.api.nvim_get_current_buf()
-    local filename = vim.api.nvim_buf_get_name(bufnr)
-    local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-
-    vim.fn.system(cmd)
-    -- Reload the buffer
-    if vim.api.nvim_get_current_buf() == bufnr then
-      vim.cmd('e!')
-    end
-  else
-    -- vim.lsp.buf.format()
-  end
+  require('conform').format({ async = true })
 end
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = { "*.templ" }, callback = custom_format })
 
 local function show_diagnostic()
   vim.diagnostic.open_float()

@@ -79,8 +79,6 @@ keymap('n', 'yn', ':let @+ = expand("%:t")<CR>', nOpts)
 keymap('n', '<esc>', '<cmd>noh<CR>', nsOpts)
 keymap('n', '*', '<cmd>keepjumps normal! mi*`i<CR>', nsOpts)
 
-vim.g.rustfmt_autosave = 1
-
 vim.api.nvim_create_user_command('NumberLines', function()
   vim.cmd([[:'<,'>s/^/\=line('.') - line("'<") + 1 . '. '/]])
 end, { range = true })
