@@ -28,8 +28,13 @@ chsh -s /usr/bin/nu
 
 # To Automate
 
-- [ ] [pcmanfm](https://archlinux.org/packages/community/x86_64/pcmanfm/) -> files
-- [ ] [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/) -> sound
+- [ ] voxtype
+    ```bash
+    paru -S voxtype
+    voxtype setup --download
+    voxtype setup gpu
+    voxtype setup systemd
+    ```
 - [ ] [dns with systemd-resolvd](https://wiki.archlinux.org/title/NetworkManager#systemd-resolved)
 - [ ] [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 - [ ] firefox

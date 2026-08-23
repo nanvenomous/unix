@@ -148,6 +148,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec i3-msg exit
 
+
+bindsym --no-repeat $mod+q exec voxtype record start
+bindsym --release $mod+q exec voxtype record stop
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt

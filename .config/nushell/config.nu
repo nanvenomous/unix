@@ -31,7 +31,7 @@ $env.config.history = {
     sync_on_enter: true    # Writes to disk after each command
     max_size: 100000       # Maximum number of history entries
 }   
-$env.config.keybindings = [
+$env.config.keybindings ++= [
   {
     name: open_in_editor
     modifier: control

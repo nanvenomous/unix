@@ -1,12 +1,5 @@
 let carapace_completer = {|spans|
-  let cmd = $spans.0
-  let primary = (do { ^carapace $cmd nushell ...$spans } | complete)
-
-  let result = if $primary.exit_code == 0 and ($primary.stdout | str trim) != "" {
-    $primary
-  } else {
-    do { ^$cmd _carapace nushell ...$spans } | complete
-  }
+  let result = (do { ^carapace $spans.0 nushell ...$spans } | complete)
 
   if $result.exit_code == 0 and ($result.stdout | str trim) != "" {
     $result.stdout | from json
@@ -14,15 +7,6 @@ let carapace_completer = {|spans|
     null
   }
 }
-# let carapace_completer = {|spans|
-#   let results = (do { ^carapace $spans.0 nushell ...$spans } | complete)
-
-#   if $results.exit_code == 0 and ($results.stdout | str trim) != "" {
-#     $results.stdout | from json
-#   } else {
-#     null
-#   }
-# }
 
 $env.CARAPACE_LENIENT = "1"
 $env.config.completions.algorithm = "prefix"
@@ -51,7 +35,7 @@ $env.config.menus ++= [{
 
 $env.config.keybindings ++= [
   {
-    name: completion_menu
+    name: carapace_completion_menu_ctrl_t
     modifier: control
     keycode: char_t
     mode: [vi_insert vi_normal]
@@ -62,6 +46,18 @@ $env.config.keybindings ++= [
       ]
     }
   }
+  {
+    # Tab opens the menu and completes an unambiguous match, but never
+    # cycles through candidates on repeat presses -- keep typing to narrow.
+    name: completion_menu
+    modifier: none
+    keycode: tab
+    mode: [emacs vi_normal vi_insert]
+    event: {
+      until: [
+        { send: menu name: completion_menu }
+        { edit: complete }
+      ]
+    }
+  }
 ]
-
-# source ~/.cache/completions/pcf.nu
