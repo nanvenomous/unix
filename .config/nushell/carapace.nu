@@ -49,7 +49,7 @@ $env.config.keybindings ++= [
   {
     # Tab opens the menu and completes an unambiguous match, but never
     # cycles through candidates on repeat presses -- keep typing to narrow.
-    name: completion_menu
+    name: carapace_completion_menu_tab
     modifier: none
     keycode: tab
     mode: [emacs vi_normal vi_insert]
