@@ -1,4 +1,5 @@
-let carapace_completer = {|spans|
+let carapace_completer = {|place|
+  let spans = $place.command
   let result = (do { ^carapace $spans.0 nushell ...$spans } | complete)
 
   if $result.exit_code == 0 and ($result.stdout | str trim) != "" {

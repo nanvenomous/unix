@@ -96,6 +96,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'markdown',
     'nu',
     'python',
+    'razor',
     'sh',
     'templ',
     'typescript',

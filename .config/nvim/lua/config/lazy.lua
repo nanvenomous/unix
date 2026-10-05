@@ -62,6 +62,7 @@ require("lazy").setup({
           "nu",
           "python",
           "query",
+          "razor",
           "templ",
           "typescript",
           "vim",
@@ -271,7 +272,7 @@ vim.cmd([[
 set signcolumn=yes
 ]])
 
-vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { templ = "templ", cshtml = "razor" } })
 
 local custom_format = function()
   require('conform').format({ async = true })
@@ -329,7 +330,7 @@ local servers = {
   }},
   { 'html', {
     on_attach = on_attach,
-    filetypes = { "html", "templ" },
+    filetypes = { "html", "templ", "razor" },
   }},
   { 'htmx', {
     on_attach = on_attach,
