@@ -24,6 +24,7 @@ $env.PATH = (unique-paths $env.PATH)
 
 prepend-path $"($env.HOME)/.local/share/mise/shims"
 add-path $"($env.HOME)/.local/bin"
+add-path $"($env.HOME)/Applications"
 
 # $env.CRUSH_DISABLE_PROVIDER_AUTO_UPDATE = "1"
 
