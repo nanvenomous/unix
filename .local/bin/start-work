@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-swaymsg 'workspace 4; exec brave'
-sleep 1
-
 swaymsg 'workspace 10'
 swaymsg 'exec microsoft-teams'
 sleep 1
@@ -19,4 +16,4 @@ sleep 1
 swaymsg 'exec pcf-frontend'
 sleep 1
 
-swaymsg 'workspace 5; exec adp'
+swaymsg 'workspace 4; exec ~/.config/sway/scripts/link-picker.nu signin.adp.com'

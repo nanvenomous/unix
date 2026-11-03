@@ -49,6 +49,7 @@ bindsym $mod+n kill
 bindsym $mod+d exec ~/.config/rofi/launch_rofi.sh
 bindsym $mod+a exec footclient --app-id=modal -e /home/tanjiro/.local/bin/music
 bindsym $mod+p exec footclient --app-id=modal -e sh -c 'gopass show --password $(gopass list -f | fzf) | wl-copy'
+bindsym $mod+b exec footclient --app-id=modal -e ~/.config/sway/scripts/link-picker.nu
 for_window [app_id="modal"] floating enable, resize set 800 600, move position center
 # bindsym $mod+f exec footclient fling
 bindsym $mod+f exec footclient --app-id=fling fling
@@ -146,7 +147,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+e exec swaymsg exit
 
 
 bindsym --no-repeat $mod+q exec voxtype record start
@@ -187,4 +188,4 @@ exec foot --server
 for_window [title="Microsoft Teams Notification"] floating enable, move 20 20
 no_focus [title="Microsoft Teams Notification"]
 
-exec i3-msg workspace 5
+exec swaymsg workspace 5
